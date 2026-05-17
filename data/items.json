@@ -1,0 +1,11 @@
+Parla-cat-rpg/
+  data/
+    items.json
+    capitol1_bcn_born.json
+  camisa_cenguera.png
+  icon-192.png
+  icon-512.png
+  index.html
+  main.js
+  manifest.json
+  sw.js
