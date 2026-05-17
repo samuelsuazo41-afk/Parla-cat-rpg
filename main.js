@@ -147,8 +147,9 @@ async function carregarItems() {
 
 async function carregarCapitol(nombreArchivo) {
   try {
-    const res = await fetch(`./capitols/${nombreArchivo}.json`);
-    if (!res.ok) throw new Error('Archivo no encontrado');
+    // CORREGIDO: ahora busca en./data/ y ya no añade.json porque ya lo trae
+    const res = await fetch(`./data/${nombreArchivo}`);
+    if (!res.ok) throw new Error('Archivo no encontrado: ' + nombreArchivo);
 
     estat.capitolActual = await res.json();
     estat.pasActual = 0;
@@ -249,15 +250,12 @@ function seleccionarOpcio(idx) {
   const opcio = pas.opcions[idx];
   const feedback = opcio.feedback;
 
-  // Bloquear botones
   estat.bloquejat = true;
   document.querySelectorAll('.opcio').forEach(o => o.classList.add('disabled'));
 
-  // Mostrar feedback con 4s mínimo
   const tempsLectura = Math.max(4000, feedback.length * 50);
   mostrarFeedback(feedback, tempsLectura);
 
-  // Sonido
   if(opcio.correcte && AUDIO_ENCERT) AUDIO_ENCERT.play();
   if(!opcio.correcte && AUDIO_FALLADA) AUDIO_FALLADA.play();
 
@@ -451,5 +449,5 @@ function carregarBotiga() {
 
 // Service Worker
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/sw.js').catch(err => console.log('SW error:', err));
-                                 }
+  navigator.serviceWorker.register('./sw.js').catch(err => console.log('SW error:', err));
+}
