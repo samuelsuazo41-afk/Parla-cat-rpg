@@ -5,13 +5,17 @@ const urlsToCache = [
   './main.js',
   './manifest.json',
   './data/items.json',
-  './capitols/capitol1_bcn_born.json'
+  './data/capitol1_bcn_born.json',
+  './camisa_cenguera.png',
+  './icon-192.png',
+  './icon-512.png'
 ];
 
 self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then(cache => cache.addAll(urlsToCache))
+      .catch(err => console.log('Cache failed:', err))
   );
   self.skipWaiting();
 });
