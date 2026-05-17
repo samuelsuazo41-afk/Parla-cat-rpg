@@ -253,7 +253,7 @@ function seleccionarOpcio(idx) {
   estat.bloquejat = true;
   document.querySelectorAll('.opcio').forEach(o => o.classList.add('disabled'));
 
-  const tempsLectura = Math.max(4000, feedback.length * 50);
+  const tempsLectura = Math.max(6000, feedback.length * 50);
   mostrarFeedback(feedback, tempsLectura);
 
   if(opcio.correcte && AUDIO_ENCERT) AUDIO_ENCERT.play();
