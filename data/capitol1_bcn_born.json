@@ -1,0 +1,164 @@
+{
+  "id": "bcn_01",
+  "nom": "Barcelona - El Born",
+  "passos": [
+    {
+      "escena": "Forn de Pa - 08:00",
+      "dialog": "Bon dia! Què voldràs avui?",
+      "pregunta": "Com demanes un pa amb tomàquet?",
+      "opcions": [
+        {
+          "text": "Un pa amb tomàquet, si us plau",
+          "correcte": true,
+          "guany": { "monedes": 5, "seny": 2 },
+          "feedback": "Perfecte! 'Si us plau' sempre queda bé. El forner et somriu i et dona el pa calent."
+        },
+        {
+          "text": "Dame un pan con tomate",
+          "correcte": false,
+          "guany": { "monedes": 0, "rauxa": 1 },
+          "feedback": "El forner et mira estrany. Aquí parlem català. Prova de dir-ho en català la propera vegada."
+        },
+        {
+          "text": "Pa amb tomàquet!",
+          "correcte": true,
+          "guany": { "monedes": 3, "arrel": 1 },
+          "feedback": "Directe i al gra, com un bon barceloní. Funciona, però 'si us plau' sona més educat."
+        }
+      ]
+    },
+    {
+      "escena": "Mercat del Born - Parada de fruita",
+      "dialog": "Aquestes cireres són de Lleida, fresques de demà!",
+      "pregunta": "Com preguntes el preu?",
+      "opcions": [
+        {
+          "text": "Quant val un quilo?",
+          "correcte": true,
+          "guany": { "monedes": 5, "seny": 2 },
+          "feedback": "Correcte! 'Quant val' és la forma estàndard. La venedora et fa 10% de descompte per parlar bé."
+        },
+        {
+          "text": "Cuánto cuesta?",
+          "correcte": false,
+          "guany": { "monedes": 0, "obert": 1 },
+          "feedback": "T'entén, però et respon en castellà. Perds l'oportunitat de practicar català."
+        }
+      ]
+    },
+    {
+      "escena": "Plaça de Santa Maria del Mar",
+      "dialog": "Et perds? Busques alguna cosa?",
+      "pregunta": "Com demanes indicacions per anar al carrer Princesa?",
+      "opcions": [
+        {
+          "text": "Disculpa, com puc anar al carrer Princesa?",
+          "correcte": true,
+          "guany": { "monedes": 7, "seny": 3 },
+          "feedback": "'Disculpa' i 'com puc anar' són perfectes. Et marquen el camí i et recomanen una taverna de vermut."
+        },
+        {
+          "text": "Dónde está calle Princesa?",
+          "correcte": false,
+          "guany": { "monedes": 0, "rauxa": 1 },
+          "feedback": "La persona et respon amb gestos i marxa ràpid. Millor prova en català."
+        }
+      ]
+    },
+    {
+      "escena": "Bar del Born - Hora del vermut",
+      "dialog": "Hola! Voleu seure a la terrassa o dins?",
+      "pregunta": "Com demanes una taula fora?",
+      "opcions": [
+        {
+          "text": "A la terrassa, si pot ser",
+          "correcte": true,
+          "guany": { "monedes": 5, "obert": 2 },
+          "feedback": "Perfecte! 'Si pot ser' sona molt natural. Et porten una taula al sol."
+        },
+        {
+          "text": "Mesa fuera, por favor",
+          "correcte": false,
+          "guany": { "monedes": 0, "rauxa": 1 },
+          "feedback": "El cambrer et respon en castellà. No passa res, però no practiques català."
+        }
+      ]
+    },
+    {
+      "escena": "Botiga de records",
+      "dialog": "Mira aquests imants de Barcelona!",
+      "pregunta": "Com dius que t'interessa un imant del Barça?",
+      "opcions": [
+        {
+          "text": "Em podries ensenyar l'imant del Barça?",
+          "correcte": true,
+          "guany": { "monedes": 6, "seny": 2 },
+          "feedback": "Molt bé! 'Em podries ensenyar' és educat i natural. Et fan un 5% de descompte."
+        },
+        {
+          "text": "Enséñame el imán",
+          "correcte": false,
+          "guany": { "monedes": 0, "arrel": 1 },
+          "feedback": "T'entén però no et fan descompte. La pròxima vegada prova en català."
+        }
+      ]
+    },
+    {
+      "escena": "Biblioteca del Born",
+      "dialog": "Hola, busques algun llibre en concret?",
+      "pregunta": "Com demanes un llibre de Mercè Rodoreda?",
+      "opcions": [
+        {
+          "text": "Teniu algun llibre de Mercè Rodoreda?",
+          "correcte": true,
+          "guany": { "monedes": 8, "arrel": 3 },
+          "feedback": "Perfecte! La bibliotecària et recomana 'La plaça del Diamant'. Bon gust!"
+        },
+        {
+          "text": "Tienen libros de Rodoreda?",
+          "correcte": false,
+          "guany": { "monedes": 0, "obert": 1 },
+          "feedback": "Et respon en castellà i et dona el llibre. Correcte, però sense el punt extra de practicar català."
+        }
+      ]
+    },
+    {
+      "escena": "Carrer de l'Argenteria",
+      "dialog": "Que bon dia que fa avui, oi?",
+      "pregunta": "Com respons per seguir la conversa?",
+      "opcions": [
+        {
+          "text": "Sí, fa un dia preciós! Ideals per passejar pel Born.",
+          "correcte": true,
+          "guany": { "monedes": 5, "obert": 2 },
+          "feedback": "Molt bé! Seguir la conversa et guanya punts de simpatia. Et conviden a un tallat."
+        },
+        {
+          "text": "Sí",
+          "correcte": true,
+          "guany": { "monedes": 2, "seny": 1 },
+          "feedback": "Curt però correcte. Una resposta més llarga hauria ajudat a practicar més."
+        }
+      ]
+    },
+    {
+      "escena": "Acomiadament - Plaça del Born",
+      "dialog": "Doncs fins aviat! Ha estat un plaer xerrar amb tu.",
+      "pregunta": "Com t'acomiades en català?",
+      "opcions": [
+        {
+          "text": "Fins aviat! Moltes gràcies per tot!",
+          "correcte": true,
+          "guany": { "monedes": 10, "seny": 3, "arrel": 2 },
+          "feedback": "Perfecte! 'Moltes gràcies' tanca la conversa amb bona energia. Has completat el Born!"
+        },
+        {
+          "text": "Adiós, gracias",
+          "correcte": false,
+          "guany": { "monedes": 0, "rauxa": 1 },
+          "feedback": "T'entenen, però no és la forma catalana. Has de practicar més per la recompensa 100%."
+        }
+      ]
+    }
+  ]
+}
