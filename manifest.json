@@ -1,10 +1,10 @@
 {
-  "name": "Parla Cat RPG",
-  "short_name": "ParlaCat",
-  "start_url": "./",
+  "name": "Parla-cat-rpg",
+  "short_name": "ParlaRPG",
+  "start_url": ".",
   "display": "standalone",
-  "background_color": "#0a0a0f",
-  "theme_color": "#FF6B35",
+  "background_color": "#000",
+  "theme_color": "#FF3B30",
   "icons": [
     {
       "src": "./icon-192.png",
@@ -12,7 +12,7 @@
       "type": "image/png"
     },
     {
-      "src": "./icon-512.png",
+      "src": "./icon-512.png", 
       "sizes": "512x512",
       "type": "image/png"
     }
