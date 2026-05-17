@@ -188,19 +188,6 @@ function carregarMapa() {
   });
 }
 
-    const div = document.createElement('div');
-    div.className = 'capitol-card' + (completat? ' completat' : '') + (!desbloquejat? ' bloquejat' : '');
-    div.innerHTML = `
-      <div class="capitol-icona">${capitol.icona}</div>
-      <h3>${capitol.nom}</h3>
-      <p>${capitol.desc}</p>
-      ${completat? `✓ ${LANG.completat} <button class="btn btn-sec" style="margin-top:10px;" onclick="repetirCapitol('${capitol.id}'); event.stopPropagation()">${LANG.repetir}</button>` : ''}
-      ${desbloquejat &&!completat? `<button class="btn" onclick="entrarCapitol('${capitol.id}')">${LANG.entrar}</button>` : ''}
-      ${!desbloquejat? `<p style="color:#888; margin-top:10px;">${LANG.bloquejat}</p>` : ''}
-    `;
-    cont.appendChild(div);
-  });
-}
 
 function entrarCapitol(id) {
   const capitol = CAPITOLS.find(c => c.id === id);
