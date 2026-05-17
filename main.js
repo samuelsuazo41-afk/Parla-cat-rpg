@@ -69,17 +69,17 @@ let estat = {
 
 const CAPITOLS = [
   {
-    id: "bcn_01",
-    nom: "Barcelona - El Born",
-    icona: "🧢",
-    desbloquejat: true,
-    desc: "Arribes al Born. Si parles bé, et conviden a vermut 🍷",
-    archivo: "capitol1_bcn_born.json",
-    recompensa_100: {
-      item_id: "camisa_cenguera",
-      ruta: "ruta_rave_port_olympic"
-    }
-  },
+  id: "bcn_01",
+  nom: "Barcelona - El Born",
+  icona: "🧢",
+  desbloquejat: true,
+  desc: "Arribes al Born. Si parles bé, et conviden a vermut 🍷",
+  archivo: "capitol1_bcn_born.json",
+  recompensa_100: {
+    item_id: "camisa_cenguera_barca",
+    ruta: "ruta_rave_port_olympic"
+  }
+},
   {
     id: "gir_01",
     nom: "Girona - Temps de Flors",
