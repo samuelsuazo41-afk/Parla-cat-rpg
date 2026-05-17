@@ -172,15 +172,21 @@ async function carregarCapitol(nombreArchivo) {
 }
 
 function carregarMapa() {
-  const cont = document.getElementById('mapa-contenidor');
-  cont.innerHTML = '';
-
+  const mapaDiv = document.getElementById('mapa');
+  mapaDiv.innerHTML = '';
+  
   CAPITOLS.forEach(capitol => {
-    const completat = estat.capitolsCompletats.includes(capitol.id);
-    let desbloquejat = capitol.desbloquejat;
-    if (capitol.requereix) {
-      desbloquejat = estat.capitolsCompletats.includes(capitol.requereix);
-    }
+    const card = document.createElement('div');
+    card.className = 'capitol-card';
+    card.innerHTML = `
+      <span class="icona">${capitol.icona}</span>
+      <h3>${capitol.nom}</h3>
+      <p>${capitol.desc}</p>
+    `;
+    card.onclick = () => iniciarCapitol(capitol.id);
+    mapaDiv.appendChild(card);
+  });
+}
 
     const div = document.createElement('div');
     div.className = 'capitol-card' + (completat? ' completat' : '') + (!desbloquejat? ' bloquejat' : '');
