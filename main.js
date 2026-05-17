@@ -69,18 +69,18 @@ let estat = {
 
 const CAPITOLS = [
   {
-  id: "bcn_01",
-  nom: "Barcelona - El Born",
-  icona: "🧢",
-  desbloquejat: true,
-  desc: `Arribes al Born. Si parles bé, 
+    id: "bcn_01",
+    nom: "Barcelona - El Born",
+    icona: "🧢",
+    desbloquejat: true,
+    desc: `Arribes al Born. Si parles bé,
 et conviden a vermut 🍷 `,
-  archivo: "capitol1_bcn_born.json",
-  recompensa_100: {
-    item_id: "camisa_cenguera_barca",
-    ruta: "ruta_rave_port_olympic"
-  }
-},
+    archivo: "capitol1_bcn_born.json",
+    recompensa_100: {
+      item_id: "camisa_cenguera_barca",
+      ruta: "ruta_rave_port_olympic"
+    }
+  },
   {
     id: "gir_01",
     nom: "Girona - Temps de Flors",
@@ -109,7 +109,6 @@ document.addEventListener('DOMContentLoaded', () => {
     carregarMapa();
   });
 
-  // Preload audios cortos
   AUDIO_ENCERT = new Audio('data:audio/wav;base64,UklGRiZDAABXQVZFZm10IBAAAAABAAEAESsAACJWAAACABAAZGF0YQIAAAAAAAA=');
   AUDIO_FALLADA = new Audio('data:audio/wav;base64,UklGRiZDAABXQVZFZm10IBAAAAABAAEAESsAACJWAAACABAAZGF0YQIAAAAAAAAA');
 });
@@ -148,7 +147,6 @@ async function carregarItems() {
 
 async function carregarCapitol(nombreArchivo) {
   try {
-    // CORREGIDO: ahora busca en./data/ y ya no añade.json porque ya lo trae
     const res = await fetch(`./data/${nombreArchivo}`);
     if (!res.ok) throw new Error('Archivo no encontrado: ' + nombreArchivo);
 
@@ -174,20 +172,32 @@ async function carregarCapitol(nombreArchivo) {
 function carregarMapa() {
   const mapaDiv = document.getElementById('mapa');
   mapaDiv.innerHTML = '';
-  
+
   CAPITOLS.forEach(capitol => {
+    const completat = estat.capitolsCompletats.includes(capitol.id);
+    const desbloquejat = capitol.desbloquejat || estat.capitolsCompletats.includes(capitol.requereix);
+
     const card = document.createElement('div');
-    card.className = 'capitol-card';
-    card.innerHTML = `
+    card.className = 'capitol-card' + (completat? ' completat' : '') + (!desbloquejat? ' bloquejat' : '');
+
+    let html = `
       <span class="icona">${capitol.icona}</span>
       <h3>${capitol.nom}</h3>
       <p>${capitol.desc}</p>
     `;
-    card.onclick = () => iniciarCapitol(capitol.id);
+
+    if (completat) {
+      html += `✓ ${LANG.completat} <button class="btn btn-sec" style="margin-top:10px;" onclick="repetirCapitol('${capitol.id}'); event.stopPropagation()">${LANG.repetir}</button>`;
+    } else if (desbloquejat) {
+      html += `<button class="btn" onclick="entrarCapitol('${capitol.id}')">${LANG.entrar}</button>`;
+    } else {
+      html += `<p style="color:#888; margin-top:10px;">${LANG.bloquejat}</p>`;
+    }
+
+    card.innerHTML = html;
     mapaDiv.appendChild(card);
   });
 }
-
 
 function entrarCapitol(id) {
   const capitol = CAPITOLS.find(c => c.id === id);
@@ -322,51 +332,13 @@ function completarCapitol() {
     htmlPremi = `
       <div style="text-align:center; margin-top:20px;">
         <p style="color:#ff6b6b; font-size:18px; font-weight:bold;">
-          Has fallat ${fallades} pregunta${fallades > 1 ? 's' : ''}
+          Has fallat ${fallades} pregunta${fallades > 1? 's' : ''}
         </p>
         <p style="color:#888; margin-top:10px;">
           Fes 0 fallos per guanyar la camisa del Barça. Torna a intentar-ho!
         </p>
       </div>
     `;
-  }
-
-  document.getElementById('missio-card').innerHTML = `
-    <div class="completion-screen">
-      <h2>✅ ${LANG.mision_completada}</h2>
-      ${htmlPremi}
-      <div class="completion-buttons">
-        <button class="btn btn-sec" onclick="tornarMapa()">${LANG.volver_mapa}</button>
-        <button class="btn" onclick="repetirCapitolActual()">${LANG.repetir}</button>
-      </div>
-    </div>
-  `;
-
-  guardarEstat();
-  carregarMapa();
-}
-
-  document.getElementById('npc-box').style.display = 'none';
-
-  let htmlPremi = '';
-  const es100 = (estat.falladesCapitol || 0) === 0;
-
-  if(es100 && estat.capitolActual.recompensa_100) {
-    const item = ITEMS[estat.capitolActual.recompensa_100.item_id];
-    if(item) {
-      estat.objectes.push(estat.capitolActual.recompensa_100.item_id);
-      estat.rutesDesbloquejades.push(estat.capitolActual.recompensa_100.ruta);
-
-      htmlPremi = `
-        <div class="item-desbloquejat">
-          <img src="${item.imatge}" alt="${item.nom}">
-          <h2>✨ ${LANG.item_desbloquejat}</h2>
-          <h3>${item.emoji} ${item.nom}</h3>
-          <p>${item.descripcio}</p>
-          <p style="color:#FFD700; margin-top:10px;">${LANG.ruta_secreta}</p>
-        </div>
-      `;
-    }
   }
 
   document.getElementById('missio-card').innerHTML = `
