@@ -1,7 +1,15 @@
 {
-  "id": "bcn_01",
-  "nom": "Barcelona - El Born",
-  "passos": [
+  id: "bcn_01",
+  nom: "Barcelona - El Born",
+  icona: "🧢",
+  desbloquejat: true,
+  desc: "Arribes al Born. Fes 100% sense fallar i guanya la Camisa cenguera del Barça 🔵🔴",
+  archivo: "capitol1_bcn_born.json",
+  recompensa_100: {
+    item_id: "camisa_cenguera_barca",
+    ruta: "ruta_rave_port_olympic"
+  }
+}
     {
       "escena": "Forn de Pa - 08:00",
       "dialog": "Bon dia! Què voldràs avui?",
