@@ -73,7 +73,8 @@ const CAPITOLS = [
   nom: "Barcelona - El Born",
   icona: "🧢",
   desbloquejat: true,
-  desc: "Arribes al Born. Si parles bé, et conviden a vermut 🍷",
+  desc: `Arribes al Born. Si parles bé, 
+et conviden a vermut 🍷 `,
   archivo: "capitol1_bcn_born.json",
   recompensa_100: {
     item_id: "camisa_cenguera_barca",
