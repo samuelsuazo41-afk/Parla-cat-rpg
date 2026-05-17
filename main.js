@@ -74,7 +74,7 @@ const CAPITOLS = [
     icona: "🧢",
     desbloquejat: true,
     desc: "Arribes al Born. Si parles bé, et conviden a vermut 🍷",
-    archivo: "capitol1_bcn_born",
+    archivo: "capitol1_bcn_born.json",
     recompensa_100: {
       item_id: "camisa_cenguera",
       ruta: "ruta_rave_port_olympic"
@@ -86,7 +86,7 @@ const CAPITOLS = [
     icona: "🌸",
     desbloquejat: false,
     desc: "Flors als carrers. Català més lent, més de poble.",
-    archivo: "capitol2_girona",
+    archivo: "capitol2_girona.json",
     requereix: "bcn_01",
     recompensa_100: {
       item_id: "corona_flors_vives",
