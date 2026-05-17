@@ -304,6 +304,56 @@ function completarCapitol() {
 
   document.getElementById('npc-box').style.display = 'none';
 
+  const es100 = (estat.falladesCapitol || 0) === 0;
+  const fallades = estat.falladesCapitol || 0;
+  let htmlPremi = '';
+
+  if(es100 && estat.capitolActual.recompensa_100) {
+    const item = ITEMS[estat.capitolActual.recompensa_100.item_id];
+    if(item) {
+      estat.objectes.push(estat.capitolActual.recompensa_100.item_id);
+      estat.rutesDesbloquejades.push(estat.capitolActual.recompensa_100.ruta);
+
+      htmlPremi = `
+        <div class="item-desbloquejat" style="border: 2px solid #004D98; background: linear-gradient(135deg, #004D98, #A50044);">
+          <img src="${item.imatge}" alt="${item.nom}" style="width:80px;">
+          <h2>🔵🔴 Camisa cenguera del Barça desbloquejada!</h2>
+          <h3>${item.emoji} ${item.nom}</h3>
+          <p>${item.descripcio}</p>
+          <p style="color:#FFD700; font-weight:bold;">100% Perfect! Visca el Barça i el català!</p>
+        </div>
+      `;
+    }
+  } else {
+    htmlPremi = `
+      <div style="text-align:center; margin-top:20px;">
+        <p style="color:#ff6b6b; font-size:18px; font-weight:bold;">
+          Has fallat ${fallades} pregunta${fallades > 1 ? 's' : ''}
+        </p>
+        <p style="color:#888; margin-top:10px;">
+          Fes 0 fallos per guanyar la camisa del Barça. Torna a intentar-ho!
+        </p>
+      </div>
+    `;
+  }
+
+  document.getElementById('missio-card').innerHTML = `
+    <div class="completion-screen">
+      <h2>✅ ${LANG.mision_completada}</h2>
+      ${htmlPremi}
+      <div class="completion-buttons">
+        <button class="btn btn-sec" onclick="tornarMapa()">${LANG.volver_mapa}</button>
+        <button class="btn" onclick="repetirCapitolActual()">${LANG.repetir}</button>
+      </div>
+    </div>
+  `;
+
+  guardarEstat();
+  carregarMapa();
+}
+
+  document.getElementById('npc-box').style.display = 'none';
+
   let htmlPremi = '';
   const es100 = (estat.falladesCapitol || 0) === 0;
 
