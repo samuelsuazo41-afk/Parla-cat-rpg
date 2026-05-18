@@ -148,7 +148,7 @@ async function carregarItems() {
 async function carregarCapitol(nombreArchivo) {
   try {
     const res = await fetch(`./data/${nombreArchivo}`);
-    if (!res.ok) throw new Error('Archivo no encontrado: ' + nombreArchivo);
+    if (!res.ok) throw new Error('Archivo no encontrado: ' + nombreArchivo + ' - Status: ' + res.status);
 
     estat.capitolActual = await res.json();
     estat.pasActual = 0;
@@ -162,10 +162,11 @@ async function carregarCapitol(nombreArchivo) {
     `;
 
     canviarTab('missio', null);
-    setTimeout(() => carregarPas(), 50);
+    setTimeout(() => carregarPas(), 100);
 
   } catch(e) {
     alert('Error carregant capítol: ' + e.message);
+    console.error(e);
   }
 }
 
