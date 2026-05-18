@@ -4,7 +4,7 @@
 
 const LANGS = {
   es: {
-    app_titol: "Parla Cat RPG - Crónicas de  Cataluña",
+    app_titol: "Parla Cat RPG - Crónicas de   Cataluña",
     monedes: "Monedas",
     tab_mapa: "Mundo",
     tab_missio: "Misión",
