@@ -150,7 +150,12 @@ async function carregarCapitol(nombreArchivo) {
     const res = await fetch(`./data/${nombreArchivo}`);
     if (!res.ok) throw new Error('Archivo no encontrado: ' + nombreArchivo + ' - Status: ' + res.status);
 
-    estat.capitolActual = await res.json();
+    const data = await res.json();
+estat.capitolActual = {
+  id: "bcn_01",
+  passos: data
+};
+
     estat.pasActual = 0;
     estat.falladesCapitol = 0;
 
