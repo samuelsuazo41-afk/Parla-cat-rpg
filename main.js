@@ -4,7 +4,7 @@
 
 const LANGS = {
   es: {
-    app_titol: "Parla Cat RPG - Crónicas de   Cataluña",
+    app_titol: "Parla Cat RPG - Crónicas de Cataluña",
     monedes: "Monedas",
     tab_mapa: "Mundo",
     tab_missio: "Misión",
@@ -69,12 +69,12 @@ let estat = {
 
 const CAPITOLS = [
   {
-    id: "bcn_01",
+    id: "capitol1_bcn_born",
     nom: "Barcelona - El Born",
-    icona: "🧢",
+    icona: "🏛️",
     desbloquejat: true,
     desc: `Arribes al Born. Si parles bé,
-et conviden a vermut 🍷 `,
+et conviden a vermut 🍷`,
     archivo: "capitol1_bcn_born.json",
     recompensa_100: {
       item_id: "camisa_cenguera_barca",
@@ -82,15 +82,15 @@ et conviden a vermut 🍷 `,
     }
   },
   {
-    id: "gir_01",
+    id: "capitol_02_girona",
     nom: "Girona - Temps de Flors",
     icona: "🌸",
     desbloquejat: false,
     desc: "Flors als carrers. Català més lent, més de poble.",
-    archivo: "capitol2_girona.json",
-    requereix: "bcn_01",
+    archivo: "capitol_02_girona.json",
+    requereix: "capitol1_bcn_born",
     recompensa_100: {
-      item_id: "corona_flors_vives",
+      item_id: "flor_suprema_temps_flors",
       ruta: "ruta_flors_nit"
     }
   }
@@ -138,7 +138,10 @@ function canviarTab(tab, e) {
 async function carregarItems() {
   try {
     const res = await fetch('./data/items.json');
-    ITEMS = await res.json();
+    const arr = await res.json();
+    // Convertir array a objecte per accedir per id
+    ITEMS = {};
+    arr.forEach(i => ITEMS[i.id] = i);
   } catch(e) {
     console.log('No s\'ha pogut carregar items.json');
     ITEMS = {};
@@ -151,10 +154,13 @@ async function carregarCapitol(nombreArchivo) {
     if (!res.ok) throw new Error('Archivo no encontrado: ' + nombreArchivo + ' - Status: ' + res.status);
 
     const data = await res.json();
-estat.capitolActual = {
-  id: "bcn_01",
-  passos: data
-};
+    const capitolInfo = CAPITOLS.find(c => c.archivo === nombreArchivo);
+
+    estat.capitolActual = {
+      id: capitolInfo.id,
+      passos: data,
+      recompensa_100: capitolInfo.recompensa_100
+    };
 
     estat.pasActual = 0;
     estat.falladesCapitol = 0;
@@ -187,7 +193,7 @@ function carregarMapa() {
     card.className = 'capitol-card' + (completat? ' completat' : '') + (!desbloquejat? ' bloquejat' : '');
 
     let html = `
-      <span class="icona">${capitol.icona}</span>
+      <div class="capitol-icona">${capitol.icona}</div>
       <h3>${capitol.nom}</h3>
       <p>${capitol.desc}</p>
     `;
@@ -226,7 +232,7 @@ function carregarPas() {
   if (!pas) { completarCapitol(); return; }
 
   document.getElementById('npc-box').style.display = 'block';
-  document.getElementById('npc-nom').textContent = pas.escena.split('.')[0];
+  document.getElementById('npc-nom').textContent = pas.escena.split(' - ')[0];
   document.getElementById('npc-text').innerHTML = `${pas.dialog} <span style="cursor:pointer; margin-left:8px;" onclick="parlar('${pas.dialog.replace(/'/g, "\\'")}')">🔊</span>`;
   document.getElementById('missio-titol').textContent = pas.pregunta;
   document.getElementById('missio-escenari').textContent = '';
@@ -263,7 +269,7 @@ function seleccionarOpcio(idx) {
   estat.bloquejat = true;
   document.querySelectorAll('.opcio').forEach(o => o.classList.add('disabled'));
 
-  const tempsLectura = Math.max(6000, feedback.length * 50);
+  const tempsLectura = Math.max(4000, feedback.length * 40);
   mostrarFeedback(feedback, tempsLectura);
 
   if(opcio.correcte && AUDIO_ENCERT) AUDIO_ENCERT.play();
@@ -312,6 +318,10 @@ function completarCapitol() {
     estat.capitolsCompletats.push(estat.capitolActual.id);
   }
 
+  // Desbloquejar següent capítol
+  const seguent = CAPITOLS.find(c => c.requereix === estat.capitolActual.id);
+  if (seguent) seguent.desbloquejat = true;
+
   document.getElementById('npc-box').style.display = 'none';
 
   const es100 = (estat.falladesCapitol || 0) === 0;
@@ -321,16 +331,19 @@ function completarCapitol() {
   if(es100 && estat.capitolActual.recompensa_100) {
     const item = ITEMS[estat.capitolActual.recompensa_100.item_id];
     if(item) {
-      estat.objectes.push(estat.capitolActual.recompensa_100.item_id);
-      estat.rutesDesbloquejades.push(estat.capitolActual.recompensa_100.ruta);
+      if(!estat.objectes.includes(estat.capitolActual.recompensa_100.item_id)) {
+        estat.objectes.push(estat.capitolActual.recompensa_100.item_id);
+      }
+      if(estat.capitolActual.recompensa_100.ruta) {
+        estat.rutesDesbloquejades.push(estat.capitolActual.recompensa_100.ruta);
+      }
 
       htmlPremi = `
-        <div class="item-desbloquejat" style="border: 2px solid #004D98; background: linear-gradient(135deg, #004D98, #A50044);">
-          <img src="${item.imatge}" alt="${item.nom}" style="width:80px;">
-          <h2>🔵🔴 Camisa cenguera del Barça desbloquejada!</h2>
-          <h3>${item.emoji} ${item.nom}</h3>
+        <div class="item-desbloquejat">
+          <img src="${item.imatge}" alt="${item.nom}">
+          <h3>${item.nom}</h3>
           <p>${item.descripcio}</p>
-          <p style="color:#FFD700; font-weight:bold;">100% Perfect! Visca el Barça i el català!</p>
+          <p style="color:#FFD700; font-weight:bold;">100% Perfect!</p>
         </div>
       `;
     }
@@ -341,7 +354,7 @@ function completarCapitol() {
           Has fallat ${fallades} pregunta${fallades > 1? 's' : ''}
         </p>
         <p style="color:#888; margin-top:10px;">
-          Fes 0 fallos per guanyar la camisa del Barça. Torna a intentar-ho!
+          Fes 0 fallos per guanyar l'item especial. Torna a intentar-ho!
         </p>
       </div>
     `;
@@ -449,8 +462,8 @@ function mostrarGremi(tab, e) {
       if(item) {
         cont.innerHTML += `
           <div class="gremi-item">
-            <img src="${item.imatge}" style="width:64px; height:64px;">
-            <div>${item.emoji} ${item.nom}</div>
+            <img src="${item.imatge}" style="width:80px; height:80px;">
+            <div>${item.nom}</div>
             <div style="font-size:12px; color:#888;">${item.descripcio}</div>
           </div>
         `;
