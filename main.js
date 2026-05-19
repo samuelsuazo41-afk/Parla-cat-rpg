@@ -1,7 +1,4 @@
 // main.js - Lógica de Parla Cat RPG
-// Carga este archivo en index.html con <script src="./main.js"></script>
-// Y borra el <script> interno del HTML para no duplicar
-
 const LANGS = {
   es: {
     app_titol: "Parla Cat RPG - Crónicas de Cataluña",
@@ -73,8 +70,7 @@ const CAPITOLS = [
     nom: "Barcelona - El Born",
     icona: "🏛️",
     desbloquejat: true,
-    desc: `Arribes al Born. Si parles bé,
-et conviden a vermut 🍷`,
+    desc: `Arribes al Born. Si parles bé,\net conviden a vermut 🍷`,
     archivo: "capitol1_bcn_born.json",
     recompensa_100: {
       item_id: "camisa_cenguera_barca",
@@ -94,19 +90,19 @@ et conviden a vermut 🍷`,
       ruta: "ruta_flors_nit"
     }
   },
-{
-  id: "capitol_03_fires_valencia",
-  nom: "València - Fira de Falles",
-  icona: "🔥",
-  desbloquejat: false,
-  desc: "La fira està encesa. Parla amb la gent i guanya el Fuet del Foc.",
-  archivo: "data/capitol_03_fires_valencia.json",
-  requereix: "capitol_02_girona",
-  recompensa_100: {
-    item_id: "fuet_del_foc",
-    ruta: "./fuet_fires.png"
+  {
+    id: "capitol_03_fires_valencia",
+    nom: "València - Fira de Falles",
+    icona: "🔥",
+    desbloquejat: false,
+    desc: "La fira està encesa. Parla amb la gent i guanya el Fuet del Foc.",
+    archivo: "data/capitol_03_fires_valencia.json",
+    requereix: "capitol_02_girona",
+    recompensa_100: {
+      item_id: "fuet_del_foc",
+      ruta: "./fuet_fires.png"
+    }
   }
-}
 ];
 
 let ITEMS = {};
@@ -152,7 +148,6 @@ async function carregarItems() {
   try {
     const res = await fetch('./data/items.json');
     const arr = await res.json();
-    // Convertir array a objecte per accedir per id
     ITEMS = {};
     arr.forEach(i => ITEMS[i.id] = i);
   } catch(e) {
@@ -255,7 +250,7 @@ function carregarPas() {
 
     div.innerHTML = `
       ${opcio.text}
-      <span style="cursor:pointer; margin-left:8px; float:right;" 
+      <span style="cursor:pointer; margin-left:8px; float:right;"
             onclick="event.stopPropagation(); parlar('${opcio.text.replace(/'/g, "\\'")}')">🔊</span>
     `;
 
@@ -265,17 +260,6 @@ function carregarPas() {
 
   document.getElementById('missio-titol').textContent = pas.pregunta;
   document.getElementById('missio-escenari').textContent = '';
-}
-
-  const opcionsDiv = document.getElementById('missio-opcions');
-  opcionsDiv.innerHTML = '';
-  pas.opcions.forEach((opcio, i) => {
-    const div = document.createElement('div');
-    div.className = 'opcio';
-    div.textContent = opcio.text;
-    div.onclick = () => seleccionarOpcio(i);
-    opcionsDiv.appendChild(div);
-  });
   document.getElementById('missio-feedback').innerHTML = '';
 }
 
@@ -302,9 +286,12 @@ function seleccionarOpcio(idx) {
   const tempsLectura = 6000;
   mostrarFeedback(feedback, tempsLectura);
 
-  if(opcio.correcte && AUDIO_ENCERT)
-AUDIO_ENCERT.play();
-  if(!opcio.correcte && AUDIO_FALLADA) AUDIO_FALLADA.play();
+  if(opcio.correcte && AUDIO_ENCERT) {
+    AUDIO_ENCERT.play();
+  }
+  if(!opcio.correcte && AUDIO_FALLADA) {
+    AUDIO_FALLADA.play();
+  }
 
   if (opcio.correcte) {
     estat.monedes += opcio.guany?.monedes || 0;
@@ -349,7 +336,6 @@ function completarCapitol() {
     estat.capitolsCompletats.push(estat.capitolActual.id);
   }
 
-  // Desbloquejar següent capítol
   const seguent = CAPITOLS.find(c => c.requereix === estat.capitolActual.id);
   if (seguent) seguent.desbloquejat = true;
 
