@@ -1,4 +1,4 @@
-const CACHE_NAME = 'parla-cat-rpg-v18';
+const CACHE_NAME = 'parla-cat-rpg-v119';
 const urlsToCache = [
   './',
   './index.html',
@@ -46,4 +46,4 @@ self.addEventListener('fetch', event => {
         return response || fetch(event.request);
       })
   );
-}); 
+});
