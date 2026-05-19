@@ -104,7 +104,7 @@ et conviden a vermut 🍷`,
   requereix: "capitol_02_girona",
   recompensa_100: {
     item_id: "fuet_del_foc",
-    ruta: "data/fuet_feria.png"
+    ruta: "./fuet_fires.png"
   }
 }
 ];
