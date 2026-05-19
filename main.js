@@ -239,7 +239,18 @@ function carregarPas() {
   const pas = estat.capitolActual.passos[estat.pasActual];
   if (!pas) { completarCapitol(); return; }
 
+  // RELLENAR NPC BOX
   document.getElementById('npc-box').style.display = 'block';
+  document.getElementById('npc-nom').textContent = pas.escena?.split(' - ')[0] || 'NPC';
+  document.getElementById('npc-text').innerHTML = `
+    ${pas.dialog || ''}
+    <span style="cursor:pointer; margin-left:8px;"
+          onclick="parlar('${(pas.dialog || '').replace(/'/g, "\\'")}')">🔊</span>
+  `;
+
+  // PREGUNTA Y OPCIONES
+  document.getElementById('missio-titol').textContent = pas.pregunta;
+  document.getElementById('missio-escenari').textContent = '';
 
   const opcionsDiv = document.getElementById('missio-opcions');
   opcionsDiv.innerHTML = '';
@@ -258,8 +269,6 @@ function carregarPas() {
     opcionsDiv.appendChild(div);
   });
 
-  document.getElementById('missio-titol').textContent = pas.pregunta;
-  document.getElementById('missio-escenari').textContent = '';
   document.getElementById('missio-feedback').innerHTML = '';
 }
 
