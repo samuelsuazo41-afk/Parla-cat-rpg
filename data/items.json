@@ -18,13 +18,12 @@
     "imatge": "./ram_roses_girona.png"
   },
   {
-  "id": "fuet_del_foc",
-  "nom": "Fuet del Foc",
-  "emoji": "🌭",
-  "descripcio": "Recompensa del Capítol 3. Fuet curat a la fira, amb espurnes de la Cremà encara cremant. Diuen que qui el menja parla amb els NPCs sense por.",
-  "rar": "epic",
-  "tipus": "trofeu",
-  "imatge": "./fuet_fires.png"
-  },
-  {
-    
+    "id": "fuet_del_foc",
+    "nom": "Fuet del Foc",
+    "emoji": "🌭",
+    "descripcio": "Recompensa del Capítol 3. Fuet curat a la fira, amb espurnes de la Cremà encara cremant. Diuen que qui el menja parla amb els NPCs sense por.",
+    "rar": "epic",
+    "tipus": "trofeu",
+    "imatge": "./fuet_fires.png"
+  }
+]
