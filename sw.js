@@ -1,4 +1,4 @@
-const CACHE_NAME = 'parla-cat-rpg-v14';
+const CACHE_NAME = 'parla-cat-rpg-v15';
 const urlsToCache = [
   './',
   './index.html',
@@ -6,7 +6,9 @@ const urlsToCache = [
   './manifest.json',
   './data/items.json',
   './data/capitol1_bcn_born.json',
+  './data/capitol_02_girona.json',
   './camisa_cenguera.png',
+  './ram_roses_girona.png',
   './icon-192.png',
   './icon-512.png'
 ];
@@ -38,6 +40,8 @@ self.addEventListener('activate', event => {
 self.addEventListener('fetch', event => {
   event.respondWith(
     caches.match(event.request)
-      .then(response => response || fetch(event.request))
+      .then(response => {
+        return response || fetch(event.request);
+      })
   );
 });
