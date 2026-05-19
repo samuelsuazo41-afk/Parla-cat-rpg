@@ -93,7 +93,20 @@ et conviden a vermut 🍷`,
       item_id: "flor_suprema_temps_flors",
       ruta: "ruta_flors_nit"
     }
+  },
+{
+  id: "capitol_03_fires_valencia",
+  nom: "València - Fira de Falles",
+  icona: "🔥",
+  desbloquejat: false,
+  desc: "La fira està encesa. Parla amb la gent i guanya el Fuet del Foc.",
+  archivo: "data/capitol_03_fires_valencia.json",
+  requereix: "capitol_02_girona",
+  recompensa_100: {
+    item_id: "fuet_del_foc",
+    ruta: "data/fuet_feria.png"
   }
+}
 ];
 
 let ITEMS = {};
