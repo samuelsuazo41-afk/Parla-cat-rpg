@@ -282,10 +282,11 @@ function seleccionarOpcio(idx) {
   estat.bloquejat = true;
   document.querySelectorAll('.opcio').forEach(o => o.classList.add('disabled'));
 
-  const tempsLectura = Math.max(4000, feedback.length * 40);
+  const tempsLectura = 6000;
   mostrarFeedback(feedback, tempsLectura);
 
-  if(opcio.correcte && AUDIO_ENCERT) AUDIO_ENCERT.play();
+  if(opcio.correcte && AUDIO_ENCERT)
+AUDIO_ENCERT.play();
   if(!opcio.correcte && AUDIO_FALLADA) AUDIO_FALLADA.play();
 
   if (opcio.correcte) {
