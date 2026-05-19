@@ -1,11 +1,20 @@
-Parla-cat-rpg/
-  data/
-    items.json
-    capitol1_bcn_born.json
-  camisa_cenguera.png
-  icon-192.png
-  icon-512.png
-  index.html
-  main.js
-  manifest.json
-  sw.js
+[
+  {
+    "id": "camisa_cenguera_barca",
+    "nom": "Camisa Cenguera del Barça",
+    "emoji": "🔵🔴",
+    "descripcio": "La samarreta blaugrana que demostra que has dominat el capítol de Barcelona.",
+    "rar": "epic",
+    "tipus": "roba",
+    "imatge": "./camisa_cenguera.png"
+  },
+  {
+    "id": "flor_suprema_temps_flors",
+    "nom": "Flor Suprema del Temps de Flors",
+    "emoji": "💐",
+    "descripcio": "El premi màxim del Temps de Flors de Girona. Només l’aconsegueix qui completa tot el festival sense fallar.",
+    "rar": "llegendari",
+    "tipus": "trofeu",
+    "imatge": "./ram_roses_girona.png"
+  }
+]
