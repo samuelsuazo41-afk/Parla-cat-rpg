@@ -245,10 +245,27 @@ function carregarPas() {
   if (!pas) { completarCapitol(); return; }
 
   document.getElementById('npc-box').style.display = 'block';
-  document.getElementById('npc-nom').textContent = pas.escena.split(' - ')[0];
-  document.getElementById('npc-text').innerHTML = `${pas.dialog} <span style="cursor:pointer; margin-left:8px;" onclick="parlar('${pas.dialog.replace(/'/g, "\\'")}')">🔊</span>`;
+
+  const opcionsDiv = document.getElementById('missio-opcions');
+  opcionsDiv.innerHTML = '';
+
+  pas.opcions.forEach((opcio, i) => {
+    const div = document.createElement('div');
+    div.className = 'opcio';
+
+    div.innerHTML = `
+      ${opcio.text}
+      <span style="cursor:pointer; margin-left:8px; float:right;" 
+            onclick="event.stopPropagation(); parlar('${opcio.text.replace(/'/g, "\\'")}')">🔊</span>
+    `;
+
+    div.onclick = () => seleccionarOpcio(i);
+    opcionsDiv.appendChild(div);
+  });
+
   document.getElementById('missio-titol').textContent = pas.pregunta;
   document.getElementById('missio-escenari').textContent = '';
+}
 
   const opcionsDiv = document.getElementById('missio-opcions');
   opcionsDiv.innerHTML = '';
