@@ -157,7 +157,6 @@ async function carregarItems() {
   }
 }
 
-// PARCHE: Ahora carga rutas secretas desde capitols.json si no están en CAPITOLS
 async function carregarCapitol(nombreArchivo) {
   try {
     const res = await fetch(`./data/${nombreArchivo}`);
@@ -229,7 +228,6 @@ function carregarMapa() {
     mapaDiv.appendChild(card);
   });
 
-  // Mostrar rutas secretas desbloqueadas
   estat.rutesDesbloquejades.forEach(rutaId => {
     const card = document.createElement('div');
     card.className = 'capitol-card ruta-secreta';
@@ -257,6 +255,7 @@ function repetirCapitol(id) {
     carregarCapitol(capitol.archivo);
   }
 }
+
 function carregarPas() {
   if (!estat.capitolActual) return;
   const pas = estat.capitolActual.passos[estat.pasActual];
@@ -265,7 +264,6 @@ function carregarPas() {
   document.getElementById('npc-box').style.display = 'block';
   document.getElementById('npc-nom').textContent = pas.escena?.split(' - ')[0] || 'NPC';
 
-  // NPC con parlantito TTS
   const dialogEscaped = (pas.dialog || '').replace(/'/g, "\\'");
   document.getElementById('npc-text').innerHTML = `
     ${pas.dialog || ''}
@@ -278,7 +276,6 @@ function carregarPas() {
   const opcionsDiv = document.getElementById('missio-opcions');
   opcionsDiv.innerHTML = '';
 
-  // Opciones con parlantito TTS
   pas.opcions.forEach((opcio, i) => {
     const textEscaped = opcio.text.replace(/'/g, "\\'");
     const div = document.createElement('div');
@@ -291,8 +288,6 @@ function carregarPas() {
     opcionsDiv.appendChild(div);
   });
 
-  document.getElementById('missio-feedback').innerHTML = '';
-}
   document.getElementById('missio-feedback').innerHTML = '';
 }
 
@@ -392,7 +387,7 @@ function completarCapitol() {
     }
 
     const imgHtmlPremi = item?.emoji
-     ? `<div style="font-size: 80px; margin-bottom: 15px;">${item.emoji}</div>`
+    ? `<div style="font-size: 80px; margin-bottom: 15px;">${item.emoji}</div>`
       : `<img src="${item?.imatge}" alt="${item?.nom}" style="width:100px; height:100px; object-fit:contain;">`;
 
     htmlPremi = `
@@ -402,7 +397,7 @@ function completarCapitol() {
         <p>${item?.descripcio || ''}</p>
         <p style="color:#FFD700; font-weight:bold;">
           ${veces100 >= vecesNecesarias
-           ? '<p style="color:#4CAF50;">Ruta secreta desbloquejada!</p>'
+          ? '<p style="color:#4CAF50;">Ruta secreta desbloquejada!</p>'
             : `Falten ${vecesNecesarias - veces100} cops per la ruta secreta`}
         </p>
       </div>
@@ -560,7 +555,7 @@ function mostrarGremi(tab, e) {
         if(item) {
           const esEmoji = item.imatge?.length <= 2 &&!item.imatge.startsWith('./');
           const imgHtml = esEmoji
-           ? `<div style="font-size: 60px; margin-bottom: 10px;">${item.imatge}</div>`
+          ? `<div style="font-size: 60px; margin-bottom: 10px;">${item.imatge}</div>`
             : `<img src="${item.imatge}" style="width:80px; height:80px; object-fit:contain;">`;
 
           cont.innerHTML += `
@@ -613,4 +608,4 @@ function carregarBotiga() {
 // Service Worker
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('./sw.js').catch(err => console.log('SW error:', err));
-} 
+}
