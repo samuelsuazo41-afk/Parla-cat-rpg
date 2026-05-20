@@ -12,7 +12,7 @@
     "id": "flor_suprema_temps_flors",
     "nom": "Flor Suprema del Temps de Flors",
     "emoji": "💐",
-    "descripcio": "El premi màxim del Temps de Flors de Girona. Només l’aconsegueix qui completa tot el festival sense fallar.",
+    "descripcio": "El premi màxim del Temps de Flors de Girona.",
     "rar": "llegendari",
     "tipus": "trofeu",
     "imatge": "./ram_roses_girona.png"
@@ -21,9 +21,18 @@
     "id": "fuet_del_foc",
     "nom": "Fuet del Foc",
     "emoji": "🌭",
-    "descripcio": "Recompensa del Capítol 3. Fuet curat a la fira, amb espurnes de la Cremà encara cremant. Diuen que qui el menja parla amb els NPCs sense por.",
+    "descripcio": "Recompensa del Capítol 3.",
     "rar": "epic",
     "tipus": "trofeu",
     "imatge": "./fuet_fires.png"
+  },
+  {
+    "id": "clau_port_olympic",
+    "nom": "Clau del Port Olímpic",
+    "emoji": "🍸",
+    "descripcio": "Copa de vermú del Port.",
+    "rar": "llegendari",
+    "tipus": "clau",
+    "imatge": "./clau_port.png"
   }
 ]
