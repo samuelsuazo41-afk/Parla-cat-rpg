@@ -1,0 +1,18 @@
+[
+  {
+    "id": "capitol1_bcn_born",
+    "nom": "Barcelona - El Born",
+    "descripcio": "Aprèn català al barri més viu de Barcelona",
+    "arxiu": "./data/capitol1_bcn_born.json",
+    "requereix_nivell": 1,
+    "tipus": "capitol"
+  },
+  {
+    "id": "ruta_rave_port_olympic",
+    "nom": "Ruta Secreta",
+    "descripcio": "Contingut ocult desbloquejat!",
+    "arxiu": "./data/ruta_rave_port_olympic.json",
+    "requereix_items": ["clau_port_olympic", "clau_flors_nit", "clau_falles"],
+    "tipus": "ruta_secreta"
+  }
+]
