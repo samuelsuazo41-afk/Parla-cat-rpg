@@ -44,17 +44,19 @@ const LANGS = {
 
 let idioma = localStorage.getItem('cat_idioma') || 'es';
 let LANG = LANGS[idioma];
-
 let estat = {
   monedes: parseInt(localStorage.getItem('cat_monedes')) || 0,
   capitolsCompletats: JSON.parse(localStorage.getItem('cat_completats')) || [],
   objectes: JSON.parse(localStorage.getItem('cat_objectes')) || [],
   rutesDesbloquejades: JSON.parse(localStorage.getItem('cat_rutes')) || [],
+  capitols100Counts: JSON.parse(localStorage.getItem('cat_capitols100')) || {},
   stats: {
     seny: parseInt(localStorage.getItem('cat_seny')) || 0,
     rauxa: parseInt(localStorage.getItem('cat_rauxa')) || 0,
     arrel: parseInt(localStorage.getItem('cat_arrel')) || 0,
     obert: parseInt(localStorage.getItem('cat_obert')) || 0
+  },
+
   },
   totem: localStorage.getItem('cat_totem') || 'neutral',
   capitolActual: null,
