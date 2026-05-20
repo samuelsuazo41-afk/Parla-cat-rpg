@@ -555,13 +555,18 @@ function mostrarGremi(tab, e) {
       estat.objectes.forEach(id => {
         const item = ITEMS[id];
         if(item) {
-          cont.innerHTML += `
-            <div class="gremi-item">
-              <img src="${item.imatge}" style="width:80px; height:80px;">
-              <div>${item.nom}</div>
-              <div style="font-size:12px; color:#888;">${item.descripcio}</div>
-            </div>
-          `;
+        const esEmoji = item.imatge.length <= 2 && !item.imatge.startsWith('./');
+        const imgHtml = esEmoji 
+        ? `<div style="font-size: 60px; margin-bottom: 10px;">${item.imatge}</div>`
+        : `<img src="${item.imatge}" style="width:80px; height:80px; object-fit:contain;">`;
+
+    cont.innerHTML += `
+  <div class="gremi-item">
+    ${imgHtml}
+    <div>${item.nom}</div>
+    <div style="font-size:12px; color:#888;">${item.descripcio}</div>
+  </div>
+`;
         }
       });
     }
