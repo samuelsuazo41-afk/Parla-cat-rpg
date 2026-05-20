@@ -193,6 +193,22 @@ body {
  50% { transform: scale(1.05); }
  100% { transform: scale(1); opacity: 1; }
 }
+
+/* RUTAS SECRETAS */
+.capitol-card.ruta-secreta {
+  border: 2px solid #9C27B0;
+  background: linear-gradient(135deg, #1a1a24 0%, #2a1a35 100%);
+  box-shadow: 0 0 15px rgba(156, 39, 176, 0.3);
+}
+
+.capitol-card.ruta-secreta .capitol-icona {
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from { text-shadow: 0 0 5px #9C27B0; }
+  to { text-shadow: 0 0 20px #9C27B0, 0 0 30px #9C27B0; }
+}
 </style>
 </head>
 <body>
@@ -247,4 +263,4 @@ body {
 
 <script src="./main.js"></script>
 </body>
-</html> 
+</html>
