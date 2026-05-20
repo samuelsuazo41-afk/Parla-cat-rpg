@@ -8,14 +8,14 @@
     "tipus": "capitol"
   },
   {
-  "id": "ruta_rave_port_olympic",
-  "nom": "Port Olímpic - Rave Secreta",
-  "icona": "🗝️",
-  "arxiu": "./data/ruta_rave_port_olympic.json",
-  "secret": true,
-  "recompensa_100": {
-    "item_id": "ulleres_rayo",
-    "ruta": null
+    "id": "ruta_rave_port_olympic",
+    "nom": "Port Olímpic - Rave Secreta",
+    "icona": "🗝️",
+    "arxiu": "./data/ruta_rave_port_olympic.json",
+    "secret": true,
+    "recompensa_100": {
+      "item_id": "clau_port_olympic",
+      "ruta": null
+    }
   }
-}
-
+]
