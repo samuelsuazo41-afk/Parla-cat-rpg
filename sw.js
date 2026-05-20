@@ -1,10 +1,11 @@
-const CACHE_NAME = 'parla-cat-rpg-v23';
+const CACHE_NAME = 'parla-cat-rpg-v26';
 const urlsToCache = [
   './',
   './index.html',
   './main.js',
   './manifest.json',
   './data/items.json',
+  './data/capitols.json',
   './data/capitol1_bcn_born.json',
   './data/capitol_02_girona.json',
   './data/capitol_03_fires_valencia.json',
