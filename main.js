@@ -81,7 +81,7 @@ const CAPITOLS = [
   {
     id: "capitol_02_girona",
     nom: "Girona - Temps de Flors",
-    icona: "🌸",
+    icona: "⚜️",
     desbloquejat: false,
     desc: "Flors als carrers. Català més lent, més de poble.",
     archivo: "capitol_02_girona.json",
