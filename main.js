@@ -383,18 +383,22 @@ function completarCapitol() {
       }
     }
 
-    htmlPremi = `
-      <div class="item-desbloquejat">
-        <img src="${item.imatge}" alt="${item.nom}">
-        <h3>${item.nom}</h3>
-        <p>${item.descripcio}</p>
-        <p style="color:#FFD700; font-weight:bold;">100% Perfect! ${veces100}/${vecesNecesarias}</p>
-        ${veces100 >= vecesNecesarias
-         ? '<p style="color:#4CAF50;">Ruta secreta desbloquejada!</p>'
-          : `<p style="color:#888;">Falten ${vecesNecesarias - veces100} vegades més per la ruta secreta</p>`
-        }
-      </div>
-    `;
+    const imgHtmlPremi = item.emoji 
+  ? `<div style="font-size: 80px; margin-bottom: 15px;">${item.emoji}</div>`
+  : `<img src="${item.imatge}" alt="${item.nom}" style="width:100px; height:100px; object-fit:contain;">`;
+
+htmlPremi = `
+  <div class="item-desbloquejat">
+    ${imgHtmlPremi}
+    <h3>${item.nom}</h3>
+    <p>${item.descripcio}</p>
+    <p style="color:#FFD700; font-weight:bold;">
+    ${veces100 >= vecesNecesarias
+      ? '<p style="color:#4CAF50;">Ruta secreta desbloquejada!</p>'
+      : '<p style="color:#888;">Falten ${vecesNecesarias - veces100}%</p>'
+    }
+  </div>
+`;
   } else {
     htmlPremi = `
       <div style="text-align:center; margin-top:20px;">
