@@ -482,16 +482,31 @@ function mostrarGremi(tab, e) {
   const cont = document.getElementById('gremi-contenidor');
   cont.innerHTML = '';
 
-  if(tab === 'objectes') {
-    estat.objectes.forEach(id => {
-      const item = ITEMS[id];
-      if(item) {
-        cont.innerHTML += `
-          <div class="gremi-item">
-            <img src="${item.imatge}" style="width:80px; height:80px;">
-            <div>${item.nom}</div>
-            <div style="font-size:12px; color:#888;">${item.descripcio}</div>
-          </div>
+  // 1. PERSONATGES - Ficha del jugador
+  if(tab === 'personatges') {
+    const emojis = { seny: '🦉', rauxa: '🔥', arrel: '🌳', obert: '🌍', neutral: '😐' };
+    const titols = {
+      seny: 'Estratèg',
+      rauxa: 'Impulsiu',
+      arrel: 'Arrelat',
+      obert: 'Cosmopolita',
+      neutral: 'Novell'
+    };
+    const desc = {
+      seny: 'Penses abans d\'actuar. La gent confia en el teu seny.',
+      rauxa: 'Actues amb passió. La teva energia contagia tothom.',
+      arrel: 'Estimes la terra i la tradició. Ets la memòria del poble.',
+      obert: 'Obert al món. Aprens de totes les cultures.',
+      neutral: 'Acabes de començar el teu viatge per Catalunya.'
+    };
+
+    const totalStats = estat.stats.seny + estat.stats.rauxa + estat.stats.arrel + estat.stats.obert;
+    const rang = totalStats < 20 ? 'Novell' : totalStats < 50 ? 'Viatjant' : totalStats < 100 ? 'Mestre' : 'Llegendari';
+
+    cont.innerHTML = `
+      <div class="gremi-item" style="grid-column:1/-1; text-align:center;">
+        <h2 style="font-size:48px;">${emojis[estat.totem]}</h2>
+        <h3
         `;
       }
     });
