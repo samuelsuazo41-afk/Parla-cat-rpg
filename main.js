@@ -157,18 +157,28 @@ async function carregarItems() {
   }
 }
 
+// PARCHE: Ahora carga rutas secretas desde capitols.json si no están en CAPITOLS
 async function carregarCapitol(nombreArchivo) {
   try {
     const res = await fetch(`./data/${nombreArchivo}`);
     if (!res.ok) throw new Error('Archivo no encontrado: ' + nombreArchivo + ' - Status: ' + res.status);
 
     const data = await res.json();
-    const capitolInfo = CAPITOLS.find(c => c.archivo === nombreArchivo);
+
+    let capitolInfo = CAPITOLS.find(c => c.archivo === nombreArchivo);
+
+    if (!capitolInfo) {
+      const resCap = await fetch('./data/capitols.json');
+      const capitolsData = await resCap.json();
+      capitolInfo = capitolsData.find(c => c.arxiu === `./data/${nombreArchivo}`);
+    }
+
+    if (!capitolInfo) throw new Error('Capítol no trobat a CAPITOLS ni capitols.json');
 
     estat.capitolActual = {
       id: capitolInfo.id,
       passos: data,
-      recompensa_100: capitolInfo.recompensa_100
+      recompensa_100: capitolInfo.recompensa_100 || null
     };
 
     estat.pasActual = 0;
@@ -189,7 +199,6 @@ async function carregarCapitol(nombreArchivo) {
     console.error(e);
   }
 }
-
 
 function carregarMapa() {
   const mapaDiv = document.getElementById('mapa');
@@ -365,41 +374,37 @@ function completarCapitol() {
   const vecesNecesarias = 3;
 
   if(es100 && estat.capitolActual.recompensa_100) {
-    // Sumar contador de 100%
     estat.capitols100Counts[estat.capitolActual.id] =
       (estat.capitols100Counts[estat.capitolActual.id] || 0) + 1;
     const veces100 = estat.capitols100Counts[estat.capitolActual.id];
 
     const item = ITEMS[estat.capitolActual.recompensa_100.item_id];
-    if(item) {
-      if(!estat.objectes.includes(estat.capitolActual.recompensa_100.item_id)) {
-        estat.objectes.push(estat.capitolActual.recompensa_100.item_id);
-      }
+    if(item &&!estat.objectes.includes(estat.capitolActual.recompensa_100.item_id)) {
+      estat.objectes.push(estat.capitolActual.recompensa_100.item_id);
     }
 
-    // Desbloquear ruta solo si llegas a 3 veces
     if(veces100 >= vecesNecesarias && estat.capitolActual.recompensa_100.ruta) {
       if(!estat.rutesDesbloquejades.includes(estat.capitolActual.recompensa_100.ruta)) {
         estat.rutesDesbloquejades.push(estat.capitolActual.recompensa_100.ruta);
       }
     }
 
-    const imgHtmlPremi = item.emoji 
-  ? `<div style="font-size: 80px; margin-bottom: 15px;">${item.emoji}</div>`
-  : `<img src="${item.imatge}" alt="${item.nom}" style="width:100px; height:100px; object-fit:contain;">`;
+    const imgHtmlPremi = item?.emoji
+     ? `<div style="font-size: 80px; margin-bottom: 15px;">${item.emoji}</div>`
+      : `<img src="${item?.imatge}" alt="${item?.nom}" style="width:100px; height:100px; object-fit:contain;">`;
 
-htmlPremi = `
-  <div class="item-desbloquejat">
-    ${imgHtmlPremi}
-    <h3>${item.nom}</h3>
-    <p>${item.descripcio}</p>
-    <p style="color:#FFD700; font-weight:bold;">
-    ${veces100 >= vecesNecesarias
-      ? '<p style="color:#4CAF50;">Ruta secreta desbloquejada!</p>'
-      : '<p style="color:#888;">Falten ${vecesNecesarias - veces100}%</p>'
-    }
-  </div>
-`;
+    htmlPremi = `
+      <div class="item-desbloquejat">
+        ${imgHtmlPremi}
+        <h3>${item?.nom || 'Premi'}</h3>
+        <p>${item?.descripcio || ''}</p>
+        <p style="color:#FFD700; font-weight:bold;">
+          ${veces100 >= vecesNecesarias
+           ? '<p style="color:#4CAF50;">Ruta secreta desbloquejada!</p>'
+            : `Falten ${vecesNecesarias - veces100} cops per la ruta secreta`}
+        </p>
+      </div>
+    `;
   } else {
     htmlPremi = `
       <div style="text-align:center; margin-top:20px;">
@@ -503,7 +508,6 @@ function actualitzarUI() {
     `Seny: ${estat.stats.seny} | Rauxa: ${estat.stats.rauxa} | Arrel: ${estat.stats.arrel} | Obert: ${estat.stats.obert}`;
 }
 
-// GREMI CORREGIDO
 function mostrarGremi(tab, e) {
   document.querySelectorAll('.sub-tab-btn').forEach(b => b.classList.remove('active'));
   if(e) e.target.classList.add('active');
@@ -511,16 +515,9 @@ function mostrarGremi(tab, e) {
   const cont = document.getElementById('gremi-contenidor');
   cont.innerHTML = '';
 
-  // 1. PERSONATGES
   if(tab === 'personatges') {
     const emojis = { seny: '🦉', rauxa: '🔥', arrel: '🌳', obert: '🌍', neutral: '😐' };
-    const titols = {
-      seny: 'Estratèg',
-      rauxa: 'Impulsiu',
-      arrel: 'Arrelat',
-      obert: 'Cosmopolita',
-      neutral: 'Novell'
-    };
+    const titols = { seny: 'Estratèg', rauxa: 'Impulsiu', arrel: 'Arrelat', obert: 'Cosmopolita', neutral: 'Novell' };
     const desc = {
       seny: 'Penses abans d\'actuar. La gent confia en el teu seny.',
       rauxa: 'Actues amb passió. La teva energia contagia tothom.',
@@ -552,7 +549,6 @@ function mostrarGremi(tab, e) {
     `;
   }
 
-  // 2. OBJECTES
   else if(tab === 'objectes') {
     if(estat.objectes.length === 0) {
       cont.innerHTML = `<div style="grid-column:1/-1; text-align:center; color:#888;">Encara no tens objectes</div>`;
@@ -560,47 +556,28 @@ function mostrarGremi(tab, e) {
       estat.objectes.forEach(id => {
         const item = ITEMS[id];
         if(item) {
-        const esEmoji = item.imatge.length <= 2 && !item.imatge.startsWith('./');
-        const imgHtml = esEmoji 
-        ? `<div style="font-size: 60px; margin-bottom: 10px;">${item.imatge}</div>`
-        : `<img src="${item.imatge}" style="width:80px; height:80px; object-fit:contain;">`;
+          const esEmoji = item.imatge?.length <= 2 &&!item.imatge.startsWith('./');
+          const imgHtml = esEmoji
+           ? `<div style="font-size: 60px; margin-bottom: 10px;">${item.imatge}</div>`
+            : `<img src="${item.imatge}" style="width:80px; height:80px; object-fit:contain;">`;
 
-    cont.innerHTML += `
-  <div class="gremi-item">
-    ${imgHtml}
-    <div>${item.nom}</div>
-    <div style="font-size:12px; color:#888;">${item.descripcio}</div>
-  </div>
-`;
+          cont.innerHTML += `
+            <div class="gremi-item">
+              ${imgHtml}
+              <div>${item.nom}</div>
+              <div style="font-size:12px; color:#888;">${item.descripcio}</div>
+            </div>
+          `;
         }
       });
     }
   }
 
-  // 3. LLEGENDES
   else if(tab === 'llegendes') {
     const llegendes = [
-      {
-        id: 'capitol1_bcn_born',
-        nom: 'El Born, Barcelona',
-        icona: '🏛️',
-        desbloquejada: estat.capitolsCompletats.includes('capitol1_bcn_born'),
-        text: 'El Born és el barri gòtic més viu. Aquí els comerciants parlaven català mentre venien espècies. Si parles bé, encara et conviden a vermut.'
-      },
-      {
-        id: 'capitol_02_girona',
-        nom: 'Temps de Flors, Girona',
-        icona: '🌸',
-        desbloquejada: estat.capitolsCompletats.includes('capitol_02_girona'),
-        text: 'Cada maig, Girona s\'omple de flors. Els gironins parlen més a poc a poc, amb orgull de poble. La llegenda diu que les flors entenen el català.'
-      },
-      {
-        id: 'capitol_03_fires_valencia',
-        nom: 'Falles, València',
-        icona: '🔥',
-        desbloquejada: estat.capitolsCompletats.includes('capitol_03_fires_valencia'),
-        text: 'El foc purifica tot. Durant les Falles, València crema el vell per deixar espai al nou. Els fallers diuen: "Si parles amb el cor, el foc t\'escolta".'
-      }
+      { id: 'capitol1_bcn_born', nom: 'El Born, Barcelona', icona: '🏛️', desbloquejada: estat.capitolsCompletats.includes('capitol1_bcn_born'), text: 'El Born és el barri gòtic més viu.' },
+      { id: 'capitol_02_girona', nom: 'Temps de Flors, Girona', icona: '🌸', desbloquejada: estat.capitolsCompletats.includes('capitol_02_girona'), text: 'Cada maig, Girona s\'omple de flors.' },
+      { id: 'capitol_03_fires_valencia', nom: 'Falles, València', icona: '🔥', desbloquejada: estat.capitolsCompletats.includes('capitol_03_fires_valencia'), text: 'El foc purifica tot.' }
     ];
 
     llegendes.forEach(l => {
