@@ -282,18 +282,39 @@ body {
 </div>
 
 <script>
-// FUNCIÓN AUDIO - Añadida
-function playAudio(path) {
-  if (!path) return;
-  const audio = new Audio(path);
-  audio.play().catch(err => {
-    console.log("Audio bloqueado:", err);
-    // En móvil necesitas tocar la pantalla 1 vez primero
-  });
+// TTS - Función para que hablen los parlantitos
+function parlar(text) {
+  if (!text) return;
+  
+  speechSynthesis.cancel();
+  
+  const utterance = new SpeechSynthesisUtterance(text);
+  utterance.lang = 'ca-ES';
+  utterance.rate = 0.9;
+  utterance.pitch = 1.0;
+  
+  utterance.onerror = () => {
+    utterance.lang = 'es-ES';
+    speechSynthesis.speak(utterance);
+  };
+  
+  speechSynthesis.speak(utterance);
 }
 
-// Exponer función global para que main.js la use
-window.playAudio = playAudio;
+// Captura clicks en cualquier botón con clase audio-btn
+document.addEventListener('click', function(e) {
+  const btn = e.target.closest('.audio-btn');
+  if (!btn) return;
+  
+  const container = btn.closest('.npc-box, .opcio, div');
+  const textEl = container?.querySelector('#npc-text, .opcio-text, span, div, p');
+  const text = textEl?.textContent?.trim();
+  
+  if (text) parlar(text);
+  e.stopPropagation();
+});
+
+window.parlar = parlar;
 </script>
 
 <script src="./main.js"></script>
