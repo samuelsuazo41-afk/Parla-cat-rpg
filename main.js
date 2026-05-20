@@ -190,6 +190,7 @@ async function carregarCapitol(nombreArchivo) {
   }
 }
 
+
 function carregarMapa() {
   const mapaDiv = document.getElementById('mapa');
   mapaDiv.innerHTML = '';
