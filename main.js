@@ -257,7 +257,6 @@ function repetirCapitol(id) {
     carregarCapitol(capitol.archivo);
   }
 }
-
 function carregarPas() {
   if (!estat.capitolActual) return;
   const pas = estat.capitolActual.passos[estat.pasActual];
@@ -265,10 +264,12 @@ function carregarPas() {
 
   document.getElementById('npc-box').style.display = 'block';
   document.getElementById('npc-nom').textContent = pas.escena?.split(' - ')[0] || 'NPC';
+
+  // NPC con parlantito TTS
+  const dialogEscaped = (pas.dialog || '').replace(/'/g, "\\'");
   document.getElementById('npc-text').innerHTML = `
     ${pas.dialog || ''}
-    <span style="cursor:pointer; margin-left:8px;"
-          onclick="parlar('${(pas.dialog || '').replace(/'/g, "\\'")}')">🔊</span>
+    <button class="audio-btn" onclick="parlar('${dialogEscaped}')" style="background:none; border:none; font-size:20px; margin-left:8px; cursor:pointer; vertical-align:middle;">🔊</button>
   `;
 
   document.getElementById('missio-titol').textContent = pas.pregunta;
@@ -277,20 +278,21 @@ function carregarPas() {
   const opcionsDiv = document.getElementById('missio-opcions');
   opcionsDiv.innerHTML = '';
 
+  // Opciones con parlantito TTS
   pas.opcions.forEach((opcio, i) => {
+    const textEscaped = opcio.text.replace(/'/g, "\\'");
     const div = document.createElement('div');
     div.className = 'opcio';
-
     div.innerHTML = `
-      ${opcio.text}
-      <span style="cursor:pointer; margin-left:8px; float:right;"
-            onclick="event.stopPropagation(); parlar('${opcio.text.replace(/'/g, "\\'")}')">🔊</span>
+      <span class="opcio-text">${opcio.text}</span>
+      <button class="audio-btn" onclick="event.stopPropagation(); parlar('${textEscaped}')" style="background:none; border:none; font-size:18px; cursor:pointer; margin-left:8px;">🔊</button>
     `;
-
     div.onclick = () => seleccionarOpcio(i);
     opcionsDiv.appendChild(div);
   });
 
+  document.getElementById('missio-feedback').innerHTML = '';
+}
   document.getElementById('missio-feedback').innerHTML = '';
 }
 
