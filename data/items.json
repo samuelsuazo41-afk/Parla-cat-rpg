@@ -30,9 +30,18 @@
     "id": "clau_port_olympic",
     "nom": "Clau del Port Olímpic",
     "emoji": "🍸",
-    "descripcio": "Copa de vermú del Port.",
+    "descripcio": "Copa de vermú del Port. Demostra que vas aguantar la nit amb DJ RAYO.",
     "rar": "llegendari",
     "tipus": "clau",
     "imatge": "./clau_port.png"
+  },
+  {
+    "id": "ulleres_rayo",
+    "nom": "Ulleres de DJ RAYO",
+    "emoji": "🕶️",
+    "descripcio": "Les ulleres que portava DJ RAYO a les 3 AM. Estil 100% rauxa.",
+    "rar": "epic",
+    "tipus": "accessori",
+    "imatge": "./ulleres_rayo.png"
   }
 ]
