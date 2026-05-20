@@ -43,5 +43,14 @@
     "rar": "epic",
     "tipus": "accessori",
     "imatge": "./ulleres_rayo.png"
+  },
+  {
+    "id": "clau_flors_nit",
+    "nom": "Clau de les Flors de Nit",
+    "emoji": "🌙",
+    "descripcio": "Clau que només aconsegueixen els que fan 3 vegades 100% a Girona.",
+    "rar": "mitic",
+    "tipus": "clau",
+    "imatge": "./clau_flors.png"
   }
 ]
