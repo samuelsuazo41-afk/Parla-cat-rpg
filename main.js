@@ -44,6 +44,7 @@ const LANGS = {
 
 let idioma = localStorage.getItem('cat_idioma') || 'es';
 let LANG = LANGS[idioma];
+
 let estat = {
   monedes: parseInt(localStorage.getItem('cat_monedes')) || 0,
   capitolsCompletats: JSON.parse(localStorage.getItem('cat_completats')) || [],
@@ -55,8 +56,6 @@ let estat = {
     rauxa: parseInt(localStorage.getItem('cat_rauxa')) || 0,
     arrel: parseInt(localStorage.getItem('cat_arrel')) || 0,
     obert: parseInt(localStorage.getItem('cat_obert')) || 0
-  },
-
   },
   totem: localStorage.getItem('cat_totem') || 'neutral',
   capitolActual: null,
@@ -219,6 +218,19 @@ function carregarMapa() {
     card.innerHTML = html;
     mapaDiv.appendChild(card);
   });
+
+  // Mostrar rutas secretas desbloqueadas
+  estat.rutesDesbloquejades.forEach(rutaId => {
+    const card = document.createElement('div');
+    card.className = 'capitol-card ruta-secreta';
+    card.innerHTML = `
+      <div class="capitol-icona">🗝️</div>
+      <h3>Ruta Secreta</h3>
+      <p>Contingut ocult desbloquejat!</p>
+      <button class="btn" onclick="carregarCapitol('${rutaId}.json')">Entrar</button>
+    `;
+    mapaDiv.appendChild(card);
+  });
 }
 
 function entrarCapitol(id) {
@@ -349,26 +361,40 @@ function completarCapitol() {
   const es100 = (estat.falladesCapitol || 0) === 0;
   const fallades = estat.falladesCapitol || 0;
   let htmlPremi = '';
+  const vecesNecesarias = 3;
 
   if(es100 && estat.capitolActual.recompensa_100) {
+    // Sumar contador de 100%
+    estat.capitols100Counts[estat.capitolActual.id] =
+      (estat.capitols100Counts[estat.capitolActual.id] || 0) + 1;
+    const veces100 = estat.capitols100Counts[estat.capitolActual.id];
+
     const item = ITEMS[estat.capitolActual.recompensa_100.item_id];
     if(item) {
       if(!estat.objectes.includes(estat.capitolActual.recompensa_100.item_id)) {
         estat.objectes.push(estat.capitolActual.recompensa_100.item_id);
       }
-      if(estat.capitolActual.recompensa_100.ruta) {
+    }
+
+    // Desbloquear ruta solo si llegas a 3 veces
+    if(veces100 >= vecesNecesarias && estat.capitolActual.recompensa_100.ruta) {
+      if(!estat.rutesDesbloquejades.includes(estat.capitolActual.recompensa_100.ruta)) {
         estat.rutesDesbloquejades.push(estat.capitolActual.recompensa_100.ruta);
       }
-
-      htmlPremi = `
-        <div class="item-desbloquejat">
-          <img src="${item.imatge}" alt="${item.nom}">
-          <h3>${item.nom}</h3>
-          <p>${item.descripcio}</p>
-          <p style="color:#FFD700; font-weight:bold;">100% Perfect!</p>
-        </div>
-      `;
     }
+
+    htmlPremi = `
+      <div class="item-desbloquejat">
+        <img src="${item.imatge}" alt="${item.nom}">
+        <h3>${item.nom}</h3>
+        <p>${item.descripcio}</p>
+        <p style="color:#FFD700; font-weight:bold;">100% Perfect! ${veces100}/${vecesNecesarias}</p>
+        ${veces100 >= vecesNecesarias
+         ? '<p style="color:#4CAF50;">Ruta secreta desbloquejada!</p>'
+          : `<p style="color:#888;">Falten ${vecesNecesarias - veces100} vegades més per la ruta secreta</p>`
+        }
+      </div>
+    `;
   } else {
     htmlPremi = `
       <div style="text-align:center; margin-top:20px;">
@@ -457,6 +483,7 @@ function guardarEstat() {
   localStorage.setItem('cat_completats', JSON.stringify(estat.capitolsCompletats));
   localStorage.setItem('cat_objectes', JSON.stringify(estat.objectes));
   localStorage.setItem('cat_rutes', JSON.stringify(estat.rutesDesbloquejades));
+  localStorage.setItem('cat_capitols100', JSON.stringify(estat.capitols100Counts));
   localStorage.setItem('cat_seny', estat.stats.seny);
   localStorage.setItem('cat_rauxa', estat.stats.rauxa);
   localStorage.setItem('cat_arrel', estat.stats.arrel);
