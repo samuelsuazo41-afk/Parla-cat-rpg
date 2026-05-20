@@ -239,7 +239,6 @@ function carregarPas() {
   const pas = estat.capitolActual.passos[estat.pasActual];
   if (!pas) { completarCapitol(); return; }
 
-  // RELLENAR NPC BOX
   document.getElementById('npc-box').style.display = 'block';
   document.getElementById('npc-nom').textContent = pas.escena?.split(' - ')[0] || 'NPC';
   document.getElementById('npc-text').innerHTML = `
@@ -248,7 +247,6 @@ function carregarPas() {
           onclick="parlar('${(pas.dialog || '').replace(/'/g, "\\'")}')">🔊</span>
   `;
 
-  // PREGUNTA Y OPCIONES
   document.getElementById('missio-titol').textContent = pas.pregunta;
   document.getElementById('missio-escenari').textContent = '';
 
@@ -295,12 +293,8 @@ function seleccionarOpcio(idx) {
   const tempsLectura = 6000;
   mostrarFeedback(feedback, tempsLectura);
 
-  if(opcio.correcte && AUDIO_ENCERT) {
-    AUDIO_ENCERT.play();
-  }
-  if(!opcio.correcte && AUDIO_FALLADA) {
-    AUDIO_FALLADA.play();
-  }
+  if(opcio.correcte && AUDIO_ENCERT) AUDIO_ENCERT.play();
+  if(!opcio.correcte && AUDIO_FALLADA) AUDIO_FALLADA.play();
 
   if (opcio.correcte) {
     estat.monedes += opcio.guany?.monedes || 0;
@@ -475,6 +469,7 @@ function actualitzarUI() {
     `Seny: ${estat.stats.seny} | Rauxa: ${estat.stats.rauxa} | Arrel: ${estat.stats.arrel} | Obert: ${estat.stats.obert}`;
 }
 
+// GREMI CORREGIDO
 function mostrarGremi(tab, e) {
   document.querySelectorAll('.sub-tab-btn').forEach(b => b.classList.remove('active'));
   if(e) e.target.classList.add('active');
@@ -482,7 +477,7 @@ function mostrarGremi(tab, e) {
   const cont = document.getElementById('gremi-contenidor');
   cont.innerHTML = '';
 
-  // 1. PERSONATGES - Ficha del jugador
+  // 1. PERSONATGES
   if(tab === 'personatges') {
     const emojis = { seny: '🦉', rauxa: '🔥', arrel: '🌳', obert: '🌍', neutral: '😐' };
     const titols = {
@@ -501,20 +496,94 @@ function mostrarGremi(tab, e) {
     };
 
     const totalStats = estat.stats.seny + estat.stats.rauxa + estat.stats.arrel + estat.stats.obert;
-    const rang = totalStats < 20 ? 'Novell' : totalStats < 50 ? 'Viatjant' : totalStats < 100 ? 'Mestre' : 'Llegendari';
+    const rang = totalStats < 20? 'Novell' : totalStats < 50? 'Viatjant' : totalStats < 100? 'Mestre' : 'Llegendari';
 
     cont.innerHTML = `
       <div class="gremi-item" style="grid-column:1/-1; text-align:center;">
         <h2 style="font-size:48px;">${emojis[estat.totem]}</h2>
-        <h3
+        <h3 style="margin:10px 0;">Tòtem: ${estat.totem.toUpperCase()}</h3>
+        <p style="color:#888; margin-bottom:15px;">${desc[estat.totem]}</p>
+        <hr style="border-color:#333; margin:15px 0;">
+        <p><b>Rang:</b> ${rang}</p>
+        <p><b>Títol:</b> ${titols[estat.totem]}</p>
+        <p><b>Capítols 100%:</b> ${estat.capitolsCompletats.length}/${CAPITOLS.length}</p>
+        <p><b>Monedes:</b> 🪙 ${estat.monedes}</p>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:15px; text-align:left;">
+          <div>Seny: ${estat.stats.seny}</div>
+          <div>Rauxa: ${estat.stats.rauxa}</div>
+          <div>Arrel: ${estat.stats.arrel}</div>
+          <div>Obert: ${estat.stats.obert}</div>
+        </div>
+      </div>
+    `;
+  }
+
+  // 2. OBJECTES
+  else if(tab === 'objectes') {
+    if(estat.objectes.length === 0) {
+      cont.innerHTML = `<div style="grid-column:1/-1; text-align:center; color:#888;">Encara no tens objectes</div>`;
+    } else {
+      estat.objectes.forEach(id => {
+        const item = ITEMS[id];
+        if(item) {
+          cont.innerHTML += `
+            <div class="gremi-item">
+              <img src="${item.imatge}" style="width:80px; height:80px;">
+              <div>${item.nom}</div>
+              <div style="font-size:12px; color:#888;">${item.descripcio}</div>
+            </div>
+          `;
+        }
+      });
+    }
+  }
+
+  // 3. LLEGENDES
+  else if(tab === 'llegendes') {
+    const llegendes = [
+      {
+        id: 'capitol1_bcn_born',
+        nom: 'El Born, Barcelona',
+        icona: '🏛️',
+        desbloquejada: estat.capitolsCompletats.includes('capitol1_bcn_born'),
+        text: 'El Born és el barri gòtic més viu. Aquí els comerciants parlaven català mentre venien espècies. Si parles bé, encara et conviden a vermut.'
+      },
+      {
+        id: 'capitol_02_girona',
+        nom: 'Temps de Flors, Girona',
+        icona: '🌸',
+        desbloquejada: estat.capitolsCompletats.includes('capitol_02_girona'),
+        text: 'Cada maig, Girona s\'omple de flors. Els gironins parlen més a poc a poc, amb orgull de poble. La llegenda diu que les flors entenen el català.'
+      },
+      {
+        id: 'capitol_03_fires_valencia',
+        nom: 'Falles, València',
+        icona: '🔥',
+        desbloquejada: estat.capitolsCompletats.includes('capitol_03_fires_valencia'),
+        text: 'El foc purifica tot. Durant les Falles, València crema el vell per deixar espai al nou. Els fallers diuen: "Si parles amb el cor, el foc t\'escolta".'
+      }
+    ];
+
+    llegendes.forEach(l => {
+      if(l.desbloquejada) {
+        cont.innerHTML += `
+          <div class="gremi-item" style="grid-column:1/-1;">
+            <div style="font-size:36px;">${l.icona}</div>
+            <h3 style="margin:10px 0;">${l.nom}</h3>
+            <p style="font-size:14px; color:#ccc;">${l.text}</p>
+            <div style="color:#4CAF50; font-size:12px; margin-top:10px;">✓ Desbloquejada</div>
+          </div>
+        `;
+      } else {
+        cont.innerHTML += `
+          <div class="gremi-item" style="grid-column:1/-1; opacity:0.4;">
+            <div style="font-size:36px;">🔒</div>
+            <h3 style="margin:10px 0;">???</h3>
+            <p style="font-size:14px; color:#666;">Completa el capítol per desbloquejar aquesta llegenda</p>
+          </div>
         `;
       }
     });
-    if(estat.objectes.length === 0) {
-      cont.innerHTML = `<div style="grid-column:1/-1; text-align:center; color:#888;">Encara no tens objectes</div>`;
-    }
-  } else {
-    cont.innerHTML = `<div style="grid-column:1/-1; text-align:center; color:#888;">Pròximament</div>`;
   }
 }
 
