@@ -1,0 +1,178 @@
+[
+  {
+    "escena": "Port Olímpic - Porta Secreta",
+    "dialog": "DJ RAYO, con gafas de sol a las 3 AM: 'Ostia tio! Aquí només entra qui parla català millor que jo pinxo. Prova-ho o pirat!'",
+    "pregunta": "Com dius 'Let's dance' per trencar el gel?",
+    "opcions": [
+      {
+        "text": "Anem a ballar, tio!",
+        "correcte": true,
+        "feedback": "RAYO: 'UFF! Això sí que és flow! Passa, passa!'",
+        "guany": { "monedes": 50, "rauxa": 10 }
+      },
+      {
+        "text": "Bailem ara, va!",
+        "correcte": false,
+        "feedback": "RAYO: 'Ehhh això sona a Falles eh. Torna a provar-ho'.",
+        "guany": { "monedes": 0 }
+      },
+      {
+        "text": "Vinga balla!",
+        "correcte": false,
+        "feedback": "RAYO: 'Massa sec tio. Dóna-li amor, dóna-li flow'.",
+        "guany": { "monedes": 0 }
+      }
+    ]
+  },
+  {
+    "escena": "Bar del Port",
+    "dialog": "LUNA, la bartender, te mira de dalt a baix: 'Si no saps demanar en català, no beus. Així de simple. Què vols?'",
+    "pregunta": "Com demanes una cervesa ben dit?",
+    "opcions": [
+      {
+        "text": "Posa'm una Estrella, si et plau, reina",
+        "correcte": true,
+        "feedback": "LUNA: 'Uyyy amb 'reina' i tot. M'has comprat. Pren, convida la casa'.",
+        "guany": { "monedes": 40, "obert": 5 }
+      },
+      {
+        "text": "Dame una cerveza por favor",
+        "correcte": false,
+        "feedback": "LUNA: 'Aquí no. Aquí som de casa. Torna-ho a dir'.",
+        "guany": { "monedes": 0 }
+      },
+      {
+        "text": "Una cervesa",
+        "correcte": false,
+        "feedback": "LUNA: 'I el si et plau? Educació, nen'.",
+        "guany": { "monedes": 0 }
+      }
+    ]
+  },
+  {
+    "escena": "Pista Central",
+    "dialog": "El beat puja. Un grup de nois et fan un cercle. 'Canta amb nosaltres o fora!'. Posan una frase en català mal dita.",
+    "pregunta": "Quina és la forma correcta de dir 'I love you'?",
+    "opcions": [
+      {
+        "text": "T'estimo, de veritat!",
+        "correcte": true,
+        "feedback": "Tothom crida i aixeca les mans. Has guanyat el cercle.",
+        "guany": { "monedes": 80, "obert": 10 }
+      },
+      {
+        "text": "T'estim",
+        "correcte": false,
+        "feedback": "La gent fa 'buuu'. Falta la o final!",
+        "guany": { "monedes": 0 }
+      },
+      {
+        "text": "T'estimo moltíssim",
+        "correcte": false,
+        "feedback": "Massa intens per un primer contacte. Relaxa.",
+        "guany": { "monedes": 0 }
+      }
+    ]
+  },
+  {
+    "escena": "Zona Chill",
+    "dialog": "ÀVIA MONTSE, 70 anys, ballant millor que tu: 'Nen, jo vaig amagar llibres en català sota Franco. Tu què saps?'",
+    "pregunta": "Com li respectes dient 'Gracias por todo'?",
+    "opcions": [
+      {
+        "text": "Gràcies per tot, senyora. Ets una crack",
+        "correcte": true,
+        "feedback": "ÀVIA MONTSE: 'Així es parla! Així no es perd la llengua!'",
+        "guany": { "monedes": 70, "arrel": 15 }
+      },
+      {
+        "text": "Gràcies",
+        "correcte": false,
+        "feedback": "ÀVIA MONTSE: 'Massa curt. Dóna-li calor'.",
+        "guany": { "monedes": 0 }
+      },
+      {
+        "text": "Moltes gràcies, abuela",
+        "correcte": false,
+        "feedback": "ÀVIA MONTSE: 'Abuela no, que sóc catalana!'.",
+        "guany": { "monedes": 0 }
+      }
+    ]
+  },
+  {
+    "escena": "Zona VIP",
+    "dialog": "PORTER MIKEL, 2 metres d'alçada: 'Lema de la rave o no entres. Sense excuses'.",
+    "pregunta": "Com dius 'No t'aturis mai' amb actitud?",
+    "opcions": [
+      {
+        "text": "No paris mai, tio!",
+        "correcte": true,
+        "feedback": "MIKEL: 'Ara sí. Ets dels nostres. Passa VIP'.",
+        "guany": { "monedes": 60, "rauxa": 8 }
+      },
+      {
+        "text": "No t'atures mai",
+        "correcte": false,
+        "feedback": "MIKEL: 'Molt correcte, però sense ànima'.",
+        "guany": { "monedes": 0 }
+      },
+      {
+        "text": "No parar!",
+        "correcte": false,
+        "feedback": "MIKEL: 'Falta el mai. Torna'.",
+        "guany": { "monedes": 0 }
+      }
+    ]
+  },
+  {
+    "escena": "Backstage",
+    "dialog": "DJ RAYO torna, suat: 'Última prova. Si l'encertes, et dono la clau. Si falles, tornes a la porta'.",
+    "pregunta": "Com dius 'Let's keep the party going'?",
+    "opcions": [
+      {
+        "text": "Que no pari la festa!",
+        "correcte": true,
+        "feedback": "RAYO: 'BOOOM! Ets llegenda. Agafa la clau'.",
+        "guany": { "monedes": 100, "rauxa": 20 }
+      },
+      {
+        "text": "Seguim la festa",
+        "correcte": false,
+        "feedback": "RAYO: 'Sí, però falta força. Torna'.",
+        "guany": { "monedes": 0 }
+      },
+      {
+        "text": "La festa continua",
+        "correcte": false,
+        "feedback": "RAYO: 'Molt neutre. Vull energia!'.",
+        "guany": { "monedes": 0 }
+      }
+    ]
+  },
+  {
+    "escena": "Amanecer al Port",
+    "dialog": "Surten els primers raigs. El Port brilla. RAYO, LUNA, MIKEL i l'ÀVIA MONTSE t'envolten. 'Has aguantat tota la nit parlant català. Això té premi'.",
+    "pregunta": "Com et acomiades dient 'See you later' per tancar la nit?",
+    "opcions": [
+      {
+        "text": "Fins aviat, família! Gràcies per la nit",
+        "correcte": true,
+        "feedback": "Tots criden. RAYO et dóna la Clau del Port Olímpic. 'Això obre el capítol 4. No la perdis, crack'.",
+        "guany": { "monedes": 150, "rauxa": 25 },
+        "item": "clau_port_olympic"
+      },
+      {
+        "text": "Adeu",
+        "correcte": false,
+        "feedback": "RAYO: 'Massa sec per una nit així. Torna-ho a dir'.",
+        "guany": { "monedes": 0 }
+      },
+      {
+        "text": "Ens veiem",
+        "correcte": false,
+        "feedback": "LUNA: 'Sí, però sense amor. Torna-ho a provar'.",
+        "guany": { "monedes": 0 }
+      }
+    ]
+  }
+    ]
