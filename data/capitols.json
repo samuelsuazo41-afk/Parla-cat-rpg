@@ -17,5 +17,16 @@
       "item_id": "clau_port_olympic",
       "ruta": null
     }
+  },
+  {
+    "id": "ruta_flors_nit",
+    "nom": "Girona - Flors de Nit",
+    "icona": "🌙",
+    "arxiu": "./data/ruta_flors_nit.json",
+    "secret": true,
+    "recompensa_100": {
+      "item_id": "clau_flors_nit",
+      "ruta": null
+    }
   }
 ]
