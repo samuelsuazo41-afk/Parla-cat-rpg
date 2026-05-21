@@ -51,5 +51,14 @@
   "descripcio": "Obre el Barri Vell de Girona quan cau el sol.",
   "rar": "epic",
   "tipus": "clau"
+  },
+  {
+  "id": "clau_de_la_lonja",
+  "nom": "Clau de la Lonja",
+  "emoji": "🗝️",
+  "descripcio": "Obri la Ciutat Vella de València quan cau el sol",
+  "rar": "epic",
+  "tipus": "clau",
+  "imatge": "./clau_lonja.png"
   }
     
