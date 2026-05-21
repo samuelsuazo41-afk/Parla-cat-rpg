@@ -110,22 +110,62 @@ let ITEMS = {};
 let AUDIO_ENCERT = null;
 let AUDIO_FALLADA = null;
 
-// --- MÚSICA CHIPTUNE CATALANA ---
+// --- MÚSICA CHIPTUNE POR CAPÍTULOS ---
 let audioCtx = null;
 let musicaLoop = null;
+let melodiaActual = null;
 
-function iniciarMusicaChiptune() {
-  if (musicaLoop) return;
-
-  audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-
-  // Melodía estilo "El Cant dels Ocells" - vibe catalana tranquila
-  const notas = [
+// Volumen en 0.05 para concentración
+const MELODIAS = {
+  menu: [ // Mapa/menú tranquilo
     {freq: 523, dur: 0.3}, {freq: 587, dur: 0.3}, {freq: 659, dur: 0.6},
     {freq: 698, dur: 0.3}, {freq: 784, dur: 0.6}, {freq: 698, dur: 0.3},
     {freq: 659, dur: 0.6}, {freq: 587, dur: 0.3}, {freq: 523, dur: 0.9},
     {freq: 0, dur: 0.3},
-  ];
+  ],
+  capitol1_bcn_born: [ // Barcelona alegre
+    {freq: 659, dur: 0.2}, {freq: 659, dur: 0.2}, {freq: 0, dur: 0.2},
+    {freq: 659, dur: 0.2}, {freq: 0, dur: 0.2}, {freq: 523, dur: 0.2},
+    {freq: 659, dur: 0.2}, {freq: 784, dur: 0.4},
+  ],
+  capitol_02_girona: [ // Girona lenta
+    {freq: 440, dur: 0.4}, {freq: 494, dur: 0.4}, {freq: 523, dur: 0.8},
+    {freq: 494, dur: 0.4}, {freq: 440, dur: 0.8},
+  ],
+  capitol_03_fires_valencia: [ // Valencia rápida
+    {freq: 784, dur: 0.15}, {freq: 880, dur: 0.15}, {freq: 988, dur: 0.15},
+    {freq: 1047, dur: 0.3}, {freq: 988, dur: 0.15}, {freq: 880, dur: 0.15},
+  ],
+  ruta_rave_port_olympic: [ // Ruta secreta rave
+    {freq: 880, dur: 0.1}, {freq: 988, dur: 0.1}, {freq: 1109, dur: 0.1},
+    {freq: 988, dur: 0.1}, {freq: 880, dur: 0.1}, {freq: 784, dur: 0.2},
+  ],
+  ruta_girona_muralla_viva: [ // Ruta secreta medieval
+    {freq: 392, dur: 0.5}, {freq: 440, dur: 0.5}, {freq: 0, dur: 0.2},
+    {freq: 523, dur: 0.5}, {freq: 440, dur: 0.5},
+  ],
+  ruta_valencia_ciutat_vella: [ // Ruta secreta épica
+    {freq: 659, dur: 0.3}, {freq: 587, dur: 0.3}, {freq: 523, dur: 0.3},
+    {freq: 494, dur: 0.3}, {freq: 440, dur: 0.6},
+  ],
+  gremi: [ // Gremio seria
+    {freq: 440, dur: 0.3}, {freq: 554, dur: 0.3}, {freq: 659, dur: 0.6},
+    {freq: 554, dur: 0.3}, {freq: 440, dur: 0.6},
+  ],
+  botiga: [ // Tienda alegre
+    {freq: 659, dur: 0.2}, {freq: 784, dur: 0.2}, {freq: 880, dur: 0.2},
+    {freq: 784, dur: 0.2}, {freq: 659, dur: 0.4},
+  ]
+};
+
+function iniciarMusicaChiptune(nombreMelodia = 'menu') {
+  if (melodiaActual === nombreMelodia && musicaLoop) return;
+
+  pararMusica();
+  melodiaActual = nombreMelodia;
+
+  audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  const notas = MELODIAS[nombreMelodia] || MELODIAS.menu;
 
   let tiempo = audioCtx.currentTime;
 
@@ -135,7 +175,7 @@ function iniciarMusicaChiptune() {
     const gain = audioCtx.createGain();
     osc.type = 'square';
     osc.frequency.value = nota.freq;
-    gain.gain.value = 0.08;
+    gain.gain.value = 0.05;
     osc.connect(gain);
     gain.connect(audioCtx.destination);
     osc.start(tiempo);
@@ -158,7 +198,7 @@ function pararMusica() {
   if (musicaLoop) clearTimeout(musicaLoop);
   if (audioCtx) audioCtx.close();
   musicaLoop = null;
-  audioCtx = null;
+  melodiaActual = null;
 }
 
 // INIT
@@ -173,8 +213,7 @@ document.addEventListener('DOMContentLoaded', () => {
   AUDIO_ENCERT = new Audio('data:audio/wav;base64,UklGRiZDAABXQVZFZm10IBAAAAABAAEAESsAACJWAAACABAAZGF0YQIAAAAAAAA=');
   AUDIO_FALLADA = new Audio('data:audio/wav;base64,UklGRiZDAABXQVZFZm10IBAAAAABAAEAESsAACJWAAACABAAZGF0YQIAAAAAAAAA');
 
-  // Inicia música con el primer tap del usuario
-  document.addEventListener('click', iniciarMusicaChiptune, { once: true });
+  document.addEventListener('click', () => iniciarMusicaChiptune('menu'), { once: true });
 });
 
 function aplicarIdioma() {
@@ -193,10 +232,24 @@ function canviarTab(tab, e) {
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
   document.getElementById('tab-'+tab).classList.add('active');
   if(e && e.target) e.target.closest('.tab-btn').classList.add('active');
-  if(tab === 'mapa') carregarMapa();
-  if(tab === 'gremi') mostrarGremi('personatges', e);
-  if(tab === 'botiga') carregarBotiga();
-  if(tab === 'missio') carregarMissioTab();
+
+  // Cambia música según pestaña
+  if(tab === 'mapa') {
+    iniciarMusicaChiptune('menu');
+    carregarMapa();
+  }
+  if(tab === 'missio') {
+    iniciarMusicaChiptune(estat.capitolActual? estat.capitolActual.id : 'menu');
+    carregarMissioTab();
+  }
+  if(tab === 'gremi') {
+    iniciarMusicaChiptune('gremi');
+    mostrarGremi('personatges', e);
+  }
+  if(tab === 'botiga') {
+    iniciarMusicaChiptune('botiga');
+    carregarBotiga();
+  }
 }
 
 async function carregarItems() {
@@ -441,7 +494,7 @@ function completarCapitol() {
     }
 
     const imgHtmlPremi = item?.emoji
-   ? `<div style="font-size: 80px; margin-bottom: 15px;">${item.emoji}</div>`
+  ? `<div style="font-size: 80px; margin-bottom: 15px;">${item.emoji}</div>`
       : `<img src="${item?.imatge}" alt="${item?.nom}" style="width:100px; height:100px; object-fit:contain;">`;
 
     htmlPremi = `
@@ -451,7 +504,7 @@ function completarCapitol() {
         <p>${item?.descripcio || ''}</p>
         <p style="color:#FFD700; font-weight:bold;">
           ${veces100 >= vecesNecesarias
-         ? '<p style="color:#4CAF50;">Ruta secreta desbloquejada!</p>'
+        ? '<p style="color:#4CAF50;">Ruta secreta desbloquejada!</p>'
             : `Falten ${vecesNecesarias - veces100} cops per la ruta secreta`}
         </p>
       </div>
@@ -609,7 +662,7 @@ function mostrarGremi(tab, e) {
         if(item) {
           const esEmoji = item.imatge?.length <= 2 &&!item.imatge.startsWith('./');
           const imgHtml = esEmoji
-         ? `<div style="font-size: 60px; margin-bottom: 10px;">${item.imatge}</div>`
+        ? `<div style="font-size: 60px; margin-bottom: 10px;">${item.imatge}</div>`
             : `<img src="${item.imatge}" style="width:80px; height:80px; object-fit:contain;">`;
 
           cont.innerHTML += `
