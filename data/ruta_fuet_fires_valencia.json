@@ -1,1 +1,154 @@
-
+[
+  {
+    "escena": "Torres de Serrans - 23:00",
+    "dialog": "VICENT, guàrdia nocturn: 'Això són les Torres de Serrans, del segle XIV. Abans eren la porta principal de València. Si vols entrar a la Ciutat Vella, guanya-t'ho. Com es diu bona nit en valencià amb respecte?'",
+    "personatge": "Vicent",
+    "pregunta": "Què li dius al guàrdia?",
+    "opcions": [
+      {"text": "Bona nit, senyor. Vull entrar a la ciutat", "correcte": true, "feedback": "VICENT: 'Bé dit, foraster. La porta s'obri per a qui respecta la història'.", "guany": {"monedes": 50, "arrel": 4}},
+      {"text": "Hola, quiero pasar", "correcte": false, "feedback": "VICENT: 'Ací parlem valencià. Prova: Bona nit...'.", "guany": {"monedes": 0}},
+      {"text": "Bona nit", "correcte": false, "feedback": "VICENT: 'Millor, però afegeix algo més. Sigues educat'.", "guany": {"monedes": 15}}
+    ]
+  },
+  {
+    "escena": "Catedral i Micalet - Plaça de la Reina",
+    "dialog": "MERITXELL, campanera: 'Sóc la que cuida el Micalet. 207 escalons fins dalt. Si dius el nom correcte de la torre en valencià, et conte una llegenda'.",
+    "personatge": "Meritxell",
+    "pregunta": "Com es diu la torre?",
+    "opcions": [
+      {"text": "Això és el Micalet, veritat?", "correcte": true, "feedback": "MERITXELL: 'Exacte! La gent de fora diu Torre del Miquelet, però ací és Micalet. Diuen que si sona a mitjanit, passa algo gros a València'.", "guany": {"monedes": 60, "obert": 3}},
+      {"text": "Es la catedral", "correcte": false, "feedback": "MERITXELL: 'No, la catedral és al costat. Això és el Micalet'.", "guany": {"monedes": 0}},
+      {"text": "Torre", "correcte": false, "feedback": "MERITXELL: 'Sí, però té nom propi. Pensa: Micalet'.", "guany": {"monedes": 10}}
+    ]
+  },
+  {
+    "escena": "Plaça de la Verge - Font del Túria",
+    "dialog": "JORDI, historiador del Tribunal de les Aigües: 'Cada dijous ací es fa justícia des de fa 1000 anys. Som l'únic tribunal oral d'Europa que mai ha parat. Com es diu aigua en valencià?'",
+    "personatge": "Jordi",
+    "pregunta": "Respon-li per demostrar que has estudiat",
+    "opcions": [
+      {"text": "Aigua. I el Tribunal de les Aigües és Patrimoni Immaterial de la Humanitat", "correcte": true, "feedback": "JORDI: 'Ostres! Algú que sap. El Túria és vida per a València. Passa i mira la font'.", "guany": {"monedes": 70, "seny": 5}},
+      {"text": "Agua", "correcte": false, "feedback": "JORDI: 'En valencià, company. A-I-G-U-A'.", "guany": {"monedes": 0}},
+      {"text": "No ho sé", "correcte": false, "feedback": "JORDI: 'Aigua. Recorda-ho, sense aigua no hi ha horta ni paella'.", "guany": {"monedes": 20}}
+    ]
+  },
+  {
+    "escena": "Basílica de la Mare de Déu",
+    "dialog": "SOR CONSOL, monja: 'Aquesta és la Mare de Déu dels Desamparats, patrona de València. La gent li diu la Geperudeta. Sap per què?'",
+    "personatge": "Sor Consol",
+    "pregunta": "Què li contestes?",
+    "opcions": [
+      {"text": "Perquè té el cap inclinat, com si mirara els desamparats", "correcte": true, "feedback": "SOR CONSOL: 'Molt bé! Tens ull per als detalls. La Geperudeta ens cuida a tots'.", "guany": {"monedes": 55, "seny": 3}},
+      {"text": "No ho sé", "correcte": false, "feedback": "SOR CONSOL: 'Per la gepereta del cap. Ara ja ho saps'.", "guany": {"monedes": 10}}
+    ]
+  },
+  {
+    "escena": "Lonja de la Seda - Carrer de la Lonja",
+    "dialog": "ISABEL, guia de la Lonja: 'Açò és gòtic valencià del segle XV. Patrimoni de la Humanitat. No és modern, no és barroc. Si ho dius bé, et deixe entrar al pati'.",
+    "personatge": "Isabel",
+    "pregunta": "Com descrius l'estil?",
+    "opcions": [
+      {"text": "Això és gòtic valencià, únic al món", "correcte": true, "feedback": "ISABEL: 'Exacte! Mira les columnes, pareixen palmeres de pedra. És màgia'.", "guany": {"monedes": 65, "arrel": 4}},
+      {"text": "Es muy bonito", "correcte": false, "feedback": "ISABEL: 'Sí, però digues l'estil. Gòtic valencià'.", "guany": {"monedes": 0}}
+    ]
+  },
+  {
+    "escena": "Mercat Central",
+    "dialog": "PEP, venedor de verdures: 'Açò és el Mercat Central, un dels més grans d'Europa. Tot ve de l'horta de València. Com dius tomaca en valencià?'",
+    "personatge": "Pep",
+    "pregunta": "Què li dius?",
+    "opcions": [
+      {"text": "Tomaca! I la millor està ací, a l'horta", "correcte": true, "feedback": "PEP: 'Eixe sí que sap! Sense tomaca no hi ha paella. Prova una'.", "guany": {"monedes": 45, "arrel": 2}},
+      {"text": "Tomate", "correcte": false, "feedback": "PEP: 'Tomaca, xiquet. Ací parlem valencià'.", "guany": {"monedes": 0}}
+    ]
+  },
+  {
+    "escena": "Barri del Carme - Carrer de Cabillers",
+    "dialog": "RAÜL, artista urbà: 'Ací tot són grafitis, bars i història. El Carme és el barri més viu de València. Si dius una frase en valencià amb ganes, et pinte un mural virtual'.",
+    "personatge": "Raül",
+    "pregunta": "Què li dius per demostrar actitud?",
+    "opcions": [
+      {"text": "El Carme és la hostia, tiu!", "correcte": true, "feedback": "RAÜL: 'Així es parla! Tens ànima valenciana. Mira el mural'.", "guany": {"monedes": 75, "rauxa": 5}},
+      {"text": "Me gusta el barrio", "correcte": false, "feedback": "RAÜL: 'En valencià, tio. Mola més'.", "guany": {"monedes": 0}}
+    ]
+  },
+  {
+    "escena": "Portal de Valldigna",
+    "dialog": "NAZIRA, historiadora àrab: 'Aquest portal era l'entrada al barri moro. València va ser musulmana 500 anys. Com dius gràcies en àrab valencià antic?'",
+    "personatge": "Nazira",
+    "pregunta": "Què li dius?",
+    "opcions": [
+      {"text": "Gràcies. Gràcies per la història", "correcte": true, "feedback": "NAZIRA: 'Xukran. La història de València és mescla. Recorda-ho'.", "guany": {"monedes": 60, "arrel": 4}},
+      {"text": "Gracias", "correcte": false, "feedback": "NAZIRA: 'Gràcies. Prova-ho en valencià'.", "guany": {"monedes": 0}}
+    ]
+  },
+  {
+    "escena": "Plaça del Tossal",
+    "dialog": "TONI, músic de tabal i dolçaina: 'Açò sona a festa. La dolçaina és l'ànima de València. Si dius el nom bé, et toque una albaes'.",
+    "personatge": "Toni",
+    "pregunta": "Com es diu l'instrument?",
+    "opcions": [
+      {"text": "Això és una dolçaina, veritat?", "correcte": true, "feedback": "TONI: 'Exacte! Escolta això... *toca*'.", "guany": {"monedes": 50, "rauxa": 3}},
+      {"text": "Flauta", "correcte": false, "feedback": "TONI: 'No, nano. Dolçaina. Escolta bé'.", "guany": {"monedes": 0}}
+    ]
+  },
+  {
+    "escena": "Plaça de l'Ajuntament - Silenci nocturn",
+    "dialog": "PAQUI, veïna de tota la vida: 'De dia açò és un caos per les falles. De nit és màgic. Com dius València en falles amb orgull?'",
+    "personatge": "Paqui",
+    "pregunta": "Diga-li com se sent",
+    "opcions": [
+      {"text": "València en falles és la millor festa del món!", "correcte": true, "feedback": "PAQUI: 'Això sí que és sentiment! A les falles som foc i gent'.", "guany": {"monedes": 80, "rauxa": 4}},
+      {"text": "Esta bien", "correcte": false, "feedback": "PAQUI: 'Esta bien? Això és traïció, nano!'.", "guany": {"monedes": 0}}
+    ]
+  },
+  {
+    "escena": "Carrer dels Cavallers",
+    "dialog": "LUCIA, historiadora: 'Aquest carrer era la via noble de València. Ací vivien els senyors. Com dius cavaller en valencià?'",
+    "personatge": "Lucia",
+    "pregunta": "Respon bé i segueix",
+    "opcions": [
+      {"text": "Cavaller. Aquest carrer està ple d'història", "correcte": true, "feedback": "LUCIA: 'Perfecte! Cada pedra ací té 500 anys'.", "guany": {"monedes": 55, "arrel": 3}},
+      {"text": "Caballero", "correcte": false, "feedback": "LUCIA: 'Cavaller. Recorda la c'.", "guany": {"monedes": 0}}
+    ]
+  },
+  {
+    "escena": "Plaça de Sant Jaume",
+    "dialog": "FERMIN, orxater: 'Sense orxata no hi ha València. És de xufla. Com dius orxata en valencià?'",
+    "personatge": "Fermin",
+    "pregunta": "Què li demanes?",
+    "opcions": [
+      {"text": "Dóna'm una orxata ben freda, per favor", "correcte": true, "feedback": "FERMIN: 'Açò és parlar! Fresca i ben dolça'.", "guany": {"monedes": 40, "obert": 2}},
+      {"text": "Horchata", "correcte": false, "feedback": "FERMIN: 'Orxata, xiquet. Amb x'.", "guany": {"monedes": 0}}
+    ]
+  },
+  {
+    "escena": "Carrer de la Pau",
+    "dialog": "ELENA, llibretera: 'Ací hi ha les llibreries més velles de València. La pau es fa llegint. Com dius llibre en valencià?'",
+    "personatge": "Elena",
+    "pregunta": "Respon-li",
+    "opcions": [
+      {"text": "Llibre. I aquest carrer té molta pau", "correcte": true, "feedback": "ELENA: 'Molt bé! La cultura és la nostra força'.", "guany": {"monedes": 50, "seny": 3}},
+      {"text": "Libro", "correcte": false, "feedback": "ELENA: 'Llibre. Amb doble l'.", "guany": {"monedes": 0}}
+    ]
+  },
+  {
+    "escena": "Plaça de la Reina - Mirador nocturn",
+    "dialog": "ROGER, fotògraf: 'Des d'ací es veu tota la Ciutat Vella il·luminada. És màgia. Com dius nit màgica en valencià?'",
+    "personatge": "Roger",
+    "pregunta": "Diga-li la frase",
+    "opcions": [
+      {"text": "Això és una nit màgica, de veritat", "correcte": true, "feedback": "ROGER: 'Sí! La foto perfecta. Guardat aquest moment'.", "guany": {"monedes": 65, "rauxa": 3}},
+      {"text": "Noche magica", "correcte": false, "feedback": "ROGER: 'Nit màgica. Amb accent'.", "guany": {"monedes": 0}}
+    ]
+  },
+  {
+    "escena": "Final - Terrat amb vistes a la Ciutat Vella",
+    "dialog": "Tots els NPCs et miren des del terrat. 'Has caminat la Ciutat Vella parlant valencià. Això és estimar València. Agafa la clau, és teua'.",
+    "personatge": "Grup",
+    "pregunta": "Com tanques la nit?",
+    "opcions": [
+      {"text": "Gràcies, gent. València és única. Fins prompte", "correcte": true, "feedback": "VICENT et dona la Clau de la Lonja. 'Açò obri la Ciutat Vella de nit. No la perdes'.", "guany": {"monedes": 200, "arrel": 10, "seny": 6}, "item": "clau_de_la_lonja"}
+    ]
+  }
+]
