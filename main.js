@@ -21,7 +21,9 @@ const LANGS = {
     repas_titulo: "Repàs Ràpid - 5 Preguntes",
     tria_personatge: "Tria el teu personatge",
     nom_personatge: "Com et dius?",
-    canviar_personatge: "Canviar Personatge"
+    canviar_personatge: "Canviar Personatge",
+    biblioteca: "Biblioteca",
+    biblioteca_desc: "Tots els personatges disponibles per les teves històries"
   },
   ca: {
     app_titol: "Parla Cat RPG - Cròniques de Catalunya",
@@ -44,45 +46,55 @@ const LANGS = {
     repas_titulo: "Repàs Ràpid - 5 Preguntes",
     tria_personatge: "Tria el teu personatge",
     nom_personatge: "Com et dius?",
-    canviar_personatge: "Canviar Personatge"
+    canviar_personatge: "Canviar Personatge",
+    biblioteca: "Biblioteca",
+    biblioteca_desc: "Tots els personatges disponibles per les teves històries"
   }
 };
 
 let idioma = localStorage.getItem('cat_idioma') || 'es';
 let LANG = LANGS[idioma];
 
-// 24 personajes para cubrir todas las escenas
-const PERSONATGES = [
-  // Jóvenes
+// Solo 4 personajes para el jugador
+const PERSONATGES_JUGADOR = [
   {id: 'noi', emoji: '👦', nom: 'Noi'},
   {id: 'noia', emoji: '👧', nom: 'Noia'},
-  {id: 'adolescent', emoji: '🧑', nom: 'Jove'},
-
-  // Adultos
   {id: 'home', emoji: '👨', nom: 'Home'},
-  {id: 'dona', emoji: '👩', nom: 'Dona'},
-  {id: 'home_barba', emoji: '🧔', nom: 'Home amb barba'},
-  {id: 'dona_cabells_arrissats', emoji: '👩‍🦱', nom: 'Dona arrissada'},
+  {id: 'dona', emoji: '👩', nom: 'Dona'}
+];
 
-  // Mayores
-  {id: 'avi', emoji: '👴', nom: 'Avi'},
-  {id: 'avia', emoji: '👵', nom: 'Àvia'},
-
-  // Profesiones
-  {id: 'atleta', emoji: '🏃', nom: 'Atleta'},
-  {id: 'atleta_dona', emoji: '🏃‍♀️', nom: 'Atleta dona'},
-  {id: 'florista', emoji: '🧑‍🌾', nom: 'Florista'},
-  {id: 'cuiner', emoji: '👨‍🍳', nom: 'Cuiner'},
-  {id: 'cuinera', emoji: '👩‍🍳', nom: 'Cuinera'},
-  {id: 'music', emoji: '🧑‍🎤', nom: 'Músic'},
-  {id: 'artista', emoji: '🧑‍🎨', nom: 'Artista'},
-  {id: 'pescador', emoji: '🧑‍🌾', nom: 'Pescador'},
-  {id: 'metge', emoji: '👨‍⚕️', nom: 'Metge'},
-  {id: 'metgessa', emoji: '👩‍⚕️', nom: 'Metgessa'},
-  {id: 'mestre', emoji: '👨‍🏫', nom: 'Mestre'},
-  {id: 'mestra', emoji: '👩‍🏫', nom: 'Mestra'},
-  {id: 'botiguer', emoji: '🧑‍💼', nom: 'Botiguer'},
-  {id: 'estudiant', emoji: '🧑‍🎓', nom: 'Estudiant'}
+// BIBLIOTECA COMPLETA - Todos los emojis para NPCs
+const BIBLIOTECA_EMOJIS = [
+  {emoji: '👶', nom: 'Bebè'}, {emoji: '👦', nom: 'Noi'}, {emoji: '👧', nom: 'Noia'},
+  {emoji: '🧒', nom: 'Infant'}, {emoji: '👨', nom: 'Home'}, {emoji: '👩', nom: 'Dona'},
+  {emoji: '🧑', nom: 'Persona'}, {emoji: '👴', nom: 'Avi'}, {emoji: '👵', nom: 'Àvia'},
+  {emoji: '🧔', nom: 'Home amb barba'}, {emoji: '👩‍🦱', nom: 'Dona arrissada'},
+  {emoji: '👨‍🦰', nom: 'Home pèl-roig'}, {emoji: '👩‍🦰', nom: 'Dona pèl-roja'},
+  {emoji: '👨‍⚕️', nom: 'Metge'}, {emoji: '👩‍⚕️', nom: 'Metgessa'},
+  {emoji: '👨‍🏫', nom: 'Mestre'}, {emoji: '👩‍🏫', nom: 'Mestra'},
+  {emoji: '👨‍🍳', nom: 'Cuiner'}, {emoji: '👩‍🍳', nom: 'Cuinera'},
+  {emoji: '👨‍🌾', nom: 'Pagès'}, {emoji: '👩‍🌾', nom: 'Pagesa'},
+  {emoji: '👨‍🔧', nom: 'Mecànic'}, {emoji: '👩‍🔧', nom: 'Mecànica'},
+  {emoji: '👨‍🎨', nom: 'Artista'}, {emoji: '👩‍🎨', nom: 'Artista dona'},
+  {emoji: '👨‍🎤', nom: 'Cantant'}, {emoji: '👩‍🎤', nom: 'Cantant dona'},
+  {emoji: '👨‍💼', nom: 'Empresari'}, {emoji: '👩‍💼', nom: 'Empresària'},
+  {emoji: '👨‍💻', nom: 'Programador'}, {emoji: '👩‍💻', nom: 'Programadora'},
+  {emoji: '👨‍🚀', nom: 'Astronauta'}, {emoji: '👩‍🚀', nom: 'Astronauta dona'},
+  {emoji: '👨‍🚒', nom: 'Bomber'}, {emoji: '👩‍🚒', nom: 'Bombera'},
+  {emoji: '👮', nom: 'Policia'}, {emoji: '👮‍♀️', nom: 'Policía dona'},
+  {emoji: '🕵️', nom: 'Detectiu'}, {emoji: '💂', nom: 'Guàrdia'},
+  {emoji: '🏃', nom: 'Atleta'}, {emoji: '🏃‍♀️', nom: 'Atleta dona'},
+  {emoji: '🏊', nom: 'Nedador'}, {emoji: '🏊‍♀️', nom: 'Nedadora'},
+  {emoji: '🚴', nom: 'Ciclista'}, {emoji: '🚴‍♀️', nom: 'Ciclista dona'},
+  {emoji: '⛹️', nom: 'Jugador bàsquet'}, {emoji: '🤸', nom: 'Gimnasta'},
+  {emoji: '🤺', nom: 'Esgrimista'}, {emoji: '🏋️', nom: 'Halteròfil'},
+  {emoji: '🧑‍🌾', nom: 'Jardiner'}, {emoji: '🧑‍🍳', nom: 'Xef'},
+  {emoji: '🧑‍🎓', nom: 'Estudiant'}, {emoji: '🧑‍💼', nom: 'Oficinista'},
+  {emoji: '🧑‍🔧', nom: 'Tècnic'}, {emoji: '🧑‍🎤', nom: 'Músic'},
+  {emoji: '🧑‍🎨', nom: 'Pintor'}, {emoji: '🧑‍🚀', nom: 'Astronauta'},
+  {emoji: '🧑‍🚒', nom: 'Bomber'}, {emoji: '🧑‍⚕️', nom: 'Sanitari'},
+  {emoji: '🧑‍⚖️', nom: 'Jutge'}, {emoji: '🧑‍🦯', nom: 'Persona amb bastó'},
+  {emoji: '🧑‍🦼', nom: 'Persona en cadira'}, {emoji: '🧑‍🦽', nom: 'Persona en cadira manual'}
 ];
 
 let estat = {
@@ -148,16 +160,29 @@ let musicaLoop = null;
 let melodiaActual = null;
 
 const MELODIAS = {
-  gremi: [ // Aventura tranquila 75 BPM
-    {freq: 392, dur: 0.8}, {freq: 494, dur: 0.8}, {freq: 587, dur: 1.2},
-    {freq: 494, dur: 0.8}, {freq: 392, dur: 1.6},
-  ],
-  estudio: [ // Chill aventura 70 BPM
-    {freq: 440, dur: 1.0}, {freq: 523, dur: 1.0}, {freq: 659, dur: 1.0},
-    {freq: 523, dur: 1.0}, {freq: 440, dur: 1.0}, {freq: 392, dur: 1.0},
-    {freq: 440, dur: 1.0}, {freq: 0, dur: 1.0},
-  ]
+  gremi: [{freq: 392, dur: 0.8}, {freq: 494, dur: 0.8}, {freq: 587, dur: 1.2}],
+  estudio: [{freq: 440, dur: 1.0}, {freq: 523, dur: 1.0}, {freq: 659, dur: 1.0}]
 };
+
+// Detecta emoji de NPC según el diálogo
+function detectarEmojiNPC(dialogo, npc_nom) {
+  const text = ((dialogo || '') + ' + (npc_nom || '')).toLowerCase();
+
+  if(text.includes('cuina') || text.includes('menja') || text.includes('pa') || text.includes('tomaquet')) return '👨‍🍳';
+  if(text.includes('flor') || text.includes('jardí') || text.includes('planta')) return '🧑‍🌾';
+  if(text.includes('corre') || text.includes('esport') || text.includes('atleta')) return '🏃';
+  if(text.includes('música') || text.includes('canta') || text.includes('toca')) return '🧑‍🎤';
+  if(text.includes('metge') || text.includes('hospital') || text.includes('salut')) return '👨‍⚕️';
+  if(text.includes('escola') || text.includes('estudi') || text.includes('apren')) return '👨‍🏫';
+  if(text.includes('botiga') || text.includes('compra') || text.includes('ven')) return '🧑‍💼';
+  if(text.includes('mar') || text.includes('peix') || text.includes('pesca')) return '🧑‍🌾';
+  if(text.includes('avi') || text.includes('vell')) return '👴';
+  if(text.includes('àvia') || text.includes('vella')) return '👵';
+  if(text.includes('poli') || text.includes('policia')) return '👮';
+  if(text.includes('foc') || text.includes('bomber')) return '👨‍🚒';
+
+  return '👤';
+}
 
 function iniciarMusicaChiptune(nombreMelodia = 'estudio') {
   if (melodiaActual === nombreMelodia && musicaLoop) return;
@@ -173,7 +198,7 @@ function iniciarMusicaChiptune(nombreMelodia = 'estudio') {
     const gain = audioCtx.createGain();
     osc.type = 'square';
     osc.frequency.value = nota.freq;
-    gain.gain.value = 0.05;
+    gain.gain.value = 0.01;
     osc.connect(gain);
     gain.connect(audioCtx.destination);
     osc.start(tiempo);
@@ -349,7 +374,8 @@ function carregarPas() {
   const pas = estat.capitolActual.passos[estat.pasActual];
   if (!pas) { completarCapitol(); return; }
 
-  const npcEmoji = pas.npc_emoji || '👤';
+  // Auto-detecta emoji del NPC si no viene en el JSON
+  const npcEmoji = pas.npc_emoji || detectarEmojiNPC(pas.dialog, pas.npc_nom);
   const npcNom = pas.npc_nom || 'NPC';
   const jugadorEmoji = estat.personatge?.emoji || '🧑';
   const jugadorNom = estat.personatge?.nom || 'Tu';
@@ -535,16 +561,16 @@ function mostrarGremi(tab, e) {
 
   if(tab === 'personatges') {
     if(!estat.personatge) {
-      // Pantalla de selección con scroll
       let html = `<h3 style="text-align:center; margin-bottom:20px;">${LANG.tria_personatge}</h3>`;
-      html += `<div style="display:grid; grid-template-columns:repeat(4,1fr); gap:10px; max-height:400px; overflow-y:auto; padding:10px;">`;
-      PERSONATGES.forEach(p => {
-        html += `<button class="btn" style="font-size:36px; padding:15px 10px; display:flex; flex-direction:column; align-items:center; gap:5px;" onclick="seleccionarPersonatge('${p.id}')">${p.emoji}<span style="font-size:12px;">${p.nom}</span></button>`;
+      html += `<div style="display:grid; grid-template-columns:repeat(2,1fr); gap:15px; max-width:300px; margin:0 auto;">`;
+      PERSONATGES_JUGADOR.forEach(p => {
+        html += `<button class="btn" style="font-size:48px; padding:20px;" onclick="seleccionarPersonatge('${p.id}')">${p.emoji}<div style="font-size:14px; margin-top:5px;">${p.nom}</div></button>`;
       });
-      html += `</div><div style="margin-top:20px; text-align:center;"><input type="text" id="nom-jugador" placeholder="${LANG.nom_personatge}" style="padding:10px; width:80%; border-radius:8px; border:none; background:#2a2a2a; color:#fff;"></div>`;
+      html += `</div><div style="margin-top:20px; text-align:center;">
+        <input type="text" id="nom-jugador" placeholder="${LANG.nom_personatge}" style="padding:10px; width:80%; border-radius:8px; border:none; background:#2a2a2a; color:#fff;">
+      </div>`;
       cont.innerHTML = html;
     } else {
-      // Mostrar personaje seleccionado
       const emojis = { seny: '🦉', rauxa: '🔥', arrel: '🌳', obert: '🌍', neutral: '😐' };
       const titols = { seny: 'Estratèg', rauxa: 'Impulsiu', arrel: 'Arrelat', obert: 'Cosmopolita', neutral: 'Novell' };
       const totalStats = estat.stats.seny + estat.stats.rauxa + estat.stats.arrel + estat.stats.obert;
@@ -564,7 +590,26 @@ function mostrarGremi(tab, e) {
       `;
     }
   }
-  else if(tab === 'objectes') {
+
+if(tab === 'biblioteca') {
+    let html = `<h3 style="text-align:center; margin-bottom:10px;">${LANG.biblioteca}</h3>`;
+    html += `<p style="text-align:center; color:#888; margin-bottom:20px; font-size:14px;">${LANG.biblioteca_desc}</p>`;
+    html += `<div style="display:grid; grid-template-columns:repeat(3,1fr); gap:12px; max-height:500px; overflow-y:auto; padding:10px;">`;
+
+    BIBLIOTECA_EMOJIS.forEach(p => {
+      html += `
+        <div class="gremi-item" style="text-align:center; padding:15px 8px;">
+          <div style="font-size:42px; margin-bottom:8px;">${p.emoji}</div>
+          <div style="font-size:13px; font-weight:600; line-height:1.2;">${p.nom}</div>
+        </div>
+      `;
+    });
+
+    html += `</div>`;
+    cont.innerHTML = html;
+  }
+
+  if(tab === 'objectes') {
     if(estat.objectes.length === 0) {
       cont.innerHTML = `<div style="grid-column:1/-1; text-align:center; color:#888;">Encara no tens objectes</div>`;
     } else {
@@ -578,10 +623,11 @@ function mostrarGremi(tab, e) {
       });
     }
   }
-  else if(tab === 'llegendes') {
+
+  if(tab === 'llegendes') {
     const llegendes = [
       { id: 'capitol1_bcn_born', nom: 'El Born, Barcelona', icona: '🏛️', desbloquejada: estat.capitolsCompletats.includes('capitol1_bcn_born'), text: 'El Born és el barri gòtic més viu.' },
-      { id: 'capitol_02_girona', nom: 'Temps de Flors, Girona', icona: '🌸', desbloquejada: estat.capitolsCompletats.includes('capitol_02_girona'), text: 'Cada maig, Girona s\'omple de flors.' },
+      { id: 'capitol_02_girona', nom: 'Temps de Flors, Girona', icona: '🏰⚜️', desbloquejada: estat.capitolsCompletats.includes('capitol_02_girona'), text: 'Cada maig, Girona s\'omple de flors.' },
       { id: 'capitol_03_fires_valencia', nom: 'Falles, València', icona: '🔥', desbloquejada: estat.capitolsCompletats.includes('capitol_03_fires_valencia'), text: 'El foc purifica tot.' }
     ];
     llegendes.forEach(l => {
@@ -595,8 +641,8 @@ function mostrarGremi(tab, e) {
 }
 
 function seleccionarPersonatge(id) {
-  const p = PERSONATGES.find(x => x.id === id);
-  const nomInput = document.getElementById('nom-jugador').value.trim();
+  const p = PERSONATGES_JUGADOR.find(x => x.id === id);
+  const nomInput = document.getElementById('nom-jugador')?.value.trim();
   estat.personatge = {
     id: p.id,
     emoji: p.emoji,
@@ -618,7 +664,36 @@ function carregarBotiga() {
   cont.innerHTML = '<div style="grid-column:1/-1; text-align:center; color:#888;">Pròximament</div>';
 }
 
-// Service Worker
+function guardarEstat() {
+  localStorage.setItem('cat_monedes', estat.monedes);
+  localStorage.setItem('cat_completats', JSON.stringify(estat.capitolsCompletats));
+  localStorage.setItem('cat_objectes', JSON.stringify(estat.objectes));
+  localStorage.setItem('cat_rutes', JSON.stringify(estat.rutesDesbloquejades));
+  localStorage.setItem('cat_capitols100', JSON.stringify(estat.capitols100Counts));
+  localStorage.setItem('cat_seny', estat.stats.seny);
+  localStorage.setItem('cat_rauxa', estat.stats.rauxa);
+  localStorage.setItem('cat_arrel', estat.stats.arrel);
+  localStorage.setItem('cat_obert', estat.stats.obert);
+  localStorage.setItem('cat_totem', estat.totem);
+  localStorage.setItem('cat_fallades', JSON.stringify(estat.fallades));
+  localStorage.setItem('cat_personatge', JSON.stringify(estat.personatge));
+}
+
+function actualitzarUI() {
+  document.getElementById('coins').innerHTML = `🪙 ${estat.monedes} <span id="text-monedes">${LANG.monedes}</span>`;
+  document.getElementById('stats').textContent = `Seny: ${estat.stats.seny} | Rauxa: ${estat.stats.rauxa} | Arrel: ${estat.stats.arrel} | Obert: ${estat.stats.obert}`;
+}
+
+function carregarMissioTab() {
+  if (!estat.capitolActual) {
+    document.getElementById('missio-card').innerHTML = `<button class="btn" onclick="iniciarRepas()">${LANG.repas_rapido}</button><h3 style="margin-top:20px;">${LANG.repas_titulo}</h3><div id="repas-contenidor"></div>`;
+  }
+}
+
+function iniciarRepas() {
+  document.getElementById('repas-contenidor').innerHTML = '<p style="text-align:center; color:#888;">Completa un capítol primer</p>';
+}
+
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('./sw.js').catch(err => console.log('SW error:', err));
 }
