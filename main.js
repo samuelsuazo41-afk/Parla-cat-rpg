@@ -119,6 +119,7 @@ function iniciarMusicaChiptune() {
 
   audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
+  // Melodía estilo "El Cant dels Ocells" - vibe catalana tranquila
   const notas = [
     {freq: 523, dur: 0.3}, {freq: 587, dur: 0.3}, {freq: 659, dur: 0.6},
     {freq: 698, dur: 0.3}, {freq: 784, dur: 0.6}, {freq: 698, dur: 0.3},
@@ -172,7 +173,7 @@ document.addEventListener('DOMContentLoaded', () => {
   AUDIO_ENCERT = new Audio('data:audio/wav;base64,UklGRiZDAABXQVZFZm10IBAAAAABAAEAESsAACJWAAACABAAZGF0YQIAAAAAAAA=');
   AUDIO_FALLADA = new Audio('data:audio/wav;base64,UklGRiZDAABXQVZFZm10IBAAAAABAAEAESsAACJWAAACABAAZGF0YQIAAAAAAAAA');
 
-  // Inicia música con el primer tap
+  // Inicia música con el primer tap del usuario
   document.addEventListener('click', iniciarMusicaChiptune, { once: true });
 });
 
