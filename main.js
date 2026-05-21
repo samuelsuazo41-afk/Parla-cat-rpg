@@ -18,7 +18,10 @@ const LANGS = {
     item_desbloquejat: "¡Item desbloqueado!",
     ruta_secreta: "Ruta secreta desbloqueada!",
     repas_rapido: "Repàs Ràpid",
-    repas_titulo: "Repàs Ràpid - 5 Preguntes"
+    repas_titulo: "Repàs Ràpid - 5 Preguntes",
+    tria_personatge: "Tria el teu personatge",
+    nom_personatge: "Com et dius?",
+    canviar_personatge: "Canviar Personatge"
   },
   ca: {
     app_titol: "Parla Cat RPG - Cròniques de Catalunya",
@@ -38,12 +41,49 @@ const LANGS = {
     item_desbloquejat: "Item desbloquejat!",
     ruta_secreta: "Ruta secreta desbloquejada!",
     repas_rapido: "Repàs Ràpid",
-    repas_titulo: "Repàs Ràpid - 5 Preguntes"
+    repas_titulo: "Repàs Ràpid - 5 Preguntes",
+    tria_personatge: "Tria el teu personatge",
+    nom_personatge: "Com et dius?",
+    canviar_personatge: "Canviar Personatge"
   }
 };
 
 let idioma = localStorage.getItem('cat_idioma') || 'es';
 let LANG = LANGS[idioma];
+
+// 24 personajes para cubrir todas las escenas
+const PERSONATGES = [
+  // Jóvenes
+  {id: 'noi', emoji: '👦', nom: 'Noi'},
+  {id: 'noia', emoji: '👧', nom: 'Noia'},
+  {id: 'adolescent', emoji: '🧑', nom: 'Jove'},
+
+  // Adultos
+  {id: 'home', emoji: '👨', nom: 'Home'},
+  {id: 'dona', emoji: '👩', nom: 'Dona'},
+  {id: 'home_barba', emoji: '🧔', nom: 'Home amb barba'},
+  {id: 'dona_cabells_arrissats', emoji: '👩‍🦱', nom: 'Dona arrissada'},
+
+  // Mayores
+  {id: 'avi', emoji: '👴', nom: 'Avi'},
+  {id: 'avia', emoji: '👵', nom: 'Àvia'},
+
+  // Profesiones
+  {id: 'atleta', emoji: '🏃', nom: 'Atleta'},
+  {id: 'atleta_dona', emoji: '🏃‍♀️', nom: 'Atleta dona'},
+  {id: 'florista', emoji: '🧑‍🌾', nom: 'Florista'},
+  {id: 'cuiner', emoji: '👨‍🍳', nom: 'Cuiner'},
+  {id: 'cuinera', emoji: '👩‍🍳', nom: 'Cuinera'},
+  {id: 'music', emoji: '🧑‍🎤', nom: 'Músic'},
+  {id: 'artista', emoji: '🧑‍🎨', nom: 'Artista'},
+  {id: 'pescador', emoji: '🧑‍🌾', nom: 'Pescador'},
+  {id: 'metge', emoji: '👨‍⚕️', nom: 'Metge'},
+  {id: 'metgessa', emoji: '👩‍⚕️', nom: 'Metgessa'},
+  {id: 'mestre', emoji: '👨‍🏫', nom: 'Mestre'},
+  {id: 'mestra', emoji: '👩‍🏫', nom: 'Mestra'},
+  {id: 'botiguer', emoji: '🧑‍💼', nom: 'Botiguer'},
+  {id: 'estudiant', emoji: '🧑‍🎓', nom: 'Estudiant'}
+];
 
 let estat = {
   monedes: parseInt(localStorage.getItem('cat_monedes')) || 0,
@@ -58,6 +98,7 @@ let estat = {
     obert: parseInt(localStorage.getItem('cat_obert')) || 0
   },
   totem: localStorage.getItem('cat_totem') || 'neutral',
+  personatge: JSON.parse(localStorage.getItem('cat_personatge')) || null,
   capitolActual: null,
   pasActual: 0,
   fallades: JSON.parse(localStorage.getItem('cat_fallades')) || [],
@@ -73,10 +114,7 @@ const CAPITOLS = [
     desbloquejat: true,
     desc: `Arribes al Born. Si parles bé,\net conviden a vermut 🍷`,
     archivo: "capitol1_bcn_born.json",
-    recompensa_100: {
-      item_id: "camisa_cenguera_barca",
-      ruta: "ruta_rave_port_olympic"
-    }
+    recompensa_100: {item_id: "camisa_cenguera_barca", ruta: "ruta_rave_port_olympic"}
   },
   {
     id: "capitol_02_girona",
@@ -86,10 +124,7 @@ const CAPITOLS = [
     desc: "Flors als carrers. Català més lent, més de poble.",
     archivo: "capitol_02_girona.json",
     requereix: "capitol1_bcn_born",
-    recompensa_100: {
-      item_id: "flor_suprema_temps_flors",
-      ruta: "ruta_girona_muralla_viva"
-    }
+    recompensa_100: {item_id: "flor_suprema_temps_flors", ruta: "ruta_girona_muralla_viva"}
   },
   {
     id: "capitol_03_fires_valencia",
@@ -99,10 +134,7 @@ const CAPITOLS = [
     desc: "La fira està encesa. Parla amb la gent i guanya el Fuet del Foc.",
     archivo: "capitol_03_fires_valencia.json",
     requereix: "capitol_02_girona",
-    recompensa_100: {
-      item_id: "clau_de_la_lonja",
-      ruta: "ruta_valencia_ciutat_vella"
-    }
+    recompensa_100: {item_id: "clau_de_la_lonja", ruta: "ruta_valencia_ciutat_vella"}
   }
 ];
 
@@ -110,63 +142,29 @@ let ITEMS = {};
 let AUDIO_ENCERT = null;
 let AUDIO_FALLADA = null;
 
-// --- MÚSICA CHIPTUNE POR CAPÍTULOS ---
+// --- MÚSICA CHIPTUNE ---
 let audioCtx = null;
 let musicaLoop = null;
 let melodiaActual = null;
 
-// Volumen en 0.04 para concentración
 const MELODIAS = {
-  menu: [ // Mapa/menú tranquilo
-    {freq: 523, dur: 0.3}, {freq: 587, dur: 0.3}, {freq: 659, dur: 0.6},
-    {freq: 698, dur: 0.3}, {freq: 784, dur: 0.6}, {freq: 698, dur: 0.3},
-    {freq: 659, dur: 0.6}, {freq: 587, dur: 0.3}, {freq: 523, dur: 0.9},
-    {freq: 0, dur: 0.3},
+  gremi: [ // Aventura tranquila 75 BPM
+    {freq: 392, dur: 0.8}, {freq: 494, dur: 0.8}, {freq: 587, dur: 1.2},
+    {freq: 494, dur: 0.8}, {freq: 392, dur: 1.6},
   ],
-  capitol1_bcn_born: [ // Barcelona alegre
-    {freq: 659, dur: 0.2}, {freq: 659, dur: 0.2}, {freq: 0, dur: 0.2},
-    {freq: 659, dur: 0.2}, {freq: 0, dur: 0.2}, {freq: 523, dur: 0.2},
-    {freq: 659, dur: 0.2}, {freq: 784, dur: 0.4},
-  ],
-  capitol_02_girona: [ // Girona lenta
-    {freq: 440, dur: 0.4}, {freq: 494, dur: 0.4}, {freq: 523, dur: 0.8},
-    {freq: 494, dur: 0.4}, {freq: 440, dur: 0.8},
-  ],
-  capitol_03_fires_valencia: [ // Valencia rápida
-    {freq: 784, dur: 0.15}, {freq: 880, dur: 0.15}, {freq: 988, dur: 0.15},
-    {freq: 1047, dur: 0.3}, {freq: 988, dur: 0.15}, {freq: 880, dur: 0.15},
-  ],
-  ruta_rave_port_olympic: [ // Ruta secreta rave
-    {freq: 880, dur: 0.1}, {freq: 988, dur: 0.1}, {freq: 1109, dur: 0.1},
-    {freq: 988, dur: 0.1}, {freq: 880, dur: 0.1}, {freq: 784, dur: 0.2},
-  ],
-  ruta_girona_muralla_viva: [ // Ruta secreta medieval
-    {freq: 392, dur: 0.5}, {freq: 440, dur: 0.5}, {freq: 0, dur: 0.2},
-    {freq: 523, dur: 0.5}, {freq: 440, dur: 0.5},
-  ],
-  ruta_valencia_ciutat_vella: [ // Ruta secreta épica
-    {freq: 659, dur: 0.3}, {freq: 587, dur: 0.3}, {freq: 523, dur: 0.3},
-    {freq: 494, dur: 0.3}, {freq: 440, dur: 0.6},
-  ],
-  gremi: [ // Gremio seria
-    {freq: 440, dur: 0.3}, {freq: 554, dur: 0.3}, {freq: 659, dur: 0.6},
-    {freq: 554, dur: 0.3}, {freq: 440, dur: 0.6},
-  ],
-  botiga: [ // Tienda alegre
-    {freq: 659, dur: 0.2}, {freq: 784, dur: 0.2}, {freq: 880, dur: 0.2},
-    {freq: 784, dur: 0.2}, {freq: 659, dur: 0.4},
+  estudio: [ // Chill aventura 70 BPM
+    {freq: 440, dur: 1.0}, {freq: 523, dur: 1.0}, {freq: 659, dur: 1.0},
+    {freq: 523, dur: 1.0}, {freq: 440, dur: 1.0}, {freq: 392, dur: 1.0},
+    {freq: 440, dur: 1.0}, {freq: 0, dur: 1.0},
   ]
 };
 
-function iniciarMusicaChiptune(nombreMelodia = 'menu') {
+function iniciarMusicaChiptune(nombreMelodia = 'estudio') {
   if (melodiaActual === nombreMelodia && musicaLoop) return;
-
   pararMusica();
   melodiaActual = nombreMelodia;
-
   audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-  const notas = MELODIAS[nombreMelodia] || MELODIAS.menu;
-
+  const notas = MELODIAS[nombreMelodia];
   let tiempo = audioCtx.currentTime;
 
   function tocarNota(nota) {
@@ -190,7 +188,6 @@ function iniciarMusicaChiptune(nombreMelodia = 'menu') {
     });
     musicaLoop = setTimeout(loop, notas.reduce((a, b) => a + b.dur, 0) * 1000);
   }
-
   loop();
 }
 
@@ -201,6 +198,24 @@ function pararMusica() {
   melodiaActual = null;
 }
 
+function tocarJingleCompletado() {
+  if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  const notas = [{freq: 523, dur: 0.15}, {freq: 659, dur: 0.15}, {freq: 784, dur: 0.15}, {freq: 1047, dur: 0.4}];
+  let tiempo = audioCtx.currentTime;
+  notas.forEach(nota => {
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    osc.type = 'square';
+    osc.frequency.value = nota.freq;
+    gain.gain.value = 0.08;
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
+    osc.start(tiempo);
+    osc.stop(tiempo + nota.dur);
+    tiempo += nota.dur;
+  });
+}
+
 // INIT
 document.addEventListener('DOMContentLoaded', () => {
   aplicarIdioma();
@@ -209,11 +224,8 @@ document.addEventListener('DOMContentLoaded', () => {
     actualitzarTotem();
     carregarMapa();
   });
-
   AUDIO_ENCERT = new Audio('data:audio/wav;base64,UklGRiZDAABXQVZFZm10IBAAAAABAAEAESsAACJWAAACABAAZGF0YQIAAAAAAAA=');
   AUDIO_FALLADA = new Audio('data:audio/wav;base64,UklGRiZDAABXQVZFZm10IBAAAAABAAEAESsAACJWAAACABAAZGF0YQIAAAAAAAAA');
-
-  document.addEventListener('click', () => iniciarMusicaChiptune('menu'), { once: true });
 });
 
 function aplicarIdioma() {
@@ -233,23 +245,10 @@ function canviarTab(tab, e) {
   document.getElementById('tab-'+tab).classList.add('active');
   if(e && e.target) e.target.closest('.tab-btn').classList.add('active');
 
-  // Cambia música según pestaña
-  if(tab === 'mapa') {
-    iniciarMusicaChiptune('menu');
-    carregarMapa();
-  }
-  if(tab === 'missio') {
-    iniciarMusicaChiptune(estat.capitolActual? estat.capitolActual.id : 'menu');
-    carregarMissioTab();
-  }
-  if(tab === 'gremi') {
-    iniciarMusicaChiptune('gremi');
-    mostrarGremi('personatges', e);
-  }
-  if(tab === 'botiga') {
-    iniciarMusicaChiptune('botiga');
-    carregarBotiga();
-  }
+  if(tab === 'mapa') {pararMusica(); carregarMapa();}
+  if(tab === 'missio') {pararMusica(); carregarMissioTab();}
+  if(tab === 'gremi') {iniciarMusicaChiptune('gremi'); mostrarGremi('personatges', e);}
+  if(tab === 'botiga') {iniciarMusicaChiptune('estudio'); carregarBotiga();}
 }
 
 async function carregarItems() {
@@ -259,34 +258,26 @@ async function carregarItems() {
     ITEMS = {};
     arr.forEach(i => ITEMS[i.id] = i);
   } catch(e) {
-    console.log('No s\'ha pogut carregar items.json');
     ITEMS = {};
   }
 }
 
 async function carregarCapitol(nombreArchivo) {
+  pararMusica();
   try {
     const res = await fetch(`./data/${nombreArchivo}`);
-    if (!res.ok) throw new Error('Archivo no encontrado: ' + nombreArchivo + ' - Status: ' + res.status);
-
+    if (!res.ok) throw new Error('Archivo no encontrado: ' + nombreArchivo);
     const data = await res.json();
 
     let capitolInfo = CAPITOLS.find(c => c.archivo === nombreArchivo);
-
     if (!capitolInfo) {
       const resCap = await fetch('./data/capitols.json');
       const capitolsData = await resCap.json();
       capitolInfo = capitolsData.find(c => c.arxiu === `./data/${nombreArchivo}`);
     }
+    if (!capitolInfo) throw new Error('Capítol no trobat');
 
-    if (!capitolInfo) throw new Error('Capítol no trobat a CAPITOLS ni capitols.json');
-
-    estat.capitolActual = {
-      id: capitolInfo.id,
-      passos: data,
-      recompensa_100: capitolInfo.recompensa_100 || null
-    };
-
+    estat.capitolActual = {id: capitolInfo.id, passos: data, recompensa_100: capitolInfo.recompensa_100 || null};
     estat.pasActual = 0;
     estat.falladesCapitol = 0;
 
@@ -299,10 +290,8 @@ async function carregarCapitol(nombreArchivo) {
 
     canviarTab('missio', null);
     setTimeout(() => carregarPas(), 100);
-
   } catch(e) {
     alert('Error carregant capítol: ' + e.message);
-    console.error(e);
   }
 }
 
@@ -313,16 +302,9 @@ function carregarMapa() {
   CAPITOLS.forEach(capitol => {
     const completat = estat.capitolsCompletats.includes(capitol.id);
     const desbloquejat = capitol.desbloquejat || estat.capitolsCompletats.includes(capitol.requereix);
-
     const card = document.createElement('div');
     card.className = 'capitol-card' + (completat? ' completat' : '') + (!desbloquejat? ' bloquejat' : '');
-
-    let html = `
-      <div class="capitol-icona">${capitol.icona}</div>
-      <h3>${capitol.nom}</h3>
-      <p>${capitol.desc}</p>
-    `;
-
+    let html = `<div class="capitol-icona">${capitol.icona}</div><h3>${capitol.nom}</h3><p>${capitol.desc}</p>`;
     if (completat) {
       html += `✓ ${LANG.completat} <button class="btn btn-sec" style="margin-top:10px;" onclick="repetirCapitol('${capitol.id}'); event.stopPropagation()">${LANG.repetir}</button>`;
     } else if (desbloquejat) {
@@ -330,7 +312,6 @@ function carregarMapa() {
     } else {
       html += `<p style="color:#888; margin-top:10px;">${LANG.bloquejat}</p>`;
     }
-
     card.innerHTML = html;
     mapaDiv.appendChild(card);
   });
@@ -368,56 +349,47 @@ function carregarPas() {
   const pas = estat.capitolActual.passos[estat.pasActual];
   if (!pas) { completarCapitol(); return; }
 
-  document.getElementById('npc-box').style.display = 'block';
-  document.getElementById('npc-nom').textContent = pas.escena?.split(' - ')[0] || 'NPC';
+  const npcEmoji = pas.npc_emoji || '👤';
+  const npcNom = pas.npc_nom || 'NPC';
+  const jugadorEmoji = estat.personatge?.emoji || '🧑';
+  const jugadorNom = estat.personatge?.nom || 'Tu';
 
-  const dialogEscaped = (pas.dialog || '').replace(/'/g, "\\'");
-  document.getElementById('npc-text').innerHTML = `
-    ${pas.dialog || ''}
-    <button class="audio-btn" onclick="parlar('${dialogEscaped}')" style="background:none; border:none; font-size:20px; margin-left:8px; cursor:pointer; vertical-align:middle;">🔊</button>
+  document.getElementById('npc-box').style.display = 'block';
+  document.getElementById('npc-box').innerHTML = `
+    <div style="display:flex; align-items:flex-start; gap:12px; margin-bottom:12px;">
+      <span style="font-size:42px; line-height:1;">${npcEmoji}</span>
+      <div style="flex:1;">
+        <strong style="font-size:16px; display:block; margin-bottom:4px;">${npcNom}</strong>
+        <p style="margin:0; line-height:1.4;">${pas.dialog || ''}</p>
+      </div>
+    </div>
+    <div style="display:flex; align-items:center; gap:10px; margin-top:15px; padding-top:12px; border-top:1px solid #333; opacity:0.8;">
+      <span style="font-size:32px;">${jugadorEmoji}</span>
+      <span style="font-size:14px; color:#aaa;">${jugadorNom}</span>
+    </div>
   `;
 
   document.getElementById('missio-titol').textContent = pas.pregunta;
-  document.getElementById('missio-escenari').textContent = '';
-
   const opcionsDiv = document.getElementById('missio-opcions');
   opcionsDiv.innerHTML = '';
-
   pas.opcions.forEach((opcio, i) => {
-    const textEscaped = opcio.text.replace(/'/g, "\\'");
     const div = document.createElement('div');
     div.className = 'opcio';
-    div.innerHTML = `
-      <span class="opcio-text">${opcio.text}</span>
-      <button class="audio-btn" onclick="event.stopPropagation(); parlar('${textEscaped}')" style="background:none; border:none; font-size:18px; cursor:pointer; margin-left:8px;">🔊</button>
-    `;
+    div.innerHTML = `<span class="opcio-text">${opcio.text}</span>`;
     div.onclick = () => seleccionarOpcio(i);
     opcionsDiv.appendChild(div);
   });
-
   document.getElementById('missio-feedback').innerHTML = '';
-}
-
-function parlar(text) {
-  if ('speechSynthesis' in window) {
-    speechSynthesis.cancel();
-    const utter = new SpeechSynthesisUtterance(text);
-    utter.lang = 'ca-ES';
-    utter.rate = 0.9;
-    speechSynthesis.speak(utter);
-  }
 }
 
 function seleccionarOpcio(idx) {
   if(estat.bloquejat) return;
-
   const pas = estat.capitolActual.passos[estat.pasActual];
   const opcio = pas.opcions[idx];
   const feedback = opcio.feedback;
 
   estat.bloquejat = true;
   document.querySelectorAll('.opcio').forEach(o => o.classList.add('disabled'));
-
   const tempsLectura = 6000;
   mostrarFeedback(feedback, tempsLectura);
 
@@ -430,12 +402,7 @@ function seleccionarOpcio(idx) {
     estat.stats.rauxa += opcio.guany?.rauxa || 0;
     estat.stats.arrel += opcio.guany?.arrel || 0;
     estat.stats.obert += opcio.guany?.obert || 0;
-
-    if(opcio.stats) {
-      Object.keys(opcio.stats).forEach(k => {
-        estat.stats[k] += opcio.stats[k];
-      });
-    }
+    if(opcio.stats) Object.keys(opcio.stats).forEach(k => {estat.stats[k] += opcio.stats[k];});
   } else {
     estat.falladesCapitol = (estat.falladesCapitol || 0) + 1;
     estat.fallades.push({capitol: estat.capitolActual.id, pas: estat.pasActual});
@@ -454,72 +421,39 @@ function seleccionarOpcio(idx) {
 
 function mostrarFeedback(text, duracio) {
   const feedbackDiv = document.getElementById('missio-feedback');
-  feedbackDiv.innerHTML = `
-    <div id="feedback-box">
-      <p>${text}</p>
-      <div id="feedback-barra" style="animation-duration: ${duracio}ms;"></div>
-    </div>
-  `;
+  feedbackDiv.innerHTML = `<div id="feedback-box"><p>${text}</p><div id="feedback-barra" style="animation-duration: ${duracio}ms;"></div></div>`;
 }
 
 function completarCapitol() {
+  tocarJingleCompletado();
   if (!estat.capitolsCompletats.includes(estat.capitolActual.id)) {
     estat.capitolsCompletats.push(estat.capitolActual.id);
   }
-
   const seguent = CAPITOLS.find(c => c.requereix === estat.capitolActual.id);
   if (seguent) seguent.desbloquejat = true;
 
   document.getElementById('npc-box').style.display = 'none';
-
   const es100 = (estat.falladesCapitol || 0) === 0;
   const fallades = estat.falladesCapitol || 0;
   let htmlPremi = '';
   const vecesNecesarias = 3;
 
   if(es100 && estat.capitolActual.recompensa_100) {
-    estat.capitols100Counts[estat.capitolActual.id] =
-      (estat.capitols100Counts[estat.capitolActual.id] || 0) + 1;
+    estat.capitols100Counts[estat.capitolActual.id] = (estat.capitols100Counts[estat.capitolActual.id] || 0) + 1;
     const veces100 = estat.capitols100Counts[estat.capitolActual.id];
-
     const item = ITEMS[estat.capitolActual.recompensa_100.item_id];
     if(item &&!estat.objectes.includes(estat.capitolActual.recompensa_100.item_id)) {
       estat.objectes.push(estat.capitolActual.recompensa_100.item_id);
     }
-
     if(veces100 >= vecesNecesarias && estat.capitolActual.recompensa_100.ruta) {
       if(!estat.rutesDesbloquejades.includes(estat.capitolActual.recompensa_100.ruta)) {
         estat.rutesDesbloquejades.push(estat.capitolActual.recompensa_100.ruta);
       }
     }
-
-    const imgHtmlPremi = item?.emoji
-  ? `<div style="font-size: 80px; margin-bottom: 15px;">${item.emoji}</div>`
-      : `<img src="${item?.imatge}" alt="${item?.nom}" style="width:100px; height:100px; object-fit:contain;">`;
-
-    htmlPremi = `
-      <div class="item-desbloquejat">
-        ${imgHtmlPremi}
-        <h3>${item?.nom || 'Premi'}</h3>
-        <p>${item?.descripcio || ''}</p>
-        <p style="color:#FFD700; font-weight:bold;">
-          ${veces100 >= vecesNecesarias
-        ? '<p style="color:#4CAF50;">Ruta secreta desbloquejada!</p>'
-            : `Falten ${vecesNecesarias - veces100} cops per la ruta secreta`}
-        </p>
-      </div>
-    `;
+    const imgHtmlPremi = item?.emoji? `<div style="font-size: 80px; margin-bottom: 15px;">${item.emoji}</div>` : `<img src="${item?.imatge}" style="width:100px; height:100px; object-fit:contain;">`;
+    htmlPremi = `<div class="item-desbloquejat">${imgHtmlPremi}<h3>${item?.nom || 'Premi'}</h3><p>${item?.descripcio || ''}</p><p style="color:#FFD700; font-weight:bold;">${veces100 >= vecesNecesarias? '<p style="color:#4CAF50;">Ruta secreta desbloquejada!</p>' : `Falten ${vecesNecesarias - veces100} cops per la ruta secreta`}</p></div>`;
   } else {
-    htmlPremi = `
-      <div style="text-align:center; margin-top:20px;">
-        <p style="color:#ff6b6b; font-size:18px; font-weight:bold;">
-          Has fallat ${fallades} pregunta${fallades > 1? 's' : ''}
-        </p>
-        <p style="color:#888; margin-top:10px;">
-          Fes 0 fallos per guanyar l'item especial. Torna a intentar-ho!
-        </p>
-      </div>
-    `;
+    htmlPremi = `<div style="text-align:center; margin-top:20px;"><p style="color:#ff6b6b; font-size:18px; font-weight:bold;">Has fallat ${fallades} pregunta${fallades > 1? 's' : ''}</p><p style="color:#888; margin-top:10px;">Fes 0 fallos per guanyar l'item especial.</p></div>`;
   }
 
   document.getElementById('missio-card').innerHTML = `
@@ -532,7 +466,6 @@ function completarCapitol() {
       </div>
     </div>
   `;
-
   guardarEstat();
   carregarMapa();
 }
@@ -541,20 +474,13 @@ function actualitzarTotem() {
   const stats = estat.stats;
   let maxStat = 'neutral';
   let maxVal = 0;
-
   Object.keys(stats).forEach(k => {
-    if(stats[k] > maxVal) {
-      maxVal = stats[k];
-      maxStat = k;
-    }
+    if(stats[k] > maxVal) {maxVal = stats[k]; maxStat = k;}
   });
-
   estat.totem = maxVal >= 20? maxStat : 'neutral';
   document.documentElement.setAttribute('data-totem', estat.totem);
-
   const emojis = { seny: '🦉', rauxa: '🔥', arrel: '🌳', obert: '🌍', neutral: '' };
-  document.getElementById('totem-display').textContent =
-    estat.totem!== 'neutral'? `Tòtem: ${emojis[estat.totem]} ${estat.totem.toUpperCase()}` : '';
+  document.getElementById('totem-display').textContent = estat.totem!== 'neutral'? `Tòtem: ${emojis[estat.totem]} ${estat.totem.toUpperCase()}` : '';
 }
 
 function repetirCapitolActual() {
@@ -566,30 +492,19 @@ function tornarMapa() {
   estat.capitolActual = null;
   estat.pasActual = 0;
   estat.bloquejat = false;
-
   document.getElementById('npc-box').style.display = 'none';
-  document.getElementById('missio-card').innerHTML = `
-    <h3 id="missio-titol">Selecciona una missió al mapa</h3>
-    <div id="missio-escenari"></div>
-    <div id="missio-opcions"></div>
-    <div id="missio-feedback"></div>
-  `;
+  document.getElementById('missio-card').innerHTML = `<h3 id="missio-titol">Selecciona una missió al mapa</h3><div id="missio-escenari"></div><div id="missio-opcions"></div><div id="missio-feedback"></div>`;
   canviarTab('mapa', null);
 }
 
 function carregarMissioTab() {
   if (!estat.capitolActual) {
-    document.getElementById('missio-card').innerHTML = `
-      <button class="btn" onclick="iniciarRepas()">${LANG.repas_rapido}</button>
-      <h3 style="margin-top:20px;">${LANG.repas_titulo}</h3>
-      <div id="repas-contenidor"></div>
-    `;
+    document.getElementById('missio-card').innerHTML = `<button class="btn" onclick="iniciarRepas()">${LANG.repas_rapido}</button><h3 style="margin-top:20px;">${LANG.repas_titulo}</h3><div id="repas-contenidor"></div>`;
   }
 }
 
 function iniciarRepas() {
-  document.getElementById('repas-contenidor').innerHTML =
-    '<p style="text-align:center; color:#888;">Completa un capítol primer</p>';
+  document.getElementById('repas-contenidor').innerHTML = '<p style="text-align:center; color:#888;">Completa un capítol primer</p>';
 }
 
 function guardarEstat() {
@@ -604,55 +519,51 @@ function guardarEstat() {
   localStorage.setItem('cat_obert', estat.stats.obert);
   localStorage.setItem('cat_totem', estat.totem);
   localStorage.setItem('cat_fallades', JSON.stringify(estat.fallades));
+  localStorage.setItem('cat_personatge', JSON.stringify(estat.personatge));
 }
 
 function actualitzarUI() {
   document.getElementById('coins').innerHTML = `🪙 ${estat.monedes} <span id="text-monedes">${LANG.monedes}</span>`;
-  document.getElementById('stats').textContent =
-    `Seny: ${estat.stats.seny} | Rauxa: ${estat.stats.rauxa} | Arrel: ${estat.stats.arrel} | Obert: ${estat.stats.obert}`;
+  document.getElementById('stats').textContent = `Seny: ${estat.stats.seny} | Rauxa: ${estat.stats.rauxa} | Arrel: ${estat.stats.arrel} | Obert: ${estat.stats.obert}`;
 }
 
 function mostrarGremi(tab, e) {
   document.querySelectorAll('.sub-tab-btn').forEach(b => b.classList.remove('active'));
   if(e) e.target.classList.add('active');
-
   const cont = document.getElementById('gremi-contenidor');
   cont.innerHTML = '';
 
   if(tab === 'personatges') {
-    const emojis = { seny: '🦉', rauxa: '🔥', arrel: '🌳', obert: '🌍', neutral: '😐' };
-    const titols = { seny: 'Estratèg', rauxa: 'Impulsiu', arrel: 'Arrelat', obert: 'Cosmopolita', neutral: 'Novell' };
-    const desc = {
-      seny: 'Penses abans d\'actuar. La gent confia en el teu seny.',
-      rauxa: 'Actues amb passió. La teva energia contagia tothom.',
-      arrel: 'Estimes la terra i la tradició. Ets la memòria del poble.',
-      obert: 'Obert al món. Aprens de totes les cultures.',
-      neutral: 'Acabes de començar el teu viatge per Catalunya.'
-    };
+    if(!estat.personatge) {
+      // Pantalla de selección con scroll
+      let html = `<h3 style="text-align:center; margin-bottom:20px;">${LANG.tria_personatge}</h3>`;
+      html += `<div style="display:grid; grid-template-columns:repeat(4,1fr); gap:10px; max-height:400px; overflow-y:auto; padding:10px;">`;
+      PERSONATGES.forEach(p => {
+        html += `<button class="btn" style="font-size:36px; padding:15px 10px; display:flex; flex-direction:column; align-items:center; gap:5px;" onclick="seleccionarPersonatge('${p.id}')">${p.emoji}<span style="font-size:12px;">${p.nom}</span></button>`;
+      });
+      html += `</div><div style="margin-top:20px; text-align:center;"><input type="text" id="nom-jugador" placeholder="${LANG.nom_personatge}" style="padding:10px; width:80%; border-radius:8px; border:none; background:#2a2a2a; color:#fff;"></div>`;
+      cont.innerHTML = html;
+    } else {
+      // Mostrar personaje seleccionado
+      const emojis = { seny: '🦉', rauxa: '🔥', arrel: '🌳', obert: '🌍', neutral: '😐' };
+      const titols = { seny: 'Estratèg', rauxa: 'Impulsiu', arrel: 'Arrelat', obert: 'Cosmopolita', neutral: 'Novell' };
+      const totalStats = estat.stats.seny + estat.stats.rauxa + estat.stats.arrel + estat.stats.obert;
+      const rang = totalStats < 20? 'Novell' : totalStats < 50? 'Viatjant' : totalStats < 100? 'Mestre' : 'Llegendari';
 
-    const totalStats = estat.stats.seny + estat.stats.rauxa + estat.stats.arrel + estat.stats.obert;
-    const rang = totalStats < 20? 'Novell' : totalStats < 50? 'Viatjant' : totalStats < 100? 'Mestre' : 'Llegendari';
-
-    cont.innerHTML = `
-      <div class="gremi-item" style="grid-column:1/-1; text-align:center;">
-        <h2 style="font-size:48px;">${emojis[estat.totem]}</h2>
-        <h3 style="margin:10px 0;">Tòtem: ${estat.totem.toUpperCase()}</h3>
-        <p style="color:#888; margin-bottom:15px;">${desc[estat.totem]}</p>
-        <hr style="border-color:#333; margin:15px 0;">
-        <p><b>Rang:</b> ${rang}</p>
-        <p><b>Títol:</b> ${titols[estat.totem]}</p>
-        <p><b>Capítols 100%:</b> ${estat.capitolsCompletats.length}/${CAPITOLS.length}</p>
-        <p><b>Monedes:</b> 🪙 ${estat.monedes}</p>
-        <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:15px; text-align:left;">
-          <div>Seny: ${estat.stats.seny}</div>
-          <div>Rauxa: ${estat.stats.rauxa}</div>
-          <div>Arrel: ${estat.stats.arrel}</div>
-          <div>Obert: ${estat.stats.obert}</div>
+      cont.innerHTML = `
+        <div class="gremi-item" style="grid-column:1/-1; text-align:center;">
+          <div style="font-size:64px;">${estat.personatge.emoji}</div>
+          <h3 style="margin:10px 0;">${estat.personatge.nom}</h3>
+          <p style="color:#888;">${estat.personatge.nom_cat}</p>
+          <hr style="border-color:#333; margin:15px 0;">
+          <p><b>Rang:</b> ${rang}</p>
+          <p><b>Títol:</b> ${titols[estat.totem]}</p>
+          <p><b>Capítols 100%:</b> ${estat.capitolsCompletats.length}/${CAPITOLS.length}</p>
+          <button class="btn btn-sec" style="margin-top:15px;" onclick="canviarPersonatge()">${LANG.canviar_personatge}</button>
         </div>
-      </div>
-    `;
+      `;
+    }
   }
-
   else if(tab === 'objectes') {
     if(estat.objectes.length === 0) {
       cont.innerHTML = `<div style="grid-column:1/-1; text-align:center; color:#888;">Encara no tens objectes</div>`;
@@ -661,50 +572,45 @@ function mostrarGremi(tab, e) {
         const item = ITEMS[id];
         if(item) {
           const esEmoji = item.imatge?.length <= 2 &&!item.imatge.startsWith('./');
-          const imgHtml = esEmoji
-        ? `<div style="font-size: 60px; margin-bottom: 10px;">${item.imatge}</div>`
-            : `<img src="${item.imatge}" style="width:80px; height:80px; object-fit:contain;">`;
-
-          cont.innerHTML += `
-            <div class="gremi-item">
-              ${imgHtml}
-              <div>${item.nom}</div>
-              <div style="font-size:12px; color:#888;">${item.descripcio}</div>
-            </div>
-          `;
+          const imgHtml = esEmoji? `<div style="font-size: 60px; margin-bottom: 10px;">${item.imatge}</div>` : `<img src="${item.imatge}" style="width:80px; height:80px; object-fit:contain;">`;
+          cont.innerHTML += `<div class="gremi-item">${imgHtml}<div>${item.nom}</div><div style="font-size:12px; color:#888;">${item.descripcio}</div></div>`;
         }
       });
     }
   }
-
   else if(tab === 'llegendes') {
     const llegendes = [
       { id: 'capitol1_bcn_born', nom: 'El Born, Barcelona', icona: '🏛️', desbloquejada: estat.capitolsCompletats.includes('capitol1_bcn_born'), text: 'El Born és el barri gòtic més viu.' },
       { id: 'capitol_02_girona', nom: 'Temps de Flors, Girona', icona: '🌸', desbloquejada: estat.capitolsCompletats.includes('capitol_02_girona'), text: 'Cada maig, Girona s\'omple de flors.' },
       { id: 'capitol_03_fires_valencia', nom: 'Falles, València', icona: '🔥', desbloquejada: estat.capitolsCompletats.includes('capitol_03_fires_valencia'), text: 'El foc purifica tot.' }
     ];
-
     llegendes.forEach(l => {
       if(l.desbloquejada) {
-        cont.innerHTML += `
-          <div class="gremi-item" style="grid-column:1/-1;">
-            <div style="font-size:36px;">${l.icona}</div>
-            <h3 style="margin:10px 0;">${l.nom}</h3>
-            <p style="font-size:14px; color:#ccc;">${l.text}</p>
-            <div style="color:#4CAF50; font-size:12px; margin-top:10px;">✓ Desbloquejada</div>
-          </div>
-        `;
+        cont.innerHTML += `<div class="gremi-item" style="grid-column:1/-1;"><div style="font-size:36px;">${l.icona}</div><h3 style="margin:10px 0;">${l.nom}</h3><p style="font-size:14px; color:#ccc;">${l.text}</p><div style="color:#4CAF50; font-size:12px; margin-top:10px;">✓ Desbloquejada</div></div>`;
       } else {
-        cont.innerHTML += `
-          <div class="gremi-item" style="grid-column:1/-1; opacity:0.4;">
-            <div style="font-size:36px;">🔒</div>
-            <h3 style="margin:10px 0;">???</h3>
-            <p style="font-size:14px; color:#666;">Completa el capítol per desbloquejar aquesta llegenda</p>
-          </div>
-        `;
+        cont.innerHTML += `<div class="gremi-item" style="grid-column:1/-1; opacity:0.4;"><div style="font-size:36px;">🔒</div><h3 style="margin:10px 0;">???</h3><p style="font-size:14px; color:#666;">Completa el capítol per desbloquejar aquesta llegenda</p></div>`;
       }
     });
   }
+}
+
+function seleccionarPersonatge(id) {
+  const p = PERSONATGES.find(x => x.id === id);
+  const nomInput = document.getElementById('nom-jugador').value.trim();
+  estat.personatge = {
+    id: p.id,
+    emoji: p.emoji,
+    nom: nomInput || 'Jugador',
+    nom_cat: p.nom
+  };
+  guardarEstat();
+  mostrarGremi('personatges', null);
+}
+
+function canviarPersonatge() {
+  estat.personatge = null;
+  guardarEstat();
+  mostrarGremi('personatges', null);
 }
 
 function carregarBotiga() {
