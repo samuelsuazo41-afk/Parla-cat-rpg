@@ -100,15 +100,65 @@ const CAPITOLS = [
     archivo: "capitol_03_fires_valencia.json",
     requereix: "capitol_02_girona",
     recompensa_100: {
-  item_id: "clau_de_la_lonja",
-  ruta: "ruta_valencia_ciutat_vella"
+      item_id: "clau_de_la_lonja",
+      ruta: "ruta_valencia_ciutat_vella"
+    }
   }
-}
 ];
 
 let ITEMS = {};
 let AUDIO_ENCERT = null;
 let AUDIO_FALLADA = null;
+
+// --- MÚSICA CHIPTUNE CATALANA ---
+let audioCtx = null;
+let musicaLoop = null;
+
+function iniciarMusicaChiptune() {
+  if (musicaLoop) return;
+
+  audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+  const notas = [
+    {freq: 523, dur: 0.3}, {freq: 587, dur: 0.3}, {freq: 659, dur: 0.6},
+    {freq: 698, dur: 0.3}, {freq: 784, dur: 0.6}, {freq: 698, dur: 0.3},
+    {freq: 659, dur: 0.6}, {freq: 587, dur: 0.3}, {freq: 523, dur: 0.9},
+    {freq: 0, dur: 0.3},
+  ];
+
+  let tiempo = audioCtx.currentTime;
+
+  function tocarNota(nota) {
+    if (nota.freq === 0) return;
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    osc.type = 'square';
+    osc.frequency.value = nota.freq;
+    gain.gain.value = 0.08;
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
+    osc.start(tiempo);
+    osc.stop(tiempo + nota.dur);
+  }
+
+  function loop() {
+    tiempo = audioCtx.currentTime;
+    notas.forEach(nota => {
+      tocarNota(nota);
+      tiempo += nota.dur;
+    });
+    musicaLoop = setTimeout(loop, notas.reduce((a, b) => a + b.dur, 0) * 1000);
+  }
+
+  loop();
+}
+
+function pararMusica() {
+  if (musicaLoop) clearTimeout(musicaLoop);
+  if (audioCtx) audioCtx.close();
+  musicaLoop = null;
+  audioCtx = null;
+}
 
 // INIT
 document.addEventListener('DOMContentLoaded', () => {
@@ -121,6 +171,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   AUDIO_ENCERT = new Audio('data:audio/wav;base64,UklGRiZDAABXQVZFZm10IBAAAAABAAEAESsAACJWAAACABAAZGF0YQIAAAAAAAA=');
   AUDIO_FALLADA = new Audio('data:audio/wav;base64,UklGRiZDAABXQVZFZm10IBAAAAABAAEAESsAACJWAAACABAAZGF0YQIAAAAAAAAA');
+
+  // Inicia música con el primer tap
+  document.addEventListener('click', iniciarMusicaChiptune, { once: true });
 });
 
 function aplicarIdioma() {
@@ -387,7 +440,7 @@ function completarCapitol() {
     }
 
     const imgHtmlPremi = item?.emoji
-    ? `<div style="font-size: 80px; margin-bottom: 15px;">${item.emoji}</div>`
+   ? `<div style="font-size: 80px; margin-bottom: 15px;">${item.emoji}</div>`
       : `<img src="${item?.imatge}" alt="${item?.nom}" style="width:100px; height:100px; object-fit:contain;">`;
 
     htmlPremi = `
@@ -397,7 +450,7 @@ function completarCapitol() {
         <p>${item?.descripcio || ''}</p>
         <p style="color:#FFD700; font-weight:bold;">
           ${veces100 >= vecesNecesarias
-          ? '<p style="color:#4CAF50;">Ruta secreta desbloquejada!</p>'
+         ? '<p style="color:#4CAF50;">Ruta secreta desbloquejada!</p>'
             : `Falten ${vecesNecesarias - veces100} cops per la ruta secreta`}
         </p>
       </div>
@@ -555,7 +608,7 @@ function mostrarGremi(tab, e) {
         if(item) {
           const esEmoji = item.imatge?.length <= 2 &&!item.imatge.startsWith('./');
           const imgHtml = esEmoji
-          ? `<div style="font-size: 60px; margin-bottom: 10px;">${item.imatge}</div>`
+         ? `<div style="font-size: 60px; margin-bottom: 10px;">${item.imatge}</div>`
             : `<img src="${item.imatge}" style="width:80px; height:80px; object-fit:contain;">`;
 
           cont.innerHTML += `
