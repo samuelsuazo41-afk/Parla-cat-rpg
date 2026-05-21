@@ -101,7 +101,7 @@ const CAPITOLS = [
     requereix: "capitol_02_girona",
     recompensa_100: {
       item_id: "fuet_del_foc",
-      ruta: "./fuet_fires.valencia"
+      ruta: "./fuet_fires_valencia"
     }
   }
 ];
