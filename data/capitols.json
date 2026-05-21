@@ -19,14 +19,12 @@
     }
   },
   {
-    "id": "ruta_flors_nit",
-    "nom": "Girona - Flors de Nit",
-    "icona": "🌙",
-    "arxiu": "./data/ruta_flors_nit.json",
-    "secret": true,
-    "recompensa_100": {
-      "item_id": "clau_flors_nit",
-      "ruta": null
-    }
+  "id": "ruta_girona_muralla_viva",
+  "nom": "Girona - Muralla Viva",
+  "icona": "🛡️",
+  "arxiu": "./data/ruta_girona_muralla_viva.json",
+  "secret": true,
+  "desbloqueig": "completar_capitol_02_girona_2_veces"
+   }
   }
 ]
