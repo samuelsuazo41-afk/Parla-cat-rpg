@@ -115,7 +115,7 @@ let audioCtx = null;
 let musicaLoop = null;
 let melodiaActual = null;
 
-// Volumen en 0.05 para concentración
+// Volumen en 0.04 para concentración
 const MELODIAS = {
   menu: [ // Mapa/menú tranquilo
     {freq: 523, dur: 0.3}, {freq: 587, dur: 0.3}, {freq: 659, dur: 0.6},
