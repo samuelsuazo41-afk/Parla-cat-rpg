@@ -100,10 +100,10 @@ const CAPITOLS = [
     archivo: "capitol_03_fires_valencia.json",
     requereix: "capitol_02_girona",
     recompensa_100: {
-      item_id: "fuet_del_foc",
-      ruta: "./valencia_ciutat_vella"
-    }
-  }
+  item_id: "clau_de_la_lonja",
+  ruta: "ruta_valencia_ciutat_vella"
+ }
+
 ];
 
 let ITEMS = {};
