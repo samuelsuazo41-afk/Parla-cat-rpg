@@ -8,180 +8,76 @@
 <meta name="theme-color" content="#FF6B35">
 <link rel="manifest" href="./manifest.json">
 <style>
+:root {
+  --bg: #0a0a0a;
+  --card: #1a1a1a;
+  --accent: #FF6B35;
+  --accent2: #F7931E;
+  --text: #ffffff;
+  --text-sec: #b3b3b3;
+  --success: #4CAF50;
+  --danger: #f44336;
+}
+
+[data-totem="seny"] { --accent: #2196F3; --accent2: #64B5F6; }
+[data-totem="rauxa"] { --accent: #FF5722; --accent2: #FF8A65; }
+[data-totem="arrel"] { --accent: #4CAF50; --accent2: #81C784; }
+[data-totem="obert"] { --accent: #9C27B0; --accent2: #BA68C8; }
+
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
-:root[data-totem="rauxa"] { --bg: linear-gradient(135deg, #FF6B35 0%, #FF006E 100%); }
-:root[data-totem="seny"] { --bg: linear-gradient(135deg, #0A2463 0%, #FFC72C 100%); }
-:root[data-totem="arrel"] { --bg: linear-gradient(135deg, #2E7D32 0%, #8D6E63 100%); }
-:root[data-totem="obert"] { --bg: linear-gradient(135deg, #7B1FA2 0%, #FF4081 100%); }
-:root { --bg: linear-gradient(135deg, #FFD700 0%, #C8102E 100%); }
-
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  background: #0a0a0f;
-  color: #fff;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
   padding-bottom: 80px;
 }
 
-.header {
-  background: var(--bg);
+header {
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
   padding: 20px;
   text-align: center;
-  border-bottom: 2px solid #6B4F3A;
-  transition: background 0.8s ease;
+  box-shadow: 0 4px 20px rgba(255, 107, 53, 0.3);
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
-.header h1 { font-size: 22px; margin-bottom: 5px; color: #0a0a0f; font-weight: 800; }
-.coins { font-size: 18px; font-weight: bold; color: #0a0a0f; }
-.stats { font-size: 12px; color: #0a0a0f; margin-top: 5px; }
 
-.tab-content { display: none; padding: 20px; }
-.tab-content.active { display: block; }
+header h1 {
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
 
-.tabs {
+.stats-bar {
   display: flex;
-  background: #1a1a24;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  border-top: 1px solid #333;
-  z-index: 1000;
-}
-.tab-btn {
-  flex: 1;
+  justify-content: space-around;
   padding: 12px;
-  background: none;
-  border: none;
-  color: #888;
-  font-size: 12px;
-  cursor: pointer;
-}
-.tab-btn.active {
-  color: #FFD700;
-  background: rgba(255, 215, 0, 0.1);
-  border-top: 2px solid #FFD700;
+  background: var(--card);
+  border-bottom: 1px solid #333;
+  font-size: 14px;
 }
 
-.card {
-  background: #1a1a24;
-  border-radius: 12px;
-  padding: 20px;
-  margin-bottom: 15px;
-  border: 1px solid #2a2a35;
-}
-
-.btn {
-  background: linear-gradient(135deg, #C8102E 0%, #A60A24 100%);
-  color: #fff;
-  border: 1px solid #FFD700;
-  padding: 12px 20px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: bold;
-  width: 100%;
-  margin-top: 15px;
-}
-.btn:disabled { opacity: 0.5; cursor: not-allowed; }
-.btn-sec { background: #2a2a35; border: 1px solid #555; }
-
-.opcio {
-  background: #2a2a35;
-  padding: 15px;
-  margin-bottom: 10px;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.2s;
+.stat-item {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  gap: 6px;
 }
-.opcio:hover { background: #3a3a45; }
-.opcio.disabled { pointer-events: none; opacity: 0.6; }
 
-.capitol-card {
-  background: linear-gradient(135deg, #1a1a24 0%, #2a2a35 100%);
-  border: 2px solid #C8102E;
-  border-radius: 12px;
+.container {
   padding: 20px;
-  margin-bottom: 15px;
-}
-.capitol-card.completat { border-color: #4CAF50; }
-.capitol-card.bloquejat { opacity: 0.5; }
-
-.capitol-icona { font-size: 48px; text-align: center; margin-bottom: 10px; }
-
-.npc-box {
-  background: #2a2a35;
-  padding: 15px;
-  border-radius: 8px;
-  margin-bottom: 15px;
-  border-left: 4px solid #FFD700;
-}
-.npc-nom { color: #FFD700; font-weight: bold; margin-bottom: 5px; }
-.npc-text-container { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; }
-
-.audio-btn {
-  background: #FFD700;
-  border: none;
-  border-radius: 50%;
-  width: 36px;
-  height: 36px;
-  font-size: 18px;
-  cursor: pointer;
-  flex-shrink: 0;
-  transition: transform 0.1s;
-}
-.audio-btn:active { transform: scale(0.9); }
-
-.gremi-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
-.gremi-item {
-  background: #1a1a24;
-  padding: 15px;
-  border-radius: 12px;
-  text-align: center;
-  border: 1px solid #2a2a35;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
-.sub-tabs { display: flex; gap: 8px; margin-bottom: 15px; }
-.sub-tab-btn {
-  flex: 1;
-  padding: 10px;
-  background: #1a1a24;
-  border: 1px solid #2a2a35;
-  color: #888;
-  border-radius: 8px;
-  cursor: pointer;
-}
-.sub-tab-btn.active { background: #FFD700; color: #0a0a0f; font-weight: bold; }
-
-.completion-screen { text-align: center; padding: 40px 20px; }
-.completion-screen h2 { font-size: 28px; color: #4CAF50; margin-bottom: 15px; }
-.completion-screen p { font-size: 16px; color: #ccc; margin-bottom: 25px; }
-.completion-buttons { display: flex; gap: 10px; }
-
-/* FEEDBACK 4S CON BARRA */
-#feedback-box {
-  background: #2a2a35;
-  padding: 20px;
-  border-radius: 12px;
-  margin: 15px 0;
-  border: 2px solid #FFD700;
-  animation: fadeIn 0.3s;
+.tab-content {
+  display: none;
 }
 
-#feedback-barra {
-  width: 100%;
-  height: 4px;
-  background: linear-gradient(90deg, #FF6B35, #FF006E);
-  transform-origin: left;
-  animation: llegir 4s linear forwards;
-  margin-top: 15px;
-  border-radius: 2px;
-}
-
-@keyframes llegir {
-  from { transform: scaleX(0); }
-  to { transform: scaleX(1); }
+.tab-content.active {
+  display: block;
+  animation: fadeIn 0.3s ease;
 }
 
 @keyframes fadeIn {
@@ -189,134 +85,290 @@ body {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* ITEM DESBLOQUEADO */
-.item-desbloquejat {
-  text-align: center;
-  padding: 30px;
-  background: linear-gradient(135deg, #FFD70020, #C8102E20);
-  border: 2px solid #FFD700;
+.capitol-card {
+  background: var(--card);
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 16px;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.capitol-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.capitol-card.bloquejat {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.capitol-card.completat {
+  border-color: var(--success);
+}
+
+.capitol-icona {
+  font-size: 48px;
+  margin-bottom: 12px;
+}
+
+.btn {
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  color: white;
+  border: none;
+  padding: 14px 28px;
   border-radius: 12px;
-  animation: bounceIn 0.6s;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  width: 100%;
+  transition: transform 0.2s ease;
 }
 
-.item-desbloquejat img {
-  width: 120px;
-  height: 120px;
-  margin-bottom: 15px;
+.btn:active {
+  transform: scale(0.98);
 }
 
-@keyframes bounceIn {
- 0% { transform: scale(0.3); opacity: 0; }
- 50% { transform: scale(1.05); }
+.btn-sec {
+  background: var(--card);
+  border: 2px solid var(--accent);
+}
+
+.opcio {
+  background: var(--card);
+  border: 2px solid #333;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.opcio:hover {
+  border-color: var(--accent);
+  background: #222;
+}
+
+.opcio.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.opcio-text {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--card);
+  border-top: 1px solid #333;
+  display: flex;
+  justify-content: space-around;
+  padding: 12px 0;
+  z-index: 100;
+}
+
+.nav-item {
+  text-align: center;
+  font-size: 12px;
+  color: var(--text-sec);
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.nav-item.active {
+  color: var(--accent);
+}
+
+.nav-icon {
+  font-size: 24px;
+  display: block;
+  margin-bottom: 4px;
+}
+
+#missio-card {
+  background: var(--card);
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 20px;
+}
+
+#npc-box {
+  background: #222;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 20px;
+  border-left: 4px solid var(--accent);
+  display: none;
+}
+
+#feedback-box {
+  background: #1a1a1a;
+  border-radius: 12px;
+  padding: 16px;
+  margin-top: 16px;
+  border: 1px solid #333;
+}
+
+#feedback-barra {
+  height: 4px;
+  background: var(--accent);
+  border-radius: 2px;
+  margin-top: 12px;
+  animation: progress linear forwards;
+}
+
+@keyframes progress {
+  from { width: 100%; }
+  to { width: 0%; }
+}
+
+.gremi-item {
+  background: var(--card);
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.sub-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+}
+
+.sub-tab-btn {
+  background: var(--card);
+  border: 2px solid #333;
+  color: var(--text-sec);
+  padding: 10px 20px;
+  border-radius: 8px;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.sub-tab-btn.active {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: #222;
+}
+
+.completion-screen {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.completion-screen h2 {
+  font-size: 32px;
+  margin-bottom: 16px;
+  color: var(--success);
+}
+
+.item-desbloquejat {
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  border-radius: 16px;
+  padding: 30px;
+  margin: 20px 0;
+  animation: popIn 0.5s ease;
+}
+
+@keyframes popIn {
+ 0% { transform: scale(0.8); opacity: 0; }
  100% { transform: scale(1); opacity: 1; }
 }
 
-/* RUTAS SECRETAS */
-.capitol-card.ruta-secreta {
-  border: 2px solid #9C27B0;
-  background: linear-gradient(135deg, #1a1a24 0%, #2a1a35 100%);
-  box-shadow: 0 0 15px rgba(156, 39, 176, 0.3);
+.completion-buttons {
+  display: flex;
+  gap: 12px;
+  margin-top: 30px;
 }
 
-.capitol-card.ruta-secreta .capitol-icona {
-  animation: glow 2s ease-in-out infinite alternate;
-}
-
-@keyframes glow {
-  from { text-shadow: 0 0 5px #9C27B0; }
-  to { text-shadow: 0 0 20px #9C27B0, 0 0 30px #9C27B0; }
+.ruta-secreta {
+  border: 2px solid #FFD700;
+  background: linear-gradient(135deg, #1a1a1a, #2a2a1a);
 }
 </style>
 </head>
 <body>
 
-<div class="header" id="header">
-  <h1 id="app-titol">🏴 Parla Cat RPG</h1>
-  <div class="coins" id="coins">🪙 0 <span id="text-monedes">Monedes</span></div>
-  <div class="stats" id="stats">Seny: 0 | Rauxa: 0 | Arrel: 0 | Obert: 0</div>
-  <div class="stats" id="totem-display"></div>
+<header>
+  <h1 id="app-titol">Parla Cat RPG</h1>
+  <div id="totem-display" style="font-size: 12px; margin-top: 4px;"></div>
+</header>
+
+<div class="stats-bar">
+  <div class="stat-item">
+    <span id="coins">🪙 0</span>
+    <span id="text-monedes">Monedes</span>
+  </div>
+  <div class="stat-item" id="stats">
+    Seny: 0 | Rauxa: 0 | Arrel: 0 | Obert: 0
+  </div>
 </div>
 
-<div id="tab-mapa" class="tab-content active">
-  <h2 id="text-mon">🗺️ Mapa de Catalunya</h2>
-  <div id="mapa"></div>
-</div>
+<div class="container">
+  
+  <div id="tab-mapa" class="tab-content active">
+    <h2 id="text-mon" style="margin-bottom: 20px;">🗺️ Mapa de Catalunya</h2>
+    <div id="mapa"></div>
+  </div>
 
-<div id="tab-missio" class="tab-content">
-  <div id="npc-box" class="npc-box" style="display:none;">
-    <div class="npc-nom" id="npc-nom"></div>
-    <div class="npc-text-container">
-      <div id="npc-text"></div>
-      <button id="npc-audio-btn" class="audio-btn" style="display:none;">🔊</button>
+  <div id="tab-missio" class="tab-content">
+    <div id="npc-box"></div>
+    <div id="missio-card">
+      <h3 id="missio-titol">Selecciona una missió al mapa</h3>
+      <div id="missio-escenari"></div>
+      <div id="missio-opcions"></div>
+      <div id="missio-feedback"></div>
     </div>
   </div>
-  <div class="card" id="missio-card">
-    <h3 id="missio-titol">Selecciona una missió al mapa</h3>
-    <div id="missio-escenari"></div>
-    <div id="missio-opcions"></div>
-    <div id="missio-feedback"></div>
+
+  <div id="tab-gremi" class="tab-content">
+    <div class="sub-tabs">
+      <button class="sub-tab-btn active" onclick="mostrarGremi('personatges', event)">Personatges</button>
+      <button class="sub-tab-btn" onclick="mostrarGremi('biblioteca', event)">📚 Biblioteca</button>
+      <button class="sub-tab-btn" onclick="mostrarGremi('objectes', event)">Objectes</button>
+      <button class="sub-tab-btn" onclick="mostrarGremi('llegendes', event)">Llegendes</button>
+    </div>
+    <div id="gremi-contenidor"></div>
   </div>
-</div>
 
-<div id="tab-gremi" class="tab-content">
-  <div class="sub-tabs">
-    <button class="sub-tab-btn active" onclick="mostrarGremi('personatges', event)">👥 Personatges</button>
-    <button class="sub-tab-btn" onclick="mostrarGremi('objectes', event)">🎒 Objectes</button>
-    <button class="sub-tab-btn" onclick="mostrarGremi('llegendes', event)">📜 Llegendes</button>
+  <div id="tab-botiga" class="tab-content">
+    <h2 id="text-botiga" style="margin-bottom: 20px;">🛒 Botiga</h2>
+    <div id="botiga-contenidor"></div>
   </div>
-  <div id="gremi-contenidor" class="gremi-grid"></div>
+
 </div>
 
-<div id="tab-botiga" class="tab-content">
-  <div class="card">
-    <h3 id="text-botiga">🛒 Botiga</h3>
-    <div id="botiga-contenidor" class="gremi-grid"></div>
+<nav class="bottom-nav">
+  <div class="nav-item active" onclick="canviarTab('mapa', event)">
+    <span class="nav-icon">🗺️</span>
+    <span id="tab-mapa-txt">Món</span>
   </div>
-</div>
-
-<div class="tabs">
-  <button class="tab-btn active" onclick="canviarTab('mapa', event)">🗺️ <span id="tab-mapa-txt">Món</span></button>
-  <button class="tab-btn" onclick="canviarTab('missio', event)">📜 <span id="tab-missio-txt">Missió</span></button>
-  <button class="tab-btn" onclick="canviarTab('gremi', event)">🏛️ <span id="tab-gremi-txt">Gremi</span></button>
-  <button class="tab-btn" onclick="canviarTab('botiga', event)">🛒 <span id="tab-botiga-txt">Botiga</span></button>
-</div>
-
-<script>
-// TTS - Función para que hablen los parlantitos
-function parlar(text) {
-  if (!text) return;
-  
-  speechSynthesis.cancel();
-  
-  const utterance = new SpeechSynthesisUtterance(text);
-  utterance.lang = 'ca-ES';
-  utterance.rate = 0.9;
-  utterance.pitch = 1.0;
-  
-  utterance.onerror = () => {
-    utterance.lang = 'es-ES';
-    speechSynthesis.speak(utterance);
-  };
-  
-  speechSynthesis.speak(utterance);
-}
-
-// Captura clicks en cualquier botón con clase audio-btn
-document.addEventListener('click', function(e) {
-  const btn = e.target.closest('.audio-btn');
-  if (!btn) return;
-  
-  const container = btn.closest('.npc-box, .opcio, div');
-  const textEl = container?.querySelector('#npc-text, .opcio-text, span, div, p');
-  const text = textEl?.textContent?.trim();
-  
-  if (text) parlar(text);
-  e.stopPropagation();
-});
-
-window.parlar = parlar;
-</script>
+  <div class="nav-item" onclick="canviarTab('missio', event)">
+    <span class="nav-icon">📖</span>
+    <span id="tab-missio-txt">Missió</span>
+  </div>
+  <div class="nav-item" onclick="canviarTab('gremi', event)">
+    <span class="nav-icon">🏛️</span>
+    <span id="tab-gremi-txt">Gremi</span>
+  </div>
+  <div class="nav-item" onclick="canviarTab('botiga', event)">
+    <span class="nav-icon">🛒</span>
+    <span id="tab-botiga-txt">Botiga</span>
+  </div>
+</nav>
 
 <script src="./main.js"></script>
+
 </body>
 </html>
