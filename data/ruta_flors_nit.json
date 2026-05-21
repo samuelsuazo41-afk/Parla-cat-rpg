@@ -1,177 +1,160 @@
 [
   {
-    "escena": "Girona - Pujada de Sant Domènec, 1:30 AM",
-    "dialog": "ELIA, artista callejera con spray en la mano: 'Ostia! Aquí no entra turista que saca foto y se va. Parles català o te vas por donde has venido?'",
-    "pregunta": "Com li dius 'I'm trying' amb actitud?",
+    "escena": "Torre Gironella - Muralla Carolíngia, 22:00",
+    "dialog": "ÀLEX, guia nocturn amb llanterna: 'Això és Girona de veritat. Muralla del segle IX. Si vols pujar, guanya-t'ho. Diu-me en català per què vols pujar aquí dalt'.",
+    "personatge": "Àlex",
+    "pregunta": "Com li dius 'Quiero ver la ciudad' amb ganes?",
     "opcions": [
       {
-        "text": "Ho estic intentant, tia! No em jutgis!",
+        "text": "Vull veure la ciutat des de dalt!",
         "correcte": true,
-        "feedback": "ELIA: 'Així sí! Aquí tothom comença cagant-la. Pinta amb mi'.",
-        "guany": { "monedes": 50, "rauxa": 10 }
+        "feedback": "ÀLEX: 'Així sí. Pujarem. Des d'aquí Girona és teva'.",
+        "guany": { "monedes": 45, "arrel": 3 }
       },
       {
-        "text": "Estoy intentándolo",
+        "text": "I want to see the city",
         "correcte": false,
-        "feedback": "ELIA: 'No, no. Aquí en català o res. Torna-ho a dir'.",
+        "feedback": "ÀLEX: 'En català, nano. Prova: Vull veure...'.",
         "guany": { "monedes": 0 }
       },
       {
-        "text": "Intento parlar",
+        "text": "Pujar",
         "correcte": false,
-        "feedback": "ELIA: 'Massa sec. Dóna-li flow, dóna-li ganes'.",
+        "feedback": "ÀLEX: 'Massa curt. Dóna-li una frase sencera'.",
+        "guany": { "monedes": 10 }
+      }
+    ]
+  },
+  {
+    "escena": "Pont de Pedra - Riu Onyar",
+    "dialog": "MARTA, pintora de carrer: 'Aquesta és la postal. Cases de colors, riu, Catedral al fons. Si vols pintar amb mi, diu-me què veus en català'.",
+    "personatge": "Marta",
+    "pregunta": "Com descrius el paisatge?",
+    "opcions": [
+      {
+        "text": "Les cases de colors sobre el riu són molt maques",
+        "correcte": true,
+        "feedback": "MARTA: 'Perfecte! Tens ull. Seu i pinta amb mi'.",
+        "guany": { "monedes": 50, "obert": 3 }
+      },
+      {
+        "text": "Las casas son bonitas",
+        "correcte": false,
+        "feedback": "MARTA: 'Aquí tot en català. Prova: Les cases...'.",
+        "guany": { "monedes": 0 }
+      },
+      {
+        "text": "M'agrada",
+        "correcte": false,
+        "feedback": "MARTA: 'Sí, però explica una mica més. Què t'agrada?'.",
+        "guany": { "monedes": 15 }
+      }
+    ]
+  },
+  {
+    "escena": "El Call - Barri Jueu",
+    "dialog": "DAVID, historiador local: 'Aquests carrers tenen 800 anys. Aquí vivia la comunitat jueva més important de Catalunya. Sap què vol dir Call en català?'.",
+    "personatge": "David",
+    "pregunta": "Què respones?",
+    "opcions": [
+      {
+        "text": "Call vol dir carrer estret del barri jueu",
+        "correcte": true,
+        "feedback": "DAVID: 'Exacte. Es nota que t'interessa la història. Passa'.",
+        "guany": { "monedes": 60, "arrel": 5 }
+      },
+      {
+        "text": "No ho sé",
+        "correcte": false,
+        "feedback": "DAVID: 'Call és carrer estret. Recorda-ho. És història viva'.",
+        "guany": { "monedes": 10 }
+      },
+      {
+        "text": "Un carrer",
+        "correcte": false,
+        "feedback": "DAVID: 'Sí, però falta el què. Torna-ho a dir'.",
+        "guany": { "monedes": 20 }
+      }
+    ]
+  },
+  {
+    "escena": "Banyos Àrabs",
+    "dialog": "CARME, vigilant del museu: 'Molta gent diu Banys Àrabs, però són romànics del segle XII. Si ho dius bé, et deixo passar sense pagar'.",
+    "personatge": "Carme",
+    "pregunta": "Com ho dius correcte?",
+    "opcions": [
+      {
+        "text": "Aquests són els Banys Romànics, oi?",
+        "correcte": true,
+        "feedback": "CARME: 'Bravo! Així es parla amb coneixement. Passa'.",
+        "guany": { "monedes": 55, "seny": 3 }
+      },
+      {
+        "text": "Banys Àrabs",
+        "correcte": false,
+        "feedback": "CARME: 'No. Prova: Banys Romànics. Diu-ho bé'.",
         "guany": { "monedes": 0 }
       }
     ]
   },
   {
-    "escena": "Bar El Cau",
-    "dialog": "GERARD, el cambrer, et mira per sobre del got: 'Si demanes en castellà et poso aigua del riu Onyar. Què vols, crack?'",
-    "pregunta": "Com demanes una copa ben dit?",
+    "escena": "Escalinata de la Catedral",
+    "dialog": "GERARD, estudiant de música: 'Aquesta escala va sortir a Juego de Tronos. Però per mi el millor és com sona el català aquí. Prova una frase amb actitud'.",
+    "personatge": "Gerard",
+    "pregunta": "Què li dius per demostrar ganes?",
     "opcions": [
       {
-        "text": "Posa'm un vermut ben fred, si us plau, mestre",
+        "text": "Puja l'escala i no miris enrere!",
         "correcte": true,
-        "feedback": "GERARD: 'Uyyy amb mestre i tot! Això és respecte. Invita la casa'.",
-        "guany": { "monedes": 40, "obert": 5 }
+        "feedback": "GERARD: 'Uaaa! Això té força. Toco una cançó per tu'.",
+        "guany": { "monedes": 70, "rauxa": 4 }
       },
       {
-        "text": "Ponme un vermut por favor",
+        "text": "Sube la escalera",
         "correcte": false,
-        "feedback": "GERARD: 'Aquí no. Girona parla català. Repeteix'.",
+        "feedback": "GERARD: 'En català, tio. Prova: Puja l'escala...'.",
         "guany": { "monedes": 0 }
       },
       {
-        "text": "Un vermut",
+        "text": "Hola",
         "correcte": false,
-        "feedback": "GERARD: 'I el si us plau? Educació, nano'.",
+        "feedback": "GERARD: 'Hola? Aquí volem actitud, no timidesa'.",
+        "guany": { "monedes": 5 }
+      }
+    ]
+  },
+  {
+    "escena": "Pujada de Sant Domènec",
+    "dialog": "LAIA, veïna del barri: 'Visc aquí des de petita. Aquesta pujada és dura, però val la pena. Com dius que t'ha costat però val la pena?'.",
+    "personatge": "Laia",
+    "pregunta": "Què li contestes?",
+    "opcions": [
+      {
+        "text": "Ha costat, però val la pena pujar aquí",
+        "correcte": true,
+        "feedback": "LAIA: 'Així es parla. Girona es guanya pujant'.",
+        "guany": { "monedes": 65, "seny": 4 }
+      },
+      {
+        "text": "Está difícil",
+        "correcte": false,
+        "feedback": "LAIA: 'En català: Costa molt. Intenta-ho'.",
         "guany": { "monedes": 0 }
       }
     ]
   },
   {
-    "escena": "Plaça de la Independència",
-    "dialog": "Un grup de chavals fan una batucada. 'Canta amb nosaltres o et llencem a la font!'. Et miren esperant.",
-    "pregunta": "Com dius 'We are here' en català calent?",
+    "escena": "Final - Muralla al capvespre",
+    "dialog": "ÀLEX, MARTA, DAVID, CARME, GERARD i LAIA et miren des del camí de ronda. 'Has recorregut el Barri Vell parlant català. Això és respectar la ciutat'.",
+    "personatge": "Grup",
+    "pregunta": "Com tanques la nit?",
     "opcions": [
       {
-        "text": "Som aquí, som Girona!",
+        "text": "Gràcies per mostrar-me Girona. Fins aviat, família",
         "correcte": true,
-        "feedback": "Tothom crida i et puja a espatlles. Has entrat al grup.",
-        "guany": { "monedes": 80, "obert": 10 }
-      },
-      {
-        "text": "Estem aquí",
-        "correcte": false,
-        "feedback": "La gent fa 'buuu'. Falta força! Diu-se amb orgull.",
-        "guany": { "monedes": 0 }
-      },
-      {
-        "text": "Nosotros estamos aquí",
-        "correcte": false,
-        "feedback": "GERARD: 'No, no. Aquí som, punt. Torna-ho a dir'.",
-        "guany": { "monedes": 0 }
-      }
-    ]
-  },
-  {
-    "escena": "Muralles de Girona",
-    "dialog": "ÀVIA ROSER, 78 anys, fumant una cigarreta: 'Jo vaig amagar llibres en català sota la dictadura. Tu et talles per dir dues frases?'",
-    "pregunta": "Com li dius 'Thank you for everything' amb respecte?",
-    "opcions": [
-      {
-        "text": "Gràcies per tot, àvia. Ets una llegenda",
-        "correcte": true,
-        "feedback": "ÀVIA ROSER: 'Així es parla! Així no es mor la llengua, nen'.",
-        "guany": { "monedes": 70, "arrel": 15 }
-      },
-      {
-        "text": "Gràcies",
-        "correcte": false,
-        "feedback": "ÀVIA ROSER: 'Massa curt. Dóna-li cor'.",
-        "guany": { "monedes": 0 }
-      },
-      {
-        "text": "Moltes gràcies, abuela",
-        "correcte": false,
-        "feedback": "ÀVIA ROSER: 'Abuela no, que sóc catalana de soca-rel!'.",
-        "guany": { "monedes": 0 }
-      }
-    ]
-  },
-  {
-    "escena": "Carrer de la Força",
-    "dialog": "MARÇAL, skater del barri: 'Lema de Girona o no passes. Fàcil'.",
-    "pregunta": "Com dius 'Never give up' amb flow?",
-    "opcions": [
-      {
-        "text": "Mai et rendeixis, tio!",
-        "correcte": true,
-        "feedback": "MARÇAL: 'Ara sí! Ets dels nostres. Passa endavant'.",
-        "guany": { "monedes": 60, "rauxa": 8 }
-      },
-      {
-        "text": "No et rendeixis mai",
-        "correcte": false,
-        "feedback": "MARÇAL: 'Correcte però sense ànima. Fes-ho amb ganes'.",
-        "guany": { "monedes": 0 }
-      },
-      {
-        "text": "No parar!",
-        "correcte": false,
-        "feedback": "MARÇAL: 'Falta el mai. Torna-ho a dir'.",
-        "guany": { "monedes": 0 }
-      }
-    ]
-  },
-  {
-    "escena": "Catedral de Girona",
-    "dialog": "ELIA torna amb el spray: 'Última prova. Si ho dius bé, et dono la clau de la nit. Si falles, tornes al pont'.",
-    "pregunta": "Com dius 'Let's keep going' amb energia?",
-    "opcions": [
-      {
-        "text": "Que no pari això!",
-        "correcte": true,
-        "feedback": "ELIA: 'BOOOM! Així es parla Girona. Agafa la clau'.",
-        "guany": { "monedes": 100, "rauxa": 20 }
-      },
-      {
-        "text": "Seguim endavant",
-        "correcte": false,
-        "feedback": "ELIA: 'Sí, però falta força. Vull ganes!'.",
-        "guany": { "monedes": 0 }
-      },
-      {
-        "text": "Continuem",
-        "correcte": false,
-        "feedback": "ELIA: 'Molt neutre. Aquí som més canyeros!'.",
-        "guany": { "monedes": 0 }
-      }
-    ]
-  },
-  {
-    "escena": "Amanecer a Girona",
-    "dialog": "Surten els primers raigs sobre la Catedral. ELIA, GERARD, MARÇAL i l'ÀVIA ROSER t'envolten. 'Has aguantat tota la nit parlant català. Això és de respecte'.",
-    "pregunta": "Com et acomiades dient 'See you later' per tancar la nit?",
-    "opcions": [
-      {
-        "text": "Fins aviat, família! Gràcies per la nit, Girona",
-        "correcte": true,
-        "feedback": "Tots criden. ELIA et dóna la Clau de les Flors de Nit. 'Això obre coses, crack. No la perdis'.",
-        "guany": { "monedes": 150, "rauxa": 25 },
-        "item": "clau_flors_nit"
-      },
-      {
-        "text": "Adeu",
-        "correcte": false,
-        "feedback": "GERARD: 'Massa sec per una nit així. Torna-ho a dir'.",
-        "guany": { "monedes": 0 }
-      },
-      {
-        "text": "Ens veiem",
-        "correcte": false,
-        "feedback": "MARÇAL: 'Sí, però sense amor. Torna-ho a provar'.",
-        "guany": { "monedes": 0 }
+        "feedback": "Tots aplauden. ÀLEX et dóna la Clau de la Muralla Viva. 'Això obre el Barri Vell de nit. No la perdis'.",
+        "guany": { "monedes": 150, "arrel": 8, "seny": 5 },
+        "item": "clau_muralla_girona"
       }
     ]
   }
