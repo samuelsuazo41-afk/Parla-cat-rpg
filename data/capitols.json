@@ -2,10 +2,41 @@
   {
     "id": "capitol1_bcn_born",
     "nom": "Barcelona - El Born",
+    "icona": "🏛️",
     "descripcio": "Aprèn català al barri més viu de Barcelona",
     "arxiu": "./data/capitol1_bcn_born.json",
     "requereix_nivell": 1,
-    "tipus": "capitol"
+    "tipus": "capitol",
+    "recompensa_100": {
+      "item_id": "camisa_cenguera_barca",
+      "ruta": "ruta_rave_port_olympic"
+    }
+  },
+  {
+    "id": "capitol_02_girona",
+    "nom": "Girona - Temps de Flors",
+    "icona": "🏰💐",
+    "descripcio": "Flors als carrers. Català més lent, més de poble.",
+    "arxiu": "./data/capitol_02_girona.json",
+    "requereix": "capitol1_bcn_born",
+    "tipus": "capitol",
+    "recompensa_100": {
+      "item_id": "flor_suprema_temps_flors",
+      "ruta": "ruta_girona_muralla_viva"
+    }
+  },
+  {
+    "id": "capitol_03_fires_valencia",
+    "nom": "València - Fira de Falles",
+    "icona": "🔥",
+    "descripcio": "La fira està encesa. Parla amb la gent i guanya el Fuet del Foc.",
+    "arxiu": "./data/capitol_03_fires_valencia.json",
+    "requereix": "capitol_02_girona",
+    "tipus": "capitol",
+    "recompensa_100": {
+      "item_id": "clau_de_la_lonja",
+      "ruta": "ruta_valencia_ciutat_vella"
+    }
   },
   {
     "id": "ruta_rave_port_olympic",
@@ -24,16 +55,22 @@
     "icona": "🛡️",
     "arxiu": "./data/ruta_girona_muralla_viva.json",
     "secret": true,
-    "desbloqueig": "completar_capitol_02_girona_2_veces"
+    "desbloqueig": "completar_capitol_02_girona_2_veces",
+    "recompensa_100": {
+      "item_id": null,
+      "ruta": null
+    }
   },
-{
-  "id": "ruta_valencia_ciutat_vella",
-  "nom": "València - Ciutat Vella Nocturna",
-  "icona": "🦇",
-  "arxiu": "./data/ruta_valencia_ciutat_vella.json",
-  "secret": true,
-  "desbloqueig": "completar_capitol_03_fires_valencia_1_vegada"
-}
+  {
+    "id": "ruta_valencia_ciutat_vella",
+    "nom": "València - Ciutat Vella Nocturna",
+    "icona": "🦇",
+    "arxiu": "./data/ruta_valencia_ciutat_vella.json",
+    "secret": true,
+    "desbloqueig": "completar_capitol_03_fires_valencia_1_vegada",
+    "recompensa_100": {
+      "item_id": null,
+      "ruta": null
+    }
+  }
 ]
-
-  
