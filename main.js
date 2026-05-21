@@ -102,8 +102,8 @@ const CAPITOLS = [
     recompensa_100: {
   item_id: "clau_de_la_lonja",
   ruta: "ruta_valencia_ciutat_vella"
- }
-
+  }
+}
 ];
 
 let ITEMS = {};
