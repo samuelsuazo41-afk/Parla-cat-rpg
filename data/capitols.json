@@ -18,12 +18,4 @@
       "ruta": null
     }
   },
-  {
-  "id": "ruta_girona_muralla_viva",
-  "nom": "Girona - Muralla Viva",
-  "icona": "🛡️",
-  "arxiu": "./data/ruta_girona_muralla_viva.json",
-  "secret": true,
-  "desbloqueig": "completar_capitol_02_girona_2_veces"
- }
-]
+  
