@@ -30,7 +30,7 @@
   "id": "ruta_valencia_ciutat_vella",
   "nom": "València - Ciutat Vella Nocturna",
   "icona": "🦇",
-  "arxiu": "./data/ruta_fuet_fires_valencia.json",
+  "arxiu": "./data/ruta_valencia_ciutat_vella.json",
   "secret": true,
   "desbloqueig": "completar_capitol_03_fires_valencia_1_vegada"
 }
