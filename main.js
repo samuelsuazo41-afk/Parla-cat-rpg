@@ -88,7 +88,7 @@ const CAPITOLS = [
     requereix: "capitol1_bcn_born",
     recompensa_100: {
       item_id: "flor_suprema_temps_flors",
-      ruta: "ruta_flors_nit"
+      ruta: "ruta_girona_muralla_viva"
     }
   },
   {
