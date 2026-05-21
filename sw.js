@@ -11,6 +11,7 @@ const urlsToCache = [
   './data/capitol_03_fires_valencia.json',
   './data/ruta_rave_port_olympic.json',
   './data/ruta_girona_muralla_viva.json',
+  './data/ruta_valencia_ciutat_vella.json',
   './camisa_cenguera.png',
   './ram_roses_girona.png',
   './fuet_fires.png',
