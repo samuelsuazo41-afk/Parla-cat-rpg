@@ -2,7 +2,7 @@
   {
     "escena": "Torre Gironella - Muralla Carolíngia, 22:00",
     "npc_nom": "Àlex",
-    "npc_emoji": "🧍🏻",
+    "npc_emoji": "🔦",
     "dialog": "ÀLEX, guia nocturn amb llanterna: 'Això és Girona de veritat. Muralla del segle IX. Si vols pujar, guanya-t'ho. Diu-me en català per què vols pujar aquí dalt'.",
     "pregunta": "Com li dius 'Quiero ver la ciudad' amb ganes?",
     "opcions": [
@@ -29,7 +29,7 @@
   {
     "escena": "Pont de Pedra - Riu Onyar",
     "npc_nom": "Marta",
-    "npc_emoji": "👩🏻‍🎨",
+    "npc_emoji": "🎨",
     "dialog": "MARTA, pintora de carrer: 'Aquesta és la postal. Cases de colors, riu, Catedral al fons. Si vols pintar amb mi, diu-me què veus en català'.",
     "pregunta": "Com descrius el paisatge?",
     "opcions": [
@@ -56,7 +56,7 @@
   {
     "escena": "El Call - Barri Jueu",
     "npc_nom": "David",
-    "npc_emoji": "👨🏻‍🦰",
+    "npc_emoji": "📚",
     "dialog": "DAVID, historiador local: 'Aquests carrers tenen 800 anys. Aquí vivia la comunitat jueva més important de Catalunya. Sap què vol dir Call en català?'.",
     "personatge": "David",
     "pregunta": "Què respones?",
@@ -69,4 +69,105 @@
       },
       {
         "text": "No ho sé",
-        "correcte
+        "correcte": false,
+        "feedback": "DAVID: 'Call és carrer estret. Recorda-ho. És història viva'.",
+        "guany": { "monedes": 10 }
+      },
+      {
+        "text": "Un carrer",
+        "correcte": false,
+        "feedback": "DAVID: 'Sí, però falta el què. Torna-ho a dir'.",
+        "guany": { "monedes": 20 }
+      }
+    ]
+  },
+  {
+    "escena": "Banyos Àrabs",
+    "npc_nom": "Carme",
+    "npc_emoji": "🏛️",
+    "dialog": "CARME, vigilant del museu: 'Molta gent diu Banys Àrabs, però són romànics del segle XII. Si ho dius bé, et deixo passar sense pagar'.",
+    "personatge": "Carme",
+    "pregunta": "Com ho dius correcte?",
+    "opcions": [
+      {
+        "text": "Aquests són els Banys Romànics, oi?",
+        "correcte": true,
+        "feedback": "CARME: 'Bravo! Així es parla amb coneixement. Passa'.",
+        "guany": { "monedes": 55, "seny": 3 }
+      },
+      {
+        "text": "Banys Àrabs",
+        "correcte": false,
+        "feedback": "CARME: 'No. Prova: Banys Romànics. Diu-ho bé'.",
+        "guany": { "monedes": 0 }
+      }
+    ]
+  },
+  {
+    "escena": "Escalinata de la Catedral",
+    "npc_nom": "Gerard",
+    "npc_emoji": "🎸",
+    "dialog": "GERARD, estudiant de música: 'Aquesta escala va sortir a Juego de Tronos. Però per mi el millor és com sona el català aquí. Prova una frase amb actitud'.",
+    "personatge": "Gerard",
+    "pregunta": "Què li dius per demostrar ganes?",
+    "opcions": [
+      {
+        "text": "Puja l'escala i no miris enrere!",
+        "correcte": true,
+        "feedback": "GERARD: 'Uaaa! Això té força. Toco una cançó per tu'.",
+        "guany": { "monedes": 70, "rauxa": 4 }
+      },
+      {
+        "text": "Sube la escalera",
+        "correcte": false,
+        "feedback": "GERARD: 'En català, tio. Prova: Puja l'escala...'.",
+        "guany": { "monedes": 0 }
+      },
+      {
+        "text": "Hola",
+        "correcte": false,
+        "feedback": "GERARD: 'Hola? Aquí volem actitud, no timidesa'.",
+        "guany": { "monedes": 5 }
+      }
+    ]
+  },
+  {
+    "escena": "Pujada de Sant Domènec",
+    "npc_nom": "Laia",
+    "npc_emoji": "🏘️",
+    "dialog": "LAIA, veïna del barri: 'Visc aquí des de petita. Aquesta pujada és dura, però val la pena. Com dius que t'ha costat però val la pena?'.",
+    "personatge": "Laia",
+    "pregunta": "Què li contestes?",
+    "opcions": [
+      {
+        "text": "Ha costat, però val la pena pujar aquí",
+        "correcte": true,
+        "feedback": "LAIA: 'Així es parla. Girona es guanya pujant'.",
+        "guany": { "monedes": 65, "seny": 4 }
+      },
+      {
+        "text": "Está difícil",
+        "correcte": false,
+        "feedback": "LAIA: 'En català: Costa molt. Intenta-ho'.",
+        "guany": { "monedes": 0 }
+      }
+    ]
+  },
+  {
+    "escena": "Final - Muralla al capvespre",
+    "npc_nom": "Grup",
+    "npc_emoji": "🎉",
+    "dialog": "ÀLEX, MARTA, DAVID, CARME, GERARD i LAIA et miren des del camí de ronda. 'Has recorregut el Barri Vell parlant català. Això és respectar la ciutat'.",
+    "personatge": "Grup",
+    "pregunta": "Com tanques la nit?",
+    "opcions": [
+      {
+        "text": "Gràcies per mostrar-me Girona. Fins aviat, família",
+        "correcte": true,
+        "feedback": "Tots aplauden. ÀLEX et dóna la Clau de la Muralla Viva. 'Això obre el Barri Vell de nit. No la perdis'.",
+        "guany": { "monedes": 150, "arrel": 8, "seny": 5 },
+        "item": "clau_muralla_girona"
+      }
+    ]
+  }
+]
