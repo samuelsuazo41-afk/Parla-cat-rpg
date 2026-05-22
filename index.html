@@ -208,6 +208,25 @@ header h1 {
   display: none;
 }
 
+/* NUEVO: Header del NPC con emoji y nombre */
+#npc-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+#npc-emoji {
+  font-size: 56px;
+  line-height: 1;
+}
+
+#npc-nom {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--accent);
+}
+
 #feedback-box {
   background: #1a1a1a;
   border-radius: 12px;
@@ -323,7 +342,14 @@ header h1 {
   </div>
 
   <div id="tab-missio" class="tab-content">
-    <div id="npc-box"></div>
+    <div id="npc-box">
+      <!-- NUEVO: Header del NPC -->
+      <div id="npc-header">
+        <span id="npc-emoji">👤</span>
+        <h3 id="npc-nom">NPC</h3>
+      </div>
+      <p id="npc-dialog"></p>
+    </div>
     <div id="missio-card">
       <h3 id="missio-titol">Selecciona una missió al mapa</h3>
       <div id="missio-escenari"></div>
