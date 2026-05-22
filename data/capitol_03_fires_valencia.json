@@ -5,7 +5,11 @@
     "npc_emoji": "👩‍🦳",
     "dialog": "Bon dia! Sóc la Carme, fallera major. Hui comencen les Fires. Estàs a punt per al foc i la pólvora?",
     "pregunta": "Com respons per entrar en rotllo?",
-    "opcions": [...]
+    "opcions": [
+      {"text": "Sí! A punt per a la pólvora i les falles!", "correcte": true, "guany": {"monedes": 5, "arrel": 2}, "feedback": "Perfecte! La pólvora és l'ànima de València."},
+      {"text": "Sí, mola.", "correcte": true, "guany": {"monedes": 3, "arrel": 1}, "feedback": "Correcte."},
+      {"text": "No m'agrada el soroll.", "correcte": false, "guany": {"monedes": 0, "rauxa": 1}, "feedback": "És part de la festa. Dona-li una oportunitat."}
+    ]
   },
   {
     "escena": "Plaça de l'Ajuntament - Missió",
@@ -13,7 +17,11 @@
     "npc_emoji": "👩‍🦳",
     "dialog": "Necessite que m'ajudes a portar estos cartells al casal. Saps què és un casal faller?",
     "pregunta": "Com preguntes què és?",
-    "opcions": [...]
+    "opcions": [
+      {"text": "No, què és un casal faller exactament?", "correcte": true, "guany": {"monedes": 5, "seny": 2}, "feedback": "És la seu de la comissió fallera. Allà fem festa tot l'any."},
+      {"text": "No ho sé.", "correcte": true, "guany": {"monedes": 3, "seny": 1}, "feedback": "Correcte."},
+      {"text": "No importa.", "correcte": false, "guany": {"monedes": 0, "rauxa": 1}, "feedback": "És el cor de les falles. Pregunta sempre."}
+    ]
   },
   {
     "escena": "Carrer de Russafa - 11:00",
@@ -21,15 +29,11 @@
     "npc_emoji": "🧑‍🎨",
     "dialog": "Ep! Sóc en Toni, jo monte el ninot cada any. Este any és un polític, no et dic qui.",
     "pregunta": "Com mostres interés pel ninot?",
-    "opcions": [...]
-  },
-  {
-    "escena": "Carrer de Russafa - Conversa",
-    "npc_nom": "Toni",
-    "npc_emoji": "🧑‍🎨",
-    "dialog": "Saps què? El més difícil és fer que el ninot s'assamble al de veritat. Este any m'ha costat.",
-    "pregunta": "Com l'ànimes?",
-    "opcions": [...]
+    "opcions": [
+      {"text": "Quin nivell! Quant triga a fer-lo?", "correcte": true, "guany": {"monedes": 5, "obert": 2}, "feedback": "Un mes sencer. És art efímer."},
+      {"text": "Mola molt.", "correcte": true, "guany": {"monedes": 3, "obert": 1}, "feedback": "Gràcies! Li pose molt d'amor."},
+      {"text": "Ho cremes després?", "correcte": false, "guany": {"monedes": 0, "rauxa": 1}, "feedback": "Sí, és la gràcia. La Cremà el 19 de març."}
+    ]
   },
   {
     "escena": "Mercat Central - 12:00",
@@ -37,15 +41,11 @@
     "npc_emoji": "👩‍🍳",
     "dialog": "Hola! Sóc la Rosa, venc bunyols des de fa 20 anys. Vols provar-ne un?",
     "pregunta": "Com demanes un bunyol en català?",
-    "opcions": [...]
-  },
-  {
-    "escena": "Mercat Central - Missió",
-    "npc_nom": "Rosa",
-    "npc_emoji": "👩‍🍳",
-    "dialog": "Em falten taronges per fer la crema dels bunyols. Em pots ajudar a demanar-les?",
-    "pregunta": "Com demanes taronges al paradeta del costat?",
-    "opcions": [...]
+    "opcions": [
+      {"text": "Em poses un bunyol de carabassa, si us plau?", "correcte": true, "guany": {"monedes": 5, "arrel": 2}, "feedback": "Crema! Un dels millors de València."},
+      {"text": "Un bunyol.", "correcte": true, "guany": {"monedes": 3, "arrel": 1}, "feedback": "Correcte."},
+      {"text": "Un donut.", "correcte": false, "guany": {"monedes": 0, "rauxa": 1}, "feedback": "No, ací diem bunyol. És típic de falles."}
+    ]
   },
   {
     "escena": "Plaça de la Mare de Déu - 13:00",
@@ -53,15 +53,11 @@
     "npc_emoji": "🥁",
     "dialog": "Bon dia! Sóc el Vicent, jo toque el tabal a la mascletà. Hui farem soroll!",
     "pregunta": "Com reacciones a la mascletà?",
-    "opcions": [...]
-  },
-  {
-    "escena": "Plaça de la Mare de Déu - L'Ofrena",
-    "npc_nom": "Vicent",
-    "npc_emoji": "🥁",
-    "dialog": "Mira això! És l'Ofrena a la Mare de Déu. Milers de fallers porten flors.",
-    "pregunta": "Com comentes l'escena?",
-    "opcions": [...]
+    "opcions": [
+      {"text": "Estic a punt! Taparem les orelles.", "correcte": true, "guany": {"monedes": 5, "rauxa": 2}, "feedback": "Perfecte! A les 14h a la plaça de l'Ajuntament."},
+      {"text": "Mola.", "correcte": true, "guany": {"monedes": 3, "rauxa": 1}, "feedback": "Correcte."},
+      {"text": "No m'agrada el soroll.", "correcte": false, "guany": {"monedes": 0, "rauxa": 1}, "feedback": "És tradició. Prova-ho una vegada."}
+    ]
   },
   {
     "escena": "Carrer de Sueca - 14:00",
@@ -69,7 +65,11 @@
     "npc_emoji": "👩‍🚒",
     "dialog": "Hui és la Mascletà! Sóc la Sònia, vigile que ningú s'acoste massa. Tapate les orelles!",
     "pregunta": "Com respons per demostrar que entens?",
-    "opcions": [...]
+    "opcions": [
+      {"text": "Entés! Seguretat primer.", "correcte": true, "guany": {"monedes": 5, "seny": 2}, "feedback": "Perfecte. Gaudeix del espectacle."},
+      {"text": "Vale.", "correcte": true, "guany": {"monedes": 3, "seny": 1}, "feedback": "Correcte."},
+      {"text": "Passo.", "correcte": false, "guany": {"monedes": 0, "rauxa": 1}, "feedback": "És per la teua seguretat."}
+    ]
   },
   {
     "escena": "Plaça de l'Ajuntament - 15:00",
@@ -77,7 +77,11 @@
     "npc_emoji": "💥",
     "dialog": "Has sobreviscut a la Mascletà! Sóc en Rafa, el pirotècnic. Qué t'ha paregut?",
     "pregunta": "Com descrius l'experiència?",
-    "opcions": [...]
+    "opcions": [
+      {"text": "Brutal! Mai havia sentit res igual.", "correcte": true, "guany": {"monedes": 8, "arrel": 3}, "feedback": "Això és València! La pólvora corre per les venes."},
+      {"text": "Molt fort.", "correcte": true, "guany": {"monedes": 3, "arrel": 1}, "feedback": "Correcte."},
+      {"text": "Em va espantar.", "correcte": false, "guany": {"monedes": 0, "rauxa": 1}, "feedback": "És normal la primera vegada."}
+    ]
   },
   {
     "escena": "Carrer de la Falla - 18:00",
@@ -85,30 +89,311 @@
     "npc_emoji": "👩‍🎨",
     "dialog": "Sóc la Júlia, hem acabat la falla just ara. Demà és la Cremà. Et fa cosa?",
     "pregunta": "Com respons sobre la Cremà?",
-    "opcions": [...]
+    "opcions": [
+      {"text": "Un poc de pena, però és la tradició.", "correcte": true, "guany": {"monedes": 5, "arrel": 2}, "feedback": "Exacte. L'art efímer té això."},
+      {"text": "Sí, em fa cosa.", "correcte": true, "guany": {"monedes": 3, "arrel": 1}, "feedback": "Correcte."},
+      {"text": "No m'importa.", "correcte": false, "guany": {"monedes": 0, "rauxa": 1}, "feedback": "Hi ha sentiment darrere de cada falla."}
+    ]
   },
   {
-    "escena": "Plaça de l'Ajuntament - 23:59",
-    "npc_nom": "President",
+    "escena": "Palau de les Arts Reina Sofia - 19:00",
+    "npc_nom": "Guia de l'òpera",
+    "npc_emoji": "🎭",
+    "dialog": "Benvingut al Palau de les Arts! Dissenyat per Calatrava. Hui hi ha òpera a les 20h.",
+    "pregunta": "Com preguntes pel programa?",
+    "opcions": [
+      {"text": "Quina òpera fan hui? Hi ha visites guiades?", "correcte": true, "guany": {"monedes": 5, "seny": 2}, "feedback": "Hui és 'La Traviata'. Sí, hi ha visites cada hora."},
+      {"text": "Què fan hui?", "correcte": true, "guany": {"monedes": 3, "seny": 1}, "feedback": "Correcte."},
+      {"text": "És car?", "correcte": false, "guany": {"monedes": 0, "rauxa": 1}, "feedback": "Depèn. Les visites són econòmiques."}
+    ]
+  },
+  {
+    "escena": "Hemisfèric - IMAX",
+    "npc_nom": "Tècnic",
+    "npc_emoji": "🎬",
+    "dialog": "Estàs al Hemisfèric. La pantalla més gran d'Espanya. Hui projectem 'Cosmos' en 3D.",
+    "pregunta": "Com mostres interès?",
+    "opcions": [
+      {"text": "Quina passada! Quant dura la projecció?", "correcte": true, "guany": {"monedes": 5, "obert": 2}, "feedback": "45 minuts. És espectacular."},
+      {"text": "Mola.", "correcte": true, "guany": {"monedes": 3, "obert": 1}, "feedback": "Correcte."},
+      {"text": "No m'agrada el 3D.", "correcte": false, "guany": {"monedes": 0, "rauxa": 1}, "feedback": "Pots veure la pel·lícula en 2D també."}
+    ]
+  },
+  {
+    "escena": "Oceanogràfic - Entrada",
+    "npc_nom": "Biòloga marina",
+    "npc_emoji": "🐠",
+    "dialog": "Benvingut a l'Oceanogràfic! Tenim el túnel de taurons més llarg d'Europa.",
+    "pregunta": "Com preguntes per l'horari?",
+    "opcions": [
+      {"text": "Fins a quina hora està obert?", "correcte": true, "guany": {"monedes": 5, "seny": 2}, "feedback": "Fins a les 20h. No et perdis el dofinari."},
+      {"text": "Horari?", "correcte": true, "guany": {"monedes": 3, "seny": 1}, "feedback": "Correcte."},
+      {"text": "Tanca prompte?", "correcte": false, "guany": {"monedes": 0, "rauxa": 1}, "feedback": "Tens temps de sobra."}
+    ]
+  },
+  {
+    "escena": "Pont de l'Exposició - Calatrava",
+    "npc_nom": "Arquitecte",
+    "npc_emoji": "👨‍🎨",
+    "dialog": "Aquest pont és de Calatrava, com tot el complex. Es diu 'El Sèrie'.",
+    "pregunta": "Com comentes l'arquitectura?",
+    "opcions": [
+      {"text": "És futurista! Sembla d'una pel·lícula.", "correcte": true, "guany": {"monedes": 5, "arrel": 2}, "feedback": "Sí! València té aquesta barreja de modern i històric."},
+      {"text": "Molt modern.", "correcte": true, "guany": {"monedes": 3, "arrel": 1}, "feedback": "Correcte."},
+      {"text": "No m'agrada.", "correcte": false, "guany": {"monedes": 0, "rauxa": 1}, "feedback": "És polèmic, però marca la ciutat."}
+    ]
+  },
+  {
+    "escena": "Pont de les Flors",
+    "npc_nom": "Florista",
+    "npc_emoji": "🌸",
+    "dialog": "Aquest pont està ple de flors tot l'any. És un homenatge a les falles.",
+    "pregunta": "Com respons?",
+    "opcions": [
+      {"text": "Quin detall més bonic. Fa olor a primavera.", "correcte": true, "guany": {"monedes": 5, "arrel": 2}, "feedback": "Sí! Canvien les flors cada temporada."},
+      {"text": "Molt bonic.", "correcte": true, "guany": {"monedes": 3, "arrel": 1}, "feedback": "Correcte."},
+      {"text": "Normal.", "correcte": false, "guany": {"monedes": 0, "rauxa": 1}, "feedback": "És un símbol de la ciutat."}
+    ]
+  },
+  {
+    "escena": "Plaça de la Verge - Catedral",
+    "npc_nom": "Guia turística",
+    "npc_emoji": "👩‍🏫",
+    "dialog": "Aquesta és la Catedral de València. Diuen que ací està el Sant Calze.",
+    "pregunta": "Com preguntes per visitar?",
+    "opcions": [
+      {"text": "Es pot entrar? Quina hora obrin?", "correcte": true, "guany": {"monedes": 5, "seny": 2}, "feedback": "Sí, de 10 a 18h. No et perdes la Micalet."},
+      {"text": "Es pot entrar?", "correcte": true, "guany": {"monedes": 3, "seny": 1}, "feedback": "Correcte."},
+      {"text": "No importa.", "correcte": false, "guany": {"monedes": 0, "rauxa": 1}, "feedback": "És història pura de València."}
+    ]
+  },
+  {
+    "escena": "Micalet - Torre",
+    "npc_nom": "Campaner",
+    "npc_emoji": "🔔",
+    "dialog": "Vaig pujar 207 esglaons cada dia. Des de dalt es veu tota València.",
+    "pregunta": "Com mostres admiració?",
+    "opcions": [
+      {"text": "Quina força! Les vistes valen la pena.", "correcte": true, "guany": {"monedes": 5, "arrel": 2}, "feedback": "Sí! Pujant ho veuràs tu mateix."},
+      {"text": "Molt fort.", "correcte": true, "guany": {"monedes": 3, "arrel": 1}, "feedback": "Correcte."},
+      {"text": "Jo no puge.", "correcte": false, "guany": {"monedes": 0, "rauxa": 1}, "feedback": "Hi ha ascensor fins a mitat."}
+    ]
+  },
+  {
+    "escena": "Llotja de la Seda - Patrimoni UNESCO",
+    "npc_nom": "Historiador",
+    "npc_emoji": "📜",
+    "dialog": "Aquesta llotja és del segle XV. Patrimoni de la Humanitat. Ací es feien els negocis de la seda.",
+    "pregunta": "Com respons?",
+    "opcions": [
+      {"text": "Impressionant. València era rica amb la seda.", "correcte": true, "guany": {"monedes": 8, "seny": 3}, "feedback": "Exacte! El segle d'or valencià."},
+      {"text": "Molt antiga.", "correcte": true, "guany": {"monedes": 3, "seny": 1}, "feedback": "Correcte."},
+      {"text": "No ho sabia.", "correcte": false, "guany": {"monedes": 0, "rauxa": 1}, "feedback": "València té molta història comercial."}
+    ]
+  },
+  {
+    "escena": "Plaça Redona - Mercat",
+    "npc_nom": "Venedora",
+    "npc_emoji": "👩",
+    "dialog": "Aquesta plaça és rodona! Venem artesania i records. Tot fet a mà.",
+    "pregunta": "Com compres un record?",
+    "opcions": [
+      {"text": "Em poses un ventall valencià, si us plau?", "correcte": true, "guany": {"monedes": 5, "arrel": 2}, "feedback": "Fet a mà a Manises. 8 euros."},
+      {"text": "Quant val?", "correcte": true, "guany": {"monedes": 3, "arrel": 1}, "feedback": "Correcte."},
+      {"text": "És car.", "correcte": false, "guany": {"monedes": 0, "rauxa": 1}, "feedback": "És artesania local."}
+    ]
+  },
+  {
+    "escena": "Barri del Carme - Murals",
+    "npc_nom": "Artista urbà",
+    "npc_emoji": "🎨",
+    "dialog": "El Carme és el barri bohemi. Cada carrer té un mural. Jo vaig pintar aquell.",
+    "pregunta": "Com mostres interès?",
+    "opcions": [
+      {"text": "Quina passada! Fas rutes de murals?", "correcte": true, "guany": {"monedes": 5, "obert": 2}, "feedback": "Sí! Cada dissabte a les 11h. Gratis."},
+      {"text": "Mola molt.", "correcte": true, "guany": {"monedes": 3, "obert": 1}, "feedback": "Gràcies! Ho fem amb amor."},
+      {"text": "No m'agrada el grafiti.", "correcte": false, "guany": {"monedes": 0, "rauxa": 1}, "feedback": "És art urbà, no grafiti salvatge."}
+    ]
+  },
+  {
+    "escena": "Jardí del Túria - Parc",
+    "npc_nom": "Corredor",
+    "npc_emoji": "🏃",
+    "dialog": "Aquest jardí és l'antic llit del riu. 9 km de parc creuant València.",
+    "pregunta": "Com preguntes per la ruta?",
+    "opcions": [
+      {"text": "Arriba fins a la Ciutat de les Arts?", "correcte": true, "guany": {"monedes": 5, "obert": 2}, "feedback": "Sí! Ruta perfecta per anar en bici."},
+      {"text": "Què llarg!", "correcte": true, "guany": {"monedes": 3, "obert": 1}, "feedback": "Correcte. Pots fer només un tram."},
+      {"text": "No m'agrada córrer.", "correcte": false, "guany": {"monedes": 0, "rauxa": 1}, "feedback": "També pots passejar tranquil."}
+    ]
+  },
+  {
+    "escena": "Pont de Fusta - Pont històric",
+    "npc_nom": "Historiador local",
+    "npc_emoji": "📚",
+    "dialog": "Aquest pont és del segle XV. Abans era de fusta. D'ací el nom.",
+    "pregunta": "Com respons?",
+    "opcions": [
+      {"text": "No ho sabia! València té molta història amagada.", "correcte": true, "guany": {"monedes": 5, "arrel": 2}, "feedback": "Exacte. Cada pedra té una història."},
+      {"text": "Molt antic.", "correcte": true, "guany": {"monedes": 3, "arrel": 1}, "feedback": "Correcte."},
+      {"text": "No importa.", "correcte": false, "guany": {"monedes": 0, "rauxa": 1}, "feedback": "És part del patrimoni."}
+    ]
+  },
+  {
+    "escena": "Albufera - Barca",
+    "npc_nom": "Barquer",
+    "npc_emoji": "🚣",
+    "dialog": "Vols fer una volta en barca per l'Albufera? Veurem la posta de sol.",
+    "pregunta": "Com acceptes?",
+    "opcions": [
+      {"text": "Sí! Quant costa i quant dura?", "correcte": true, "guany": {"monedes": 5, "obert": 2}, "feedback": "15 euros, 45 minuts. El millor de València."},
+      {"text": "Sí, vaig.", "correcte": true, "guany": {"monedes": 3, "obert": 1}, "feedback": "Correcte."},
+      {"text": "No, gràcies.", "correcte": false, "guany": {"monedes": 0, "rauxa": 1}, "feedback": "Et perds el millor atardecer."}
+    ]
+  },
+  {
+    "escena": "Platja de la Malva-rosa",
+    "npc_nom": "Socorrista",
+    "npc_emoji": "🏖️",
+    "dialog": "Aquesta platja és famosa per la paella. Menjar arròs ací és tradició.",
+    "pregunta": "Com demanes una paella?",
+    "opcions": [
+      {"text": "Em poses una paella valenciana per a dos, si us plau?", "correcte": true, "guany": {"monedes": 5, "arrel": 2}, "feedback": "Perfecte! 25 minuts. La fem amb foc de llenya."},
+      {"text": "Una paella.", "correcte": true, "guany": {"monedes": 3, "arrel": 1}, "feedback": "Correcte."},
+      {"text": "Paella de marisc.", "correcte": false, "guany": {"monedes": 0, "rauxa": 1}, "feedback": "A València la paella és de pollastre i conill."}
+    ]
+  },
+  {
+    "escena": "Mercat de Russafa - Hipster",
+    "npc_nom": "Hipster",
+    "npc_emoji": "🧑‍🎨",
+    "dialog": "Russafa és el barri més cool. Aquí trobes cafès, llibreries i art alternatiu.",
+    "pregunta": "Com preguntes per un lloc recomanat?",
+    "opcions": [
+      {"text": "On em recomanes prendre un cafè especial?", "correcte": true, "guany": {"monedes": 5, "obert": 2}, "feedback": "Ves a 'Ubik'. Tenen llibres i cafè brutal."},
+      {"text": "On hi ha cafès?", "correcte": true, "guany": {"monedes": 3, "obert": 1}, "feedback": "Correcte."},
+      {"text": "No m'agrada Russafa.", "correcte": false, "guany": {"monedes": 0, "rauxa": 1}, "feedback": "Dona-li una oportunitat. És únic."}
+    ]
+  },
+  {
+    "escena": "Bioparc - Safari",
+    "npc_nom": "Veterinari",
+    "npc_emoji": "🦁",
+    "dialog": "Al Bioparc no hi ha gàbies. Els animals viuen en ambients oberts com a l'Àfrica.",
+    "pregunta": "Com mostres interès?",
+    "opcions": [
+      {"text": "Quina idea més bona! Quan fan els feeding shows?", "correcte": true, "guany": {"monedes": 5, "seny": 2}, "feedback": "A les 12h i 16h. No te'ls perdes."},
+      {"text": "Mola.", "correcte": true, "guany": {"monedes": 3, "seny": 1}, "feedback": "Correcte."},
+      {"text": "No m'agraden els zoos.", "correcte": false, "guany": {"monedes": 0, "rauxa": 1}, "feedback": "Això no és un zoo. És conservació."}
+    ]
+  },
+  {
+    "escena": "Horchateria Santa Catalina",
+    "npc_nom": "Horchater",
+    "npc_emoji": "🥛",
+    "dialog": "Aquesta és la millor horchata de València. Feta amb xufes d'Alboraya.",
+    "pregunta": "Com demanes horchata?",
+    "opcions": [
+      {"text": "Em poses una horchata gran amb fartons, si us plau?", "correcte": true, "guany": {"monedes": 5, "arrel": 2}, "feedback": "Perfecte! L'original valenciana."},
+      {"text": "Una horchata.", "correcte": true, "guany": {"monedes": 3, "arrel": 1}, "feedback": "Correcte."},
+      {"text": "Què és això?", "correcte": false, "guany": {"monedes": 0, "rauxa": 1}, "feedback": "És la beguda típica de València. Prova-la!"}
+    ]
+  },
+  {
+    "escena": "Tribunal de les Aigües - Plaça de la Verge",
+    "npc_nom": "Síndic",
+    "npc_emoji": "👨‍⚖️",
+    "dialog": "Cada dijous a les 12h fem justícia oral en valencià. És el tribunal més antic d'Europa.",
+    "pregunta": "Com reaccions?",
+    "opcions": [
+      {"text": "Quina tradició més antiga! Puc quedar-me a veure?", "correcte": true, "guany": {"monedes": 8, "seny": 3}, "feedback": "Sí! És obert al públic. Només 10 minuts."},
+      {"text": "Molt interessant.", "correcte": true, "guany": {"monedes": 3, "seny": 1}, "feedback": "Correcte."},
+      {"text": "No entenc el valencià.", "correcte": false, "guany": {"monedes": 0, "rauxa": 1}, "feedback": "És fàcil seguir-ho. Prova-ho."}
+    ]
+  },
+  {
+    "escena": "Plaça de la Reina - Terrassa",
+    "npc_nom": "Turista",
+    "npc_emoji": "🧑",
+    "dialog": "Aquesta plaça és el centre de València. Des d'ací veus la catedral i la torre.",
+    "pregunta": "Com respons?",
+    "opcions": [
+      {"text": "Sí! Quin ambient més viu té València.", "correcte": true, "guany": {"monedes": 5, "arrel": 2}, "feedback": "Sí! Sempre hi ha algo que fer."},
+      {"text": "Molt bonic.", "correcte": true, "guany": {"monedes": 3, "arrel": 1}, "feedback": "Correcte."},
+      {"text": "Massa gent.", "correcte": false, "guany": {"monedes": 0, "rauxa": 1}, "feedback": "Vine a primera hora per evitar-ho."}
+    ]
+  },
+  {
+    "escena": "Jardí de Montfort - Amagatall",
+    "npc_nom": "Jardinera",
+    "npc_emoji": "🌿",
+    "dialog": "Aquest jardí és un secret. Ni els valencians el coneixen. Silenci i roses.",
+    "pregunta": "Com agraeixes el consell?",
+    "opcions": [
+      {"text": "Gràcies. No ho diré a ningú.", "correcte": true, "guany": {"monedes": 8, "arrel": 3}, "feedback": "Ja ets un valencià més."},
+      {"text": "Gràcies, és preciós.", "correcte": true, "guany": {"monedes": 5, "arrel": 1}, "feedback": "Respecta el lloc."},
+      {"text": "Ho penjaré a Instagram.", "correcte": false, "guany": {"monedes": 0, "rauxa": 2}, "feedback": "No! Perdrà la màgia."}
+    ]
+  },
+  {
+    "escena": "Estació del Nord - Modernisme",
+    "npc_nom": "Arquitecte",
+    "npc_emoji": "🏛️",
+    "dialog": "Aquesta estació és modernisme valencià pur. Mira els trencadissos i les ceràmiques.",
+    "pregunta": "Com preguntes per la història?",
+    "opcions": [
+      {"text": "De quin any és? Qui la va dissenyar?", "correcte": true, "guany": {"monedes": 5, "seny": 2}, "feedback": "1917. Demetrio Ribes. Un tresor."},
+      {"text": "És molt bonica.", "correcte": true, "guany": {"monedes": 3, "seny": 1}, "feedback": "Correcte."},
+      {"text": "No ho sabia.", "correcte": false, "guany": {"monedes": 0, "rauxa": 1}, "feedback": "València té molt modernisme."}
+    ]
+  },
+  {
+    "escena": "Barri de Cabanyal - Platja",
+    "npc_nom": "Pescador",
+    "npc_emoji": "🎣",
+    "dialog": "Ací vivien els pescadors. Les cases són de colors. Ara és barri d'artistes.",
+    "pregunta": "Com mostres interès?",
+    "opcions": [
+      {"text": "Quina història! On puc menjar peix fresc?", "correcte": true, "guany": {"monedes": 5, "obert": 2}, "feedback": "Ves a 'La Pepica'. Peix del dia."},
+      {"text": "Molt bonic.", "correcte": true, "guany": {"monedes": 3, "obert": 1}, "feedback": "Correcte."},
+      {"text": "Està brut.", "correcte": false, "guany": {"monedes": 0, "rauxa": 1}, "feedback": "S'està rehabilitant. Té molt d'encant."}
+    ]
+  },
+  {
+    "escena": "Plaça de Manises - Palau de la Generalitat",
+    "npc_nom": "Funcionari",
     "npc_emoji": "👨‍💼",
-    "dialog": "Última nit! Sóc el president de la comissió. Has passat totes les proves. Estàs a punt per la Cremà?",
-    "pregunta": "Com t'acomiades abans del foc?",
-    "opcions": [...]
+    "dialog": "Aquest palau és del segle XV. Ací seu el govern valencià.",
+    "pregunta": "Com preguntes per visitar?",
+    "opcions": [
+      {"text": "Es pot visitar per dins?", "correcte": true, "guany": {"monedes": 5, "seny": 2}, "feedback": "Sí, els dissabtes matí. Gratis."},
+      {"text": "Es pot entrar?", "correcte": true, "guany": {"monedes": 3, "seny": 1}, "feedback": "Correcte."},
+      {"text": "No importa.", "correcte": false, "guany": {"monedes": 0, "rauxa": 1}, "feedback": "És història viva de València."}
+    ]
   },
   {
-    "escena": "Gremi dels Fallers - Desbloqueig",
-    "npc_nom": "Presidenta",
-    "npc_emoji": "👩‍💼",
-    "dialog": "Benvingut al Gremi dels Fallers! Amb 5 proves completes ja formes part. Aquí guardem el foc.",
-    "pregunta": "Com respons a la benvinguda?",
-    "opcions": [...]
+    "escena": "Carrer de Colón - Comerç",
+    "npc_nom": "Comerciant",
+    "npc_emoji": "🛍️",
+    "dialog": "Aquest carrer és el més comercial de València. Totes les marques hi són.",
+    "pregunta": "Com preguntes per una botiga?",
+    "opcions": [
+      {"text": "On hi ha una botiga de sabates valencianes?", "correcte": true, "guany": {"monedes": 5, "obert": 2}, "feedback": "Ves a 'Pikolinos'. Són de València."},
+      {"text": "On hi ha botigues?", "correcte": true, "guany": {"monedes": 3, "obert": 1}, "feedback": "Correcte."},
+      {"text": "No compre ací.", "correcte": false, "guany": {"monedes": 0, "rauxa": 1}, "feedback": "València té molt de comerç local."}
+    ]
   },
   {
-    "escena": "Gremi - Lliçó secreta",
-    "npc_nom": "Presidenta",
-    "npc_emoji": "👩‍💼",
-    "dialog": "A València diem 'anar de bòlit' quan vas a tope. Prova-ho en una frase!",
-    "pregunta": "Quan faries servir 'anar de bòlit'?",
-    "opcions": [...]
-  }
-]
+    "escena": "Plaça de la Mare de Déu - Ofrena",
+    "npc_nom": "Fallera",
+    "npc_emoji": "👗",
+    "dialog": "Mira això! És l'Ofrena a la Mare de Déu. Milers de fallers porten flors.",
+    "pregunta": "Com comentes l'escena?",
+    "opcions": [
+      {"text": "És emocionant! Quants anys portes venint?", "correcte": true, "guany": {"monedes": 5, "arrel": 2}, "feedback": "20 anys! És el més bonic de les falles."},
+      {"text": "Molt bonic.", "correcte": true, "guany": {"monedes": 3, "arrel": 1}, "feedback": "Correcte."},
+      {"text": "Massa gent.", "correcte": false, "guany": {"monedes": 0, "rauxa": 1}, "feedback": "És tradició. Val la pena."}
+    ]
+  },
+  {
+    "
