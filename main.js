@@ -166,7 +166,7 @@ const MELODIAS = {
 
 // Detecta emoji de NPC según el diálogo
 function detectarEmojiNPC(dialogo, npc_nom) {
-  const text = ((dialogo || '') + ' + (npc_nom || '')).toLowerCase();
+  const text = ((dialogo || '') + (npc_nom || '')).toLowerCase();
 
   if(text.includes('cuina') || text.includes('menja') || text.includes('pa') || text.includes('tomaquet')) return '👨‍🍳';
   if(text.includes('flor') || text.includes('jardí') || text.includes('planta')) return '🧑‍🌾';
