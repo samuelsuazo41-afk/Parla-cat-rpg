@@ -232,7 +232,7 @@ function tocarJingleCompletado() {
     const gain = audioCtx.createGain();
     osc.type = 'square';
     osc.frequency.value = nota.freq;
-    gain.gain.value = 0.08;
+    gain.gain.value = 0.01;
     osc.connect(gain);
     gain.connect(audioCtx.destination);
     osc.start(tiempo);
@@ -627,7 +627,7 @@ if(tab === 'biblioteca') {
   if(tab === 'llegendes') {
     const llegendes = [
       { id: 'capitol1_bcn_born', nom: 'El Born, Barcelona', icona: '🏛️', desbloquejada: estat.capitolsCompletats.includes('capitol1_bcn_born'), text: 'El Born és el barri gòtic més viu.' },
-      { id: 'capitol_02_girona', nom: 'Temps de Flors, Girona', icona: '🏰⚜️', desbloquejada: estat.capitolsCompletats.includes('capitol_02_girona'), text: 'Cada maig, Girona s\'omple de flors.' },
+      { id: 'capitol_02_girona', nom: 'Temps de Flors, Girona', icona: '🏰', desbloquejada: estat.capitolsCompletats.includes('capitol_02_girona'), text: 'Cada maig, Girona s\'omple de flors.' },
       { id: 'capitol_03_fires_valencia', nom: 'Falles, València', icona: '🔥', desbloquejada: estat.capitolsCompletats.includes('capitol_03_fires_valencia'), text: 'El foc purifica tot.' }
     ];
     llegendes.forEach(l => {
@@ -662,32 +662,6 @@ function canviarPersonatge() {
 function carregarBotiga() {
   const cont = document.getElementById('botiga-contenidor');
   cont.innerHTML = '<div style="grid-column:1/-1; text-align:center; color:#888;">Pròximament</div>';
-}
-
-function guardarEstat() {
-  localStorage.setItem('cat_monedes', estat.monedes);
-  localStorage.setItem('cat_completats', JSON.stringify(estat.capitolsCompletats));
-  localStorage.setItem('cat_objectes', JSON.stringify(estat.objectes));
-  localStorage.setItem('cat_rutes', JSON.stringify(estat.rutesDesbloquejades));
-  localStorage.setItem('cat_capitols100', JSON.stringify(estat.capitols100Counts));
-  localStorage.setItem('cat_seny', estat.stats.seny);
-  localStorage.setItem('cat_rauxa', estat.stats.rauxa);
-  localStorage.setItem('cat_arrel', estat.stats.arrel);
-  localStorage.setItem('cat_obert', estat.stats.obert);
-  localStorage.setItem('cat_totem', estat.totem);
-  localStorage.setItem('cat_fallades', JSON.stringify(estat.fallades));
-  localStorage.setItem('cat_personatge', JSON.stringify(estat.personatge));
-}
-
-function actualitzarUI() {
-  document.getElementById('coins').innerHTML = `🪙 ${estat.monedes} <span id="text-monedes">${LANG.monedes}</span>`;
-  document.getElementById('stats').textContent = `Seny: ${estat.stats.seny} | Rauxa: ${estat.stats.rauxa} | Arrel: ${estat.stats.arrel} | Obert: ${estat.stats.obert}`;
-}
-
-function carregarMissioTab() {
-  if (!estat.capitolActual) {
-    document.getElementById('missio-card').innerHTML = `<button class="btn" onclick="iniciarRepas()">${LANG.repas_rapido}</button><h3 style="margin-top:20px;">${LANG.repas_titulo}</h3><div id="repas-contenidor"></div>`;
-  }
 }
 
 function iniciarRepas() {
