@@ -1,106 +1,386 @@
 [
   {
-    "escena": "Catedral de Girona - 09:00",
-    "npc_nom": "Marta",
+    "escena": "Jardins de les Pedreres - Inici",
+    "npc_nom": "Voluntària Temps de Flors",
     "npc_emoji": "👩‍🌾",
-    "dialog": "Bon dia! Sóc la Marta, cuido les flors de les escales cada any. Et fa patxoca el Temps de Flors?",
-    "pregunta": "Com respons per començar conversa?",
-    "opcions": [...]
+    "dialog": "Benvingut! Som a Temps de Flors 2026. Aquí comença la ruta 1. Vols un plànol?",
+    "pregunta": "Com comences el recorregut?",
+    "opcions": [
+      {"text": "Sí, gràcies! Com va la ruta?", "correcte": true, "guany": {"monedes": 5, "obert": 2}, "feedback": "Perfecte! Segueix els punts verds. Avui hi ha 113 espais florals."},
+      {"text": "No, me'n recordo del mapa.", "correcte": true, "guany": {"monedes": 3, "obert": 1}, "feedback": "Genial! Comença per Plaça de Jacint Verdaguer."},
+      {"text": "No, gràcies.", "correcte": false, "guany": {"monedes": 0, "rauxa": 1}, "feedback": "Et perdràs la meitat d'espais. Millor agafar el plànol."}
+    ]
   },
   {
-    "escena": "Catedral - Missió",
-    "npc_nom": "Marta",
-    "npc_emoji": "👩‍🌾",
-    "dialog": "Em falta saber el nom d'aquesta flor blava. Em pots ajudar?",
-    "pregunta": "Com demanes ajuda per aprendre el nom?",
-    "opcions": [...]
+    "escena": "Plaça de Jacint Verdaguer",
+    "npc_nom": "Florista",
+    "npc_emoji": "🧑‍🌾",
+    "dialog": "Aquí hem fet un tapís floral dedicat a Jacint Verdaguer. Coneixes el poeta?",
+    "pregunta": "Com respons?",
+    "opcions": [
+      {"text": "Sí! 'L'Atlàntida' és brutal. Bon homenatge.", "correcte": true, "guany": {"monedes": 5, "arrel": 2}, "feedback": "Ella somriu. 'Un gironí il·lustre!'"},
+      {"text": "Sí, una mica.", "correcte": true, "guany": {"monedes": 3, "arrel": 1}, "feedback": "Correcte."},
+      {"text": "No.", "correcte": false, "guany": {"monedes": 0, "rauxa": 1}, "feedback": "És el poeta nacional de Catalunya. Val la pena llegir-lo."}
+    ]
   },
   {
-    "escena": "Banys Àrabs - 10:30",
-    "npc_nom": "Jordi",
-    "npc_emoji": "🧑‍🏫",
-    "dialog": "Ep! Sóc en Jordi, faig de guia avui. Els turistes sempre es perden aquí.",
-    "pregunta": "Com demanes on és la instal·lació de flors?",
-    "opcions": [...]
-  },
-  {
-    "escena": "Banys Àrabs - Conversa",
-    "npc_nom": "Jordi",
-    "npc_emoji": "🧑‍🏫",
-    "dialog": "Saps què? A mi el que m'agrada és explicar la història als que s'esforcen a parlar català.",
-    "pregunta": "Com respons per agrair i seguir parlant?",
-    "opcions": [...]
-  },
-  {
-    "escena": "Pujada de Sant Domènec - 11:00",
-    "npc_nom": "Núria",
-    "npc_emoji": "👩‍🦳",
-    "dialog": "Hola! Sóc la Núria. Aquesta pujada la pujo cada dia amb el carro de les flors. Cansa!",
-    "pregunta": "Com mostres empatia?",
-    "opcions": [...]
-  },
-  {
-    "escena": "Plaça del Vi - 11:30",
-    "npc_nom": "Pau",
-    "npc_emoji": "👦",
-    "dialog": "Bon dia! Sóc el Pau, tinc 8 anys i vinc cada any amb l'àvia. Em vols ensenyar un color en català?",
-    "pregunta": "Com ensenyes un color?",
-    "opcions": [...]
-  },
-  {
-    "escena": "Carrer de la Força - 12:00",
-    "npc_nom": "Laia",
-    "npc_emoji": "👩‍🦰",
-    "dialog": "Bon dia! Sóc la Laia. Aquest carrer és estret però ple de flors. Vigila on trepitges!",
-    "pregunta": "Com respons amb humor?",
-    "opcions": [...]
-  },
-  {
-    "escena": "Sant Feliu - 12:30",
-    "npc_nom": "Mossèn Pere",
+    "escena": "Església dels Dolors",
+    "npc_nom": "Sagristà",
     "npc_emoji": "👨‍⚕️",
-    "dialog": "Pau i bé. Sóc el mossèn Pere. Aquestes flors són per donar la benvinguda a tothom.",
-    "pregunta": "Com agraeixes el gest?",
-    "opcions": [...]
+    "dialog": "Aquestes escales s'omplen de flors cada any. És un dels espais més fotografiats.",
+    "pregunta": "Com agraeixes la feina?",
+    "opcions": [
+      {"text": "Ha quedat espectacular. Moltes gràcies per la feina.", "correcte": true, "guany": {"monedes": 5, "arrel": 2}, "feedback": "Gràcies! Hi hem estat 3 dies muntant."},
+      {"text": "Molt bonic.", "correcte": true, "guany": {"monedes": 3, "arrel": 1}, "feedback": "Correcte."},
+      {"text": "Normal.", "correcte": false, "guany": {"monedes": 0, "rauxa": 1}, "feedback": "És molta feina voluntària. Valora-ho."}
+    ]
   },
   {
-    "escena": "Passeig Arqueològic - 13:00",
-    "npc_nom": "Anna",
+    "escena": "Centre Cultural La Mercè",
+    "npc_nom": "Guia cultural",
+    "npc_emoji": "👩‍🏫",
+    "dialog": "Aquest espai interior obre fins a les 23h. Aquí hi ha instal·lacions d'art floral contemporani.",
+    "pregunta": "Com preguntes l'horari?",
+    "opcions": [
+      {"text": "Fins a quina hora puc entrar?", "correcte": true, "guany": {"monedes": 5, "seny": 2}, "feedback": "Fins a les 23h de diumenge a divendres. Dissabtes fins a les 24h."},
+      {"text": "Horari?", "correcte": true, "guany": {"monedes": 3, "seny": 1}, "feedback": "Correcte. Fins a les 23h."},
+      {"text": "Tanca aviat?", "correcte": false, "guany": {"monedes": 0, "rauxa": 1}, "feedback": "No, obre fins tard per 'Flors de nit'."}
+    ]
+  },
+  {
+    "escena": "Plaça del Vi",
+    "npc_nom": "Cambrer",
+    "npc_emoji": "👨‍🍳",
+    "dialog": "La plaça del Vi està plena de terrasses. Si et canses, para a fer un vermut.",
+    "pregunta": "Com demanes en català?",
+    "opcions": [
+      {"text": "Em poses un vermut amb olives, si us plau?", "correcte": true, "guany": {"monedes": 5, "arrel": 2}, "feedback": "Ara mateix! Bon descans."},
+      {"text": "Un vermut.", "correcte": true, "guany": {"monedes": 3, "arrel": 1}, "feedback": "Correcte."},
+      {"text": "Una cerveza.", "correcte": false, "guany": {"monedes": 0, "rauxa": 1}, "feedback": "Demana 'una cervesa' en català."}
+    ]
+  },
+  {
+    "escena": "Pont de Pedra - Pujada",
+    "npc_nom": "Turista",
+    "npc_emoji": "🧑",
+    "dialog": "Per pujar a la Catedral has de passar per aquí. Les vistes a l'Onyar són brutals.",
+    "pregunta": "Com respons?",
+    "opcions": [
+      {"text": "Gràcies! Hi vaig ara mateix.", "correcte": true, "guany": {"monedes": 5, "obert": 2}, "feedback": "No et perdis les escales de la Catedral."},
+      {"text": "Ok.", "correcte": true, "guany": {"monedes": 3, "obert": 1}, "feedback": "Correcte."},
+      {"text": "Massa gent.", "correcte": false, "guany": {"monedes": 0, "rauxa": 1}, "feedback": "Vés aviat al matí per evitar cues."}
+    ]
+  },
+  {
+    "escena": "Catedral de Girona - Escales",
+    "npc_nom": "Fotògrafa",
+    "npc_emoji": "📸",
+    "dialog": "Aquí van gravar Juego de Tronos. Tothom vol la foto a les escales.",
+    "pregunta": "Com preguntes pel nom?",
+    "opcions": [
+      {"text": "Com es diuen aquestes escales en català?", "correcte": true, "guany": {"monedes": 5, "seny": 2}, "feedback": "Escales de la Catedral de Santa Maria."},
+      {"text": "Com es diuen?", "correcte": true, "guany": {"monedes": 3, "seny": 1}, "feedback": "Correcte."},
+      {"text": "No ho sé.", "correcte": false, "guany": {"monedes": 0, "rauxa": 1}, "feedback": "Pregunta sempre 'com es diu'."}
+    ]
+  },
+  {
+    "escena": "Call Jueu - Museu d'Història dels Jueus",
+    "npc_nom": "Historiador",
+    "npc_emoji": "🧑‍🏫",
+    "dialog": "Estàs al Call Jueu. Aquí hi va viure la comunitat jueva fins al 1492. Les flors respecten la història.",
+    "pregunta": "Com reaccions?",
+    "opcions": [
+      {"text": "És molt respectuós. Girona té molta història.", "correcte": true, "guany": {"monedes": 8, "arrel": 3}, "feedback": "Exacte. 2000 anys de cultures barreijades."},
+      {"text": "Sí, molt interessant.", "correcte": true, "guany": {"monedes": 4, "arrel": 1}, "feedback": "Correcte."},
+      {"text": "No m'interessa.", "correcte": false, "guany": {"monedes": 0, "rauxa": 1}, "feedback": "És una part clau de Girona."}
+    ]
+  },
+  {
+    "escena": "Banys Àrabs",
+    "npc_nom": "Guia",
+    "npc_emoji": "🧑‍🎓",
+    "dialog": "Aquests banys són del segle XII. L'any passat l'instal·lació floral va guanyar premi.",
+    "pregunta": "Com demanes més info?",
+    "opcions": [
+      {"text": "Quina instal·lació va guanyar?", "correcte": true, "guany": {"monedes": 5, "seny": 2}, "feedback": "'L'aigua de la memòria'. Era brutal."},
+      {"text": "Ah sí?", "correcte": true, "guany": {"monedes": 3, "seny": 1}, "feedback": "Correcte."},
+      {"text": "No ho sé.", "correcte": false, "guany": {"monedes": 0, "rauxa": 1}, "feedback": "Mira les fotos de l'any passat a l'app."}
+    ]
+  },
+  {
+    "escena": "Passeig Arqueològic - Torre Gironella",
+    "npc_nom": "Arqueòloga",
     "npc_emoji": "👩‍🔬",
-    "dialog": "Hola! Sóc l'Anna, arqueòloga. Fa gràcia veure flors entre pedres de 2000 anys.",
-    "pregunta": "Com fas un comentari interessant?",
-    "opcions": [...]
+    "dialog": "Estem a la muralla carolíngia. Des d'aquí veus tot Girona coberta de flors.",
+    "pregunta": "Com expresses admiració?",
+    "opcions": [
+      {"text": "És impressionant! Sembla un mar de flors.", "correcte": true, "guany": {"monedes": 8, "arrel": 3}, "feedback": "Sí! Així és Temps de Flors."},
+      {"text": "Molt bonic.", "correcte": true, "guany": {"monedes": 3, "arrel": 1}, "feedback": "Correcte."},
+      {"text": "Normal.", "correcte": false, "guany": {"monedes": 0, "rauxa": 1}, "feedback": "És únic al món. Valora-ho."}
+    ]
   },
   {
-    "escena": "Pont de Pedra - 13:30",
-    "npc_nom": "Jordi",
+    "escena": "Jardins dels Alemanys",
+    "npc_nom": "Jardinera",
+    "npc_emoji": "🧑‍🌾",
+    "dialog": "Aquest jardí és un dels més tranquils. Aquí fem instal·lacions per descansar.",
+    "pregunta": "Com agraeixes el consell?",
+    "opcions": [
+      {"text": "Gràcies. És perfecte per parar 5 minuts.", "correcte": true, "guany": {"monedes": 5, "arrel": 2}, "feedback": "Aprofita'l. Després segueix cap a la Torre Gironella."},
+      {"text": "Gràcies.", "correcte": true, "guany": {"monedes": 3, "arrel": 1}, "feedback": "Correcte."},
+      {"text": "Vale.", "correcte": false, "guany": {"monedes": 0, "rauxa": 1}, "feedback": "Massa fred."}
+    ]
+  },
+  {
+    "escena": "Monestir de Sant Pere de Galligants",
+    "npc_nom": "Monjo",
+    "npc_emoji": "👨‍⚕️",
+    "dialog": "El monestir romànic està obert fins a les 23h. Les flors respecten l'arquitectura.",
+    "pregunta": "Com agraeixes?",
+    "opcions": [
+      {"text": "Moltes gràcies. És un lloc màgic.", "correcte": true, "guany": {"monedes": 5, "seny": 2}, "feedback": "Pau i bé. Gaudeix del silenci."},
+      {"text": "Gràcies.", "correcte": true, "guany": {"monedes": 3, "seny": 1}, "feedback": "Correcte."},
+      {"text": "Vale.", "correcte": false, "guany": {"monedes": 0, "rauxa": 1}, "feedback": "Massa informal per aquest lloc."}
+    ]
+  },
+  {
+    "escena": "Plaça de Sant Feliu - Basílica",
+    "npc_nom": "Mossèn",
+    "npc_emoji": "👨‍⚕️",
+    "dialog": "La Basílica de Sant Feliu és del segle IV. Les flors de l'escalinata són tradicionals.",
+    "pregunta": "Com respons?",
+    "opcions": [
+      {"text": "És preciós. Moltes gràcies per obrir-la.", "correcte": true, "guany": {"monedes": 5, "arrel": 2}, "feedback": "La casa de Déu és per a tothom."},
+      {"text": "Gràcies.", "correcte": true, "guany": {"monedes": 3, "arrel": 1}, "feedback": "Correcte."},
+      {"text": "Ok.", "correcte": false, "guany": {"monedes": 0, "rauxa": 1}, "feedback": "Massa curt."}
+    ]
+  },
+  {
+    "escena": "La lleona de Girona",
+    "npc_nom": "Guia nocturna",
+    "npc_emoji": "🕵️",
+    "dialog": "Diu la llegenda que si li fas un petó al cul, tornaràs a Girona. T'atreveixes?",
+    "pregunta": "Com respons?",
+    "opcions": [
+      {"text": "Ho faré! Vull tornar segur.", "correcte": true, "guany": {"monedes": 5, "rauxa": 2}, "feedback": "Ella riu. 'Funciona, t'ho asseguro'."},
+      {"text": "Quina llegenda més curiosa.", "correcte": true, "guany": {"monedes": 3, "rauxa": 1}, "feedback": "Sí, molt gironina."},
+      {"text": "Quina tonteria.", "correcte": false, "guany": {"monedes": 0, "rauxa": 1}, "feedback": "Les llegendes són part de la ciutat."}
+    ]
+  },
+  {
+    "escena": "Pont d'en Gómez",
+    "npc_nom": "Pintor",
+    "npc_emoji": "👨‍🎨",
+    "dialog": "Pinto aquest pont cada any durant Temps de Flors. La llum sobre l'Onyar és única.",
+    "pregunta": "Com mostres interès?",
+    "opcions": [
+      {"text": "Els colors són increïbles. Vens cada any?", "correcte": true, "guany": {"monedes": 5, "obert": 2}, "feedback": "Sí! Des de fa 12 anys. No me'l perdo."},
+      {"text": "Molt bonic.", "correcte": true, "guany": {"monedes": 3, "obert": 1}, "feedback": "Gràcies."},
+      {"text": "Jo no sé pintar.", "correcte": false, "guany": {"monedes": 0, "rauxa": 1}, "feedback": "No cal saber pintar per gaudir-ho."}
+    ]
+  },
+  {
+    "escena": "Plaça de la Independència",
+    "npc_nom": "Barista",
+    "npc_emoji": "☕",
+    "dialog": "Aquí tens el cor de Girona. Durant Temps de Flors obrim fins a les 24h.",
+    "pregunta": "Com demanes cafè?",
+    "opcions": [
+      {"text": "Em poses un tallat, si us plau?", "correcte": true, "guany": {"monedes": 5, "arrel": 2}, "feedback": "Un tallat ben calent. A gaudir."},
+      {"text": "Un cafè.", "correcte": true, "guany": {"monedes": 3, "arrel": 1}, "feedback": "Correcte."},
+      {"text": "No bec cafè.", "correcte": false, "guany": {"monedes": 0, "rauxa": 1}, "feedback": "Tenim te i xocolata també."}
+    ]
+  },
+  {
+    "escena": "Jardins de la Devesa",
+    "npc_nom": "Corredor",
+    "npc_emoji": "🏃",
+    "dialog": "La Devesa és el parc urbà més gran de Catalunya. Aquí la ruta 2 acaba.",
+    "pregunta": "Com preguntes per la ruta?",
+    "opcions": [
+      {"text": "Hi ha carril bici per tornar al centre?", "correcte": true, "guany": {"monedes": 5, "obert": 2}, "feedback": "Sí! Segueix la línia verda cap a la Rambla."},
+      {"text": "Sí, m'agrada la bici.", "correcte": true, "guany": {"monedes": 3, "obert": 1}, "feedback": "Correcte."},
+      {"text": "No, odio la bici.", "correcte": false, "guany": {"monedes": 0, "rauxa": 1}, "feedback": "Et perds la millor ruta."}
+    ]
+  },
+  {
+    "escena": "Museu d'Art - Jardí",
+    "npc_nom": "Conservadora",
+    "npc_emoji": "👩‍🎨",
+    "dialog": "Al jardí del Museu d'Art hi ha una instal·lació amb flors seques. És efímera.",
+    "pregunta": "Què vol dir 'efímera'?",
+    "opcions": [
+      {"text": "Que dura poc temps, només durant el festival.", "correcte": true, "guany": {"monedes": 8, "seny": 3}, "feedback": "Exacte! Per això cal venir ara."},
+      {"text": "Que és bonica.", "correcte": false, "guany": {"monedes": 1, "rauxa": 1}, "feedback": "No exactament. Vol dir que no dura."},
+      {"text": "No ho sé.", "correcte": false, "guany": {"monedes": 0, "rauxa": 1}, "feedback": "Efímer = que dura poc."}
+    ]
+  },
+  {
+    "escena": "Mercat del Lleó",
+    "npc_nom": "Pagesa",
+    "npc_emoji": "👩‍🌾",
+    "dialog": "Vinc cada dissabte des de Salt. Durant Temps de Flors portem flors comestibles.",
+    "pregunta": "Com compres?",
+    "opcions": [
+      {"text": "Em poses flors de borratja, si us plau?", "correcte": true, "guany": {"monedes": 5, "arrel": 2}, "feedback": "Perfecte! Són per amanides. 2 euros."},
+      {"text": "Quant valen?", "correcte": true, "guany": {"monedes": 3, "arrel": 1}, "feedback": "Correcte."},
+      {"text": "És car.", "correcte": false, "guany": {"monedes": 0, "rauxa": 1}, "feedback": "És producte local i ecològic."}
+    ]
+  },
+  {
+    "escena": "Font de la Pólvora - Amagatall",
+    "npc_nom": "Jove gironí",
+    "npc_emoji": "👦",
+    "dialog": "Shhh... aquest és un espai calma. Els turistes no venen aquí. Silenci total.",
+    "pregunta": "Com agraeixes el secret?",
+    "opcions": [
+      {"text": "Gràcies. No ho diré a ningú, ho prometo.", "correcte": true, "guany": {"monedes": 8, "arrel": 3}, "feedback": "Confies en mi. Ja ets una mica de Girona."},
+      {"text": "Gràcies, és preciós.", "correcte": true, "guany": {"monedes": 5, "arrel": 1}, "feedback": "Respecta el lloc."},
+      {"text": "Ho penjaré a Instagram.", "correcte": false, "guany": {"monedes": 0, "rauxa": 2}, "feedback": "No! Perdrà la màgia."}
+    ]
+  },
+  {
+    "escena": "Casa Masó - Façana",
+    "npc_nom": "Guia de casa-museu",
+    "npc_emoji": "🏛️",
+    "dialog": "Casa Masó és noucentisme pur. Només obre caps de setmana. L'instal·lació floral és minimalista.",
+    "pregunta": "Com preguntes per visitar?",
+    "opcions": [
+      {"text": "Quan obre? He de reservar?", "correcte": true, "guany": {"monedes": 5, "seny": 2}, "feedback": "Dissabte i diumenge. Millor reservar online."},
+      {"text": "Quan obre?", "correcte": true, "guany": {"monedes": 3, "seny": 1}, "feedback": "Correcte."},
+      {"text": "No importa.", "correcte": false, "guany": {"monedes": 0, "rauxa": 1}, "feedback": "Et perds una joia arquitectònica."}
+    ]
+  },
+  {
+    "escena": "Carrer de la Força - Taller",
+    "npc_nom": "Artesà",
+    "npc_emoji": "🧑‍🔧",
+    "dialog": "Fajo ceràmica aquí des de fa 20 anys. Durant Temps de Flors faig peces amb motius florals.",
+    "pregunta": "Com mostres interès?",
+    "opcions": [
+      {"text": "Es nota que és artesanal. Quant costa aquest bol?", "correcte": true, "guany": {"monedes": 5, "arrel": 2}, "feedback": "25 euros. Cada peça és única."},
+      {"text": "Molt bonic.", "correcte": true, "guany": {"monedes": 3, "arrel": 1}, "feedback": "Gràcies! Ho faig amb amor."},
+      {"text": "És car.", "correcte": false, "guany": {"monedes": 0, "rauxa": 1}, "feedback": "El treball manual té el seu preu."}
+    ]
+  },
+  {
+    "escena": "Plaça de Sant Pere - Església",
+    "npc_nom": "Organista",
+    "npc_emoji": "🎹",
+    "dialog": "Aquesta església té un orgue del segle XVIII. Faig concerts els divendres a les 8.",
+    "pregunta": "Com mostres interès?",
+    "opcions": [
+      {"text": "M'encantaria venir. És obert al públic?", "correcte": true, "guany": {"monedes": 5, "obert": 2}, "feedback": "Sí! Entrada lliure. Vine."},
+      {"text": "Quin horari?", "correcte": true, "guany": {"monedes": 3, "obert": 1}, "feedback": "Divendres a les 20h."},
+      {"text": "No m'agrada l'òrgan.", "correcte": false, "guany": {"monedes": 0, "rauxa": 1}, "feedback": "Dona-li una oportunitat. És màgic."}
+    ]
+  },
+  {
+    "escena": "Carrer de Sant Llorenç - Llibreria",
+    "npc_nom": "Llibreter",
+    "npc_emoji": "📚",
+    "dialog": "Aquí tenim llibres només en català. Durant Temps de Flors fem presentacions.",
+    "pregunta": "Com agraeixes la feina?",
+    "opcions": [
+      {"text": "Gràcies per mantenir el català viu així.", "correcte": true, "guany": {"monedes": 8, "arrel": 3}, "feedback": "Ell s'emociona. 'Això és el que fem'."},
+      {"text": "Molt bé.", "correcte": true, "guany": {"monedes": 3, "arrel": 1}, "feedback": "Correcte."},
+      {"text": "Teniu llibres en castellà?", "correcte": false, "guany": {"monedes": 0, "rauxa": 1}, "feedback": "No, només català. És la nostra missió."}
+    ]
+  },
+  {
+    "escena": "Plaça de Catalunya - Mercat",
+    "npc_nom": "Pagesa",
+    "npc_emoji": "👩‍🌾",
+    "dialog": "Vinc cada dissabte des de Salt. Verdures de l'hort i flors comestibles.",
+    "pregunta": "Com compres?",
+    "opcions": [
+      {"text": "Em poses un quilo de tomàquets, si us plau?", "correcte": true, "guany": {"monedes": 5, "arrel": 2}, "feedback": "Aquests són de la meva terra. Boníssims."},
+      {"text": "Quant valen?", "correcte": true, "guany": {"monedes": 3, "arrel": 1}, "feedback": "3 euros el quilo."},
+      {"text": "És car.", "correcte": false, "guany": {"monedes": 0, "rauxa": 1}, "feedback": "És ecològic i de proximitat."}
+    ]
+  },
+  {
+    "escena": "Pujada de Sant Domènec - Carro",
+    "npc_nom": "Florista",
+    "npc_emoji": "👩‍🌾",
+    "dialog": "Pujo aquest carro cada dia amb flors per Temps de Flors. Cansa, però val la pena.",
+    "pregunta": "Com mostres empatia?",
+    "opcions": [
+      {"text": "Deu cansar molt. Ets molt valenta.", "correcte": true, "guany": {"monedes": 5, "arrel": 2}, "feedback": "Ella somriu. 'Per Girona, el que sigui'."},
+      {"text": "Sí, cansa.", "correcte": true, "guany": {"monedes": 3, "arrel": 1}, "feedback": "Correcte."},
+      {"text": "Agafa un taxi.", "correcte": false, "guany": {"monedes": 0, "rauxa": 1}, "feedback": "No és el moment de donar consells."}
+    ]
+  },
+  {
+    "escena": "Plaça del Oli - Cafè",
+    "npc_nom": "Barista",
+    "npc_emoji": "☕",
+    "dialog": "Aquí fem el millor cafè de Girona. Torrat aquí mateix. Vols provar?",
+    "pregunta": "Com demanes?",
+    "opcions": [
+      {"text": "Em poses un tallat, si us plau?", "correcte": true, "guany": {"monedes": 5, "arrel": 2}, "feedback": "Un tallat ben calent. A gaudir."},
+      {"text": "Un cafè.", "correcte": true, "guany": {"monedes": 3, "arrel": 1}, "feedback": "Correcte."},
+      {"text": "No bec cafè.", "correcte": false, "guany": {"monedes": 0, "rauxa": 1}, "feedback": "Tenim te i xocolata també."}
+    ]
+  },
+  {
+    "escena": "Passeig de la Muralla - Mirador",
+    "npc_nom": "Fotògrafa professional",
+    "npc_emoji": "👩‍📷",
+    "dialog": "Aquesta hora és la millor per fotos. La llum daurada sobre el Barri Vell és màgica.",
+    "pregunta": "Com preguntes per trucs?",
+    "opcions": [
+      {"text": "Quin truc em dónes per fer una bona foto?", "correcte": true, "guany": {"monedes": 5, "seny": 2}, "feedback": "Espera 10 minuts. El sol baix ho canvia tot."},
+      {"text": "Quina hora és millor?", "correcte": true, "guany": {"monedes": 3, "seny": 1}, "feedback": "Ara, al capvespre."},
+      {"text": "Jo faig amb el mòbil.", "correcte": false, "guany": {"monedes": 0, "rauxa": 1}, "feedback": "El mòbil també val! Però la llum és clau."}
+    ]
+  },
+  {
+    "escena": "Carrer de la Lleona - Llegenda",
+    "npc_nom": "Guia nocturna",
+    "npc_emoji": "🕵️",
+    "dialog": "Aquesta lleona té una llegenda. Qui li faci un petó al cul, tornarà a Girona.",
+    "pregunta": "Com respons?",
+    "opcions": [
+      {"text": "Ho faré! Vull tornar segur.", "correcte": true, "guany": {"monedes": 5, "rauxa": 2}, "feedback": "Ella riu. 'Funciona, t'ho asseguro'."},
+      {"text": "Quina llegenda més curiosa.", "correcte": true, "guany": {"monedes": 3, "rauxa": 1}, "feedback": "Sí, molt gironina."},
+      {"text": "Quina tonteria.", "correcte": false, "guany": {"monedes": 0, "rauxa": 1}, "feedback": "Les llegendes són part de la ciutat."}
+    ]
+  },
+  {
+    "escena": "Plaça del Mercadal - Festa",
+    "npc_nom": "Organitzador de festes",
+    "npc_emoji": "🎉",
+    "dialog": "Aquí fem les festes de Sant Narcís cada octubre. Durant Temps de Flors fem tastets.",
+    "pregunta": "Com mostres interès?",
+    "opcions": [
+      {"text": "Quan és exactament? No m'ho vull perdre.", "correcte": true, "guany": {"monedes": 5, "obert": 2}, "feedback": "Última setmana d'octubre. Apunta-t'ho."},
+      {"text": "Quan és?", "correcte": true, "guany": {"monedes": 3, "obert": 1}, "feedback": "Octubre, última setmana."},
+      {"text": "No m'agraden les festes.", "correcte": false, "guany": {"monedes": 0, "rauxa": 1}, "feedback": "Et perds la millor setmana de Girona."}
+    ]
+  },
+  {
+    "escena": "Mas Ramada - Zona Ampliada",
+    "npc_nom": "Voluntari",
+    "npc_emoji": "🧑‍🤝‍🧑",
+    "dialog": "Aquesta zona es va ampliar aquest any. Hi ha 15 espais nous.",
+    "pregunta": "Com reaccions?",
+    "opcions": [
+      {"text": "Genial! Aniré ara mateix.", "correcte": true, "guany": {"monedes": 5, "obert": 2}, "feedback": "Segueix el plànol de darrere. Val la pena."},
+      {"text": "Molt bé.", "correcte": true, "guany": {"monedes": 3, "obert": 1}, "feedback": "Correcte."},
+      {"text": "No tinc temps.", "correcte": false, "guany": {"monedes": 0, "rauxa": 1}, "feedback": "Et perds la novetat del 2026."}
+    ]
+  },
+  {
+    "escena": "Palau-sacosta - Tancament",
+    "npc_nom": "Coordinador",
     "npc_emoji": "👨‍💼",
-    "dialog": "Finalment! Sóc en Jordi, l'organitzador. Has vist totes les instal·lacions?",
-    "pregunta": "Com expliques el que has vist?",
-    "opcions": [...]
-  },
-  {
-    "escena": "Pont de Pedra - Comiat",
-    "npc_nom": "Jordi",
-    "npc_emoji": "👨‍💼",
-    "dialog": "Fins l'any que ve! I recorda: parlar català obre portes. I flors.",
-    "pregunta": "Com t'acomiades?",
-    "opcions": [...]
-  },
-  {
-    "escena": "Gremi dels Floristes - Desbloqueig",
-    "npc_nom": "Elisabet",
-    "npc_emoji": "👩‍💼",
-    "dialog": "Benvingut al Gremi, florista! Amb 4 flors ja formes part. Aquí guardem secrets de Girona.",
-    "pregunta": "Com respons a la benvinguda?",
-    "opcions": [...]
-  },
-  {
-    "escena": "Gremi - Lliçó secreta",
-    "npc_nom": "Elisabet",
-    "npc_emoji": "👩‍💼",
-    "dialog": "A Girona diem 'que hi farem' quan passa algo i no hi ha remei. Prova-ho!",
-    "pregunta": "Quan faries servir 'que hi farem'?",
-    "opcions": [...]
+    "dialog": "Estem a Palau-sacosta, últim punt de la ruta 1. Gràcies per venir a Temps de Flors 2026.",
+    "pregunta": "Com tanques la visita?",
+    "opcions": [
+      {"text": "Moltes gràcies! Torno l'any que ve segur.", "correcte": true, "guany": {"monedes": 10, "arrel": 4}, "feedback": "Girona t'espera amb els braços oberts!"},
+      {"text": "Adéu, ha estat genial.", "correcte": true, "guany": {"monedes": 5, "arrel": 1}, "feedback": "Fins l'any que ve!"},
+      {"text": "Ja n'hi ha prou.", "correcte": false, "guany": {"monedes": 0, "rauxa": 1}, "feedback": "Massa sec. Acomiada't amb més calidesa."}
+    ]
   }
 ]
