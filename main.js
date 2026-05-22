@@ -663,9 +663,6 @@ function carregarBotiga() {
   cont.innerHTML = '<div style="grid-column:1/-1; text-align:center; color:#888;">Pròximament</div>';
 }
 
-function iniciarRepas() {
-  document.getElementById('repas-contenidor').innerHTML = '<p style="text-align:center; color:#888;">Completa un capítol primer</p>';
-}
 
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('./sw.js').catch(err => console.log('SW error:', err));
