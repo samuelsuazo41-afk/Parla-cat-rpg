@@ -1,4 +1,6 @@
 // main.js - Lógica de Parla Cat RPG
+let musicaActivada = true; // Pon false para apagar la música sin borrar nada
+
 const LANGS = {
   es: {
     app_titol: "Parla Cat RPG - Crónicas de Cataluña",
@@ -160,17 +162,17 @@ let musicaLoop = false;
 let melodiaActual = false;
 
 const MELODIAS = {
-  gremi: [ // Taberna suave
+  gremi: [ // Taberna suave - 60 BPM, grave, sin agudos
     {freq: 196, dur: 1.5},
-    {freq: 220, dur: 1.5}, 
+    {freq: 220, dur: 1.5},
     {freq: 196, dur: 3.0}
   ],
-  estudio: [ // Tienda tranquila
+  estudio: [ // Tienda tranquila - muy suave para leer
     {freq: 174, dur: 2.0},
     {freq: 196, dur: 2.0},
     {freq: 220, dur: 4.0}
   ],
-  calma: [ // Para menús
+  calma: [ // Para menús - casi silencio ambiental
     {freq: 147, dur: 3.0},
     {freq: 165, dur: 3.0}
   ]
@@ -197,7 +199,9 @@ function detectarEmojiNPC(dialogo, npc_nom) {
 }
 
 function iniciarMusicaChiptune(nombreMelodia = 'estudio') {
+  if (!musicaActivada) return;
   if (melodiaActual === nombreMelodia && musicaLoop) return;
+
   pararMusica();
   melodiaActual = nombreMelodia;
   audioCtx = new (window.AudioContext || window.webkitAudioContext)();
@@ -210,7 +214,7 @@ function iniciarMusicaChiptune(nombreMelodia = 'estudio') {
     const gain = audioCtx.createGain();
     osc.type = 'square';
     osc.frequency.value = nota.freq;
-    gain.gain.value = 0.01;
+    gain.gain.value = 0.015; // Volumen bajo para no distraer
     osc.connect(gain);
     gain.connect(audioCtx.destination);
     osc.start(tiempo);
@@ -236,6 +240,7 @@ function pararMusica() {
 }
 
 function tocarJingleCompletado() {
+  if (!musicaActivada) return;
   if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
   const notas = [{freq: 523, dur: 0.15}, {freq: 659, dur: 0.15}, {freq: 784, dur: 0.15}, {freq: 1047, dur: 0.4}];
   let tiempo = audioCtx.currentTime;
@@ -244,7 +249,7 @@ function tocarJingleCompletado() {
     const gain = audioCtx.createGain();
     osc.type = 'square';
     osc.frequency.value = nota.freq;
-    gain.gain.value = 0.01;
+    gain.gain.value = 0.02;
     osc.connect(gain);
     gain.connect(audioCtx.destination);
     osc.start(tiempo);
@@ -385,7 +390,6 @@ function carregarPas() {
   const pas = estat.capitolActual.passos[estat.pasActual];
   if (!pas) { completarCapitol(); return; }
 
-  // Auto-detecta emoji del NPC si no viene en el JSON
   const npcEmoji = pas.npc_emoji || detectarEmojiNPC(pas.dialog, pas.npc_nom);
   const npcNom = pas.npc_nom || 'NPC';
   const jugadorEmoji = estat.personatge?.emoji || '🧑';
@@ -587,7 +591,7 @@ function mostrarGremi(tab, e) {
       const totalStats = estat.stats.seny + estat.stats.rauxa + estat.stats.arrel + estat.stats.obert;
       const rang = totalStats < 20? 'Novell' : totalStats < 50? 'Viatjant' : totalStats < 100? 'Mestre' : 'Llegendari';
 
-      cont.innerHTML = `
+            cont.innerHTML = `
         <div class="gremi-item" style="grid-column:1/-1; text-align:center;">
           <div style="font-size:64px;">${estat.personatge.emoji}</div>
           <h3 style="margin:10px 0;">${estat.personatge.nom}</h3>
@@ -665,7 +669,7 @@ function seleccionarPersonatge(id) {
 }
 
 function canviarPersonatge() {
-  estat.personatge = null; 
+  estat.personatge = null;
   guardarEstat();
   mostrarGremi('personatges', null);
 }
@@ -674,7 +678,6 @@ function carregarBotiga() {
   const cont = document.getElementById('botiga-contenidor');
   cont.innerHTML = '<div style="grid-column:1/-1; text-align:center; color:#888;">Pròximament</div>';
 }
-
 
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('./sw.js').catch(err => console.log('SW error:', err));
