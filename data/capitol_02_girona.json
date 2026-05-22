@@ -1,249 +1,106 @@
 [
   {
     "escena": "Catedral de Girona - 09:00",
+    "npc_nom": "Marta",
+    "npc_emoji": "👩‍🌾",
     "dialog": "Bon dia! Sóc la Marta, cuido les flors de les escales cada any. Et fa patxoca el Temps de Flors?",
     "pregunta": "Com respons per començar conversa?",
-    "opcions": [
-      {
-        "text": "Sí, és preciós! No havia vist mai tantes flors juntes",
-        "correcte": true,
-        "guany": { "monedes": 5, "seny": 2, "arrel": 1 },
-        "feedback": "La Marta somriu. 'A mi també m'encanta! Cada any hi poso el cor.'"
-      },
-      {
-        "text": "Sí, está muy bonito",
-        "correcte": false,
-        "guany": { "monedes": 0, "obert": 1 },
-        "feedback": "La Marta et mira amable: 'Aquí ho diem preciós, però t'entenc!'"
-      },
-      {
-        "text": "Sí",
-        "correcte": true,
-        "guany": { "monedes": 2, "arrel": 1 },
-        "feedback": "Curt però sincer. 'Sí, oi que sí?' et respon ella."
-      }
-    ]
+    "opcions": [...]
   },
   {
     "escena": "Catedral - Missió",
+    "npc_nom": "Marta",
+    "npc_emoji": "👩‍🌾",
     "dialog": "Em falta saber el nom d'aquesta flor blava. Em pots ajudar?",
     "pregunta": "Com demanes ajuda per aprendre el nom?",
-    "opcions": [
-      {
-        "text": "Com es diu aquesta flor en català?",
-        "correcte": true,
-        "guany": { "monedes": 4, "seny": 2 },
-        "feedback": " 'Aquesta és un lliri!' et diu. 'Ara ja ho saps.' Guanyes: Flor de la Catedral 🌹"
-      },
-      {
-        "text": "Como se dice en español?",
-        "correcte": false,
-        "guany": { "monedes": 0, "rauxa": 1 },
-        "feedback": " 'Ostres, aquí ho diem en català, però te'l dic igual: lliri.'"
-      }
-    ]
+    "opcions": [...]
   },
   {
     "escena": "Banys Àrabs - 10:30",
+    "npc_nom": "Jordi",
+    "npc_emoji": "🧑‍🏫",
     "dialog": "Ep! Sóc en Jordi, faig de guia avui. Els turistes sempre es perden aquí.",
     "pregunta": "Com demanes on és la instal·lació de flors?",
-    "opcions": [
-      {
-        "text": "Disculpa, on és la instal·lació de flors?",
-        "correcte": true,
-        "guany": { "monedes": 6, "seny": 3 },
-        "feedback": "'És per allà, a la dreta!' et diu en Jordi. 'Bona feina, parles bé català!'"
-      },
-      {
-        "text": "Dónde está la instalación?",
-        "correcte": false,
-        "guany": { "monedes": 0, "obert": 1 },
-        "feedback": "En Jordi riu: 'Et responc igual, però prova en català la pròxima!'"
-      }
-    ]
+    "opcions": [...]
   },
   {
     "escena": "Banys Àrabs - Conversa",
+    "npc_nom": "Jordi",
+    "npc_emoji": "🧑‍🏫",
     "dialog": "Saps què? A mi el que m'agrada és explicar la història als que s'esforcen a parlar català.",
     "pregunta": "Com respons per agrair i seguir parlant?",
-    "opcions": [
-      {
-        "text": "Moltes gràcies! M'agrada molt aprendre història en català",
-        "correcte": true,
-        "guany": { "monedes": 5, "seny": 2, "arrel": 1 },
-        "feedback": "En Jordi et dona un fulletó. 'Tens bona actitud. Això és el Temps de Flors!'"
-      },
-      {
-        "text": "Gracias",
-        "correcte": false,
-        "guany": { "monedes": 1, "obert": 1 },
-        "feedback": "Somriu però no et dona el fulletó. 'La pròxima en català, eh!'"
-      }
-    ]
+    "opcions": [...]
   },
   {
     "escena": "Pujada de Sant Domènec - 11:00",
+    "npc_nom": "Núria",
+    "npc_emoji": "👩‍🦳",
     "dialog": "Hola! Sóc la Núria. Aquesta pujada la pujo cada dia amb el carro de les flors. Cansa!",
     "pregunta": "Com mostres empatia?",
-    "opcions": [
-      {
-        "text": "Ostres, deu ser dur! Gràcies per deixar-ho tot tan bonic",
-        "correcte": true,
-        "guany": { "monedes": 5, "seny": 3 },
-        "feedback": "La Núria s'emociona. 'Gràcies a tu per dir-ho. Aquí tens una margarida.' Guanyes: Flor de Sant Domènec 🌼"
-      },
-      {
-        "text": "Vale",
-        "correcte": true,
-        "guany": { "monedes": 2, "arrel": 1 },
-        "feedback": "Curt però hi ha bona energia."
-      }
-    ]
+    "opcions": [...]
   },
   {
     "escena": "Plaça del Vi - 11:30",
+    "npc_nom": "Pau",
+    "npc_emoji": "👦",
     "dialog": "Bon dia! Sóc el Pau, tinc 8 anys i vinc cada any amb l'àvia. Em vols ensenyar un color en català?",
     "pregunta": "Com ensenyes un color?",
-    "opcions": [
-      {
-        "text": "Aquesta flor és vermella. I aquesta és groga!",
-        "correcte": true,
-        "guany": { "monedes": 6, "seny": 2, "arrel": 2 },
-        "feedback": "El Pau crida: 'Molt bé! Ara ja ho sé!' Guanyes: Flor de la Plaça del Vi 🌷"
-      },
-      {
-        "text": "Es rojo y amarillo",
-        "correcte": false,
-        "guany": { "monedes": 0, "obert": 1 },
-        "feedback": "El Pau et mira: 'No, diem vermell i groc. Prova-ho!'"
-      }
-    ]
+    "opcions": [...]
   },
   {
     "escena": "Carrer de la Força - 12:00",
+    "npc_nom": "Laia",
+    "npc_emoji": "👩‍🦰",
     "dialog": "Bon dia! Sóc la Laia. Aquest carrer és estret però ple de flors. Vigila on trepitges!",
     "pregunta": "Com respons amb humor?",
-    "opcions": [
-      {
-        "text": "No pateixis, miro on trepitjo! Està preciós",
-        "correcte": true,
-        "guany": { "monedes": 5, "obert": 2 },
-        "feedback": "La Laia riu: 'M'agrades! La gent del carrer és així, directa.' Guanyes: Flor del Carrer de la Força 🌺"
-      },
-      {
-        "text": "Vale",
-        "correcte": true,
-        "guany": { "monedes": 2, "seny": 1 },
-        "feedback": "Correcte, però sense gràcia."
-      }
-    ]
+    "opcions": [...]
   },
   {
     "escena": "Sant Feliu - 12:30",
+    "npc_nom": "Mossèn Pere",
+    "npc_emoji": "👨‍⚕️",
     "dialog": "Pau i bé. Sóc el mossèn Pere. Aquestes flors són per donar la benvinguda a tothom.",
     "pregunta": "Com agraeixes el gest?",
-    "opcions": [
-      {
-        "text": "Moltes gràcies, mossèn. És un detall molt bonic",
-        "correcte": true,
-        "guany": { "monedes": 6, "seny": 3, "arrel": 1 },
-        "feedback": "El mossèn et beneeix rient. 'El català també és benvingut aquí.' Guanyes: Flor de Sant Feliu 🪷"
-      },
-      {
-        "text": "Gracias",
-        "correcte": false,
-        "guany": { "monedes": 1, "obert": 1 },
-        "feedback": "Somriu: 'De res. La pròxima vegada en català, si us plau.'"
-      }
-    ]
+    "opcions": [...]
   },
   {
     "escena": "Passeig Arqueològic - 13:00",
+    "npc_nom": "Anna",
+    "npc_emoji": "👩‍🔬",
     "dialog": "Hola! Sóc l'Anna, arqueòloga. Fa gràcia veure flors entre pedres de 2000 anys.",
     "pregunta": "Com fas un comentari interessant?",
-    "opcions": [
-      {
-        "text": "És increïble veure història i natura juntes. Girona és única",
-        "correcte": true,
-        "guany": { "monedes": 7, "seny": 2, "arrel": 2 },
-        "feedback": "L'Anna s'il·lumina. 'Exacte! Això ho dic sempre.' Guanyes: Flor del Passeig Arqueològic 🌻"
-      },
-      {
-        "text": "Sí, bonito",
-        "correcte": false,
-        "guany": { "monedes": 0, "obert": 1 },
-        "feedback": "Somriu: 'Bonito? Diem bonic. Però sí, és preciós!'"
-      }
-    ]
+    "opcions": [...]
   },
   {
     "escena": "Pont de Pedra - 13:30",
+    "npc_nom": "Jordi",
+    "npc_emoji": "👨‍💼",
     "dialog": "Finalment! Sóc en Jordi, l'organitzador. Has vist totes les instal·lacions?",
     "pregunta": "Com expliques el que has vist?",
-    "opcions": [
-      {
-        "text": "Sí! He vist flors a la Catedral, als Banys Àrabs i a la Plaça del Vi. És preciós!",
-        "correcte": true,
-        "guany": { "monedes": 10, "seny": 3, "arrel": 3 },
-        "feedback": "En Jordi et dona un ram. 'Aquesta és La Flor de Girona 💐. Te l'has guanyat. Benvingut al gremi!'"
-      },
-      {
-        "text": "Sí, todo muy bonito",
-        "correcte": false,
-        "guany": { "monedes": 3, "obert": 1 },
-        "feedback": "En Jordi somriu: 'Gràcies! Però recorda: aquí parlem català. Et dono igual el ram, t'ho has guanyat.'"
-      }
-    ]
+    "opcions": [...]
   },
   {
     "escena": "Pont de Pedra - Comiat",
+    "npc_nom": "Jordi",
+    "npc_emoji": "👨‍💼",
     "dialog": "Fins l'any que ve! I recorda: parlar català obre portes. I flors.",
     "pregunta": "Com t'acomiades?",
-    "opcions": [
-      {
-        "text": "Fins aviat! Moltes gràcies per tot, Jordi!",
-        "correcte": true,
-        "guany": { "monedes": 8, "seny": 3, "arrel": 2 },
-        "feedback": "En Jordi et fa un copet a l'esquena. 'Has estat un crack. El gremi t'espera!'"
-      },
-      {
-        "text": "Adiós, gracias",
-        "correcte": false,
-        "guany": { "monedes": 2, "rauxa": 1 },
-        "feedback": "Riu: 'Adéu! Però 'gràcies'! Ja ho tens per l'any que ve!'"
-      }
-    ]
+    "opcions": [...]
   },
   {
     "escena": "Gremi dels Floristes - Desbloqueig",
+    "npc_nom": "Elisabet",
+    "npc_emoji": "👩‍💼",
     "dialog": "Benvingut al Gremi, florista! Amb 4 flors ja formes part. Aquí guardem secrets de Girona.",
     "pregunta": "Com respons a la benvinguda?",
-    "opcions": [
-      {
-        "text": "Gràcies! Em fa il·lusió aprendre més de Girona i el català",
-        "correcte": true,
-        "guany": { "monedes": 10, "seny": 3, "arrel": 3 },
-        "feedback": "Desbloqueig: Sala Bàsica del Gremi. Nova lliçó: Colors, formes i frases fetes gironines!"
-      }
-    ]
+    "opcions": [...]
   },
   {
     "escena": "Gremi - Lliçó secreta",
+    "npc_nom": "Elisabet",
+    "npc_emoji": "👩‍💼",
     "dialog": "A Girona diem 'que hi farem' quan passa algo i no hi ha remei. Prova-ho!",
     "pregunta": "Quan faries servir 'que hi farem'?",
-    "opcions": [
-      {
-        "text": "Si plou durant el Temps de Flors, que hi farem!",
-        "correcte": true,
-        "guany": { "monedes": 8, "seny": 3, "arrel": 3 },
-        "feedback": "Perfecte! Ara parles com un gironí de soca-rel."
-      },
-      {
-        "text": "No ho sé",
-        "correcte": false,
-        "guany": { "monedes": 0, "arrel": 1 },
-        "feedback": " 'No passa res! És una frase feta, ja la pillaràs.'"
-      }
-    ]
+    "opcions": [...]
   }
-    ]
+]
