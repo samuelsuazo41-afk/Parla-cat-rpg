@@ -214,7 +214,7 @@ function iniciarMusicaChiptune(nombreMelodia = 'estudio') {
     const gain = audioCtx.createGain();
     osc.type = 'square';
     osc.frequency.value = nota.freq;
-    gain.gain.value = 0.015; // Volumen bajo para no distraer
+    gain.gain.value = 0.001; // Volumen bajo para no distraer
     osc.connect(gain);
     gain.connect(audioCtx.destination);
     osc.start(tiempo);
@@ -249,7 +249,7 @@ function tocarJingleCompletado() {
     const gain = audioCtx.createGain();
     osc.type = 'square';
     osc.frequency.value = nota.freq;
-    gain.gain.value = 0.02;
+    gain.gain.value = 0.00;
     osc.connect(gain);
     gain.connect(audioCtx.destination);
     osc.start(tiempo);
