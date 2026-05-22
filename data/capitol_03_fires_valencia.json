@@ -1,268 +1,114 @@
 [
   {
     "escena": "Plaça de l'Ajuntament - 10:00",
+    "npc_nom": "Carme",
+    "npc_emoji": "👩‍🦳",
     "dialog": "Bon dia! Sóc la Carme, fallera major. Hui comencen les Fires. Estàs a punt per al foc i la pólvora?",
     "pregunta": "Com respons per entrar en rotllo?",
-    "opcions": [
-      {
-        "text": "Sí! És la primera vegada que vinc. Està tot impressionant",
-        "correcte": true,
-        "guany": { "monedes": 5, "seny": 2, "arrel": 1 },
-        "feedback": "La Carme somriu. 'Benvingut! Hui t'ensenyaré què són les Falles de veritat.'"
-      },
-      {
-        "text": "Sí, está muy bien todo",
-        "correcte": false,
-        "guany": { "monedes": 0, "obert": 1 },
-        "feedback": "La Carme et mira amable: 'Aquí ho diem impressionant, però t'entenc!'"
-      },
-      {
-        "text": "Sí",
-        "correcte": true,
-        "guany": { "monedes": 2, "arrel": 1 },
-        "feedback": "Curt i al gra. 'Doncs anem, que no hi ha temps que perdre!'"
-      }
-    ]
+    "opcions": [...]
   },
   {
     "escena": "Plaça de l'Ajuntament - Missió",
+    "npc_nom": "Carme",
+    "npc_emoji": "👩‍🦳",
     "dialog": "Necessite que m'ajudes a portar estos cartells al casal. Saps què és un casal faller?",
     "pregunta": "Com preguntes què és?",
-    "opcions": [
-      {
-        "text": "No, què és un casal faller?",
-        "correcte": true,
-        "guany": { "monedes": 4, "seny": 2 },
-        "feedback": "'És la seu de la comissió fallera! Allí ens reunim tot l'any.' Guanyes: Insígnia del Casal 🎆"
-      },
-      {
-        "text": "No lo sé",
-        "correcte": false,
-        "guany": { "monedes": 0, "rauxa": 1 },
-        "feedback": "'Ostres, prova en català! És un casal faller, la casa dels fallers.'"
-      }
-    ]
+    "opcions": [...]
   },
   {
     "escena": "Carrer de Russafa - 11:00",
+    "npc_nom": "Toni",
+    "npc_emoji": "🧑‍🎨",
     "dialog": "Ep! Sóc en Toni, jo monte el ninot cada any. Este any és un polític, no et dic qui.",
     "pregunta": "Com mostres interés pel ninot?",
-    "opcions": [
-      {
-        "text": "Què és un ninot? És el mateix que la falla?",
-        "correcte": true,
-        "guany": { "monedes": 6, "seny": 3 },
-        "feedback": "'No! El ninot és la figura. La falla és tota l'obra. Bona pregunta!' Guanyes: Mini Ninot 🧑"
-      },
-      {
-        "text": "Qué guay, mola",
-        "correcte": false,
-        "guany": { "monedes": 1, "obert": 1 },
-        "feedback": "En Toni riu: 'Mola sí, però diem guai. I sí, és una passada!'"
-      }
-    ]
+    "opcions": [...]
   },
   {
     "escena": "Carrer de Russafa - Conversa",
+    "npc_nom": "Toni",
+    "npc_emoji": "🧑‍🎨",
     "dialog": "Saps què? El més difícil és fer que el ninot s'assamble al de veritat. Este any m'ha costat.",
     "pregunta": "Com l'ànimes?",
-    "opcions": [
-      {
-        "text": "Està molt ben fet! Segur que la gent el reconeix",
-        "correcte": true,
-        "guany": { "monedes": 5, "seny": 2, "arrel": 1 },
-        "feedback": "En Toni s'emociona. 'Gràcies! Eres de la bona pasta, tu.'"
-      },
-      {
-        "text": "Vale",
-        "correcte": true,
-        "guany": { "monedes": 2, "arrel": 1 },
-        "feedback": "Ell assenteix. 'Gràcies igualment, amic.'"
-      }
-    ]
+    "opcions": [...]
   },
   {
     "escena": "Mercat Central - 12:00",
+    "npc_nom": "Rosa",
+    "npc_emoji": "👩‍🍳",
     "dialog": "Hola! Sóc la Rosa, venc bunyols des de fa 20 anys. Vols provar-ne un?",
     "pregunta": "Com demanes un bunyol en català?",
-    "opcions": [
-      {
-        "text": "Sí, pose'm un bunyol si us plau. Quant val?",
-        "correcte": true,
-        "guany": { "monedes": 6, "seny": 2, "arrel": 1 },
-        "feedback": "La Rosa et dona el bunyol calent. 'Eres un bon client! Guanyes: Bunyol de la Rosa 🍩'"
-      },
-      {
-        "text": "Un buñuelo por favor",
-        "correcte": false,
-        "guany": { "monedes": 0, "obert": 1 },
-        "feedback": "La Rosa somriu: 'Aquí diem bunyol. Però te'l done igual, que fas bona cara!'"
-      }
-    ]
+    "opcions": [...]
   },
   {
     "escena": "Mercat Central - Missió",
+    "npc_nom": "Rosa",
+    "npc_emoji": "👩‍🍳",
     "dialog": "Em falten taronges per fer la crema dels bunyols. Em pots ajudar a demanar-les?",
     "pregunta": "Com demanes taronges al paradeta del costat?",
-    "opcions": [
-      {
-        "text": "Bon dia! Em poseu un quilo de taronges, si us plau?",
-        "correcte": true,
-        "guany": { "monedes": 5, "seny": 3 },
-        "feedback": "El fruiter et respon en valencià. 'Clar que sí! Guanyes: Cistella de Taronges 🍊'"
-      },
-      {
-        "text": "Dame naranjas",
-        "correcte": false,
-        "guany": { "monedes": 1, "rauxa": 1 },
-        "feedback": "Et mira estranyat però te les dona. 'La pròxima en valencià, eh!'"
-      }
-    ]
+    "opcions": [...]
   },
   {
     "escena": "Plaça de la Mare de Déu - 13:00",
+    "npc_nom": "Vicent",
+    "npc_emoji": "🥁",
     "dialog": "Bon dia! Sóc el Vicent, jo toque el tabal a la mascletà. Hui farem soroll!",
     "pregunta": "Com reacciones a la mascletà?",
-    "opcions": [
-      {
-        "text": "Ostres! Em fa respecte però tinc ganes d'escoltar-la",
-        "correcte": true,
-        "guany": { "monedes": 5, "seny": 3 },
-        "feedback": "El Vicent riu fort. 'Així es parla! A les 14h, no et mogues.' Guanyes: Baqueta del Tabal 🥁"
-      },
-      {
-        "text": "Vale, bien",
-        "correcte": true,
-        "guany": { "monedes": 2, "arrel": 1 },
-        "feedback": "Ell assenteix. 'A les 14h ho veuràs.'"
-      }
-    ]
+    "opcions": [...]
   },
   {
     "escena": "Plaça de la Mare de Déu - L'Ofrena",
+    "npc_nom": "Vicent",
+    "npc_emoji": "🥁",
     "dialog": "Mira això! És l'Ofrena a la Mare de Déu. Milers de fallers porten flors.",
     "pregunta": "Com comentes l'escena?",
-    "opcions": [
-      {
-        "text": "És preciós veure tanta gent unida per la tradició",
-        "correcte": true,
-        "guany": { "monedes": 7, "seny": 3, "arrel": 2 },
-        "feedback": "El Vicent s'emociona. 'Sí, això són les Falles. Guanyes: Ram de l'Ofrena 🌸'"
-      },
-      {
-        "text": "Sí, muy bonito",
-        "correcte": false,
-        "guany": { "monedes": 2, "obert": 1 },
-        "feedback": "Somriu: 'Bonito? Diem preciós. Però sí, és únic!'"
-      }
-    ]
+    "opcions": [...]
   },
   {
     "escena": "Carrer de Sueca - 14:00",
+    "npc_nom": "Sònia",
+    "npc_emoji": "👩‍🚒",
     "dialog": "Hui és la Mascletà! Sóc la Sònia, vigile que ningú s'acoste massa. Tapate les orelles!",
     "pregunta": "Com respons per demostrar que entens?",
-    "opcions": [
-      {
-        "text": "Tranquil·la! Ja tinc les orelles tapades. Endavant!",
-        "correcte": true,
-        "guany": { "monedes": 6, "seny": 2 },
-        "feedback": "La Sònia et fa senyal. 'Perfecte! Agarra't, que comença!' Guanyes: Tap d'Orelles 🎧"
-      },
-      {
-        "text": "Vale",
-        "correcte": true,
-        "guany": { "monedes": 3, "arrel": 1 },
-        "feedback": "Ella assenteix. 'Som-hi!'"
-      }
-    ]
+    "opcions": [...]
   },
   {
     "escena": "Plaça de l'Ajuntament - 15:00",
+    "npc_nom": "Rafa",
+    "npc_emoji": "💥",
     "dialog": "Has sobreviscut a la Mascletà! Sóc en Rafa, el pirotècnic. Qué t'ha paregut?",
     "pregunta": "Com descrius l'experiència?",
-    "opcions": [
-      {
-        "text": "Increïble! No havia sentit mai tant de soroll i vibració",
-        "correcte": true,
-        "guany": { "monedes": 8, "seny": 3, "arrel": 2 },
-        "feedback": "En Rafa riu orgullós. 'Eixe és l'esperit! Guanyes: Pòlvora de Rafa 💥'"
-      },
-      {
-        "text": "Mucho ruido",
-        "correcte": false,
-        "guany": { "monedes": 2, "obert": 1 },
-        "feedback": "Somriu: 'Sí, molt soroll! Diem soroll, no ruido.'"
-      }
-    ]
+    "opcions": [...]
   },
   {
     "escena": "Carrer de la Falla - 18:00",
+    "npc_nom": "Júlia",
+    "npc_emoji": "👩‍🎨",
     "dialog": "Sóc la Júlia, hem acabat la falla just ara. Demà és la Cremà. Et fa cosa?",
     "pregunta": "Com respons sobre la Cremà?",
-    "opcions": [
-      {
-        "text": "Em fa pena però entenc que és la tradició. Tot cicle acaba",
-        "correcte": true,
-        "guany": { "monedes": 7, "seny": 3, "arrel": 2 },
-        "feedback": "La Júlia assenteix seriosa. 'Exacte. Demà tot serà cendra. Guanyes: Flor de la Falla 🌺'"
-      },
-      {
-        "text": "Sí, me da pena",
-        "correcte": false,
-        "guany": { "monedes": 2, "obert": 1 },
-        "feedback": "Ella somriu trist. 'Sí, pena. Però demà tornem a començar!'"
-      }
-    ]
+    "opcions": [...]
   },
   {
     "escena": "Plaça de l'Ajuntament - 23:59",
+    "npc_nom": "President",
+    "npc_emoji": "👨‍💼",
     "dialog": "Última nit! Sóc el president de la comissió. Has passat totes les proves. Estàs a punt per la Cremà?",
     "pregunta": "Com t'acomiades abans del foc?",
-    "opcions": [
-      {
-        "text": "Sí! Gràcies per ensenyar-me les Falles. Fins l'any que ve!",
-        "correcte": true,
-        "guany": { "monedes": 10, "seny": 3, "arrel": 3 },
-        "feedback": "El president et dona la mà. 'Has sigut un faller d'honor. Benvingut al gremi!'"
-      },
-      {
-        "text": "Gracias, hasta luego",
-        "correcte": false,
-        "guany": { "monedes": 3, "rauxa": 1 },
-        "feedback": "Somriu: 'Gràcies! Però diem gràcies. Fins l'any que ve, faller!'"
-      }
-    ]
+    "opcions": [...]
   },
   {
     "escena": "Gremi dels Fallers - Desbloqueig",
+    "npc_nom": "Presidenta",
+    "npc_emoji": "👩‍💼",
     "dialog": "Benvingut al Gremi dels Fallers! Amb 5 proves completes ja formes part. Aquí guardem el foc.",
     "pregunta": "Com respons a la benvinguda?",
-    "opcions": [
-      {
-        "text": "Gràcies! Em fa il·lusió aprendre més de València i les Falles",
-        "correcte": true,
-        "guany": { "monedes": 10, "seny": 3, "arrel": 3 },
-        "feedback": "Desbloqueig: Sala del Foc del Gremi. Nova lliçó: Pirotècnia, llenguatge faller i frases fetes valencianes!"
-      }
-    ]
+    "opcions": [...]
   },
   {
     "escena": "Gremi - Lliçó secreta",
+    "npc_nom": "Presidenta",
+    "npc_emoji": "👩‍💼",
     "dialog": "A València diem 'anar de bòlit' quan vas a tope. Prova-ho en una frase!",
     "pregunta": "Quan faries servir 'anar de bòlit'?",
-    "opcions": [
-      {
-        "text": "Hui vaig de bòlit preparant la falla!",
-        "correcte": true,
-        "guany": { "monedes": 8, "seny": 3, "arrel": 3 },
-        "feedback": "Perfecte! Ara parles com un valencià de soca-rel."
-      },
-      {
-        "text": "No ho sé",
-        "correcte": false,
-        "guany": { "monedes": 0, "arrel": 1 },
-        "feedback": "'No passa res! És una expressió molt usada, ja la pillaràs.'"
-      }
-    ]
+    "opcions": [...]
   }
-        ] 
+]
