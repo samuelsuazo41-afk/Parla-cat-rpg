@@ -266,10 +266,9 @@ function aplicarIdioma() {
 
 function canviarTab(tab, e) {
   document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
-  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(b => b.classList.remove('active'));
   document.getElementById('tab-'+tab).classList.add('active');
-  if(e && e.target) e.target.closest('.tab-btn').classList.add('active');
-
+  if(e && e.target) e.target.closest('.nav-item').classList.add('active');
   if(tab === 'mapa') {pararMusica(); carregarMapa();}
   if(tab === 'missio') {pararMusica(); carregarMissioTab();}
   if(tab === 'gremi') {iniciarMusicaChiptune('gremi'); mostrarGremi('personatges', e);}
