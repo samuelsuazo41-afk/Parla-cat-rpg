@@ -653,7 +653,7 @@ function seleccionarPersonatge(id) {
 }
 
 function canviarPersonatge() {
-  estat.personatge = null;
+  estat.personatge = null; 
   guardarEstat();
   mostrarGremi('personatges', null);
 }
