@@ -155,9 +155,9 @@ let AUDIO_ENCERT = null;
 let AUDIO_FALLADA = null;
 
 // --- MÚSICA CHIPTUNE ---
-let audioCtx = null;
-let musicaLoop = null;
-let melodiaActual = null;
+let audioCtx = false;
+let musicaLoop = false;
+let melodiaActual = false;
 
 const MELODIAS = {
   gremi: [{freq: 392, dur: 0.8}, {freq: 494, dur: 0.8}, {freq: 587, dur: 1.2}],
