@@ -15,7 +15,7 @@
   {
     "id": "capitol_02_girona",
     "nom": "Girona - Temps de Flors",
-    "icona": "🏰💐",
+    "icona": "🏰",
     "descripcio": "Flors als carrers. Català més lent, més de poble.",
     "arxiu": "./data/capitol_02_girona.json",
     "requereix": "capitol1_bcn_born",
