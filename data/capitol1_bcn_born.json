@@ -1,6 +1,8 @@
 [
   {
     "escena": "Forn de Pa - 08:00",
+    "npc_nom": "Núria",
+    "npc_emoji": "👩‍🦳",
     "dialog": "Bon dia! Què voldràs avui?",
     "pregunta": "Com demanes un pa amb tomàquet?",
     "opcions": [
@@ -26,6 +28,8 @@
   },
   {
     "escena": "Forn de Pa - Pagament",
+    "npc_nom": "Núria",
+    "npc_emoji": "👩‍🦳",
     "dialog": "Són 2,50€. Vols bossa?",
     "pregunta": "Com dius que sí a la bossa?",
     "opcions": [
@@ -51,6 +55,8 @@
   },
   {
     "escena": "Forn de Pa - Acomiadament",
+    "npc_nom": "Núria",
+    "npc_emoji": "👩‍🦳",
     "dialog": "Que vagi de gust!",
     "pregunta": "Com respons per acomiadar-te?",
     "opcions": [
@@ -70,6 +76,8 @@
   },
   {
     "escena": "Forn de Pa - Croissant",
+    "npc_nom": "Pau",
+    "npc_emoji": "👨‍🦱",
     "dialog": "També tenim croissants acabats de fer",
     "pregunta": "Com demanes un croissant?",
     "opcions": [
@@ -89,6 +97,8 @@
   },
   {
     "escena": "Forn de Pa - Canvi",
+    "npc_nom": "Pau",
+    "npc_emoji": "👨‍🦱",
     "dialog": "Aquí tens el canvi. 50 cèntims",
     "pregunta": "Com agraeixes el canvi?",
     "opcions": [
@@ -108,6 +118,8 @@
   },
   {
     "escena": "Mercat del Born - Parada de fruita",
+    "npc_nom": "Jordi",
+    "npc_emoji": "🧑‍🌾",
     "dialog": "Aquestes cireres són de Lleida, fresques de demà!",
     "pregunta": "Com preguntes el preu?",
     "opcions": [
@@ -127,6 +139,8 @@
   },
   {
     "escena": "Mercat del Born - Regateig",
+    "npc_nom": "Jordi",
+    "npc_emoji": "🧑‍🌾",
     "dialog": "3€ el quilo, vols provar una?",
     "pregunta": "Com demanes provar la cirera?",
     "opcions": [
@@ -146,6 +160,8 @@
   },
   {
     "escena": "Mercat del Born - Comiat",
+    "npc_nom": "Jordi",
+    "npc_emoji": "🧑‍🌾",
     "dialog": "Fins demà, maco!",
     "pregunta": "Com respons?",
     "opcions": [
@@ -165,6 +181,8 @@
   },
   {
     "escena": "Mercat del Born - Tomaquets",
+    "npc_nom": "Marta",
+    "npc_emoji": "👩",
     "dialog": "Tinc tomàquets de l'hort, molt bons per pa amb tomàquet",
     "pregunta": "Com demanes mig quilo?",
     "opcions": [
@@ -184,6 +202,8 @@
   },
   {
     "escena": "Mercat del Born - Bossa",
+    "npc_nom": "Marta",
+    "npc_emoji": "👩",
     "dialog": "Vols que te'ls posi en bossa?",
     "pregunta": "Com respons?",
     "opcions": [
@@ -203,6 +223,8 @@
   },
   {
     "escena": "Plaça de Santa Maria del Mar",
+    "npc_nom": "Laia",
+    "npc_emoji": "👩‍🦰",
     "dialog": "Et perds? Busques alguna cosa?",
     "pregunta": "Com demanes indicacions per anar al carrer Princesa?",
     "opcions": [
@@ -222,6 +244,8 @@
   },
   {
     "escena": "Plaça de Santa Maria del Mar - Confirmació",
+    "npc_nom": "Laia",
+    "npc_emoji": "👩‍🦰",
     "dialog": "Sí, és per allà. Vols que t'ho marqui al mapa?",
     "pregunta": "Com acceptes l'ajuda?",
     "opcions": [
@@ -241,6 +265,8 @@
   },
   {
     "escena": "Plaça de Santa Maria del Mar - Agraïment",
+    "npc_nom": "Laia",
+    "npc_emoji": "👩‍🦰",
     "dialog": "Aquí el tens. Bona passejada!",
     "pregunta": "Com agraeixes?",
     "opcions": [
@@ -260,6 +286,8 @@
   },
   {
     "escena": "Plaça de Santa Maria del Mar - Foto",
+    "npc_nom": "Marc",
+    "npc_emoji": "🧑",
     "dialog": "Vols que et faci una foto davant de l'església?",
     "pregunta": "Com acceptes?",
     "opcions": [
@@ -279,6 +307,8 @@
   },
   {
     "escena": "Plaça de Santa Maria del Mar - Despedida",
+    "npc_nom": "Marc",
+    "npc_emoji": "🧑",
     "dialog": "Gaudeix de la visita!",
     "pregunta": "Com respons?",
     "opcions": [
@@ -298,6 +328,8 @@
   },
   {
     "escena": "Bar del Born - Hora del vermut",
+    "npc_nom": "Roger",
+    "npc_emoji": "👨‍🍳",
     "dialog": "Hola! Voleu seure a la terrassa o dins?",
     "pregunta": "Com demanes una taula fora?",
     "opcions": [
@@ -317,6 +349,8 @@
   },
   {
     "escena": "Bar del Born - Comanda",
+    "npc_nom": "Roger",
+    "npc_emoji": "👨‍🍳",
     "dialog": "Què us poso per beure?",
     "pregunta": "Com demanes un vermut?",
     "opcions": [
@@ -336,6 +370,8 @@
   },
   {
     "escena": "Bar del Born - Pagar",
+    "npc_nom": "Roger",
+    "npc_emoji": "👨‍🍳",
     "dialog": "Són 4€. Voleu res més?",
     "pregunta": "Com dius que no vols res més?",
     "opcions": [
@@ -355,6 +391,8 @@
   },
   {
     "escena": "Bar del Born - Tapes",
+    "npc_nom": "Aina",
+    "npc_emoji": "👩‍🍳",
     "dialog": "Voleu unes patates braves?",
     "pregunta": "Com demanes que sí?",
     "opcions": [
@@ -374,6 +412,8 @@
   },
   {
     "escena": "Bar del Born - Comiat",
+    "npc_nom": "Aina",
+    "npc_emoji": "👩‍🍳",
     "dialog": "Fins la propera! Que vagi bé!",
     "pregunta": "Com respons?",
     "opcions": [
@@ -393,6 +433,8 @@
   },
   {
     "escena": "Botiga de records",
+    "npc_nom": "Elisabet",
+    "npc_emoji": "👩‍💼",
     "dialog": "Mira aquests imants de Barcelona!",
     "pregunta": "Com dius que t'interessa un imant del Barça?",
     "opcions": [
@@ -412,6 +454,8 @@
   },
   {
     "escena": "Botiga de records - Preu",
+    "npc_nom": "Elisabet",
+    "npc_emoji": "👩‍💼",
     "dialog": "Aquest val 5€. Et fa preu si en compres 2",
     "pregunta": "Com demanes el preu per dos?",
     "opcions": [
@@ -431,6 +475,8 @@
   },
   {
     "escena": "Botiga de records - Comiat",
+    "npc_nom": "Elisabet",
+    "npc_emoji": "👩‍💼",
     "dialog": "Gràcies per passar! Fins aviat!",
     "pregunta": "Com respons?",
     "opcions": [
@@ -444,6 +490,8 @@
   },
   {
     "escena": "Botiga de records - Bossa",
+    "npc_nom": "Elisabet",
+    "npc_emoji": "👩‍💼",
     "dialog": "Vols bossa per l'imant?",
     "pregunta": "Com respons?",
     "opcions": [
@@ -463,6 +511,8 @@
   },
   {
     "escena": "Biblioteca del Born",
+    "npc_nom": "Marta",
+    "npc_emoji": "👩‍🏫",
     "dialog": "Hola, busques algun llibre en concret?",
     "pregunta": "Com demanes un llibre de Mercè Rodoreda?",
     "opcions": [
@@ -482,6 +532,8 @@
   },
   {
     "escena": "Biblioteca del Born - Carnet",
+    "npc_nom": "Marta",
+    "npc_emoji": "👩‍🏫",
     "dialog": "Vols fer-te el carnet de la biblioteca?",
     "pregunta": "Com demanes informació?",
     "opcions": [
@@ -501,6 +553,8 @@
   },
   {
     "escena": "Biblioteca del Born - Horari",
+    "npc_nom": "Marta",
+    "npc_emoji": "👩‍🏫",
     "dialog": "Obrim de 10 a 20h de dilluns a divendres",
     "pregunta": "Com agraeixes la informació?",
     "opcions": [
@@ -520,6 +574,8 @@
   },
   {
     "escena": "Carrer de l'Argenteria",
+    "npc_nom": "Avi Toni",
+    "npc_emoji": "👴",
     "dialog": "Que bon dia que fa avui, oi?",
     "pregunta": "Com respons per seguir la conversa?",
     "opcions": [
@@ -539,6 +595,8 @@
   },
   {
     "escena": "Carrer de l'Argenteria - Petita xerrada",
+    "npc_nom": "Avi Toni",
+    "npc_emoji": "👴",
     "dialog": "Vens sovint pel Born?",
     "pregunta": "Com respons per mantenir la conversa?",
     "opcions": [
@@ -558,6 +616,8 @@
   },
   {
     "escena": "Carrer de l'Argenteria - Recomanació",
+    "npc_nom": "Avi Toni",
+    "npc_emoji": "👴",
     "dialog": "Has provat el gelat d'aquí al costat?",
     "pregunta": "Com respons per seguir parlant?",
     "opcions": [
@@ -577,6 +637,8 @@
   },
   {
     "escena": "Acomiadament - Plaça del Born",
+    "npc_nom": "Clara",
+    "npc_emoji": "👩",
     "dialog": "Doncs fins aviat! Ha estat un plaer xerrar amb tu.",
     "pregunta": "Com t'acomiades en català?",
     "opcions": [
@@ -596,6 +658,8 @@
   },
   {
     "escena": "Acomiadament - Última frase",
+    "npc_nom": "Clara",
+    "npc_emoji": "👩",
     "dialog": "Que vagi bé el dia!",
     "pregunta": "Com respons per tancar bé?",
     "opcions": [
@@ -615,6 +679,8 @@
   },
   {
     "escena": "Acomiadament - Final",
+    "npc_nom": "Clara",
+    "npc_emoji": "👩",
     "dialog": "Vinga, cuida't!",
     "pregunta": "Com tanques la conversa?",
     "opcions": [
