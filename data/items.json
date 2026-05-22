@@ -18,13 +18,13 @@
     "imatge": "./ram_roses_girona.png"
   },
   {
-    "id": "fuet_del_foc",
-    "nom": "Fuet del Foc",
-    "emoji": "🌭",
-    "descripcio": "Recompensa del Capítol 3.",
+    "id": "clau_de_la_lonja",
+    "nom": "Clau de la Lonja",
+    "emoji": "🗝️",
+    "descripcio": "Obri la Ciutat Vella de València quan cau el sol",
     "rar": "epic",
-    "tipus": "trofeu",
-    "imatge": "./fuet_fires.png"
+    "tipus": "clau",
+    "imatge": "./clau_lonja.png"
   },
   {
     "id": "clau_port_olympic",
@@ -45,20 +45,11 @@
     "imatge": "./ulleres_rayo.png"
   },
   {
-  "id": "clau_muralla_girona",
-  "nom": "Clau de la Muralla Viva",
-  "emoji": "🗝️",
-  "descripcio": "Obre el Barri Vell de Girona quan cau el sol.",
-  "rar": "epic",
-  "tipus": "clau"
-  },
-  {
-  "id": "clau_de_la_lonja",
-  "nom": "Clau de la Lonja",
-  "emoji": "🗝️",
-  "descripcio": "Obri la Ciutat Vella de València quan cau el sol",
-  "rar": "epic",
-  "tipus": "clau",
-  "imatge": "./clau_lonja.png"
+    "id": "clau_muralla_girona",
+    "nom": "Clau de la Muralla Viva",
+    "emoji": "🗝️",
+    "descripcio": "Obre el Barri Vell de Girona quan cau el sol.",
+    "rar": "epic",
+    "tipus": "clau"
   }
-    
+]
