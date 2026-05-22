@@ -160,8 +160,20 @@ let musicaLoop = false;
 let melodiaActual = false;
 
 const MELODIAS = {
-  gremi: [{freq: 392, dur: 0.8}, {freq: 494, dur: 0.8}, {freq: 587, dur: 1.2}],
-  estudio: [{freq: 440, dur: 1.0}, {freq: 523, dur: 1.0}, {freq: 659, dur: 1.0}]
+  gremi: [ // Taberna suave
+    {freq: 196, dur: 1.5},
+    {freq: 220, dur: 1.5}, 
+    {freq: 196, dur: 3.0}
+  ],
+  estudio: [ // Tienda tranquila
+    {freq: 174, dur: 2.0},
+    {freq: 196, dur: 2.0},
+    {freq: 220, dur: 4.0}
+  ],
+  calma: [ // Para menús
+    {freq: 147, dur: 3.0},
+    {freq: 165, dur: 3.0}
+  ]
 };
 
 // Detecta emoji de NPC según el diálogo
