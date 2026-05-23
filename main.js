@@ -1,5 +1,5 @@
 // main.js - Lógica de Parla Cat RPG
-let musicaActivada = true; // Pon false para apagar la música sin borrar nada
+let musicaActivada = true;
 
 const LANGS = {
   es: {
@@ -9,7 +9,7 @@ const LANGS = {
     tab_missio: "Misión",
     tab_gremi: "Gremio",
     tab_botiga: "Tienda",
-    text_mon: "🗺️ Mapa de Cataluña",
+    text_mon: "🗺️ Mapa de Catalunya",
     text_botiga: "🛒 Tienda",
     entrar: "Entrar",
     bloquejat: "Bloqueado",
@@ -18,14 +18,22 @@ const LANGS = {
     volver_mapa: "Volver al mapa",
     mision_completada: "¡Misión completada!",
     item_desbloquejat: "¡Item desbloqueado!",
-    ruta_secreta: "Ruta secreta desbloqueada!",
+    ruta_secreta: "Ruta secreta desbloquejada!",
     repas_rapido: "Repàs Ràpid",
     repas_titulo: "Repàs Ràpid - 5 Preguntes",
     tria_personatge: "Tria el teu personatge",
     nom_personatge: "Com et dius?",
     canviar_personatge: "Canviar Personatge",
     biblioteca: "Biblioteca",
-    biblioteca_desc: "Tots els personatges disponibles per les teves històries"
+    biblioteca_desc: "Tots els personatges disponibles per les teves històries",
+    minijoc_titol: "Arma la frase",
+    minijoc_desc: "Tria 2-3 emojis per formar la frase",
+    comprovar: "Comprovar",
+    correcte: "Correcte!",
+    incorrecte: "No és així. Era:",
+    no_prou_monedes: "No tens prou monedes!",
+    comprat: "Comprat",
+    desbloqueja_ruta: "Amb 3 ítems del capítol {n} desbloqueges la ruta secreta de {ciutat}"
   },
   ca: {
     app_titol: "Parla Cat RPG - Cròniques de Catalunya",
@@ -50,14 +58,22 @@ const LANGS = {
     nom_personatge: "Com et dius?",
     canviar_personatge: "Canviar Personatge",
     biblioteca: "Biblioteca",
-    biblioteca_desc: "Tots els personatges disponibles per les teves històries"
+    biblioteca_desc: "Tots els personatges disponibles per les teves històries",
+    minijoc_titol: "Arma la frase",
+    minijoc_desc: "Tria 2-3 emojis per formar la frase",
+    comprovar: "Comprovar",
+    correcte: "Correcte!",
+    incorrecte: "No és així. Era:",
+    no_prou_monedes: "No tens prou monedes!",
+    comprat: "Comprat",
+    desbloqueja_ruta: "Amb 3 ítems del capítol {n} desbloqueges la ruta secreta de {ciutat}"
   }
 };
 
 let idioma = localStorage.getItem('cat_idioma') || 'es';
 let LANG = LANGS[idioma];
 
-// Solo 4 personajes para el jugador
+// Personatges jugador
 const PERSONATGES_JUGADOR = [
   {id: 'noi', emoji: '👦', nom: 'Noi'},
   {id: 'noia', emoji: '👧', nom: 'Noia'},
@@ -65,38 +81,23 @@ const PERSONATGES_JUGADOR = [
   {id: 'dona', emoji: '👩', nom: 'Dona'}
 ];
 
-// BIBLIOTECA COMPLETA - Todos los emojis para NPCs
-const BIBLIOTECA_EMOJIS = [
-  {emoji: '👶', nom: 'Bebè'}, {emoji: '👦', nom: 'Noi'}, {emoji: '👧', nom: 'Noia'},
-  {emoji: '🧒', nom: 'Infant'}, {emoji: '👨', nom: 'Home'}, {emoji: '👩', nom: 'Dona'},
-  {emoji: '🧑', nom: 'Persona'}, {emoji: '👴', nom: 'Avi'}, {emoji: '👵', nom: 'Àvia'},
-  {emoji: '🧔', nom: 'Home amb barba'}, {emoji: '👩‍🦱', nom: 'Dona arrissada'},
-  {emoji: '👨‍🦰', nom: 'Home pèl-roig'}, {emoji: '👩‍🦰', nom: 'Dona pèl-roja'},
-  {emoji: '👨‍⚕️', nom: 'Metge'}, {emoji: '👩‍⚕️', nom: 'Metgessa'},
-  {emoji: '👨‍🏫', nom: 'Mestre'}, {emoji: '👩‍🏫', nom: 'Mestra'},
-  {emoji: '👨‍🍳', nom: 'Cuiner'}, {emoji: '👩‍🍳', nom: 'Cuinera'},
-  {emoji: '👨‍🌾', nom: 'Pagès'}, {emoji: '👩‍🌾', nom: 'Pagesa'},
-  {emoji: '👨‍🔧', nom: 'Mecànic'}, {emoji: '👩‍🔧', nom: 'Mecànica'},
-  {emoji: '👨‍🎨', nom: 'Artista'}, {emoji: '👩‍🎨', nom: 'Artista dona'},
-  {emoji: '👨‍🎤', nom: 'Cantant'}, {emoji: '👩‍🎤', nom: 'Cantant dona'},
-  {emoji: '👨‍💼', nom: 'Empresari'}, {emoji: '👩‍💼', nom: 'Empresària'},
-  {emoji: '👨‍💻', nom: 'Programador'}, {emoji: '👩‍💻', nom: 'Programadora'},
-  {emoji: '👨‍🚀', nom: 'Astronauta'}, {emoji: '👩‍🚀', nom: 'Astronauta dona'},
-  {emoji: '👨‍🚒', nom: 'Bomber'}, {emoji: '👩‍🚒', nom: 'Bombera'},
-  {emoji: '👮', nom: 'Policia'}, {emoji: '👮‍♀️', nom: 'Policía dona'},
-  {emoji: '🕵️', nom: 'Detectiu'}, {emoji: '💂', nom: 'Guàrdia'},
-  {emoji: '🏃', nom: 'Atleta'}, {emoji: '🏃‍♀️', nom: 'Atleta dona'},
-  {emoji: '🏊', nom: 'Nedador'}, {emoji: '🏊‍♀️', nom: 'Nedadora'},
-  {emoji: '🚴', nom: 'Ciclista'}, {emoji: '🚴‍♀️', nom: 'Ciclista dona'},
-  {emoji: '⛹️', nom: 'Jugador bàsquet'}, {emoji: '🤸', nom: 'Gimnasta'},
-  {emoji: '🤺', nom: 'Esgrimista'}, {emoji: '🏋️', nom: 'Halteròfil'},
-  {emoji: '🧑‍🌾', nom: 'Jardiner'}, {emoji: '🧑‍🍳', nom: 'Xef'},
-  {emoji: '🧑‍🎓', nom: 'Estudiant'}, {emoji: '🧑‍💼', nom: 'Oficinista'},
-  {emoji: '🧑‍🔧', nom: 'Tècnic'}, {emoji: '🧑‍🎤', nom: 'Músic'},
-  {emoji: '🧑‍🎨', nom: 'Pintor'}, {emoji: '🧑‍🚀', nom: 'Astronauta'},
-  {emoji: '🧑‍🚒', nom: 'Bomber'}, {emoji: '🧑‍⚕️', nom: 'Sanitari'},
-  {emoji: '🧑‍⚖️', nom: 'Jutge'}, {emoji: '🧑‍🦯', nom: 'Persona amb bastó'},
-  {emoji: '🧑‍🦼', nom: 'Persona en cadira'}, {emoji: '🧑‍🦽', nom: 'Persona en cadira manual'}
+// BIBLIOTECA BASE
+const BIBLIOTECA_EMOJIS_BASE = [
+  {emoji: '😊', nom_cat: 'content', desc: 'Estar feliç'},
+  {emoji: '😢', nom_cat: 'trist', desc: 'Estar trist'},
+  {emoji: '😡', nom_cat: 'enfadat', desc: 'Estar enfadat'},
+  {emoji: '🐱', nom_cat: 'gat', desc: 'Un gat'},
+  {emoji: '🐶', nom_cat: 'gos', desc: 'Un gos'},
+  {emoji: '🍎', nom_cat: 'poma', desc: 'Una poma'},
+  {emoji: '🍌', nom_cat: 'plàtan', desc: 'Un plàtan'},
+  {emoji: '🏠', nom_cat: 'casa', desc: 'Una casa'},
+  {emoji: '🚗', nom_cat: 'cotxe', desc: 'Un cotxe'},
+  {emoji: '📚', nom_cat: 'llibre', desc: 'Un llibre'},
+  {emoji: '☕', nom_cat: 'cafè', desc: 'Un cafè'},
+  {emoji: '🌳', nom_cat: 'arbre', desc: 'Un arbre'},
+  {emoji: '🌊', nom_cat: 'mar', desc: 'El mar'},
+  {emoji: '🌞', nom_cat: 'sol', desc: 'El sol'},
+  {emoji: '🌧️', nom_cat: 'pluja', desc: 'Pluja'}
 ];
 
 let estat = {
@@ -117,7 +118,14 @@ let estat = {
   pasActual: 0,
   fallades: JSON.parse(localStorage.getItem('cat_fallades')) || [],
   falladesCapitol: 0,
-  bloquejat: false
+  bloquejat: false,
+  compres: JSON.parse(localStorage.getItem('cat_compres')) || [],
+  emojisDesbloquejats: JSON.parse(localStorage.getItem('cat_emojis')) || [],
+  minijoc: {
+    fraseObjectiu: null,
+    emojisTriats: [],
+    emojisDisponibles: []
+  }
 };
 
 const CAPITOLS = [
@@ -156,52 +164,24 @@ let ITEMS = {};
 let AUDIO_ENCERT = null;
 let AUDIO_FALLADA = null;
 
-// --- MÚSICA CHIPTUNE ---
+// --- MÚSICA ---
 let audioCtx = false;
 let musicaLoop = false;
 let melodiaActual = false;
 
 const MELODIAS = {
-  gremi: [ // Taberna suave - 60 BPM, grave, sin agudos
-    {freq: 196, dur: 1.5},
-    {freq: 220, dur: 1.5},
-    {freq: 196, dur: 3.0}
-  ],
-  estudio: [ // Tienda tranquila - muy suave para leer
-    {freq: 174, dur: 2.0},
-    {freq: 196, dur: 2.0},
-    {freq: 220, dur: 4.0}
-  ],
-  calma: [ // Para menús - casi silencio ambiental
-    {freq: 147, dur: 3.0},
-    {freq: 165, dur: 3.0}
-  ]
+  gremi: [{freq: 196, dur: 1.5}, {freq: 220, dur: 1.5}, {freq: 196, dur: 3.0}],
+  estudio: [{freq: 174, dur: 2.0}, {freq: 196, dur: 2.0}, {freq: 220, dur: 4.0}],
+  calma: [{freq: 147, dur: 3.0}, {freq: 165, dur: 3.0}]
 };
 
-// Detecta emoji de NPC según el diálogo
-function detectarEmojiNPC(dialogo, npc_nom) {
-  const text = ((dialogo || '') + (npc_nom || '')).toLowerCase();
-
-  if(text.includes('cuina') || text.includes('menja') || text.includes('pa') || text.includes('tomaquet')) return '👨‍🍳';
-  if(text.includes('flor') || text.includes('jardí') || text.includes('planta')) return '🧑‍🌾';
-  if(text.includes('corre') || text.includes('esport') || text.includes('atleta')) return '🏃';
-  if(text.includes('música') || text.includes('canta') || text.includes('toca')) return '🧑‍🎤';
-  if(text.includes('metge') || text.includes('hospital') || text.includes('salut')) return '👨‍⚕️';
-  if(text.includes('escola') || text.includes('estudi') || text.includes('apren')) return '👨‍🏫';
-  if(text.includes('botiga') || text.includes('compra') || text.includes('ven')) return '🧑‍💼';
-  if(text.includes('mar') || text.includes('peix') || text.includes('pesca')) return '🧑‍🌾';
-  if(text.includes('avi') || text.includes('vell')) return '👴';
-  if(text.includes('àvia') || text.includes('vella')) return '👵';
-  if(text.includes('poli') || text.includes('policia')) return '👮';
-  if(text.includes('foc') || text.includes('bomber')) return '👨‍🚒';
-
-  return '👤';
+function vibrar() {
+  if (navigator.vibrate) navigator.vibrate(20);
 }
 
 function iniciarMusicaChiptune(nombreMelodia = 'estudio') {
   if (!musicaActivada) return;
   if (melodiaActual === nombreMelodia && musicaLoop) return;
-
   pararMusica();
   melodiaActual = nombreMelodia;
   audioCtx = new (window.AudioContext || window.webkitAudioContext)();
@@ -214,7 +194,7 @@ function iniciarMusicaChiptune(nombreMelodia = 'estudio') {
     const gain = audioCtx.createGain();
     osc.type = 'square';
     osc.frequency.value = nota.freq;
-    gain.gain.value = 0.001; // Volumen bajo para no distraer
+    gain.gain.value = 0.001;
     osc.connect(gain);
     gain.connect(audioCtx.destination);
     osc.start(tiempo);
@@ -265,6 +245,7 @@ document.addEventListener('DOMContentLoaded', () => {
     actualitzarUI();
     actualitzarTotem();
     carregarMapa();
+    verificarRutesDesbloquejades();
   });
   AUDIO_ENCERT = new Audio('data:audio/wav;base64,UklGRiZDAABXQVZFZm10IBAAAAABAAEAESsAACJWAAACABAAZGF0YQIAAAAAAAA=');
   AUDIO_FALLADA = new Audio('data:audio/wav;base64,UklGRiZDAABXQVZFZm10IBAAAAABAAEAESsAACJWAAACABAAZGF0YQIAAAAAAAAA');
@@ -390,7 +371,7 @@ function carregarPas() {
   const pas = estat.capitolActual.passos[estat.pasActual];
   if (!pas) { completarCapitol(); return; }
 
-  const npcEmoji = pas.npc_emoji || detectarEmojiNPC(pas.dialog, pas.npc_nom);
+  const npcEmoji = pas.npc_emoji || '👤';
   const npcNom = pas.npc_nom || 'NPC';
   const jugadorEmoji = estat.personatge?.emoji || '🧑';
   const jugadorNom = estat.personatge?.nom || 'Tu';
@@ -425,6 +406,7 @@ function carregarPas() {
 
 function seleccionarOpcio(idx) {
   if(estat.bloquejat) return;
+  vibrar();
   const pas = estat.capitolActual.passos[estat.pasActual];
   const opcio = pas.opcions[idx];
   const feedback = opcio.feedback;
@@ -509,6 +491,29 @@ function completarCapitol() {
   `;
   guardarEstat();
   carregarMapa();
+  verificarRutesDesbloquejades();
+}
+
+function verificarRutesDesbloquejades() {
+  const rutes = document.getElementById('rutes-secretes');
+  if (!rutes) return;
+
+  const itemsCap1 = estat.objectes.filter(id => id.includes('capitol1')).length;
+  const itemsCap2 = estat.objectes.filter(id => id.includes('capitol_02')).length;
+  const itemsCap3 = estat.objectes.filter(id => id.includes('capitol_03')).length;
+
+  if (itemsCap1 >= 3) {
+    document.getElementById('ruta-valencia').style.opacity = '1';
+    document.getElementById('ruta-valencia').querySelector('.capitol-icona').textContent = '🔓';
+  }
+  if (itemsCap2 >= 3) {
+    document.getElementById('ruta-girona').style.opacity = '1';
+    document.getElementById('ruta-girona').querySelector('.capitol-icona').textContent = '🔓';
+  }
+  if (itemsCap3 >= 3) {
+    document.getElementById('ruta-tarragona').style.opacity = '1';
+    document.getElementById('ruta-tarragona').querySelector('.capitol-icona').textContent = '🔓';
+  }
 }
 
 function actualitzarTotem() {
@@ -540,12 +545,10 @@ function tornarMapa() {
 
 function carregarMissioTab() {
   if (!estat.capitolActual) {
-    document.getElementById('missio-card').innerHTML = `<button class="btn" onclick="iniciarRepas()">${LANG.repas_rapido}</button><h3 style="margin-top:20px;">${LANG.repas_titulo}</h3><div id="repas-contenidor"></div>`;
+    document.getElementById('rutes-secretes').style.display = 'block';
+  } else {
+    document.getElementById('rutes-secretes').style.display = 'none';
   }
-}
-
-function iniciarRepas() {
-  document.getElementById('repas-contenidor').innerHTML = '<p style="text-align:center; color:#888;">Completa un capítol primer</p>';
 }
 
 function guardarEstat() {
@@ -561,6 +564,8 @@ function guardarEstat() {
   localStorage.setItem('cat_totem', estat.totem);
   localStorage.setItem('cat_fallades', JSON.stringify(estat.fallades));
   localStorage.setItem('cat_personatge', JSON.stringify(estat.personatge));
+  localStorage.setItem('cat_compres', JSON.stringify(estat.compres));
+  localStorage.setItem('cat_emojis', JSON.stringify(estat.emojisDesbloquejats));
 }
 
 function actualitzarUI() {
@@ -572,7 +577,16 @@ function mostrarGremi(tab, e) {
   document.querySelectorAll('.sub-tab-btn').forEach(b => b.classList.remove('active'));
   if(e) e.target.classList.add('active');
   const cont = document.getElementById('gremi-contenidor');
+  const bibSubtabs = document.getElementById('biblioteca-subtabs');
   cont.innerHTML = '';
+
+  if (tab === 'biblioteca') {
+    bibSubtabs.style.display = 'flex';
+    mostrarBibliotecaTab('diccionari');
+    return;
+  } else {
+    bibSubtabs.style.display = 'none';
+  }
 
   if(tab === 'personatges') {
     if(!estat.personatge) {
@@ -591,7 +605,7 @@ function mostrarGremi(tab, e) {
       const totalStats = estat.stats.seny + estat.stats.rauxa + estat.stats.arrel + estat.stats.obert;
       const rang = totalStats < 20? 'Novell' : totalStats < 50? 'Viatjant' : totalStats < 100? 'Mestre' : 'Llegendari';
 
-            cont.innerHTML = `
+      cont.innerHTML = `
         <div class="gremi-item" style="grid-column:1/-1; text-align:center;">
           <div style="font-size:64px;">${estat.personatge.emoji}</div>
           <h3 style="margin:10px 0;">${estat.personatge.nom}</h3>
@@ -604,24 +618,6 @@ function mostrarGremi(tab, e) {
         </div>
       `;
     }
-  }
-
-if(tab === 'biblioteca') {
-    let html = `<h3 style="text-align:center; margin-bottom:10px;">${LANG.biblioteca}</h3>`;
-    html += `<p style="text-align:center; color:#888; margin-bottom:20px; font-size:14px;">${LANG.biblioteca_desc}</p>`;
-    html += `<div style="display:grid; grid-template-columns:repeat(3,1fr); gap:12px; max-height:500px; overflow-y:auto; padding:10px;">`;
-
-    BIBLIOTECA_EMOJIS.forEach(p => {
-      html += `
-        <div class="gremi-item" style="text-align:center; padding:15px 8px;">
-          <div style="font-size:42px; margin-bottom:8px;">${p.emoji}</div>
-          <div style="font-size:13px; font-weight:600; line-height:1.2;">${p.nom}</div>
-        </div>
-      `;
-    });
-
-    html += `</div>`;
-    cont.innerHTML = html;
   }
 
   if(tab === 'objectes') {
@@ -643,7 +639,7 @@ if(tab === 'biblioteca') {
     const llegendes = [
       { id: 'capitol1_bcn_born', nom: 'El Born, Barcelona', icona: '🏛️', desbloquejada: estat.capitolsCompletats.includes('capitol1_bcn_born'), text: 'El Born és el barri gòtic més viu.' },
       { id: 'capitol_02_girona', nom: 'Temps de Flors, Girona', icona: '🏰', desbloquejada: estat.capitolsCompletats.includes('capitol_02_girona'), text: 'Cada maig, Girona s\'omple de flors.' },
-      { id: 'capitol_03_fires_valencia', nom: 'Falles, València', icona: '🔥', desbloquejada: estat.capitolsCompletats.includes('capitol_03_fires_valencia'), text: 'El foc purifica tot.' }
+            { id: 'capitol_03_fires_valencia', nom: 'Falles, València', icona: '🔥', desbloquejada: estat.capitolsCompletats.includes('capitol_03_fires_valencia'), text: 'El foc purifica tot.' }
     ];
     llegendes.forEach(l => {
       if(l.desbloquejada) {
@@ -653,6 +649,116 @@ if(tab === 'biblioteca') {
       }
     });
   }
+}
+
+function mostrarBibliotecaTab(tab, e) {
+  document.querySelectorAll('#biblioteca-subtabs .sub-tab-btn').forEach(btn => btn.classList.remove('active'));
+  if(e) e.target.classList.add('active');
+
+  const cont = document.getElementById('gremi-contenidor');
+
+  if(tab === 'diccionari') {
+    let html = `<h3 style="text-align:center; margin-bottom:10px;">${LANG.biblioteca}</h3>`;
+    html += `<p style="text-align:center; color:#888; margin-bottom:20px; font-size:14px;">${LANG.biblioteca_desc}</p>`;
+    html += `<div style="display:grid; grid-template-columns:repeat(3,1fr); gap:12px; max-height:500px; overflow-y:auto; padding:10px;">`;
+
+    const totsEmojis = [...BIBLIOTECA_EMOJIS_BASE,...estat.emojisDesbloquejats];
+    totsEmojis.forEach(p => {
+      html += `
+        <div class="gremi-item" style="text-align:center; padding:15px 8px;">
+          <div style="font-size:42px; margin-bottom:8px;">${p.emoji}</div>
+          <div style="font-size:13px; font-weight:600; line-height:1.2;">${p.nom_cat}</div>
+        </div>
+      `;
+    });
+    html += `</div>`;
+    cont.innerHTML = html;
+  }
+
+  if(tab === 'minijocs') {
+    cont.innerHTML = `
+      <h3>${LANG.minijoc_titol}</h3>
+      <p style="color:var(--text-sec); margin:12px 0;">${LANG.minijoc_desc}</p>
+      <div id="minijoc-frase" style="background:#222; padding:15px; border-radius:12px; min-height:50px; margin-bottom:15px; text-align:center; font-size:18px;">
+        Prem "Nova frase" per començar
+      </div>
+      <button class="btn btn-sec" onclick="novaFraseMinijoc()" style="margin-bottom:15px;">Nova frase</button>
+      <div id="minijoc-emojis" class="emoji-grid"></div>
+      <div id="minijoc-triats" style="background:#222; padding:15px; border-radius:12px; min-height:50px; margin:15px 0; text-align:center; font-size:24px;"></div>
+      <button class="btn" onclick="comprovarMinijoc()">${LANG.comprovar}</button>
+      <div id="minijoc-feedback" style="margin-top:15px;"></div>
+    `;
+    novaFraseMinijoc();
+  }
+}
+
+function novaFraseMinijoc() {
+  const frases = [
+    {frase: "El gat està content", emojis: ["🐱", "😊"]},
+    {frase: "El gos està trist", emojis: ["🐶", "😢"]},
+    {frase: "Jo tinc una poma", emojis: ["jo", "🍎"]},
+    {frase: "Tu tens un plàtan", emojis: ["tu", "🍌"]},
+    {frase: "La casa és gran", emojis: ["🏠", "😊"]},
+    {frase: "El cotxe és ràpid", emojis: ["🚗", "😊"]},
+    {frase: "Llegeixo un llibre", emojis: ["jo", "📚"]},
+    {frase: "Bebem cafè", emojis: ["nosaltres", "☕"]}
+  ];
+
+  const random = frases[Math.floor(Math.random() * frases.length)];
+  estat.minijoc.fraseObjectiu = random;
+  estat.minijoc.emojisTriats = [];
+
+  document.getElementById('minijoc-frase').textContent = random.frase;
+  document.getElementById('minijoc-triats').textContent = '';
+  document.getElementById('minijoc-feedback').innerHTML = '';
+
+  const totsEmojis = [...BIBLIOTECA_EMOJIS_BASE,...estat.emojisDesbloquejats];
+  const emojisBarreja = totsEmojis.sort(() => 0.5 - Math.random()).slice(0, 15);
+  estat.minijoc.emojisDisponibles = emojisBarreja;
+
+  let html = '';
+  emojisBarreja.forEach((e, i) => {
+    html += `
+      <div class="emoji-item" onclick="triarEmojiMinijoc(${i})" style="cursor:pointer;">
+        <div class="emoji-large">${e.emoji}</div>
+        <div class="emoji-name">${e.nom_cat}</div>
+      </div>
+    `;
+  });
+  document.getElementById('minijoc-emojis').innerHTML = html;
+}
+
+function triarEmojiMinijoc(index) {
+  vibrar();
+  const emoji = estat.minijoc.emojisDisponibles[index];
+  if (estat.minijoc.emojisTriats.length < 3) {
+    estat.minijoc.emojisTriats.push(emoji);
+    actualitzarTriatsMinijoc();
+  }
+}
+
+function actualitzarTriatsMinijoc() {
+  const div = document.getElementById('minijoc-triats');
+  div.textContent = estat.minijoc.emojisTriats.map(e => e.emoji).join(' ');
+}
+
+function comprovarMinijoc() {
+  vibrar();
+  const objectiu = estat.minijoc.fraseObjectiu.emojis.join('');
+  const triats = estat.minijoc.emojisTriats.map(e => e.emoji).join('');
+  const feedback = document.getElementById('minijoc-feedback');
+
+  if (objectiu === triats) {
+    feedback.innerHTML = `<p style="color:#4CAF50; font-weight:bold;">${LANG.correcte}</p>`;
+    estat.monedes += 50;
+    estat.stats.arrel += 5;
+    actualitzarUI();
+    guardarEstat();
+  } else {
+    feedback.innerHTML = `<p style="color:#f44336; font-weight:bold;">${LANG.incorrecte} ${estat.minijoc.fraseObjectiu.emojis.join(' ')}</p>`;
+  }
+
+  setTimeout(() => novaFraseMinijoc(), 2000);
 }
 
 function seleccionarPersonatge(id) {
@@ -674,9 +780,52 @@ function canviarPersonatge() {
   mostrarGremi('personatges', null);
 }
 
-function carregarBotiga() {
+async function carregarBotiga() {
   const cont = document.getElementById('botiga-contenidor');
-  cont.innerHTML = '<div style="grid-column:1/-1; text-align:center; color:#888;">Pròximament</div>';
+  try {
+    const res = await fetch('./data/botiga_emojis.json');
+    const data = await res.json();
+    estat.packs_botiga = data.packs;
+    cont.innerHTML = '';
+
+    data.packs.forEach(pack => {
+      const comprat = estat.compres.includes(pack.id);
+      const card = document.createElement('div');
+      card.className = 'capitol-card';
+      card.innerHTML = `
+        <div class="capitol-icona">🎁</div>
+        <h3>${pack.nom}</h3>
+        <p style="color:var(--text-sec); margin:8px 0;">${pack.descripcio}</p>
+        <p style="font-size:24px;">${pack.emojis.map(e => e.emoji).join(' ')}</p>
+        <button class="btn ${comprat? 'btn-sec' : ''}"
+                onclick="comprarPack('${pack.id}', ${pack.preu})"
+                ${comprat? 'disabled' : ''}>
+          ${comprat? LANG.comprat : `🪙 ${pack.preu}`}
+        </button>
+      `;
+      cont.appendChild(card);
+    });
+  } catch(e) {
+    cont.innerHTML = '<div style="grid-column:1/-1; text-align:center; color:#888;">Pròximament</div>';
+  }
+}
+
+function comprarPack(id, preu) {
+  if (estat.monedes < preu) {
+    alert(LANG.no_prou_monedes);
+    return;
+  }
+
+  vibrar();
+  estat.monedes -= preu;
+  estat.compres.push(id);
+
+  const pack = estat.packs_botiga.find(p => p.id === id);
+  estat.emojisDesbloquejats.push(...pack.emojis);
+
+  guardarEstat();
+  actualitzarUI();
+  carregarBotiga();
 }
 
 if ('serviceWorker' in navigator) {
