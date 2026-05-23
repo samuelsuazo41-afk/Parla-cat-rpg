@@ -50,6 +50,7 @@
     "emoji": "🗝️",
     "descripcio": "Obre el Barri Vell de Girona quan cau el sol.",
     "rar": "epic",
-    "tipus": "clau"
+    "tipus": "clau",
+    "imatge": "./clau_muralla_girona.png"
   }
 ]
