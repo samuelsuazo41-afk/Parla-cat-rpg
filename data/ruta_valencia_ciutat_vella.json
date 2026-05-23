@@ -3,135 +3,389 @@
     "escena": "Torres de Serrans - 23:00",
     "npc_nom": "Vicent",
     "npc_emoji": "🛡️",
-    "dialog": "VICENT, guàrdia nocturn: 'Això són les Torres de Serrans, del segle XIV. Abans eren la porta principal de València. Si vols entrar a la Ciutat Vella, guanya-t'ho. Com es diu bona nit en valencià amb respecte?'",
-    "personatge": "Vicent",
+    "dialog": "VICENT, guàrdia nocturn: 'Això són les Torres de Serrans, del segle XIV. Eren la porta per on entrava la seda que feia rica València. Com dius bona nit en valencià?'",
     "pregunta": "Què li dius al guàrdia?",
-    "opcions": [...]
+    "opcions": [
+      { "text": "Bona nit, senyor. Gràcies per cuidar la ciutat", "correcte": true, "feedback": "VICENT: 'Així es parla. Passa'.", "guany": { "monedes": 60, "arrel": 4 } },
+      { "text": "Buenas noches", "correcte": false, "feedback": "VICENT: 'En valencià, noi. Bona nit'.", "guany": { "monedes": 0 } },
+      { "text": "Hola", "correcte": false, "feedback": "VICENT: 'Massa curt per 600 anys d'història'.", "guany": { "monedes": 10 } }
+    ]
   },
   {
-    "escena": "Catedral i Micalet - Plaça de la Reina",
+    "escena": "Catedral i Micalet",
     "npc_nom": "Meritxell",
     "npc_emoji": "🔔",
-    "dialog": "MERITXELL, campanera: 'Sóc la que cuida el Micalet. 207 escalons fins dalt. Si dius el nom correcte de la torre en valencià, et conte una llegenda'.",
-    "personatge": "Meritxell",
+    "dialog": "MERITXELL, campanera: 'Sóc la que cuida el Micalet. 207 escalons. Si dius el nom correcte, et conte una llegenda'.",
     "pregunta": "Com es diu la torre?",
-    "opcions": [...]
+    "opcions": [
+      { "text": "Micalet", "correcte": true, "feedback": "MERITXELL: 'Diuen que si puges a mitjanit, sents les ànimes de València'.", "guany": { "monedes": 70, "arrel": 5 } },
+      { "text": "Campanar", "correcte": false, "feedback": "MERITXELL: 'Sí, però el nom és Micalet'.", "guany": { "monedes": 10 } },
+      { "text": "Torre", "correcte": false, "feedback": "MERITXELL: 'Massa genèric'.", "guany": { "monedes": 5 } }
+    ]
   },
   {
-    "escena": "Plaça de la Verge - Font del Túria",
+    "escena": "Plaça de la Verge - Tribunal de les Aigües",
     "npc_nom": "Jordi",
     "npc_emoji": "⚖️",
-    "dialog": "JORDI, historiador del Tribunal de les Aigües: 'Cada dijous ací es fa justícia des de fa 1000 anys. Som l'únic tribunal oral d'Europa que mai ha parat. Com es diu aigua en valencià?'",
-    "personatge": "Jordi",
-    "pregunta": "Respon-li per demostrar que has estudiat",
-    "opcions": [...]
+    "dialog": "JORDI, síndic: 'Cada dijous a les 12h fem justícia oral en valencià des de fa 1000 anys. Som el tribunal més antic d'Europa. Com dius aigua?'",
+    "pregunta": "Respon-li",
+    "opcions": [
+      { "text": "Aigua", "correcte": true, "feedback": "JORDI: 'Correcte! 1000 anys sense parar'.", "guany": { "monedes": 80, "seny": 5 } },
+      { "text": "Agua", "correcte": false, "feedback": "JORDI: 'En valencià: aigua'.", "guany": { "monedes": 0 } },
+      { "text": "No ho sé", "correcte": false, "feedback": "JORDI: 'Aigua. L'or blau de l'horta'.", "guany": { "monedes": 10 } }
+    ]
   },
   {
     "escena": "Basílica de la Mare de Déu",
     "npc_nom": "Sor Consol",
     "npc_emoji": "🙏",
-    "dialog": "SOR CONSOL, monja: 'Aquesta és la Mare de Déu dels Desamparats, patrona de València. La gent li diu la Geperudeta. Sap per què?'",
-    "personatge": "Sor Consol",
+    "dialog": "SOR CONSOL: 'Aquesta és la Geperudeta, patrona de València. Sap per què li diem així?'",
     "pregunta": "Què li contestes?",
-    "opcions": [...]
+    "opcions": [
+      { "text": "Perquè té l'esquena corbada, com una mare que acull", "correcte": true, "feedback": "SOR CONSOL: 'Exacte. És la mare que acull tots'.", "guany": { "monedes": 90, "arrel": 6 } },
+      { "text": "No ho sé", "correcte": false, "feedback": "SOR CONSOL: 'Per l'esquena corbada. És amor'.", "guany": { "monedes": 10 } },
+      { "text": "Perquè és vella", "correcte": false, "feedback": "SOR CONSOL: 'No és això. És per acollir'.", "guany": { "monedes": 5 } }
+    ]
   },
   {
-    "escena": "Lonja de la Seda - Carrer de la Lonja",
+    "escena": "Llotja de la Seda",
     "npc_nom": "Isabel",
     "npc_emoji": "🏛️",
-    "dialog": "ISABEL, guia de la Lonja: 'Açò és gòtic valencià del segle XV. Patrimoni de la Humanitat. No és modern, no és barroc. Si ho dius bé, et deixe entrar al pati'.",
-    "personatge": "Isabel",
-    "pregunta": "Com descrius l'estil?",
-    "opcions": [...]
+    "dialog": "ISABEL, guia: 'Açò és gòtic valencià del segle XV. UNESCO. Ací es feia la seda que vestia reis. Com descrius l'estil?'",
+    "pregunta": "Com ho dius?",
+    "opcions": [
+      { "text": "Gòtic valencià, Patrimoni de la Humanitat", "correcte": true, "feedback": "ISABEL: 'Exacte! València va ser rica gràcies a la seda'.", "guany": { "monedes": 90, "seny": 6 } },
+      { "text": "És modern", "correcte": false, "feedback": "ISABEL: 'No! És del segle XV'.", "guany": { "monedes": 0 } },
+      { "text": "És bonic", "correcte": false, "feedback": "ISABEL: 'Sí, però digue l'estil exacte'.", "guany": { "monedes": 15 } }
+    ]
   },
   {
     "escena": "Mercat Central",
     "npc_nom": "Pep",
     "npc_emoji": "🥕",
-    "dialog": "PEP, venedor de verdures: 'Açò és el Mercat Central, un dels més grans d'Europa. Tot ve de l'horta de València. Com dius tomaca en valencià?'",
-    "personatge": "Pep",
+    "dialog": "PEP, llaurador: 'Tot ve de l'horta de València. 1200 anys regant amb séquies àrabs. Com dius tomaca?'",
     "pregunta": "Què li dius?",
-    "opcions": [...]
+    "opcions": [
+      { "text": "Tomaca, de l'horta nostra", "correcte": true, "feedback": "PEP: 'La millor tomaca del món'.", "guany": { "monedes": 70, "arrel": 4 } },
+      { "text": "Tomate", "correcte": false, "feedback": "PEP: 'En valencià: tomaca'.", "guany": { "monedes": 0 } },
+      { "text": "Verdura", "correcte": false, "feedback": "PEP: 'Sigues específic'.", "guany": { "monedes": 10 } }
+    ]
   },
   {
-    "escena": "Barri del Carme - Carrer de Cabillers",
+    "escena": "Barri del Carme",
     "npc_nom": "Raül",
     "npc_emoji": "🎨",
-    "dialog": "RAÜL, artista urbà: 'Ací tot són grafitis, bars i història. El Carme és el barri més viu de València. Si dius una frase en valencià amb ganes, et pinte un mural virtual'.",
-    "personatge": "Raül",
-    "pregunta": "Què li dius per demostrar actitud?",
-    "opcions": [...]
+    "dialog": "RAÜL, artista urbà: 'El Carme és el barri bohemi. Cada carrer té un mural. Digue'm una frase en valencià amb ganes'.",
+    "pregunta": "Què li dius?",
+    "opcions": [
+      { "text": "València pinta en valencià!", "correcte": true, "feedback": "RAÜL: 'Això té força! Pren el mural'.", "guany": { "monedes": 100, "rauxa": 6 } },
+      { "text": "Mola el grafiti", "correcte": false, "feedback": "RAÜL: 'És art urbà, no grafiti salvatge'.", "guany": { "monedes": 10 } },
+      { "text": "Bonito", "correcte": false, "feedback": "RAÜL: 'En valencià, artista'.", "guany": { "monedes": 0 } }
+    ]
   },
   {
     "escena": "Portal de Valldigna",
     "npc_nom": "Nazira",
     "npc_emoji": "🕌",
     "dialog": "NAZIRA, historiadora àrab: 'Aquest portal era l'entrada al barri moro. València va ser musulmana 500 anys. Com dius gràcies en àrab valencià antic?'",
-    "personatge": "Nazira",
     "pregunta": "Què li dius?",
-    "opcions": [...]
+    "opcions": [
+      { "text": "Shukran", "correcte": true, "feedback": "NAZIRA: 'Molt bé! 500 anys d'història viuen ací'.", "guany": { "monedes": 110, "arrel": 7 } },
+      { "text": "Gràcies", "correcte": false, "feedback": "NAZIRA: 'En àrab antic és shukran'.", "guany": { "monedes": 15 } },
+      { "text": "Merci", "correcte": false, "feedback": "NAZIRA: 'Això és francès'.", "guany": { "monedes": 5 } }
+    ]
   },
   {
     "escena": "Plaça del Tossal",
     "npc_nom": "Toni",
     "npc_emoji": "🎶",
-    "dialog": "TONI, músic de tabal i dolçaina: 'Açò sona a festa. La dolçaina és l'ànima de València. Si dius el nom bé, et toque una albaes'.",
-    "personatge": "Toni",
+    "dialog": "TONI, músic: 'La dolçaina és l'ànima de València. Si dius el nom bé, et toque una albaes'.",
     "pregunta": "Com es diu l'instrument?",
-    "opcions": [...]
+    "opcions": [
+      { "text": "Dolçaina", "correcte": true, "feedback": "TONI: 'Escolta l'ànima de València'.", "guany": { "monedes": 120, "rauxa": 7 } },
+      { "text": "Flauta", "correcte": false, "feedback": "TONI: 'No! És dolçaina'.", "guany": { "monedes": 0 } },
+      { "text": "Instrument", "correcte": false, "feedback": "TONI: 'Quin nom té?'.", "guany": { "monedes": 10 } }
+    ]
   },
   {
-    "escena": "Plaça de l'Ajuntament - Silenci nocturn",
+    "escena": "Plaça de l'Ajuntament",
     "npc_nom": "Paqui",
     "npc_emoji": "👵",
-    "dialog": "PAQUI, veïna de tota la vida: 'De dia açò és un caos per les falles. De nit és màgic. Com dius València en falles amb orgull?'",
-    "personatge": "Paqui",
-    "pregunta": "Diga-li com se sent",
-    "opcions": [...]
+    "dialog": "PAQUI, veïna: 'De dia açò és un caos per les falles. De nit és màgic. Com dius València en falles amb orgull?'",
+    "pregunta": "Com se sent?",
+    "opcions": [
+      { "text": "València en falles és màgica i única", "correcte": true, "feedback": "PAQUI: 'Així es diu! Amb orgull valencià'.", "guany": { "monedes": 130, "arrel": 8 } },
+      { "text": "Mola molt", "correcte": false, "feedback": "PAQUI: 'Digue-ho amb més sentiment'.", "guany": { "monedes": 15 } },
+      { "text": "Hi ha soroll", "correcte": false, "feedback": "PAQUI: 'És la pólvora. És la nostra ànima'.", "guany": { "monedes": 5 } }
+    ]
   },
   {
     "escena": "Carrer dels Cavallers",
     "npc_nom": "Lucia",
     "npc_emoji": "📜",
-    "dialog": "LUCIA, historiadora: 'Aquest carrer era la via noble de València. Ací vivien els senyors. Com dius cavaller en valencià?'",
-    "personatge": "Lucia",
-    "pregunta": "Respon bé i segueix",
-    "opcions": [...]
+    "dialog": "LUCIA, historiadora: 'Aquest carrer era la via noble. Ací vivien els senyors. Com dius cavaller en valencià?'",
+    "pregunta": "Respon bé",
+    "opcions": [
+      { "text": "Cavaller", "correcte": true, "feedback": "LUCIA: 'Correcte! Aquest carrer guarda històries'.", "guany": { "monedes": 70, "seny": 4 } },
+      { "text": "Caballero", "correcte": false, "feedback": "LUCIA: 'En valencià: cavaller'.", "guany": { "monedes": 0 } },
+      { "text": "Senyor", "correcte": false, "feedback": "LUCIA: 'Gairebé, però és cavaller'.", "guany": { "monedes": 10 } }
+    ]
   },
   {
     "escena": "Plaça de Sant Jaume",
     "npc_nom": "Fermin",
     "npc_emoji": "🥤",
-    "dialog": "FERMIN, orxater: 'Sense orxata no hi ha València. És de xufla. Com dius orxata en valencià?'",
-    "personatge": "Fermin",
+    "dialog": "FERMIN, orxater: 'Sense orxata no hi ha València. És de xufla d'Alboraya. Com demanes una orxata gran?'",
     "pregunta": "Què li demanes?",
-    "opcions": [...]
+    "opcions": [
+      { "text": "Una orxata gran ben fresca, si us plau", "correcte": true, "feedback": "FERMIN: 'Ara sí! L'original d'Alboraya'.", "guany": { "monedes": 80, "arrel": 5 } },
+      { "text": "Horchata", "correcte": false, "feedback": "FERMIN: 'En valencià: orxata'.", "guany": { "monedes": 0 } },
+      { "text": "Beguda", "correcte": false, "feedback": "FERMIN: 'Demana l'orxata'.", "guany": { "monedes": 10 } }
+    ]
   },
   {
     "escena": "Carrer de la Pau",
     "npc_nom": "Elena",
     "npc_emoji": "📚",
-    "dialog": "ELENA, llibretera: 'Ací hi ha les llibreries més velles de València. La pau es fa llegint. Com dius llibre en valencià?'",
-    "personatge": "Elena",
+    "dialog": "ELENA, llibretera: 'Ací hi ha les llibreries més velles de València. La pau es fa llegint. Com dius llibre?'",
     "pregunta": "Respon-li",
-    "opcions": [...]
+    "opcions": [
+      { "text": "Llibre", "correcte": true, "feedback": "ELENA: 'Exacte! La pau es fa llegint'.", "guany": { "monedes": 90, "seny": 6 } },
+      { "text": "Libro", "correcte": false, "feedback": "ELENA: 'En valencià: llibre'.", "guany": { "monedes": 0 } },
+      { "text": "Lectura", "correcte": false, "feedback": "ELENA: 'Gairebé, és llibre'.", "guany": { "monedes": 10 } }
+    ]
   },
   {
-    "escena": "Plaça de la Reina - Mirador nocturn",
+    "escena": "Plaça de la Reina - Mirador",
     "npc_nom": "Roger",
     "npc_emoji": "📸",
-    "dialog": "ROGER, fotògraf: 'Des d'ací es veu tota la Ciutat Vella il·luminada. És màgia. Com dius nit màgica en valencià?'",
-    "personatge": "Roger",
+    "dialog": "ROGER, fotògraf: 'Des d'ací es veu tota la Ciutat Vella il·luminada. Com dius nit màgica en valencià?'",
     "pregunta": "Diga-li la frase",
-    "opcions": [...]
+    "opcions": [
+      { "text": "Nit màgica a València", "correcte": true, "feedback": "ROGER: 'Perfecte! Això és València de nit'.", "guany": { "monedes": 100, "obert": 6 } },
+      { "text": "Noche mágica", "correcte": false, "feedback": "ROGER: 'En valencià: nit màgica'.", "guany": { "monedes": 0 } },
+      { "text": "Molt bonic", "correcte": false, "feedback": "ROGER: 'Digue la frase exacta'.", "guany": { "monedes": 10 } }
+    ]
   },
   {
-    "escena": "Final - Terrat amb vistes a la Ciutat Vella",
-    "npc_nom": "Grup",
+    "escena": "Barri del Cabanyal",
+    "npc_nom": "Pepica",
+    "npc_emoji": "🎣",
+    "dialog": "PEPICA, filla de pescadors: 'Ací vivíem del mar. Les cases de colors són història viva. On menges peix fresc?'",
+    "pregunta": "Què li contestes?",
+    "opcions": [
+      { "text": "A La Pepica, peix del dia amb vistes al mar", "correcte": true, "feedback": "PEPICA: '120 anys de tradició marinera'.", "guany": { "monedes": 90, "arrel": 5 } },
+      { "text": "Al McDonald's", "correcte": false, "feedback": "PEPICA: 'Ací peix fresc, no hamburguesa'.", "guany": { "monedes": 0 } },
+      { "text": "No ho sé", "correcte": false, "feedback": "PEPICA: 'La Pepica. 120 anys'.", "guany": { "monedes": 10 } }
+    ]
+  },
+  {
+    "escena": "Platja de la Malva-rosa",
+    "npc_nom": "Socorrista",
+    "npc_emoji": "🏖️",
+    "dialog": "SOCORRISTA: 'Aquesta platja és famosa per la paella. Ull: la paella valenciana és de pollastre i conill, no de marisc. Com demanes una paella?'",
+    "pregunta": "Com ho dius?",
+    "opcions": [
+      { "text": "Una paella valenciana per a dos, amb foc de llenya", "correcte": true, "feedback": "SOCORRISTA: '25 minuts i a gaudir'.", "guany": { "monedes": 100, "arrel": 6 } },
+      { "text": "Paella de marisc", "correcte": false, "feedback": "SOCORRISTA: 'No! A València és de pollastre i conill'.", "guany": { "monedes": 0 } },
+      { "text": "Arròs", "correcte": false, "feedback": "SOCORRISTA: 'Digue quin tipus'.", "guany": { "monedes": 15 } }
+    ]
+  },
+  {
+    "escena": "Ciutat de les Arts - Calatrava",
+    "npc_nom": "Arquitecta",
+    "npc_emoji": "🏛️",
+    "dialog": "ARQUITECTA: 'Açò és Calatrava. Futurista, polèmic, però únic. Hemisfèric, Museu de les Ciències, Palau de les Arts. Com ho comentes?'",
+    "pregunta": "Què li dius?",
+    "opcions": [
+      { "text": "Sembla d'una pel·lícula de ciència ficció. És brutal", "correcte": true, "feedback": "ARQUITECTA: 'València barreja modern i històric'.", "guany": { "monedes": 110, "obert": 6 } },
+      { "text": "És molt car", "correcte": false, "feedback": "ARQUITECTA: 'Mira el disseny. Parla de l'art'.", "guany": { "monedes": 10 } },
+      { "text": "No m'agrada", "correcte": false, "feedback": "ARQUITECTA: 'És polèmic, però marca la ciutat'.", "guany": { "monedes": 5 } }
+    ]
+  },
+  {
+    "escena": "Estadi de Mestalla",
+    "npc_nom": "Murciélago",
+    "npc_emoji": "🦇",
+    "dialog": "MURCIÉLAGO, aficionat: 'Açò és Mestalla, 100 anys d'història. Com dius força València en valencià?'",
+    "pregunta": "Què li cantes?",
+    "opcions": [
+      { "text": "Força València! Amunt!", "correcte": true, "feedback": "MURCIÉLAGO: 'Amunt València sempre'.", "guany": { "monedes": 120, "rauxa": 7 } },
+      { "text": "Vamos Valencia", "correcte": false, "feedback": "MURCIÉLAGO: 'En valencià: Força València!'.", "guany": { "monedes": 0 } },
+      { "text": "Gol", "correcte": false, "feedback": "MURCIÉLAGO: 'Canta l'himne!'.", "guany": { "monedes": 15 } }
+    ]
+  },
+  {
+    "escena": "Carrer de Russafa",
+    "npc_nom": "Vega",
+    "npc_emoji": "👗",
+    "dialog": "VEGA, dissenyadora: 'Russafa és el barri hipster. Ací neixen Pikolinos i Pons Quintana. On compres sabates valencianes?'",
+    "pregunta": "Què li preguntes?",
+    "opcions": [
+      { "text": "On hi ha una botiga de sabates fetes a València?", "correcte": true, "feedback": "VEGA: 'Ves a Russafa. Moda valenciana de veritat'.", "guany": { "monedes": 90, "obert": 5 } },
+      { "text": "On hi ha Zara?", "correcte": false, "feedback": "VEGA: 'Zara és de Galícia. Busquem local'.", "guany": { "monedes": 0 } },
+      { "text": "Botigues?", "correcte": false, "feedback": "VEGA: 'Sigues més específic'.", "guany": { "monedes": 10 } }
+    ]
+  },
+  {
+    "escena": "Albufera - Parc Natural",
+    "npc_nom": "Barquer",
+    "npc_emoji": "🚣",
+    "dialog": "BARQUER: 'L'Albufera és on naix l'arròs de la paella. 200 espècies d'ocells. El millor capvespre d'Espanya. Vols fer una volta?'",
+    "pregunta": "Què li contestes?",
+    "opcions": [
+      { "text": "Sí! Quant costa i quant dura?", "correcte": true, "feedback": "BARQUER: '15 euros, 45 minuts. El millor atardecer'.", "guany": { "monedes": 130, "arrel": 7 } },
+      { "text": "No, gràcies", "correcte": false, "feedback": "BARQUER: 'Et perds el millor atardecer'.", "guany": { "monedes": 0 } },
+      { "text": "És car", "correcte": false, "feedback": "BARQUER: 'Val la pena cada euro'.", "guany": { "monedes": 10 } }
+    ]
+  },
+  {
+    "escena": "Cine Lys",
+    "npc_nom": "Director",
+    "npc_emoji": "🎬",
+    "dialog": "DIRECTOR: 'Ací es roda cinema valencià. Sabies que tenim un festival de cinema mediterrani? Quina pel·lícula preguntes?'",
+    "pregunta": "Què li dius?",
+    "opcions": [
+      { "text": "Quina pel·lícula valenciana fan aquesta setmana?", "correcte": true, "feedback": "DIRECTOR: 'Ara fan Berlanga. Clàssic valencià'.", "guany": { "monedes": 100, "obert": 6 } },
+      { "text": "Hi ha Marvel?", "correcte": false, "feedback": "DIRECTOR: 'Ací donem suport al cinema local'.", "guany": { "monedes": 0 } },
+      { "text": "Què fan?", "correcte": false, "feedback": "DIRECTOR: 'Sigues més específic'.", "guany": { "monedes": 10 } }
+    ]
+  },
+  {
+    "escena": "Plaça Redona",
+    "npc_nom": "Venedora",
+    "npc_emoji": "👩",
+    "dialog": "VENEDORA: 'Aquesta plaça és rodona des del segle XIX. Venem artesania de Manises. Com compres un ventall?'",
+    "pregunta": "Què li dius?",
+    "opcions": [
+      { "text": "Em poses un ventall fet a mà a Manises, si us plau", "correcte": true, "feedback": "VENEDORA: '8 euros. Artesania 100% valenciana'.", "guany": { "monedes": 80, "arrel": 5 } },
+      { "text": "Quant val?", "correcte": false, "feedback": "VENEDORA: '8 euros. Però diu què vols comprar'.", "guany": { "monedes": 15 } },
+      { "text": "És car", "correcte": false, "feedback": "VENEDORA: 'És fet a mà. Val la pena'.", "guany": { "monedes": 5 } }
+    ]
+  },
+  {
+    "escena": "Jardí de Túria",
+    "npc_nom": "Corredor",
+    "npc_emoji": "🏃",
+    "dialog": "CORREDOR: 'Aquest jardí era el riu Túria. Després de la riuada del 57 el van desviar. Ara són 9 km de verd. Com dius parc en valencià?'",
+    "pregunta": "Què li dius?",
+    "opcions": [
+      { "text": "Parc del Túria", "correcte": true, "feedback": "CORREDOR: 'Exacte! El pulmó verd de València'.", "guany": { "monedes": 80, "arrel": 5 } },
+      { "text": "Parque", "correcte": false, "feedback": "CORREDOR: 'En valencià: parc'.", "guany": { "monedes": 0 } },
+      { "text": "Jardí", "correcte": false, "feedback": "CORREDOR: 'Gairebé, és parc'.", "guany": { "monedes": 10 } }
+    ]
+  },
+  {
+    "escena": "Barri de Benimaclet",
+    "npc_nom": "Llaurador",
+    "npc_emoji": "🌾",
+    "dialog": "LLAURADOR: 'Ací encara queda horta. Benimaclet era un poble d'horta. Sabies que la paella naix ací?'",
+    "pregunta": "Què li contestes?",
+    "opcions": [
+      { "text": "Sí, l'arròs de l'horta fa la paella autèntica", "correcte": true, "feedback": "LLAURADOR: 'Exacte! Sense horta no hi ha paella'.", "guany": { "monedes": 100, "arrel": 6 } },
+      { "text": "No ho sabia", "correcte": false, "feedback": "LLAURADOR: 'Ara ja ho saps. L'horta és vida'.", "guany": { "monedes": 10 } },
+      { "text": "Què és això?", "correcte": false, "feedback": "LLAURADOR: 'Horta valenciana. Or verd'.", "guany": { "monedes": 5 } }
+    ]
+  },
+  {
+    "escena": "Mercat de Russafa",
+    "npc_nom": "Peixatera",
+    "npc_emoji": "🐟",
+    "dialog": "PEIXATERA: 'Ací venem peix de la nostra costa. Sabies que l'all i pebre naix a la Albufera?'",
+    "pregunta": "Què li preguntes?",
+    "opcions": [
+      { "text": "Què és l'all i pebre? És típic de València?", "correcte": true, "feedback": "PEIXATERA: 'Guisat d'anguila. Platat valencià'.", "guany": { "monedes": 90, "arrel": 5 } },
+      { "text": "És car?", "correcte": false, "feedback": "PEIXATERA: 'Pregunta per la recepta primer'.", "guany": { "monedes": 10 } },
+      { "text": "No m'agrada el peix", "correcte": false, "feedback": "PEIXATERA: 'Prova-ho. És tradició'.", "guany": { "monedes": 5 } }
+    ]
+  },
+  {
+    "escena": "Palau de la Música",
+    "npc_nom": "Músic",
+    "npc_emoji": "🎻",
+    "dialog": "MÚSIC: 'Ací sona l'Orquestra de València. Sabies que la dolçaina i el tabal són Patrimoni Immaterial?'",
+    "pregunta": "Què li dius?",
+    "opcions": [
+      { "text": "Sí, la música valenciana és única al món", "correcte": true, "feedback": "MÚSIC: 'Exacte! Som terra de músics'.", "guany": { "monedes": 100, "rauxa": 6 } },
+      { "text": "No ho sabia", "correcte": false, "feedback": "MÚSIC: 'Ara ja ho saps. Escolta'l'.", "guany": { "monedes": 10 } },
+      { "text": "No m'agrada", "correcte": false, "feedback": "MÚSIC: 'Dona-li una oportunitat'.", "guany": { "monedes": 5 } }
+    ]
+  },
+  {
+    "escena": "Barri de Ruzafa - Street Food",
+    "npc_nom": "Xef",
+    "npc_emoji": "👨‍🍳",
+    "dialog": "XEF: 'Ací fem esgarraet, clotxa i fartons. Quin plat vols provar? Tot és valencià'.",
+    "pregunta": "Què li demanes?",
+    "opcions": [
+      { "text": "Un esgarraet per començar, si us plau", "correcte": true, "feedback": "XEF: 'Bon gust! Pebrot, bacallà i oli'.", "guany": { "monedes": 90, "arrel": 5 } },
+      { "text": "Què és això?", "correcte": false, "feedback": "XEF: 'Pebrot rostit amb bacallà. Prova-ho'.", "guany": { "monedes": 10 } },
+      { "text": "No tinc gana", "correcte": false, "feedback": "XEF: 'La gana ve menjant'.", "guany": { "monedes": 5 } }
+    ]
+  },
+  {
+    "escena": "Port de València",
+    "npc_nom": "Estibador",
+    "npc_emoji": "⚓",
+    "dialog": "ESTIBADOR: 'Aquest port mou milions de tones. València és porta d'Europa al Mediterrani. Sabies que som el primer port d'Espanya?'",
+    "pregunta": "Què li contestes?",
+    "opcions": [
+      { "text": "Sí, València és comerç i mar des de fa segles", "correcte": true, "feedback": "ESTIBADOR: 'Exacte! Des de la seda fins ara'.", "guany": { "monedes": 110, "seny": 7 } },
+      { "text": "No ho sabia", "correcte": false, "feedback": "ESTIBADOR: 'Ara ja ho saps. Som port'.", "guany": { "monedes": 10 } },
+      { "text": "Massa vaixells", "correcte": false, "feedback": "ESTIBADOR: 'És economia, noi'.", "guany": { "monedes": 5 } }
+    ]
+  },
+  {
+    "escena": "Barri de Benicalap",
+    "npc_nom": "Fallera",
+    "npc_emoji": "🔥",
+    "dialog": "FALLERA: 'Ací fem la falla del barri. Sabies que les falles són Patrimoni Immaterial de la Humanitat?'",
+    "pregunta": "Què li dius?",
+    "opcions": [
+      { "text": "Sí, la creativitat valenciana crema al març", "correcte": true, "feedback": "FALLERA: 'Així es parla! València crema i renaix'.", "guany": { "monedes": 120, "rauxa": 8 } },
+      { "text": "Crema paper", "correcte": false, "feedback": "FALLERA: 'És art efímer, no només foc'.", "guany": { "monedes": 10 } },
+      { "text": "No m'agrada", "correcte": false, "feedback": "FALLERA: 'Vine al març i ho entendràs'.", "guany": { "monedes": 5 } }
+    ]
+  },
+  {
+    "escena": "Observatori Astronòmic",
+    "npc_nom": "Astrònom",
+    "npc_emoji": "🔭",
+    "dialog": "ASTRÒNOM: 'Des d'ací mirem les estrelles. Sabies que València té un dels cels més nets d'Espanya?'",
+    "pregunta": "Què li preguntes?",
+    "opcions": [
+      { "text": "Què puc veure esta nit al cel valencià?", "correcte": true, "feedback": "ASTRÒNOM: 'Júpiter i Saturn. Magnífics'.", "guany": { "monedes": 100, "obert": 6 } },
+      { "text": "Fa fred", "correcte": false, "feedback": "ASTRÒNOM: 'Sí, però mira el cel'.", "guany": { "monedes": 10 } },
+      { "text": "No m'agrada", "correcte": false, "feedback": "ASTRÒNOM: 'Dona-li una oportunitat'.", "guany": { "monedes": 5 } }
+    ]
+  },
+  {
+    "escena": "Final - Terrat amb vistes",
+    "npc_nom": "Tota la Colla Valenciana",
     "npc_emoji": "🎉",
-    "dialog": "Tots els NPCs et miren des del terrat. 'Has caminat la Ciutat Vella parlant valencià. Això és estimar València. Agafa la clau, és teua'.",
-    "personatge": "Grup",
+    "dialog": "TOTS: 'Has caminat la Ciutat Vella parlant valencià. Has après de falles, seda, horchata, paella, Albufera, Mestalla i Calatrava. Això és estimar València'.",
     "pregunta": "Com tanques la nit?",
-    "opcions": [...]
+    "opcions": [
+      {
+        "text": "Gràcies, València. Fins aviat, família",
+        "correcte": true,
+        "feedback": "TOTS: 'Així es marxa. La Ciutat Vella de nit és teua'.",
+        "guany": { "monedes": 250, "arrel": 12, "seny": 10 },
+        "item": "clau_de_la_lonja"
+      },
+      {
+        "text": "Bona nit",
+        "correcte": false,
+        "feedback": "TOTS: 'Curt! Dóna-li més amor a València'.",
+        "guany": { "monedes": 40 }
+      },
+      {
+        "text": "Me'n vaig",
+        "correcte": false,
+        "feedback": "TOTS: 'Marxes així? Sense dir res més?'.",
+        "guany": { "monedes": 20 }
+      }
+    ]
   }
 ]
+    
