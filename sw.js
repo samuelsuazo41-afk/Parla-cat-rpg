@@ -1,4 +1,5 @@
-const CACHE_NAME = 'parla-cat-rpg-v120';
+
+const CACHE_NAME = 'parla-cat-rpg-v131';
 const urlsToCache = [
   './',
   './index.html',
@@ -16,7 +17,8 @@ const urlsToCache = [
   './ram_roses_girona.png',
   './fuet_fires.png',
   './icon-192.png',
-  './icon-512.png'
+  './data/biblioteca_emojis.json',  // <- AÑADE ESTO
+  './data/botiga_emojis.json'       // <- Y ESTO
 ];
 
 self.addEventListener('install', event => {
