@@ -1,0 +1,41 @@
+{
+  "packs": [
+    {
+      "id": "pack_natura",
+      "nom": "Pack Natura",
+      "preu": 1500,
+      "descripcio": "Animals, plantes, paisatge",
+      "emojis": [
+        {"emoji": "🌳", "nom_cat": "arbre", "desc": "Un arbre gran"},
+        {"emoji": "🌊", "nom_cat": "mar", "desc": "El mar"},
+        {"emoji": "🌸", "nom_cat": "flor", "desc": "Una flor"},
+        {"emoji": "🐺", "nom_cat": "llop", "desc": "Un llop"},
+        {"emoji": "🌧️", "nom_cat": "pluja", "desc": "Pluja"}
+      ]
+    },
+    {
+      "id": "pack_emocions",
+      "nom": "Pack Emocions", 
+      "preu": 1500,
+      "descripcio": "Sentiments i estats d'ànim",
+      "emojis": [
+        {"emoji": "😍", "nom_cat": "enamorat", "desc": "Estar enamorat"},
+        {"emoji": "😱", "nom_cat": "espantat", "desc": "Tenir por"},
+        {"emoji": "🤔", "nom_cat": "pensant", "desc": "Estar pensant"},
+        {"emoji": "😎", "nom_cat": "guai", "desc": "Estar guai"}
+      ]
+    },
+    {
+      "id": "pack_objectes",
+      "nom": "Pack Objectes Casa",
+      "preu": 1500,
+      "descripcio": "Objectes de la casa",
+      "emojis": [
+        {"emoji": "🪑", "nom_cat": "cadira", "desc": "Una cadira"},
+        {"emoji": "🛏️", "nom_cat": "llit", "desc": "Un llit"},
+        {"emoji": "📱", "nom_cat": "mòbil", "desc": "Un mòbil"},
+        {"emoji": "💻", "nom_cat": "ordinador", "desc": "Un ordinador"}
+      ]
+    }
+  ]
+}
