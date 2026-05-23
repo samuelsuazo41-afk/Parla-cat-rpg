@@ -303,8 +303,24 @@ async function carregarCapitol(nombreArchivo) {
     estat.pasActual = 0;
     estat.falladesCapitol = 0;
 
+    // CORREGIDO: Se añade el npc-box para que no de error null
     document.getElementById('missio-card').innerHTML = `
       <h3 id="missio-titol">Selecciona una missió al mapa</h3>
+
+      <div id="npc-box" style="display:none;">
+        <div style="display:flex; align-items:flex-start; gap:12px; margin-bottom:12px;">
+          <span id="npc-emoji" style="font-size:42px; line-height:1;"></span>
+          <div style="flex:1;">
+            <strong id="npc-nom" style="font-size:16px; display:block; margin-bottom:4px;"></strong>
+            <p id="npc-dialog" style="margin:0; line-height:1.4;"></p>
+          </div>
+        </div>
+        <div style="display:flex; align-items:center; gap:10px; margin-top:15px; padding-top:12px; border-top:1px solid #333; opacity:0.8;">
+          <span id="jugador-emoji" style="font-size:32px;"></span>
+          <span id="jugador-nom" style="font-size:14px; color:#aaa;"></span>
+        </div>
+      </div>
+
       <div id="missio-escenari"></div>
       <div id="missio-opcions"></div>
       <div id="missio-feedback"></div>
@@ -377,19 +393,11 @@ function carregarPas() {
   const jugadorNom = estat.personatge?.nom || 'Tu';
 
   document.getElementById('npc-box').style.display = 'block';
-  document.getElementById('npc-box').innerHTML = `
-    <div style="display:flex; align-items:flex-start; gap:12px; margin-bottom:12px;">
-      <span style="font-size:42px; line-height:1;">${npcEmoji}</span>
-      <div style="flex:1;">
-        <strong style="font-size:16px; display:block; margin-bottom:4px;">${npcNom}</strong>
-        <p style="margin:0; line-height:1.4;">${pas.dialog || ''}</p>
-      </div>
-    </div>
-    <div style="display:flex; align-items:center; gap:10px; margin-top:15px; padding-top:12px; border-top:1px solid #333; opacity:0.8;">
-      <span style="font-size:32px;">${jugadorEmoji}</span>
-      <span style="font-size:14px; color:#aaa;">${jugadorNom}</span>
-    </div>
-  `;
+  document.getElementById('npc-emoji').textContent = npcEmoji;
+  document.getElementById('npc-nom').textContent = npcNom;
+  document.getElementById('npc-dialog').textContent = pas.dialog || '';
+  document.getElementById('jugador-emoji').textContent = jugadorEmoji;
+  document.getElementById('jugador-nom').textContent = jugadorNom;
 
   document.getElementById('missio-titol').textContent = pas.pregunta;
   const opcionsDiv = document.getElementById('missio-opcions');
@@ -635,11 +643,10 @@ function mostrarGremi(tab, e) {
     }
   }
 
-  if(tab === 'llegendes') {
-    const llegendes = [
+      const llegendes = [
       { id: 'capitol1_bcn_born', nom: 'El Born, Barcelona', icona: '🏛️', desbloquejada: estat.capitolsCompletats.includes('capitol1_bcn_born'), text: 'El Born és el barri gòtic més viu.' },
       { id: 'capitol_02_girona', nom: 'Temps de Flors, Girona', icona: '🏰', desbloquejada: estat.capitolsCompletats.includes('capitol_02_girona'), text: 'Cada maig, Girona s\'omple de flors.' },
-            { id: 'capitol_03_fires_valencia', nom: 'Falles, València', icona: '🔥', desbloquejada: estat.capitolsCompletats.includes('capitol_03_fires_valencia'), text: 'El foc purifica tot.' }
+      { id: 'capitol_03_fires_valencia', nom: 'Falles, València', icona: '🔥', desbloquejada: estat.capitolsCompletats.includes('capitol_03_fires_valencia'), text: 'El foc purifica tot.' }
     ];
     llegendes.forEach(l => {
       if(l.desbloquejada) {
@@ -831,3 +838,4 @@ function comprarPack(id, preu) {
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('./sw.js').catch(err => console.log('SW error:', err));
 }
+    
