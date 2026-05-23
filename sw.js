@@ -16,8 +16,8 @@ const urlsToCache = [
   './ram_roses_girona.png',
   './fuet_fires.png',
   './icon-192.png',
-  './data/biblioteca_emojis.json',  // <- AÑADE ESTO
-  './data/botiga_emojis.json'       // <- Y ESTO
+  './data/biblioteca_emojis.json',
+'./data/botiga_emojis.json'
 ];
 
 self.addEventListener('install', event => {
