@@ -1,58 +1,409 @@
 [
   {
-    "escena": "Port Olímpic - Porta Secreta",
+    "escena": "Port Olímpic - Porta Secreta, 02:00",
     "npc_nom": "DJ Rayo",
     "npc_emoji": "🕶️",
-    "dialog": "DJ RAYO, con gafas de sol a las 3 AM: 'Ostia tio! Aquí només entra qui parla català millor que jo pinxo. Prova-ho o pirat!'",
+    "dialog": "DJ RAYO et bloque el pas amb ulleres de sol a les 3 AM: 'Aquí només entra qui parla català millor que jo pinxo. Demostra-m'ho o marxa'.",
     "pregunta": "Com dius 'Let's dance' per trencar el gel?",
-    "opcions": [...]
+    "opcions": [
+      {
+        "text": "Anem a ballar!",
+        "correcte": true,
+        "feedback": "DJ RAYO: 'Així sí! Passa, la nit és teva'.",
+        "guany": { "monedes": 50, "rauxa": 3 }
+      },
+      {
+        "text": "Let's dance",
+        "correcte": false,
+        "feedback": "DJ RAYO: 'En català o res. Prova: Anem a...'.",
+        "guany": { "monedes": 0 }
+      },
+      {
+        "text": "Vull entrar",
+        "correcte": false,
+        "feedback": "DJ RAYO: 'Massa sec. Dóna-li ganes'.",
+        "guany": { "monedes": 10 }
+      }
+    ]
   },
   {
     "escena": "Bar del Port",
     "npc_nom": "Luna",
     "npc_emoji": "🍸",
-    "dialog": "LUNA, la bartender, te mira de dalt a baix: 'Si no saps demanar en català, no beus. Així de simple. Què vols?'",
-    "pregunta": "Com demanes una cervesa ben dit?",
-    "opcions": [...]
+    "dialog": "LUNA, la bartender, et serveix aigua amb gel: 'Aquí no beus si no demanes bé. Així de simple. Què vols?'",
+    "pregunta": "Com demanes una cervesa en català?",
+    "opcions": [
+      {
+        "text": "Posa'm una cervesa, si us plau",
+        "correcte": true,
+        "feedback": "LUNA: 'Ara sí. Fresca i ben tirada'.",
+        "guany": { "monedes": 40, "obert": 2 }
+      },
+      {
+        "text": "Una cerveza",
+        "correcte": false,
+        "feedback": "LUNA: 'Aquí tot en català. Prova: Posa'm...'.",
+        "guany": { "monedes": 0 }
+      },
+      {
+        "text": "Beguda",
+        "correcte": false,
+        "feedback": "LUNA: 'Massa vague. Dóna'm detalls'.",
+        "guany": { "monedes": 5 }
+      }
+    ]
   },
   {
     "escena": "Pista Central",
-    "npc_nom": "Colla",
+    "npc_nom": "Colla Rave",
     "npc_emoji": "🕺",
-    "dialog": "El beat puja. Un grup de nois et fan un cercle. 'Canta amb nosaltres o fora!'. Posan una frase en català mal dita.",
-    "pregunta": "Quina és la forma correcta de dir 'I love you'?",
-    "opcions": [...]
+    "dialog": "La colla et fa un cercle: 'Canta amb nosaltres o fora!'. Posan una frase en català mal dita: 'Jo estimo tu'.",
+    "pregunta": "Com ho dius bé?",
+    "opcions": [
+      {
+        "text": "T'estimo",
+        "correcte": true,
+        "feedback": "COLLA: 'Bravo! Això sona bé. Vine al mig'.",
+        "guany": { "monedes": 60, "arrel": 3 }
+      },
+      {
+        "text": "Jo estimo tu",
+        "correcte": false,
+        "feedback": "COLLA: 'No no! L'ordre és T'estimo'.",
+        "guany": { "monedes": 0 }
+      },
+      {
+        "text": "T'estimes",
+        "correcte": false,
+        "feedback": "COLLA: 'Això és reflexiu. No toca'.",
+        "guany": { "monedes": 5 }
+      }
+    ]
   },
   {
     "escena": "Zona Chill",
     "npc_nom": "Àvia Montse",
     "npc_emoji": "👵",
-    "dialog": "ÀVIA MONTSE, 70 anys, ballant millor que tu: 'Nen, jo vaig amagar llibres en català sota Franco. Tu què saps?'",
-    "pregunta": "Com li respectes dient 'Gracias por todo'?",
-    "opcions": [...]
+    "dialog": "ÀVIA MONTSE balla millor que tu: 'Nen, jo vaig amagar llibres en català sota Franco. Respectes això?'",
+    "pregunta": "Com li dius 'Gracias por todo' amb respecte?",
+    "opcions": [
+      {
+        "text": "Gràcies per tot, àvia. Sense vosaltres no hi seríem",
+        "correcte": true,
+        "feedback": "ÀVIA MONTSE: 'Així es parla amb respecte. Pren un petó'.",
+        "guany": { "monedes": 70, "seny": 4 }
+      },
+      {
+        "text": "Gràcies",
+        "correcte": false,
+        "feedback": "ÀVIA MONTSE: 'Curt. Dóna-li cor'.",
+        "guany": { "monedes": 15 }
+      },
+      {
+        "text": "Ok boomer",
+        "correcte": false,
+        "feedback": "ÀVIA MONTSE: 'Ostres nen... jo tinc més rave que tu'.",
+        "guany": { "monedes": 0 }
+      }
+    ]
   },
   {
     "escena": "Zona VIP",
     "npc_nom": "Mikel",
     "npc_emoji": "🛡️",
-    "dialog": "PORTER MIKEL, 2 metres d'alçada: 'Lema de la rave o no entres. Sense excuses'.",
-    "pregunta": "Com dius 'No t'aturis mai' amb actitud?",
-    "opcions": [...]
+    "dialog": "MIKEL, porter de 2 metres: 'Lema de la rave o no entres. Sense excuses. Dóna-m'ho amb força'.",
+    "pregunta": "Com dius 'No t'aturis mai'?",
+    "opcions": [
+      {
+        "text": "Mai no t'aturis!",
+        "correcte": true,
+        "feedback": "MIKEL: 'Això és actitud! Passa'.",
+        "guany": { "monedes": 80, "rauxa": 5 }
+      },
+      {
+        "text": "No et paris",
+        "correcte": false,
+        "feedback": "MIKEL: 'Gairebé. Falta el mai'.",
+        "guany": { "monedes": 10 }
+      },
+      {
+        "text": "Segueix",
+        "correcte": false,
+        "feedback": "MIKEL: 'Massa fluix. Amb ganes!'.",
+        "guany": { "monedes": 5 }
+      }
+    ]
+  },
+  {
+    "escena": "Cabina de DJ",
+    "npc_nom": "Nora",
+    "npc_emoji": "🎧",
+    "dialog": "NORA, tècnica de so: 'El bass està mort. Si dius en català què falla, te'l pujo. Sinó, no hi ha festa'.",
+    "pregunta": "Com dius 'El baix no sona'?",
+    "opcions": [
+      {
+        "text": "El baix no sona, puge'l una mica",
+        "correcte": true,
+        "feedback": "NORA: 'Ara sí! Pum pum'.",
+        "guany": { "monedes": 60, "obert": 3 }
+      },
+      {
+        "text": "El bass no funciona",
+        "correcte": false,
+        "feedback": "NORA: 'En català, sisplau. Baix, no bass'.",
+        "guany": { "monedes": 0 }
+      },
+      {
+        "text": "Puja el so",
+        "correcte": false,
+        "feedback": "NORA: 'Quin so? Sigues específic'.",
+        "guany": { "monedes": 10 }
+      }
+    ]
   },
   {
     "escena": "Backstage",
     "npc_nom": "DJ Rayo",
     "npc_emoji": "🕶️",
-    "dialog": "DJ RAYO torna, suat: 'Última prova. Si l'encertes, et dono la clau. Si falles, tornes a la porta'.",
+    "dialog": "DJ RAYO torna suat: 'Última prova abans de la clau. Si l'encertes, et dono el premi. Si falles, tornes a la porta'.",
     "pregunta": "Com dius 'Let's keep the party going'?",
-    "opcions": [...]
+    "opcions": [
+      {
+        "text": "Que no pari la festa!",
+        "correcte": true,
+        "feedback": "DJ RAYO: 'Així es parla! La clau és teva'.",
+        "guany": { "monedes": 100, "rauxa": 5 },
+        "item": "clau_port_olympic"
+      },
+      {
+        "text": "Continua la festa",
+        "correcte": false,
+        "feedback": "DJ RAYO: 'Bé, però vull més energia!'.",
+        "guany": { "monedes": 20 }
+      },
+      {
+        "text": "Party time",
+        "correcte": false,
+        "feedback": "DJ RAYO: 'En català o res, ho saps'.",
+        "guany": { "monedes": 0 }
+      }
+    ]
+  },
+  {
+    "escena": "Terrassa del Port",
+    "npc_nom": "Iker",
+    "npc_emoji": "🌊",
+    "dialog": "IKER, pescador retirat: 'Jo venia aquí quan això era port de veritat. Explique'm el Port en català, noi'.",
+    "pregunta": "Com descrius el lloc?",
+    "opcions": [
+      {
+        "text": "El mar, la música i la gent. Tot és vida",
+        "correcte": true,
+        "feedback": "IKER: 'Així es parla del Port. Ben dit'.",
+        "guany": { "monedes": 90, "arrel": 4 }
+      },
+      {
+        "text": "Mola molt",
+        "correcte": false,
+        "feedback": "IKER: 'Sí, però explica una mica més'.",
+        "guany": { "monedes": 15 }
+      },
+      {
+        "text": "Hi ha molta gent",
+        "correcte": false,
+        "feedback": "IKER: 'I què més? Fes-ho viu'.",
+        "guany": { "monedes": 10 }
+      }
+    ]
+  },
+  {
+    "escena": "Food Truck",
+    "npc_nom": "Sílvia",
+    "npc_emoji": "🌮",
+    "dialog": "SÍLVIA, cuinera: 'Només serveixo si demanes el plat en català. Quin vols?'",
+    "pregunta": "Com demanes un entrepà de truita?",
+    "opcions": [
+      {
+        "text": "Em poses un entrepà de truita, si us plau",
+        "correcte": true,
+        "feedback": "SÍLVIA: 'Ben dit! Calentet'.",
+        "guany": { "monedes": 50, "obert": 2 }
+      },
+      {
+        "text": "Un bocadillo",
+        "correcte": false,
+        "feedback": "SÍLVIA: 'Aquí diem entrepà. Prova-ho'.",
+        "guany": { "monedes": 0 }
+      },
+      {
+        "text": "Menjar",
+        "correcte": false,
+        "feedback": "SÍLVIA: 'Què vols menjar exactament?'.",
+        "guany": { "monedes": 5 }
+      }
+    ]
+  },
+  {
+    "escena": "Graffiti Wall",
+    "npc_nom": "Kilo",
+    "npc_emoji": "🎨",
+    "dialog": "KILO, artista urbà: 'Aquest mur parla català. Si li dediques una frase, et deixo pintar un tag'.",
+    "pregunta": "Què li dius al mur?",
+    "opcions": [
+      {
+        "text": "El català pinta al Port",
+        "correcte": true,
+        "feedback": "KILO: 'Uau! Agafa l'esprai'.",
+        "guany": { "monedes": 85, "obert": 4 }
+      },
+      {
+        "text": "Bonito muro",
+        "correcte": false,
+        "feedback": "KILO: 'En català, artista'.",
+        "guany": { "monedes": 0 }
+      },
+      {
+        "text": "Mola",
+        "correcte": false,
+        "feedback": "KILO: 'Massa curt. Sent-ho'.",
+        "guany": { "monedes": 10 }
+      }
+    ]
+  },
+  {
+    "escena": "Zona de Descans",
+    "npc_nom": "Carla",
+    "npc_emoji": "💧",
+    "dialog": "CARLA, voluntària de Creu Roja: 'Hidratat o cau. Com dius 'Bebo agua' en català?'",
+    "pregunta": "Què li contestes?",
+    "opcions": [
+      {
+        "text": "Bevo aigua, gràcies",
+        "correcte": true,
+        "feedback": "CARLA: 'Perfecte! Aquí tens'.",
+        "guany": { "monedes": 40, "seny": 3 }
+      },
+      {
+        "text": "Agua por favor",
+        "correcte": false,
+        "feedback": "CARLA: 'En català: Aigua, si us plau'.",
+        "guany": { "monedes": 0 }
+      },
+      {
+        "text": "Tinc set",
+        "correcte": false,
+        "feedback": "CARLA: 'Bé, però diu què vols'.",
+        "guany": { "monedes": 10 }
+      }
+    ]
+  },
+  {
+    "escena": "Escenari Secundari",
+    "npc_nom": "Pol",
+    "npc_emoji": "🎤",
+    "dialog": "POL, MC de la nit: 'Puja i rapeja una barra en català o et baixo. No hi ha mig camí'.",
+    "pregunta": "Què li rapeges?",
+    "opcions": [
+      {
+        "text": "Soc del Port, parlo català, no m'aturaré mai",
+        "correcte": true,
+        "feedback": "POL: 'MIC DROP! Això és rave'.",
+        "guany": { "monedes": 120, "rauxa": 6 }
+      },
+      {
+        "text": "Yo soy del barrio",
+        "correcte": false,
+        "feedback": "POL: 'En català, noi. Prova-ho'.",
+        "guany": { "monedes": 0 }
+      },
+      {
+        "text": "Hola",
+        "correcte": false,
+        "feedback": "POL: 'Hola? Això no és un rap'.",
+        "guany": { "monedes": 5 }
+      }
+    ]
+  },
+  {
+    "escena": "Punt de Fotos",
+    "npc_nom": "Aina",
+    "npc_emoji": "📸",
+    "dialog": "AINA, fotògrafa: 'Vull una foto que demostri que parles català. Digue'm una frase per posar al cartell'.",
+    "pregunta": "Què escrius al cartell?",
+    "opcions": [
+      {
+        "text": "Parlo català al Port Olímpic",
+        "correcte": true,
+        "feedback": "AINA: 'Foto perfecta! Postejarem això'.",
+        "guany": { "monedes": 100, "obert": 5 }
+      },
+      {
+        "text": "Habla catalán",
+        "correcte": false,
+        "feedback": "AINA: 'Ironic. En català si us plau'.",
+        "guany": { "monedes": 0 }
+      },
+      {
+        "text": "Rave",
+        "correcte": false,
+        "feedback": "AINA: 'Massa curt. Fes-ho amb orgull'.",
+        "guany": { "monedes": 10 }
+      }
+    ]
+  },
+  {
+    "escena": "Sortida del Port",
+    "npc_nom": "Guàrdia",
+    "npc_emoji": "🚔",
+    "dialog": "GUÀRDIA: 'Últim control. Si dius adéu en català com toca, et deixem marxar amb la clau. Sinó, et quedes'.",
+    "pregunta": "Com dius 'See you later'?",
+    "opcions": [
+      {
+        "text": "Fins després, família!",
+        "correcte": true,
+        "feedback": "GUÀRDIA: 'Així es marxa. Bona nit'.",
+        "guany": { "monedes": 110, "seny": 5 }
+      },
+      {
+        "text": "Adiós",
+        "correcte": false,
+        "feedback": "GUÀRDIA: 'En català: Adéu o fins després'.",
+        "guany": { "monedes": 0 }
+      },
+      {
+        "text": "Marxo",
+        "correcte": false,
+        "feedback": "GUÀRDIA: 'Massa sec. Amb carinyo'.",
+        "guany": { "monedes": 15 }
+      }
+    ]
   },
   {
     "escena": "Amanecer al Port",
-    "npc_nom": "Colla",
+    "npc_nom": "Tota la Colla",
     "npc_emoji": "🌅",
-    "dialog": "Surten els primers raigs. El Port brilla. RAYO, LUNA, MIKEL i l'ÀVIA MONTSE t'envolten. 'Has aguantat tota la nit parlant català. Això té premi'.",
-    "pregunta": "Com et acomiades dient 'See you later' per tancar la nit?",
-    "opcions": [...]
+    "dialog": "Surten els primers raigs. RAYO, LUNA, MIKEL, ÀVIA MONTSE i tota la colla t'envolten: 'Has aguantat tota la nit parlant català. Això té premi. Ets un dels nostres'.",
+    "pregunta": "Com tanques la nit?",
+    "opcions": [
+      {
+        "text": "Gràcies per la nit. Fins aviat, família",
+        "correcte": true,
+        "feedback": "Tots aplauden. RAYO et penja les ulleres: 'Porta-les amb orgull. Això és rauxa'.",
+        "guany": { "monedes": 200, "arrel": 10, "seny": 8 },
+        "item": "ulleres_rayo"
+      },
+      {
+        "text": "Bona nit",
+        "correcte": false,
+        "feedback": "COLLA: 'Curt! Dóna-li més amor a la nit'.",
+        "guany": { "monedes": 30 }
+      },
+      {
+        "text": "Me'n vaig",
+        "correcte": false,
+        "feedback": "COLLA: 'Marxes així? Sense dir res més?'.",
+        "guany": { "monedes": 20 }
+      }
+    ]
   }
 ]
