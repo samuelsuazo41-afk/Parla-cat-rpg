@@ -208,24 +208,6 @@ header h1 {
   display: none;
 }
 
-#npc-header {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 12px;
-}
-
-#npc-emoji {
-  font-size: 56px;
-  line-height: 1;
-}
-
-#npc-nom {
-  font-size: 20px;
-  font-weight: 800;
-  color: var(--accent);
-}
-
 .sub-tabs {
   display: flex;
   gap: 8px;
@@ -309,16 +291,8 @@ header h1 {
   </div>
 
   <div id="tab-missio" class="tab-content">
-    <div id="npc-box">
-      <div id="npc-header">
-        <span id="npc-emoji">👤</span>
-        <h3 id="npc-nom">NPC</h3>
-      </div>
-      <p id="npc-dialog"></p>
-    </div>
     <div id="missio-card">
       <h3 id="missio-titol">Selecciona una missió al mapa</h3>
-      <div id="missio-escenari"></div>
       
       <!-- RUTES SECRETES -->
       <div id="rutes-secretes" style="display:none;">
@@ -348,6 +322,7 @@ header h1 {
         </div>
       </div>
       
+      <div id="missio-escenari"></div>
       <div id="missio-opcions"></div>
       <div id="missio-feedback"></div>
     </div>
@@ -400,59 +375,9 @@ header h1 {
 function vibrar() {
   if (navigator.vibrate) navigator.vibrate(20);
 }
-
-function mostrarBibliotecaTab(tab, e) {
-  document.querySelectorAll('#biblioteca-subtabs .sub-tab-btn').forEach(btn => btn.classList.remove('active'));
-  if(e) e.target.classList.add('active');
-  
-  const cont = document.getElementById('gremi-contenidor');
-  
-  if(tab === 'diccionari') {
-    cont.innerHTML = '<p style="color:var(--text-sec);">Aquí anirà el diccionari de personatges</p>';
-  }
-  
-  if(tab === 'minijocs') {
-    cont.innerHTML = `
-      <h3>🎮 Arma la frase</h3>
-      <p style="color:var(--text-sec); margin:12px 0;">Tria 2-3 emojis per formar la frase que et diu el joc</p>
-      <div id="minijoc-contenidor"></div>
-    `;
-    carregarMinijocEmojis();
-  }
-}
-
-function carregarMinijocEmojis() {
-  const emojis = [
-    {emoji:"😊", nom:"content"}, {emoji:"😢", nom:"trist"}, {emoji:"🐱", nom:"gat"},
-    {emoji:"🐶", nom:"gos"}, {emoji:"🍎", nom:"poma"}, {emoji:"🍌", nom:"plàtan"},
-    {emoji:"🏠", nom:"casa"}, {emoji:"🏃", nom:"córrer"}, {emoji:"📚", nom:"llibre"},
-    {emoji:"☕", nom:"cafè"}, {emoji:"🚗", nom:"cotxe"}, {emoji:"🌳", nom:"arbre"},
-    {emoji:"🌊", nom:"mar"}, {emoji:"🌞", nom:"sol"}, {emoji:"🌧️", nom:"pluja"}
-  ];
-  
-  let html = '<div class="emoji-grid">';
-  emojis.forEach(e => {
-    html += `
-      <div class="emoji-item" onclick="vibrar()">
-        <div class="emoji-large">${e.emoji}</div>
-        <div class="emoji-name">${e.nom}</div>
-      </div>
-    `;
-  });
-  html += '</div>';
-  
-  document.getElementById('minijoc-contenidor').innerHTML = html;
-}
-
-// Quan cliques una opció de resposta, afegeix això:
-document.addEventListener('click', function(e) {
-  if(e.target.closest('.opcio')) {
-    vibrar();
-  }
-});
 </script>
 
 <script src="./main.js"></script>
 
 </body>
-</html> 
+</html>
