@@ -1,0 +1,22 @@
+[
+  {"emoji": "👶", "nom_cat": "bebè", "desc": "Un nadó petit"},
+  {"emoji": "👦", "nom_cat": "noi", "desc": "Un noi jove"},
+  {"emoji": "👧", "nom_cat": "noia", "desc": "Una noia jove"},
+  {"emoji": "🧒", "nom_cat": "infant", "desc": "Un infant, nen o nena"},
+  {"emoji": "👨", "nom_cat": "home", "desc": "Un home adult"},
+  {"emoji": "👩", "nom_cat": "dona", "desc": "Una dona adulta"},
+  {"emoji": "🧑", "nom_cat": "persona", "desc": "Una persona adulta"},
+  {"emoji": "👴", "nom_cat": "avi", "desc": "Un avi gran"},
+  {"emoji": "👵", "nom_cat": "àvia", "desc": "Una àvia gran"},
+  {"emoji": "🧑‍🎓", "nom_cat": "estudiant", "desc": "Un estudiant, alumne"},
+  {"emoji": "🧑‍💼", "nom_cat": "oficinista", "desc": "Una persona d'oficina"},
+  {"emoji": "🧑‍🔧", "nom_cat": "tècnic", "desc": "Un tècnic, mecànic"},
+  {"emoji": "🧑‍🎤", "nom_cat": "músic", "desc": "Un músic, cantant"},
+  {"emoji": "🧑‍🎨", "nom_cat": "pintor", "desc": "Un pintor, artista"},
+  {"emoji": "🧑‍🚀", "nom_cat": "astronauta", "desc": "Un astronauta espacial"},
+  {"emoji": "🧑‍🚒", "nom_cat": "bomber", "desc": "Un bomber, apaga focs"},
+  {"emoji": "🧑‍⚕️", "nom_cat": "sanitari", "desc": "Un sanitari, metge"},
+  {"emoji": "🧑‍⚖️", "nom_cat": "jutge", "desc": "Un jutge, tribunal"},
+  {"emoji": "🧑‍🦯", "nom_cat": "persona amb bastó", "desc": "Persona cega amb bastó"},
+  {"emoji": "🧑‍🦼", "nom_cat": "persona en cadira", "desc": "Persona en cadira de rodes elèctrica"}
+]
