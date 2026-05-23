@@ -1,7 +1,7 @@
 [
   {
     "escena": "Forn de Pa - 08:00",
-    "npc_nom": "Núria",
+    "npc_nom": "Aina",
     "npc_emoji": "👩‍🦳",
     "dialog": "Bon dia! Què voldràs avui?",
     "pregunta": "Com demanes un pa amb tomàquet?",
@@ -28,7 +28,7 @@
   },
   {
     "escena": "Forn de Pa - Pagament",
-    "npc_nom": "Núria",
+    "npc_nom": "Aina",
     "npc_emoji": "👩‍🦳",
     "dialog": "Són 2,50€. Vols bossa?",
     "pregunta": "Com dius que sí a la bossa?",
@@ -55,7 +55,7 @@
   },
   {
     "escena": "Forn de Pa - Acomiadament",
-    "npc_nom": "Núria",
+    "npc_nom": "Aina",
     "npc_emoji": "👩‍🦳",
     "dialog": "Que vagi de gust!",
     "pregunta": "Com respons per acomiadar-te?",
