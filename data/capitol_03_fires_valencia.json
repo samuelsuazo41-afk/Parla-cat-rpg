@@ -392,8 +392,7 @@
     "opcions": [
       {"text": "És emocionant! Quants anys portes venint?", "correcte": true, "guany": {"monedes": 5, "arrel": 2}, "feedback": "20 anys! És el més bonic de les falles."},
       {"text": "Molt bonic.", "correcte": true, "guany": {"monedes": 3, "arrel": 1}, "feedback": "Correcte."},
-      {"text": "Massa gent.", "correcte": false, "guany": {"monedes": 0, "rauxa": 1}, "feedback": "És tradició. Val la pena."}
+            {"text": "Massa gent.", "correcte": false, "guany": {"monedes": 0, "rauxa": 1}, "feedback": "És tradició. Val la pena."}
     ]
-  },
-  {
-    "
+  }
+]
