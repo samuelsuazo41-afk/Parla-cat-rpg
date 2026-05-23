@@ -208,7 +208,6 @@ header h1 {
   display: none;
 }
 
-/* NUEVO: Header del NPC con emoji y nombre */
 #npc-header {
   display: flex;
   align-items: center;
@@ -225,35 +224,6 @@ header h1 {
   font-size: 20px;
   font-weight: 800;
   color: var(--accent);
-}
-
-#feedback-box {
-  background: #1a1a1a;
-  border-radius: 12px;
-  padding: 16px;
-  margin-top: 16px;
-  border: 1px solid #333;
-}
-
-#feedback-barra {
-  height: 4px;
-  background: var(--accent);
-  border-radius: 2px;
-  margin-top: 12px;
-  animation: progress linear forwards;
-}
-
-@keyframes progress {
-  from { width: 100%; }
-  to { width: 0%; }
-}
-
-.gremi-item {
-  background: var(--card);
-  border-radius: 12px;
-  padding: 16px;
-  margin-bottom: 12px;
-  text-align: center;
 }
 
 .sub-tabs {
@@ -281,39 +251,36 @@ header h1 {
   background: #222;
 }
 
-.completion-screen {
-  text-align: center;
-  padding: 40px 20px;
-}
-
-.completion-screen h2 {
-  font-size: 32px;
-  margin-bottom: 16px;
-  color: var(--success);
-}
-
-.item-desbloquejat {
-  background: linear-gradient(135deg, var(--accent), var(--accent2));
-  border-radius: 16px;
-  padding: 30px;
-  margin: 20px 0;
-  animation: popIn 0.5s ease;
-}
-
-@keyframes popIn {
- 0% { transform: scale(0.8); opacity: 0; }
- 100% { transform: scale(1); opacity: 1; }
-}
-
-.completion-buttons {
-  display: flex;
-  gap: 12px;
-  margin-top: 30px;
-}
-
 .ruta-secreta {
   border: 2px solid #FFD700;
   background: linear-gradient(135deg, #1a1a1a, #2a2a1a);
+}
+
+.emoji-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  background: #222;
+  padding: 12px;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.emoji-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.emoji-large {
+  font-size: 36px;
+}
+
+.emoji-name {
+  font-size: 12px;
+  color: var(--text-sec);
 }
 </style>
 </head>
@@ -343,7 +310,6 @@ header h1 {
 
   <div id="tab-missio" class="tab-content">
     <div id="npc-box">
-      <!-- NUEVO: Header del NPC -->
       <div id="npc-header">
         <span id="npc-emoji">👤</span>
         <h3 id="npc-nom">NPC</h3>
@@ -353,6 +319,35 @@ header h1 {
     <div id="missio-card">
       <h3 id="missio-titol">Selecciona una missió al mapa</h3>
       <div id="missio-escenari"></div>
+      
+      <!-- RUTES SECRETES -->
+      <div id="rutes-secretes" style="display:none;">
+        <h3 style="margin:20px 0 12px 0;">🔒 Rutes Secretes</h3>
+        <div class="capitol-card ruta-secreta" id="ruta-valencia">
+          <div class="capitol-icona">🔒</div>
+          <h4>Ruta Secreta de València</h4>
+          <p style="font-size:14px; color:var(--text-sec); margin:8px 0;">
+            Amb 3 ítems del capítol 1 desbloqueges la ruta secreta de València
+          </p>
+        </div>
+        
+        <div class="capitol-card ruta-secreta" id="ruta-girona">
+          <div class="capitol-icona">🔒</div>
+          <h4>Ruta Secreta de Girona</h4>
+          <p style="font-size:14px; color:var(--text-sec); margin:8px 0;">
+            Amb 3 ítems del capítol 2 desbloqueges la ruta secreta de Girona
+          </p>
+        </div>
+        
+        <div class="capitol-card ruta-secreta" id="ruta-tarragona">
+          <div class="capitol-icona">🔒</div>
+          <h4>Ruta Secreta de Tarragona</h4>
+          <p style="font-size:14px; color:var(--text-sec); margin:8px 0;">
+            Amb 3 ítems del capítol 3 desbloqueges la ruta secreta de Tarragona
+          </p>
+        </div>
+      </div>
+      
       <div id="missio-opcions"></div>
       <div id="missio-feedback"></div>
     </div>
@@ -365,6 +360,13 @@ header h1 {
       <button class="sub-tab-btn" onclick="mostrarGremi('objectes', event)">Objectes</button>
       <button class="sub-tab-btn" onclick="mostrarGremi('llegendes', event)">Llegendes</button>
     </div>
+    
+    <!-- Sub-tabs per Biblioteca -->
+    <div class="sub-tabs" id="biblioteca-subtabs" style="display:none;">
+      <button class="sub-tab-btn active" onclick="mostrarBibliotecaTab('diccionari', event)">📖 Diccionari</button>
+      <button class="sub-tab-btn" onclick="mostrarBibliotecaTab('minijocs', event)">🎮 Mini-jocs</button>
+    </div>
+    
     <div id="gremi-contenidor"></div>
   </div>
 
@@ -393,6 +395,62 @@ header h1 {
     <span id="tab-botiga-txt">Botiga</span>
   </div>
 </nav>
+
+<script>
+function vibrar() {
+  if (navigator.vibrate) navigator.vibrate(20);
+}
+
+function mostrarBibliotecaTab(tab, e) {
+  document.querySelectorAll('#biblioteca-subtabs .sub-tab-btn').forEach(btn => btn.classList.remove('active'));
+  if(e) e.target.classList.add('active');
+  
+  const cont = document.getElementById('gremi-contenidor');
+  
+  if(tab === 'diccionari') {
+    cont.innerHTML = '<p style="color:var(--text-sec);">Aquí anirà el diccionari de personatges</p>';
+  }
+  
+  if(tab === 'minijocs') {
+    cont.innerHTML = `
+      <h3>🎮 Arma la frase</h3>
+      <p style="color:var(--text-sec); margin:12px 0;">Tria 2-3 emojis per formar la frase que et diu el joc</p>
+      <div id="minijoc-contenidor"></div>
+    `;
+    carregarMinijocEmojis();
+  }
+}
+
+function carregarMinijocEmojis() {
+  const emojis = [
+    {emoji:"😊", nom:"content"}, {emoji:"😢", nom:"trist"}, {emoji:"🐱", nom:"gat"},
+    {emoji:"🐶", nom:"gos"}, {emoji:"🍎", nom:"poma"}, {emoji:"🍌", nom:"plàtan"},
+    {emoji:"🏠", nom:"casa"}, {emoji:"🏃", nom:"córrer"}, {emoji:"📚", nom:"llibre"},
+    {emoji:"☕", nom:"cafè"}, {emoji:"🚗", nom:"cotxe"}, {emoji:"🌳", nom:"arbre"},
+    {emoji:"🌊", nom:"mar"}, {emoji:"🌞", nom:"sol"}, {emoji:"🌧️", nom:"pluja"}
+  ];
+  
+  let html = '<div class="emoji-grid">';
+  emojis.forEach(e => {
+    html += `
+      <div class="emoji-item" onclick="vibrar()">
+        <div class="emoji-large">${e.emoji}</div>
+        <div class="emoji-name">${e.nom}</div>
+      </div>
+    `;
+  });
+  html += '</div>';
+  
+  document.getElementById('minijoc-contenidor').innerHTML = html;
+}
+
+// Quan cliques una opció de resposta, afegeix això:
+document.addEventListener('click', function(e) {
+  if(e.target.closest('.opcio')) {
+    vibrar();
+  }
+});
+</script>
 
 <script src="./main.js"></script>
 
