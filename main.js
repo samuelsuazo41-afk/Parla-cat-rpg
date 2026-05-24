@@ -81,24 +81,8 @@ const PERSONATGES_JUGADOR = [
   {id: 'dona', emoji: '👩', nom: 'Dona'}
 ];
 
-// BIBLIOTECA BASE
-const BIBLIOTECA_EMOJIS_BASE = [
-  {emoji: '😊', nom_cat: 'content', desc: 'Estar feliç'},
-  {emoji: '😢', nom_cat: 'trist', desc: 'Estar trist'},
-  {emoji: '😡', nom_cat: 'enfadat', desc: 'Estar enfadat'},
-  {emoji: '🐱', nom_cat: 'gat', desc: 'Un gat'},
-  {emoji: '🐶', nom_cat: 'gos', desc: 'Un gos'},
-  {emoji: '🍎', nom_cat: 'poma', desc: 'Una poma'},
-  {emoji: '🍌', nom_cat: 'plàtan', desc: 'Un plàtan'},
-  {emoji: '🏠', nom_cat: 'casa', desc: 'Una casa'},
-  {emoji: '🚗', nom_cat: 'cotxe', desc: 'Un cotxe'},
-  {emoji: '📚', nom_cat: 'llibre', desc: 'Un llibre'},
-  {emoji: '☕', nom_cat: 'cafè', desc: 'Un cafè'},
-  {emoji: '🌳', nom_cat: 'arbre', desc: 'Un arbre'},
-  {emoji: '🌊', nom_cat: 'mar', desc: 'El mar'},
-  {emoji: '🌞', nom_cat: 'sol', desc: 'El sol'},
-  {emoji: '🌧️', nom_cat: 'pluja', desc: 'Pluja'}
-];
+// BIBLIOTECA BASE - ahora se carga por fetch
+let BIBLIOTECA_EMOJIS_BASE = [];
 
 let estat = {
   monedes: parseInt(localStorage.getItem('cat_monedes')) || 0,
@@ -241,12 +225,23 @@ function tocarJingleCompletado() {
 // INIT
 document.addEventListener('DOMContentLoaded', () => {
   aplicarIdioma();
+
+  // Carga los emojis base para el minijoc y diccionari
+  fetch('./data/biblioteca_emojis.json')
+   .then(res => res.json())
+   .then(data => { BIBLIOTECA_EMOJIS_BASE = data; })
+   .catch(err => {
+      BIBLIOTECA_EMOJIS_BASE = [];
+      console.error('No s\'ha pogut carregar biblioteca_emojis.json', err);
+    });
+
   carregarItems().then(() => {
     actualitzarUI();
     actualitzarTotem();
     carregarMapa();
     verificarRutesDesbloquejades();
   });
+
   AUDIO_ENCERT = new Audio('data:audio/wav;base64,UklGRiZDAABXQVZFZm10IBAAAAABAAEAESsAACJWAAACABAAZGF0YQIAAAAAAAA=');
   AUDIO_FALLADA = new Audio('data:audio/wav;base64,UklGRiZDAABXQVZFZm10IBAAAAABAAEAESsAACJWAAACABAAZGF0YQIAAAAAAAAA');
 });
@@ -303,7 +298,6 @@ async function carregarCapitol(nombreArchivo) {
     estat.pasActual = 0;
     estat.falladesCapitol = 0;
 
-    // CORREGIDO: Se añade el npc-box para que no de error null
     document.getElementById('missio-card').innerHTML = `
       <h3 id="missio-titol">Selecciona una missió al mapa</h3>
 
@@ -643,7 +637,7 @@ function mostrarGremi(tab, e) {
     }
   }
 
-        if(tab === 'llegendes') {
+  if(tab === 'llegendes') {
     const llegendes = [
       { id: 'capitol1_bcn_born', nom: 'El Born, Barcelona', icona: '🏛️', desbloquejada: estat.capitolsCompletats.includes('capitol1_bcn_born'), text: 'El Born és el barri gòtic més viu.' },
       { id: 'capitol_02_girona', nom: 'Temps de Flors, Girona', icona: '🏰', desbloquejada: estat.capitolsCompletats.includes('capitol_02_girona'), text: 'Cada maig, Girona s\'omple de flors.' },
@@ -653,190 +647,4 @@ function mostrarGremi(tab, e) {
       if(l.desbloquejada) {
         cont.innerHTML += `<div class="gremi-item" style="grid-column:1/-1;"><div style="font-size:36px;">${l.icona}</div><h3 style="margin:10px 0;">${l.nom}</h3><p style="font-size:14px; color:#ccc;">${l.text}</p><div style="color:#4CAF50; font-size:12px; margin-top:10px;">✓ Desbloquejada</div></div>`;
       } else {
-        cont.innerHTML += `<div class="gremi-item" style="grid-column:1/-1; opacity:0.4;"><div style="font-size:36px;">🔒</div><h3 style="margin:10px 0;">???</h3><p style="font-size:14px; color:#666;">Completa el capítol per desbloquejar aquesta llegenda</p></div>`;
-      }
-    });
-    }
-
-function mostrarBibliotecaTab(tab, e) {
-  document.querySelectorAll('#biblioteca-subtabs .sub-tab-btn').forEach(btn => btn.classList.remove('active'));
-  if(e) e.target.classList.add('active');
-
-  const cont = document.getElementById('gremi-contenidor');
-
-  if(tab === 'diccionari') {
-    let html = `<h3 style="text-align:center; margin-bottom:10px;">${LANG.biblioteca}</h3>`;
-    html += `<p style="text-align:center; color:#888; margin-bottom:20px; font-size:14px;">${LANG.biblioteca_desc}</p>`;
-    html += `<div style="display:grid; grid-template-columns:repeat(3,1fr); gap:12px; max-height:500px; overflow-y:auto; padding:10px;">`;
-
-    const totsEmojis = [...BIBLIOTECA_EMOJIS_BASE,...estat.emojisDesbloquejats];
-    totsEmojis.forEach(p => {
-      html += `
-        <div class="gremi-item" style="text-align:center; padding:15px 8px;">
-          <div style="font-size:42px; margin-bottom:8px;">${p.emoji}</div>
-          <div style="font-size:13px; font-weight:600; line-height:1.2;">${p.nom_cat}</div>
-        </div>
-      `;
-    });
-    html += `</div>`;
-    cont.innerHTML = html;
-  }
-
-  if(tab === 'minijocs') {
-    cont.innerHTML = `
-      <h3>${LANG.minijoc_titol}</h3>
-      <p style="color:var(--text-sec); margin:12px 0;">${LANG.minijoc_desc}</p>
-      <div id="minijoc-frase" style="background:#222; padding:15px; border-radius:12px; min-height:50px; margin-bottom:15px; text-align:center; font-size:18px;">
-        Prem "Nova frase" per començar
-      </div>
-      <button class="btn btn-sec" onclick="novaFraseMinijoc()" style="margin-bottom:15px;">Nova frase</button>
-      <div id="minijoc-emojis" class="emoji-grid"></div>
-      <div id="minijoc-triats" style="background:#222; padding:15px; border-radius:12px; min-height:50px; margin:15px 0; text-align:center; font-size:24px;"></div>
-      <button class="btn" onclick="comprovarMinijoc()">${LANG.comprovar}</button>
-      <div id="minijoc-feedback" style="margin-top:15px;"></div>
-    `;
-    novaFraseMinijoc();
-  }
-}
-
-function novaFraseMinijoc() {
-  const frases = [
-    {frase: "El gat està content", emojis: ["🐱", "😊"]},
-    {frase: "El gos està trist", emojis: ["🐶", "😢"]},
-    {frase: "Jo tinc una poma", emojis: ["jo", "🍎"]},
-    {frase: "Tu tens un plàtan", emojis: ["tu", "🍌"]},
-    {frase: "La casa és gran", emojis: ["🏠", "😊"]},
-    {frase: "El cotxe és ràpid", emojis: ["🚗", "😊"]},
-    {frase: "Llegeixo un llibre", emojis: ["jo", "📚"]},
-    {frase: "Bebem cafè", emojis: ["nosaltres", "☕"]}
-  ];
-
-  const random = frases[Math.floor(Math.random() * frases.length)];
-  estat.minijoc.fraseObjectiu = random;
-  estat.minijoc.emojisTriats = [];
-
-  document.getElementById('minijoc-frase').textContent = random.frase;
-  document.getElementById('minijoc-triats').textContent = '';
-  document.getElementById('minijoc-feedback').innerHTML = '';
-
-  const totsEmojis = [...BIBLIOTECA_EMOJIS_BASE,...estat.emojisDesbloquejats];
-  const emojisBarreja = totsEmojis.sort(() => 0.5 - Math.random()).slice(0, 15);
-  estat.minijoc.emojisDisponibles = emojisBarreja;
-
-  let html = '';
-  emojisBarreja.forEach((e, i) => {
-    html += `
-      <div class="emoji-item" onclick="triarEmojiMinijoc(${i})" style="cursor:pointer;">
-        <div class="emoji-large">${e.emoji}</div>
-        <div class="emoji-name">${e.nom_cat}</div>
-      </div>
-    `;
-  });
-  document.getElementById('minijoc-emojis').innerHTML = html;
-}
-
-function triarEmojiMinijoc(index) {
-  vibrar();
-  const emoji = estat.minijoc.emojisDisponibles[index];
-  if (estat.minijoc.emojisTriats.length < 3) {
-    estat.minijoc.emojisTriats.push(emoji);
-    actualitzarTriatsMinijoc();
-  }
-}
-
-function actualitzarTriatsMinijoc() {
-  const div = document.getElementById('minijoc-triats');
-  div.textContent = estat.minijoc.emojisTriats.map(e => e.emoji).join(' ');
-}
-
-function comprovarMinijoc() {
-  vibrar();
-  const objectiu = estat.minijoc.fraseObjectiu.emojis.join('');
-  const triats = estat.minijoc.emojisTriats.map(e => e.emoji).join('');
-  const feedback = document.getElementById('minijoc-feedback');
-
-  if (objectiu === triats) {
-    feedback.innerHTML = `<p style="color:#4CAF50; font-weight:bold;">${LANG.correcte}</p>`;
-    estat.monedes += 50;
-    estat.stats.arrel += 5;
-    actualitzarUI();
-    guardarEstat();
-  } else {
-    feedback.innerHTML = `<p style="color:#f44336; font-weight:bold;">${LANG.incorrecte} ${estat.minijoc.fraseObjectiu.emojis.join(' ')}</p>`;
-  }
-
-  setTimeout(() => novaFraseMinijoc(), 2000);
-}
-
-function seleccionarPersonatge(id) {
-  const p = PERSONATGES_JUGADOR.find(x => x.id === id);
-  const nomInput = document.getElementById('nom-jugador')?.value.trim();
-  estat.personatge = {
-    id: p.id,
-    emoji: p.emoji,
-    nom: nomInput || 'Jugador',
-    nom_cat: p.nom
-  };
-  guardarEstat();
-  mostrarGremi('personatges', null);
-}
-
-function canviarPersonatge() {
-  estat.personatge = null;
-  guardarEstat();
-  mostrarGremi('personatges', null);
-}
-
-async function carregarBotiga() {
-  const cont = document.getElementById('botiga-contenidor');
-  try {
-    const res = await fetch('./data/botiga_emojis.json');
-    const data = await res.json();
-    estat.packs_botiga = data.packs;
-    cont.innerHTML = '';
-
-    data.packs.forEach(pack => {
-      const comprat = estat.compres.includes(pack.id);
-      const card = document.createElement('div');
-      card.className = 'capitol-card';
-      card.innerHTML = `
-        <div class="capitol-icona">🎁</div>
-        <h3>${pack.nom}</h3>
-        <p style="color:var(--text-sec); margin:8px 0;">${pack.descripcio}</p>
-        <p style="font-size:24px;">${pack.emojis.map(e => e.emoji).join(' ')}</p>
-        <button class="btn ${comprat? 'btn-sec' : ''}"
-                onclick="comprarPack('${pack.id}', ${pack.preu})"
-                ${comprat? 'disabled' : ''}>
-          ${comprat? LANG.comprat : `🪙 ${pack.preu}`}
-        </button>
-      `;
-      cont.appendChild(card);
-    });
-  } catch(e) {
-    cont.innerHTML = '<div style="grid-column:1/-1; text-align:center; color:#888;">Pròximament</div>';
-  }
-}
-
-function comprarPack(id, preu) {
-  if (estat.monedes < preu) {
-    alert(LANG.no_prou_monedes);
-    return;
-  }
-
-  vibrar();
-  estat.monedes -= preu;
-  estat.compres.push(id);
-
-  const pack = estat.packs_botiga.find(p => p.id === id);
-  estat.emojisDesbloquejats.push(...pack.emojis);
-
-  guardarEstat();
-  actualitzarUI();
-  carregarBotiga();
-}
-
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('./sw.js').catch(err => console.log('SW error:', err));
-}
-    
-
+        cont.innerHTML += `<div class="gremi-item" style="grid-column:1/-1; opacity:0.4;"><div style="font-size:36px;">🔒</div><h3 style="
