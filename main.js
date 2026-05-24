@@ -81,8 +81,17 @@ const PERSONATGES_JUGADOR = [
   {id: 'dona', emoji: '👩', nom: 'Dona'}
 ];
 
-// BIBLIOTECA BASE - ahora se carga por fetch
-let BIBLIOTECA_EMOJIS_BASE = [];
+// Cargar biblioteca de emojis
+fetch('./data/biblioteca_emojis.json')
+  .then(res => res.json())
+  .then(data => { 
+    BIBLIOTECA_EMOJIS_BASE = data; 
+    console.log('Biblioteca cargada:', data.length, 'emojis');
+  })
+  .catch(err => { 
+    console.error('Error cargando biblioteca_emojis.json:', err); 
+    BIBLIOTECA_EMOJIS_BASE = [];
+  });
 
 let estat = {
   monedes: parseInt(localStorage.getItem('cat_monedes')) || 0,
