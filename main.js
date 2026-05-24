@@ -297,6 +297,7 @@ async function carregarCapitol(nombreArchivo) {
     estat.pasActual = 0;
     estat.falladesCapitol = 0;
 
+    // PRIMERO pintamos el HTML
     document.getElementById('missio-card').innerHTML = `
       <h3 id="missio-titol">Selecciona una missió al mapa</h3>
 
@@ -319,6 +320,7 @@ async function carregarCapitol(nombreArchivo) {
       <div id="missio-feedback"></div>
     `;
 
+    // DESPUÉS cambiamos de tab y cargamos el paso
     canviarTab('missio', null);
     setTimeout(() => carregarPas(), 100);
   } catch(e) {
