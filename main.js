@@ -376,36 +376,50 @@ function repetirCapitol(id) {
     carregarCapitol(capitol.archivo);
   }
 }
-
 function carregarPas() {
   if (!estat.capitolActual) return;
   const pas = estat.capitolActual.passos[estat.pasActual];
   if (!pas) { completarCapitol(); return; }
 
-  const npcEmoji = pas.npc_emoji || '👤';
-  const npcNom = pas.npc_nom || 'NPC';
-  const jugadorEmoji = estat.personatge?.emoji || '🧑';
-  const jugadorNom = estat.personatge?.nom || 'Tu';
+  // Espera a que el DOM exista
+  const esperarElemento = (id, callback, intentos = 20) => {
+    const el = document.getElementById(id);
+    if (el) {
+      callback(el);
+    } else if (intentos > 0) {
+      setTimeout(() => esperarElemento(id, callback, intentos - 1), 50);
+    } else {
+      console.error('No se encontró el elemento:', id);
+    }
+  };
 
-  document.getElementById('npc-box').style.display = 'block';
-  document.getElementById('npc-emoji').textContent = npcEmoji;
-  document.getElementById('npc-nom').textContent = npcNom;
-  document.getElementById('npc-dialog').textContent = pas.dialog || '';
-  document.getElementById('jugador-emoji').textContent = jugadorEmoji;
-  document.getElementById('jugador-nom').textContent = jugadorNom;
+  esperarElemento('npc-box', (npcBox) => {
+    const npcEmoji = pas.npc_emoji || '👤';
+    const npcNom = pas.npc_nom || 'NPC';
+    const jugadorEmoji = estat.personatge?.emoji || '🧑';
+    const jugadorNom = estat.personatge?.nom || 'Tu';
 
-  document.getElementById('missio-titol').textContent = pas.pregunta;
-  const opcionsDiv = document.getElementById('missio-opcions');
-  opcionsDiv.innerHTML = '';
-  pas.opcions.forEach((opcio, i) => {
-    const div = document.createElement('div');
-    div.className = 'opcio';
-    div.innerHTML = `<span class="opcio-text">${opcio.text}</span>`;
-    div.onclick = () => seleccionarOpcio(i);
-    opcionsDiv.appendChild(div);
+    npcBox.style.display = 'block';
+    document.getElementById('npc-emoji').textContent = npcEmoji;
+    document.getElementById('npc-nom').textContent = npcNom;
+    document.getElementById('npc-dialog').textContent = pas.dialog || '';
+    document.getElementById('jugador-emoji').textContent = jugadorEmoji;
+    document.getElementById('jugador-nom').textContent = jugadorNom;
+
+    document.getElementById('missio-titol').textContent = pas.pregunta;
+    const opcionsDiv = document.getElementById('missio-opcions');
+    opcionsDiv.innerHTML = '';
+    pas.opcions.forEach((opcio, i) => {
+      const div = document.createElement('div');
+      div.className = 'opcio';
+      div.innerHTML = `<span class="opcio-text">${opcio.text}</span>`;
+      div.onclick = () => seleccionarOpcio(i);
+      opcionsDiv.appendChild(div);
+    });
+    document.getElementById('missio-feedback').innerHTML = '';
   });
-  document.getElementById('missio-feedback').innerHTML = '';
 }
+
 
 function seleccionarOpcio(idx) {
   if(estat.bloquejat) return;
