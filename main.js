@@ -1,5 +1,6 @@
 // main.js - Lógica de Parla Cat RPG
 let musicaActivada = true;
+let BIBLIOTECA_EMOJIS_BASE = []; // Declarado arriba para que exista globalmente
 
 const LANGS = {
   es: {
@@ -80,18 +81,6 @@ const PERSONATGES_JUGADOR = [
   {id: 'home', emoji: '👨', nom: 'Home'},
   {id: 'dona', emoji: '👩', nom: 'Dona'}
 ];
-
-// Cargar biblioteca de emojis
-fetch('./data/biblioteca_emojis.json')
-  .then(res => res.json())
-  .then(data => { 
-    BIBLIOTECA_EMOJIS_BASE = data; 
-    console.log('Biblioteca cargada:', data.length, 'emojis');
-  })
-  .catch(err => { 
-    console.error('Error cargando biblioteca_emojis.json:', err); 
-    BIBLIOTECA_EMOJIS_BASE = [];
-  });
 
 let estat = {
   monedes: parseInt(localStorage.getItem('cat_monedes')) || 0,
@@ -232,24 +221,25 @@ function tocarJingleCompletado() {
 }
 
 // INIT
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
   aplicarIdioma();
 
-  // Carga los emojis base para el minijoc y diccionari
-  fetch('./data/biblioteca_emojis.json')
-   .then(res => res.json())
-   .then(data => { BIBLIOTECA_EMOJIS_BASE = data; })
-   .catch(err => {
-      BIBLIOTECA_EMOJIS_BASE = [];
-      console.error('No s\'ha pogut carregar biblioteca_emojis.json', err);
-    });
+  // 1. Carga los emojis primero y espera
+  try {
+    const res = await fetch('./data/biblioteca_emojis.json');
+    BIBLIOTECA_EMOJIS_BASE = await res.json();
+    console.log('Biblioteca cargada:', BIBLIOTECA_EMOJIS_BASE.length, 'emojis');
+  } catch(err) {
+    console.error('No s\'ha pogut carregar biblioteca_emojis.json', err);
+    BIBLIOTECA_EMOJIS_BASE = [];
+  }
 
-  carregarItems().then(() => {
-    actualitzarUI();
-    actualitzarTotem();
-    carregarMapa();
-    verificarRutesDesbloquejades();
-  });
+  // 2. Ahora sí carga el resto, porque ya tienes los emojis
+  await carregarItems();
+  actualitzarUI();
+  actualitzarTotem();
+  carregarMapa();
+  verificarRutesDesbloquejades();
 
   AUDIO_ENCERT = new Audio('data:audio/wav;base64,UklGRiZDAABXQVZFZm10IBAAAAABAAEAESsAACJWAAACABAAZGF0YQIAAAAAAAA=');
   AUDIO_FALLADA = new Audio('data:audio/wav;base64,UklGRiZDAABXQVZFZm10IBAAAAABAAEAESsAACJWAAACABAAZGF0YQIAAAAAAAAA');
@@ -646,7 +636,7 @@ function mostrarGremi(tab, e) {
     }
   }
 
-  if(tab === 'llegendes') {
+    if(tab === 'llegendes') {
     const llegendes = [
       { id: 'capitol1_bcn_born', nom: 'El Born, Barcelona', icona: '🏛️', desbloquejada: estat.capitolsCompletats.includes('capitol1_bcn_born'), text: 'El Born és el barri gòtic més viu.' },
       { id: 'capitol_02_girona', nom: 'Temps de Flors, Girona', icona: '🏰', desbloquejada: estat.capitolsCompletats.includes('capitol_02_girona'), text: 'Cada maig, Girona s\'omple de flors.' },
@@ -660,6 +650,7 @@ function mostrarGremi(tab, e) {
       }
     });
   }
+}
 
 function mostrarBibliotecaTab(tab, e) {
   document.querySelectorAll('#biblioteca-subtabs .sub-tab-btn').forEach(btn => btn.classList.remove('active'));
@@ -840,4 +831,5 @@ function comprarPack(id, preu) {
 
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('./sw.js').catch(err => console.log('SW error:', err));
-  }
+}
+    
