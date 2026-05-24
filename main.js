@@ -224,6 +224,11 @@ function tocarJingleCompletado() {
 document.addEventListener('DOMContentLoaded', async () => {
   aplicarIdioma();
 
+  // Unlock audio en iOS
+  document.body.addEventListener('click', () => {
+    if (audioCtx && audioCtx.state === 'suspended') audioCtx.resume();
+  }, { once: true });
+
   // 1. Carga los emojis primero y espera
   try {
     const res = await fetch('./data/biblioteca_emojis.json');
@@ -239,7 +244,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   actualitzarUI();
   actualitzarTotem();
   carregarMapa();
-  verificarRutesDesbloquejades();
 
   AUDIO_ENCERT = new Audio('data:audio/wav;base64,UklGRiZDAABXQVZFZm10IBAAAAABAAEAESsAACJWAAACABAAZGF0YQIAAAAAAAA=');
   AUDIO_FALLADA = new Audio('data:audio/wav;base64,UklGRiZDAABXQVZFZm10IBAAAAABAAEAESsAACJWAAACABAAZGF0YQIAAAAAAAAA');
@@ -322,7 +326,7 @@ async function carregarCapitol(nombreArchivo) {
 
     // DESPUÉS cambiamos de tab y cargamos el paso
     canviarTab('missio', null);
-    setTimeout(() => carregarPas(), 100);
+    setTimeout(() => carregarPas(), 0);
   } catch(e) {
     alert('Error carregant capítol: ' + e.message);
   }
@@ -376,6 +380,7 @@ function repetirCapitol(id) {
     carregarCapitol(capitol.archivo);
   }
 }
+
 function carregarPas() {
   if (!estat.capitolActual) return;
   const pas = estat.capitolActual.passos[estat.pasActual];
@@ -419,7 +424,6 @@ function carregarPas() {
     document.getElementById('missio-feedback').innerHTML = '';
   });
 }
-
 
 function seleccionarOpcio(idx) {
   if(estat.bloquejat) return;
@@ -491,7 +495,7 @@ function completarCapitol() {
       }
     }
     const imgHtmlPremi = item?.emoji? `<div style="font-size: 80px; margin-bottom: 15px;">${item.emoji}</div>` : `<img src="${item?.imatge}" style="width:100px; height:100px; object-fit:contain;">`;
-    htmlPremi = `<div class="item-desbloquejat">${imgHtmlPremi}<h3>${item?.nom || 'Premi'}</h3><p>${item?.descripcio || ''}</p><p style="color:#FFD700; font-weight:bold;">${veces100 >= vecesNecesarias? '<p style="color:#4CAF50;">Ruta secreta desbloquejada!</p>' : `Falten ${vecesNecesarias - veces100} cops per la ruta secreta`}</p></div>`;
+    htmlPremi = `<div class="item-desbloquejat">${imgHtmlPremi}<h3>${item?.nom || 'Premi'}</h3><p>${item?.descripcio || ''}</p><div style="color:#FFD700; font-weight:bold;">${veces100 >= vecesNecesarias? '<span style="color:#4CAF50;">Ruta secreta desbloquejada!</span>' : `Falten ${vecesNecesarias - veces100} cops per la ruta secreta`}</div></div>`;
   } else {
     htmlPremi = `<div style="text-align:center; margin-top:20px;"><p style="color:#ff6b6b; font-size:18px; font-weight:bold;">Has fallat ${fallades} pregunta${fallades > 1? 's' : ''}</p><p style="color:#888; margin-top:10px;">Fes 0 fallos per guanyar l'item especial.</p></div>`;
   }
@@ -508,29 +512,6 @@ function completarCapitol() {
   `;
   guardarEstat();
   carregarMapa();
-  verificarRutesDesbloquejades();
-}
-
-function verificarRutesDesbloquejades() {
-  const rutes = document.getElementById('rutes-secretes');
-  if (!rutes) return;
-
-  const itemsCap1 = estat.objectes.filter(id => id.includes('capitol1')).length;
-  const itemsCap2 = estat.objectes.filter(id => id.includes('capitol_02')).length;
-  const itemsCap3 = estat.objectes.filter(id => id.includes('capitol_03')).length;
-
-  if (itemsCap1 >= 3) {
-    document.getElementById('ruta-valencia').style.opacity = '1';
-    document.getElementById('ruta-valencia').querySelector('.capitol-icona').textContent = '🔓';
-  }
-  if (itemsCap2 >= 3) {
-    document.getElementById('ruta-girona').style.opacity = '1';
-    document.getElementById('ruta-girona').querySelector('.capitol-icona').textContent = '🔓';
-  }
-  if (itemsCap3 >= 3) {
-    document.getElementById('ruta-tarragona').style.opacity = '1';
-    document.getElementById('ruta-tarragona').querySelector('.capitol-icona').textContent = '🔓';
-  }
 }
 
 function actualitzarTotem() {
@@ -561,10 +542,9 @@ function tornarMapa() {
 }
 
 function carregarMissioTab() {
-  if (!estat.capitolActual) {
-    document.getElementById('rutes-secretes').style.display = 'block';
-  } else {
-    document.getElementById('rutes-secretes').style.display = 'none';
+  const rutes = document.getElementById('rutes-secretes');
+  if (rutes) {
+    rutes.style.display = estat.capitolActual? 'none' : 'block';
   }
 }
 
@@ -650,9 +630,9 @@ function mostrarGremi(tab, e) {
         }
       });
     }
-  }
+  } // <- llave cerrada aquí
 
-    if(tab === 'llegendes') {
+  if(tab === 'llegendes') {
     const llegendes = [
       { id: 'capitol1_bcn_born', nom: 'El Born, Barcelona', icona: '🏛️', desbloquejada: estat.capitolsCompletats.includes('capitol1_bcn_born'), text: 'El Born és el barri gòtic més viu.' },
       { id: 'capitol_02_girona', nom: 'Temps de Flors, Girona', icona: '🏰', desbloquejada: estat.capitolsCompletats.includes('capitol_02_girona'), text: 'Cada maig, Girona s\'omple de flors.' },
@@ -669,7 +649,7 @@ function mostrarGremi(tab, e) {
 }
 
 function mostrarBibliotecaTab(tab, e) {
-  document.querySelectorAll('#biblioteca-subtabs .sub-tab-btn').forEach(btn => btn.classList.remove('active'));
+  document.querySelectorAll('#biblioteca-subtabs.sub-tab-btn').forEach(btn => btn.classList.remove('active'));
   if(e) e.target.classList.add('active');
 
   const cont = document.getElementById('gremi-contenidor');
@@ -848,4 +828,3 @@ function comprarPack(id, preu) {
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('./sw.js').catch(err => console.log('SW error:', err));
 }
-    
